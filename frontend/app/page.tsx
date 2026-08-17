@@ -1,14 +1,22 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { AuthProvider, useAuth } from './lib/auth';
 
 function LoginForm() {
-  const { login, loading } = useAuth();
+  const { user, login, loading } = useAuth();
+  const router = useRouter();
   const [email, setEmail] = useState('admin@udaansetu.demo');
   const [password, setPassword] = useState('Demo@123');
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (!loading && user) {
+      router.push('/dashboard');
+    }
+  }, [user, loading, router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
