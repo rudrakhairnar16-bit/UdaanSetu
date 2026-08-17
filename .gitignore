@@ -1,0 +1,15 @@
+.env
+backend/uploads/
+backend/test.db
+backend/.pytest_cache/
+backend/app/ml/models/*.pkl
+backend/app/ml/models/*.json
+frontend/node_modules/
+frontend/.next/
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+.pytest_cache/
+*.egg-info/
