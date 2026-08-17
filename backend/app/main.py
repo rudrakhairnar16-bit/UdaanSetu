@@ -346,6 +346,8 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:3000",
         "http://127.0.0.1:3000",
+        "http://localhost:3001",
+        "http://127.0.0.1:3001",
     ],
     allow_credentials=True,
     allow_methods=["GET", "POST", "PATCH", "DELETE"],
@@ -782,26 +784,32 @@ from app.ml.engine import (
 
 @app.on_event("startup")
 def init_ml():
-    """Initialize ML models on startup. Resilient to DB/model failures."""
-    import logging
+    """Initialize ML models in background thread to avoid blocking startup."""
+    import logging, threading
     _log = logging.getLogger("udaansetu.startup")
-    try:
-        s = SessionLocal()
+
+    def _bg_init():
         try:
-            records = s.query(Record).all()
-            if records:
-                texts = [f"{r.title} {r.description} {r.sector} {r.district}" for r in records]
-                ids = [r.id for r in records]
-                sem = get_semantic_engine()
-                sem.initialize(texts, ids)
-                pipeline = get_training_pipeline()
-                pipeline.train_all([{"id": r.id, "title": r.title, "description": r.description,
-                                    "sector": r.sector, "district": r.district} for r in records])
-                _log.info(f"ML init complete: {len(records)} records indexed")
-        finally:
-            s.close()
-    except Exception as e:
-        _log.warning(f"ML startup init skipped (will lazy-load on first request): {e}")
+            s = SessionLocal()
+            try:
+                records = s.query(Record).all()
+                if records:
+                    sem = get_semantic_engine()
+                    _log.info("Loading semantic model (first time downloads ~90MB)...")
+                    sem.initialize(
+                        [f"{r.title} {r.description} {r.sector} {r.district}" for r in records],
+                        [r.id for r in records],
+                    )
+                    pipeline = get_training_pipeline()
+                    pipeline.train_all([{"id": r.id, "title": r.title, "description": r.description,
+                                        "sector": r.sector, "district": r.district} for r in records])
+                    _log.info(f"ML init complete: {len(records)} records indexed")
+            finally:
+                s.close()
+        except Exception as e:
+            _log.warning(f"ML init skipped (will lazy-load on first request): {e}")
+
+    threading.Thread(target=_bg_init, daemon=True).start()
 
 @app.get("/ai/risk/{research_id}")
 def ai_risk(research_id: int, s: Session = Depends(db), u=Depends(current)):
