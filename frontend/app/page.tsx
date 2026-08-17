@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { AuthProvider, useAuth } from './lib/auth';
+import { useAuth } from './lib/auth';
 
 function LoginForm() {
   const { user, login, loading } = useAuth();
@@ -122,9 +122,5 @@ function LoginForm() {
 }
 
 export default function Home() {
-  return (
-    <AuthProvider>
-      <LoginForm />
-    </AuthProvider>
-  );
+  return <LoginForm />;
 }
