@@ -18,18 +18,26 @@ export default function StartupsPage() {
   const [detail, setDetail] = useState<Rec | null>(null);
   const [match, setMatch] = useState<any>(null);
   const [search, setSearch] = useState('');
+  const [error, setError] = useState('');
   const { toast } = useToast();
   const { confirm } = useConfirm();
 
   const load = async () => {
     setLoading(true);
-    const [st, inn] = await Promise.all([
-      api.get<Rec[]>('/records?kind=startup'),
-      api.get<Rec[]>('/records?kind=innovation'),
-    ]);
-    setRecords(st);
-    setInnovations(inn);
-    setLoading(false);
+    setError('');
+    try {
+      const [st, inn] = await Promise.all([
+        api.get<Rec[]>('/records?kind=startup'),
+        api.get<Rec[]>('/records?kind=innovation'),
+      ]);
+      setRecords(st);
+      setInnovations(inn);
+    } catch (err: any) {
+      setError(err.message || 'Failed to load');
+      toast('Failed to load startups', 'error');
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => { load(); }, []);
@@ -103,7 +111,12 @@ export default function StartupsPage() {
         <div className="stat-card"><span className="label">Total Revenue</span><span className="value">₹{(totalRevenue / 100000).toFixed(1)}L</span></div>
       </div>
 
-      {loading ? <SkeletonCards count={4} /> : filtered.length === 0 ? (
+      {loading ? <SkeletonCards count={4} /> : error ? (
+        <div className="card" style={{ padding: 40, textAlign: 'center' }}>
+          <p style={{ color: '#ef4444', marginBottom: 12 }}>{error}</p>
+          <button className="btn btn-primary btn-sm" onClick={load}>Retry</button>
+        </div>
+      ) : filtered.length === 0 ? (
         <div className="empty"><div style={{ fontSize: 40 }}>🚀</div><p>No startups found</p></div>
       ) : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: 14 }}>

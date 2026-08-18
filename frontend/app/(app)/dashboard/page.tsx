@@ -69,7 +69,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Two-column layout */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }} className="two-col">
         <div className="card">
           <div className="card-header"><h3>At Risk</h3></div>
           {dash.at_risk.length === 0 ? (

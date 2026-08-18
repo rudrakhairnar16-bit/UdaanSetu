@@ -31,13 +31,17 @@ export default function ProfilePage() {
   const handlePassword = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!currentPw || !newPw) { toast('Fill in both password fields', 'error'); return; }
+    if (newPw.length < 8) { toast('New password must be at least 8 characters', 'error'); return; }
+    if (!/[A-Z]/.test(newPw)) { toast('New password must contain an uppercase letter', 'error'); return; }
+    if (!/[a-z]/.test(newPw)) { toast('New password must contain a lowercase letter', 'error'); return; }
+    if (!/[0-9]/.test(newPw)) { toast('New password must contain a digit', 'error'); return; }
     setSaving(true);
     try {
       await api.post('/auth/change-password', { current_password: currentPw, new_password: newPw });
       toast('Password changed');
       setCurrentPw(''); setNewPw('');
     } catch (err: any) {
-      toast(err.message, 'error');
+      toast(err.message || 'Failed to change password', 'error');
     } finally {
       setSaving(false);
     }

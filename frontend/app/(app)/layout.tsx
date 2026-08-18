@@ -1,8 +1,9 @@
 'use client';
 
+import Link from 'next/link';
 import { useAuth } from '../lib/auth';
 import { useRouter, usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 
 const NAV_ITEMS = [
   { href: '/dashboard', label: 'Dashboard', icon: '📊', roles: ['admin', 'researcher', 'mentor', 'investor', 'incubator'] },
@@ -25,6 +26,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const sidebarRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if (!loading && !user) {
@@ -32,10 +34,40 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     }
   }, [user, loading, router]);
 
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
+  const trapFocus = useCallback((e: KeyboardEvent) => {
+    if (!mobileOpen || !sidebarRef.current) return;
+    if (e.key === 'Escape') {
+      setMobileOpen(false);
+      return;
+    }
+    if (e.key === 'Tab') {
+      const focusable = sidebarRef.current.querySelectorAll<HTMLElement>('a, button');
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    document.addEventListener('keydown', trapFocus);
+    return () => document.removeEventListener('keydown', trapFocus);
+  }, [trapFocus]);
+
   if (loading) {
     return (
       <div style={{ minHeight: '100vh', display: 'grid', placeItems: 'center' }}>
-        <div style={{ fontSize: 14, color: '#6b7280' }}>Loading UdaanSetu...</div>
+        <div style={{ fontSize: 14, color: 'var(--gray-500)' }}>Loading UdaanSetu...</div>
       </div>
     );
   }
@@ -46,34 +78,40 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh' }}>
+      <a href="#main-content" className="skip-link">Skip to content</a>
+
       {/* Mobile overlay */}
       {mobileOpen && (
         <div
           style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,.3)', zIndex: 40 }}
           onClick={() => setMobileOpen(false)}
+          aria-hidden="true"
         />
       )}
 
       {/* Sidebar */}
-      <aside style={{
-        width: 240,
-        background: '#0c3b26',
-        color: '#d1fae5',
-        display: 'flex',
-        flexDirection: 'column',
-        padding: '20px 12px',
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        bottom: 0,
-        zIndex: 50,
-        transition: 'transform .2s',
-        transform: mobileOpen ? 'translateX(0)' : undefined,
-      }}
-        className="sidebar"
+      <aside
+        ref={sidebarRef}
+        className={`sidebar ${mobileOpen ? 'sidebar-open' : ''}`}
+        style={{
+          width: 240,
+          background: '#0c3b26',
+          color: '#d1fae5',
+          display: 'flex',
+          flexDirection: 'column',
+          padding: '20px 12px',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          bottom: 0,
+          zIndex: 50,
+          transition: 'transform .2s',
+        }}
+        role="navigation"
+        aria-label="Main navigation"
       >
         <div style={{ padding: '0 12px 24px' }}>
-          <div style={{ fontWeight: 800, fontSize: 20, color: 'white' }}>↗ UdaanSetu</div>
+          <Link href="/dashboard" style={{ fontWeight: 800, fontSize: 20, color: 'white', textDecoration: 'none' }}>↗ UdaanSetu</Link>
           <div style={{ fontSize: 11, color: '#86efac', marginTop: 2 }}>Research to impact</div>
         </div>
 
@@ -81,10 +119,10 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           {filtered.map(item => {
             const active = pathname === item.href || pathname?.startsWith(item.href + '/');
             return (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
-                onClick={() => setMobileOpen(false)}
+                aria-current={active ? 'page' : undefined}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -96,11 +134,12 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                   background: active ? '#166534' : 'transparent',
                   color: active ? 'white' : '#bbf7d0',
                   transition: 'background .15s',
+                  textDecoration: 'none',
                 }}
               >
                 <span style={{ fontSize: 16 }}>{item.icon}</span>
                 {item.label}
-              </a>
+              </Link>
             );
           })}
         </nav>
@@ -128,6 +167,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             color: '#fca5a5',
             textAlign: 'left',
             width: '100%',
+            minHeight: 44,
           }}
         >
           Sign out
@@ -135,17 +175,13 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       </aside>
 
       {/* Main content */}
-      <main style={{ flex: 1, marginLeft: 240, padding: '24px 32px', maxWidth: '100%' }} className="main-content">
+      <main id="main-content" style={{ flex: 1, marginLeft: 240, padding: '24px 32px', maxWidth: '100%' }} className="main-content">
         {/* Mobile header */}
-        <div style={{
-          display: 'none',
-          marginBottom: 16,
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        }} className="mobile-header">
+        <div className="mobile-header" style={{ display: 'none', marginBottom: 16, alignItems: 'center', justifyContent: 'space-between' }}>
           <button
             onClick={() => setMobileOpen(true)}
-            style={{ fontSize: 20, padding: 8 }}
+            aria-label="Open navigation menu"
+            style={{ fontSize: 20, padding: 8, minHeight: 44, minWidth: 44 }}
           >
             ☰
           </button>
@@ -154,14 +190,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
         {children}
       </main>
-
-      <style>{`
-        @media (max-width: 768px) {
-          .sidebar { transform: ${mobileOpen ? 'translateX(0)' : 'translateX(-100%)'} !important; }
-          .main-content { margin-left: 0 !important; padding: 16px !important; }
-          .mobile-header { display: flex !important; }
-        }
-      `}</style>
     </div>
   );
 }

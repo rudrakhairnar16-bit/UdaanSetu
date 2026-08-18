@@ -42,7 +42,7 @@ export default function ImpactPage() {
         ))}
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }} className="two-col">
         <div className="card">
           <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 16 }}>Records by Sector</h3>
           {sectors.length === 0 && <div className="empty"><p>No sector data</p></div>}

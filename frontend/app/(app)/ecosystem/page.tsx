@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { api } from '../../lib/api';
 import type { AppRecord as Rec } from '../../lib/types';
 import { StageBadge } from '../../components/StageBadge';
@@ -78,7 +79,9 @@ function CreateModal({ kind, onClose, onCreated }: { kind: string; onClose: () =
 }
 
 export default function EcosystemPage() {
-  const [tab, setTab] = useState<Tab>('mentors');
+  const searchParams = useSearchParams();
+  const initialTab = (searchParams.get('tab') as Tab) || 'mentors';
+  const [tab, setTab] = useState<Tab>(initialTab);
   const [records, setRecords] = useState<Rec[]>([]);
   const [loading, setLoading] = useState(true);
   const [showCreate, setShowCreate] = useState(false);

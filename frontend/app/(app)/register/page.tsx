@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { api } from '../../lib/api';
 import { useAuth } from '../../lib/auth';
@@ -14,6 +15,10 @@ export default function RegisterPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (form.password.length < 8) { setError('Password must be at least 8 characters'); return; }
+    if (!/[A-Z]/.test(form.password)) { setError('Password must contain an uppercase letter'); return; }
+    if (!/[a-z]/.test(form.password)) { setError('Password must contain a lowercase letter'); return; }
+    if (!/[0-9]/.test(form.password)) { setError('Password must contain a digit'); return; }
     setSubmitting(true);
     setError('');
     try {
@@ -74,7 +79,7 @@ export default function RegisterPage() {
         </form>
 
         <p style={{ marginTop: 16, fontSize: 13, color: '#6b7280', textAlign: 'center' }}>
-          Already have an account? <a href="/" style={{ color: '#16a34a', fontWeight: 600 }}>Sign in</a>
+          Already have an account? <Link href="/" style={{ color: '#16a34a', fontWeight: 600 }}>Sign in</Link>
         </p>
       </div>
     </div>

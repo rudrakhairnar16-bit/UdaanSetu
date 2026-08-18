@@ -6,12 +6,20 @@ import { ErrorBoundary } from './components/ErrorBoundary';
 
 export const metadata = {
   title: 'UdaanSetu — Innovation Lifecycle Platform',
-  description: 'Research → Innovation → IPR → Support → Startup → Impact | SIH1608 Demo',
+  description: 'Research → Innovation → IPR → Support → Startup → Impact | SIH1608 Prototype',
+  icons: { icon: '/favicon.ico' },
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover' as const,
+  themeColor: '#0c3b26',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
         <ErrorBoundary>
           <AuthProvider>

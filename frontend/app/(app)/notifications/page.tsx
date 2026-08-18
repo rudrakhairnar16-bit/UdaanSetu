@@ -3,28 +3,52 @@
 import { useEffect, useState } from 'react';
 import { api } from '../../lib/api';
 import type { Notification } from '../../lib/types';
+import { useToast } from '../../components/Toast';
+import { useConfirm } from '../../components/ConfirmDialog';
+import { LoadingSpinner } from '../../components/LoadingSpinner';
 
 export default function NotificationsPage() {
   const [notifs, setNotifs] = useState<Notification[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const { toast } = useToast();
+  const { confirm } = useConfirm();
 
   const load = async () => {
     setLoading(true);
-    const data = await api.get<Notification[]>('/notifications');
-    setNotifs(data);
-    setLoading(false);
+    setError('');
+    try {
+      const data = await api.get<Notification[]>('/notifications');
+      setNotifs(data);
+    } catch (err: any) {
+      setError(err.message || 'Failed to load');
+      toast('Failed to load notifications', 'error');
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => { load(); }, []);
 
   const markRead = async (id: number) => {
-    await api.patch(`/notifications/${id}/read`);
-    setNotifs(notifs.map(n => n.id === id ? { ...n, read: true } : n));
+    try {
+      await api.patch(`/notifications/${id}/read`);
+      setNotifs(notifs.map(n => n.id === id ? { ...n, read: true } : n));
+    } catch (err: any) {
+      toast('Failed to mark as read', 'error');
+    }
   };
 
   const markAllRead = async () => {
-    await api.post('/notifications/read-all');
-    setNotifs(notifs.map(n => ({ ...n, read: true })));
+    const ok = await confirm('Mark all notifications as read?');
+    if (!ok) return;
+    try {
+      await api.post('/notifications/read-all');
+      setNotifs(notifs.map(n => ({ ...n, read: true })));
+      toast('All notifications marked as read');
+    } catch (err: any) {
+      toast('Failed to mark all as read', 'error');
+    }
   };
 
   const unread = notifs.filter(n => !n.read).length;
@@ -43,7 +67,12 @@ export default function NotificationsPage() {
         )}
       </div>
 
-      {loading ? <div style={{ padding: 40, textAlign: 'center', color: '#6b7280' }}>Loading...</div> : notifs.length === 0 ? (
+      {loading ? <LoadingSpinner text="Loading notifications..." /> : error ? (
+        <div className="card" style={{ padding: 40, textAlign: 'center' }}>
+          <p style={{ color: '#ef4444', marginBottom: 12 }}>{error}</p>
+          <button className="btn btn-primary btn-sm" onClick={load}>Retry</button>
+        </div>
+      ) : notifs.length === 0 ? (
         <div className="empty"><div style={{ fontSize: 40 }}>🔔</div><p>No notifications yet</p></div>
       ) : (
         <div style={{ display: 'grid', gap: 8 }}>

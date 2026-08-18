@@ -39,7 +39,7 @@ export default function SettingsPage() {
             {[
               ['Version', '0.2.0'],
               ['Problem Focus', 'SIH1608 — Innovation Ecosystem Platform'],
-              ['API Docs', 'http://localhost:8000/docs'],
+              ['API Docs', typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.hostname}:8000/docs` : '/docs'],
               ['Environment', 'Demo / Prototype'],
               ['Data Notice', 'All records are DEMO DATA. Not government data.'],
             ].map(([label, value]) => (

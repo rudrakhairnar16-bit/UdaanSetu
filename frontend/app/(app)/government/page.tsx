@@ -266,7 +266,7 @@ function IPIndiaTab() {
       <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 4 }}>IP India Patent Status</h3>
       <p style={{ fontSize: 13, color: '#6b7280', marginBottom: 16 }}>Check patent application status, search patents by title/applicant, and estimate filing costs.</p>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }} className="two-col">
         <form onSubmit={handleVerify} style={{ display: 'grid', gap: 12 }}>
           <div className="form-group"><label>Application Number</label>
             <input value={appNum} onChange={e => setAppNum(e.target.value)} placeholder="IN/2024/123456" required />
@@ -354,7 +354,7 @@ function ONDCTab() {
       <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 4 }}>ONDC Marketplace</h3>
       <p style={{ fontSize: 13, color: '#6b7280', marginBottom: 16 }}>Search and verify sellers/products on the Open Network for Digital Commerce. Supports product search and seller verification.</p>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 16 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 16 }} className="two-col">
         <form onSubmit={handleSearch} style={{ display: 'grid', gap: 12 }}>
           <div className="form-group"><label>Search Products</label>
             <input value={query} onChange={e => setQuery(e.target.value)} placeholder="e.g. organic rice, handicrafts" />

@@ -57,7 +57,7 @@ export default function AnalyticsPage() {
         ))}
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 24 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 24 }} className="two-col">
         {/* Bar chart by kind */}
         <div className="card">
           <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 16 }}>By Record Type</h3>
@@ -127,7 +127,7 @@ export default function AnalyticsPage() {
 
       {/* ML Model Metrics */}
       {mlMetrics && (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginTop: 24 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginTop: 24 }} className="two-col">
           <div className="card">
             <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 16 }}>
               Risk Prediction Model

@@ -78,13 +78,21 @@ export default function InnovationsPage() {
   const [recommendations, setRecommendations] = useState<any>(null);
   const [similar, setSimilar] = useState<any[]>([]);
   const [search, setSearch] = useState('');
+  const [error, setError] = useState('');
   const { toast } = useToast();
   const { confirm } = useConfirm();
 
   const load = async () => {
     setLoading(true);
-    setRecords(await api.get<Rec[]>('/records?kind=innovation'));
-    setLoading(false);
+    setError('');
+    try {
+      setRecords(await api.get<Rec[]>('/records?kind=innovation'));
+    } catch (err: any) {
+      setError(err.message || 'Failed to load');
+      toast('Failed to load innovations', 'error');
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => { load(); }, []);
@@ -149,7 +157,12 @@ export default function InnovationsPage() {
 
       <input placeholder="Search innovations..." value={search} onChange={e => setSearch(e.target.value)} style={{ width: '100%', maxWidth: 400, marginBottom: 16 }} />
 
-      {loading ? <SkeletonCards count={4} /> : filtered.length === 0 ? (
+      {loading ? <SkeletonCards count={4} /> : error ? (
+        <div className="card" style={{ padding: 40, textAlign: 'center' }}>
+          <p style={{ color: '#ef4444', marginBottom: 12 }}>{error}</p>
+          <button className="btn btn-primary btn-sm" onClick={load}>Retry</button>
+        </div>
+      ) : filtered.length === 0 ? (
         <div className="empty"><div style={{ fontSize: 40 }}>💡</div><p>No innovations found</p></div>
       ) : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: 14 }}>

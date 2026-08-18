@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from './lib/auth';
 
@@ -74,6 +75,7 @@ function LoginForm() {
               value={email}
               onChange={e => setEmail(e.target.value)}
               required
+              autoComplete="username"
               style={{ width: '100%' }}
             />
           </div>
@@ -86,6 +88,7 @@ function LoginForm() {
               value={password}
               onChange={e => setPassword(e.target.value)}
               required
+              autoComplete="current-password"
               style={{ width: '100%' }}
             />
           </div>
@@ -113,7 +116,11 @@ function LoginForm() {
           Incubator: incubator@udaansetu.demo / Demo@123
         </div>
 
-        <p style={{ marginTop: 16, fontSize: 11, color: '#9ca3af', textAlign: 'center' }}>
+        <p style={{ marginTop: 16, fontSize: 13, color: '#6b7280', textAlign: 'center' }}>
+          New here? <Link href="/register" style={{ color: '#16a34a', fontWeight: 600 }}>Create an account</Link>
+        </p>
+
+        <p style={{ marginTop: 12, fontSize: 11, color: '#9ca3af', textAlign: 'center' }}>
           All data is DEMO DATA. Not government data.
         </p>
       </div>
