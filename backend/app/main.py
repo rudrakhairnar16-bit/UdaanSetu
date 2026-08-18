@@ -10,6 +10,7 @@ from app.database import engine, Base, SessionLocal
 from app.models import Record
 from app.middleware import setup_middleware
 from app.seed import seed
+from app.monitoring import metrics_middleware
 
 from app.routes.auth import router as auth_router
 from app.routes.records import router as records_router
@@ -63,6 +64,7 @@ app = FastAPI(
 )
 
 setup_middleware(app)
+metrics_middleware(app)
 
 app.include_router(auth_router)
 app.include_router(records_router)
@@ -78,6 +80,21 @@ app.include_router(ml_prod_router)
 @app.get("/health")
 def health():
     return {"status": "ok", "service": "UdaanSetu API", "version": "1.0.0", "demo_data": True}
+
+
+@app.get("/metrics")
+def metrics_endpoint():
+    """Prometheus-compatible metrics endpoint."""
+    from app.monitoring import metrics
+    return metrics.get_metrics()
+
+
+@app.get("/metrics/prometheus")
+def metrics_prometheus():
+    """Prometheus text format metrics."""
+    from app.monitoring import metrics
+    from starlette.responses import Response
+    return Response(content=metrics.prometheus_format(), media_type="text/plain")
 
 
 # --- Backward compatibility: re-export everything tests import from app.main ---

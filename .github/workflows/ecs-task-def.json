@@ -1,0 +1,60 @@
+# ECS Task Definition for UdaanSetu
+{
+  "family": "udaansetu",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "1024",
+  "memory": "2048",
+  "executionRoleArn": "arn:aws:iam::ACCOUNT_ID:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "name": "backend",
+      "image": "ACCOUNT_ID.dkr.ecr.ap-south-1.amazonaws.com/udaansetu-backend:latest",
+      "portMappings": [{"containerPort": 8000, "protocol": "tcp"}],
+      "environment": [
+        {"name": "DATABASE_URL", "value": "postgresql+psycopg://USER:PASS@RDS_HOST:5432/udaansetu"},
+        {"name": "SECRET_KEY", "valueFrom": "arn:aws:secretsmanager:ap-south-1:ACCOUNT_ID:secret:udaansetu/secret-key"},
+        {"name": "CORS_ORIGINS", "value": "https://udaansetu.example.com"},
+        {"name": "OLLAMA_ENABLED", "value": "false"}
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/udaansetu-backend",
+          "awslogs-region": "ap-south-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "healthCheck": {
+        "command": ["CMD-SHELL", "curl -f http://localhost:8000/health || exit 1"],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3
+      },
+      "readonlyRootFilesystem": true,
+      "user": "1000:1000"
+    },
+    {
+      "name": "frontend",
+      "image": "ACCOUNT_ID.dkr.ecr.ap-south-1.amazonaws.com/udaansetu-frontend:latest",
+      "portMappings": [{"containerPort": 3000, "protocol": "tcp"}],
+      "environment": [
+        {"name": "NEXT_PUBLIC_API_URL", "value": "https://api.udaansetu.example.com"}
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/udaansetu-frontend",
+          "awslogs-region": "ap-south-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "healthCheck": {
+        "command": ["CMD-SHELL", "curl -f http://localhost:3000 || exit 1"],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3
+      }
+    }
+  ]
+}
