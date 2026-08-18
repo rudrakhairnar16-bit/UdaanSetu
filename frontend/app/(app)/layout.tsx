@@ -12,7 +12,9 @@ const NAV_ITEMS = [
   { href: '/startups', label: 'Startups', icon: '🚀', roles: ['admin', 'researcher', 'investor'] },
   { href: '/ecosystem', label: 'Ecosystem', icon: '🤝', roles: ['admin', 'mentor', 'investor', 'incubator', 'researcher'] },
   { href: '/analytics', label: 'Analytics', icon: '📈', roles: ['admin', 'researcher'] },
+  { href: '/impact', label: 'Impact', icon: '🌍', roles: ['admin', 'researcher', 'investor'] },
   { href: '/notifications', label: 'Notifications', icon: '🔔', roles: ['admin', 'researcher', 'mentor', 'investor', 'incubator'] },
+  { href: '/profile', label: 'Profile', icon: '👤', roles: ['admin', 'researcher', 'mentor', 'investor', 'incubator'] },
   { href: '/audit', label: 'Audit Log', icon: '📋', roles: ['admin'] },
   { href: '/settings', label: 'Settings', icon: '⚙️', roles: ['admin'] },
 ];

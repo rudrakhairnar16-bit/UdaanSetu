@@ -1,5 +1,8 @@
 import './globals.css';
 import { AuthProvider } from './lib/auth';
+import { ToastProvider } from './components/Toast';
+import { ConfirmProvider } from './components/ConfirmDialog';
+import { ErrorBoundary } from './components/ErrorBoundary';
 
 export const metadata = {
   title: 'UdaanSetu — Innovation Lifecycle Platform',
@@ -9,7 +12,17 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body><AuthProvider>{children}</AuthProvider></body>
+      <body>
+        <ErrorBoundary>
+          <AuthProvider>
+            <ToastProvider>
+              <ConfirmProvider>
+                {children}
+              </ConfirmProvider>
+            </ToastProvider>
+          </AuthProvider>
+        </ErrorBoundary>
+      </body>
     </html>
   );
 }
