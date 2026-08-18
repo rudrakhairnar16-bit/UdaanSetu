@@ -19,6 +19,7 @@ from app.routes.notifications import router as notifications_router
 from app.routes.audit import router as audit_router
 from app.routes.documents import router as documents_router
 from app.routes.government import router as government_router
+from app.routes.ml_production import router as ml_prod_router
 
 _log = logging.getLogger("udaansetu")
 
@@ -71,6 +72,7 @@ app.include_router(notifications_router)
 app.include_router(audit_router)
 app.include_router(documents_router)
 app.include_router(government_router)
+app.include_router(ml_prod_router)
 
 
 @app.get("/health")
