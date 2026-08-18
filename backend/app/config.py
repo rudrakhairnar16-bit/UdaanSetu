@@ -12,6 +12,17 @@ class Settings(BaseSettings):
     rate_limit_per_minute: int = 120
     cors_origins: str = "http://localhost:3000,http://localhost:3001"
     jwt_expiry_hours: int = 12
+    # Government API settings (mock in dev, real URLs in production)
+    aadhaar_api_url: str = ""
+    aadhaar_api_key: str = ""
+    digilocker_api_url: str = ""
+    digilocker_api_key: str = ""
+    startup_india_api_url: str = ""
+    startup_india_api_key: str = ""
+    ip_india_api_url: str = ""
+    ip_india_api_key: str = ""
+    ondc_api_url: str = ""
+    ondc_api_key: str = ""
     model_config = {"env_file": ".env", "extra": "ignore"}
 
     @property

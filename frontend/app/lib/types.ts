@@ -115,3 +115,12 @@ export interface DuplicateCluster {
   similarity: number;
   description: string;
 }
+
+export interface GovResponse {
+  service: string;
+  status: string;
+  timestamp: number;
+  request_id: string;
+  demo: boolean;
+  [key: string]: any;
+}

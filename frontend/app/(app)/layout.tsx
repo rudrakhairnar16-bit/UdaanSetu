@@ -11,6 +11,7 @@ const NAV_ITEMS = [
   { href: '/ipr', label: 'IPR / Patents', icon: '📜', roles: ['admin', 'researcher'] },
   { href: '/startups', label: 'Startups', icon: '🚀', roles: ['admin', 'researcher', 'investor'] },
   { href: '/ecosystem', label: 'Ecosystem', icon: '🤝', roles: ['admin', 'mentor', 'investor', 'incubator', 'researcher'] },
+  { href: '/government', label: 'Govt APIs', icon: '🏛️', roles: ['admin', 'researcher'] },
   { href: '/analytics', label: 'Analytics', icon: '📈', roles: ['admin', 'researcher'] },
   { href: '/impact', label: 'Impact', icon: '🌍', roles: ['admin', 'researcher', 'investor'] },
   { href: '/notifications', label: 'Notifications', icon: '🔔', roles: ['admin', 'researcher', 'mentor', 'investor', 'incubator'] },
