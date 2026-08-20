@@ -131,7 +131,7 @@ export default function StartupsPage() {
 
       {loading ? <SkeletonCards count={4} /> : error ? (
         <div className="card" style={{ padding: 40, textAlign: 'center' }}>
-          <p style={{ color: '#ef4444', marginBottom: 12 }}>{error}</p>
+          <p style={{ color: 'var(--red-500)', marginBottom: 12 }}>{error}</p>
           <button className="btn btn-primary btn-sm" onClick={load}>Retry</button>
         </div>
       ) : filtered.length === 0 ? (
@@ -149,24 +149,24 @@ export default function StartupsPage() {
                 <div style={{ fontWeight: 700, fontSize: 15 }}>{r.title}</div>
                 {r.is_demo && <span className="badge badge-yellow">DEMO</span>}
               </div>
-              <p style={{ fontSize: 12, color: '#6b7280', marginBottom: 10, lineHeight: 1.5 }}>{r.description.slice(0, 120)}...</p>
+              <p style={{ fontSize: 12, color: 'var(--gray-500)', marginBottom: 10, lineHeight: 1.5 }}>{r.description.slice(0, 120)}...</p>
               <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 12 }}>
                 <StageBadge stage={r.stage} />
                 {r.sector && <span className="badge badge-gray">{r.sector}</span>}
                 {r.district && <span className="badge badge-gray">{r.district}</span>}
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8 }}>
-                <div style={{ textAlign: 'center', padding: 8, background: '#f9fafb', borderRadius: 6 }}>
-                  <div style={{ fontSize: 18, fontWeight: 800, color: '#166534' }}>{r.meta.jobs_created || 0}</div>
-                  <div style={{ fontSize: 11, color: '#6b7280' }}>Jobs</div>
+                <div style={{ textAlign: 'center', padding: 8, background: 'var(--surface-soft)', borderRadius: 6 }}>
+                  <div style={{ fontSize: 18, fontWeight: 800, color: 'var(--green-800)' }}>{r.meta.jobs_created || 0}</div>
+                  <div style={{ fontSize: 11, color: 'var(--gray-500)' }}>Jobs</div>
                 </div>
-                <div style={{ textAlign: 'center', padding: 8, background: '#f9fafb', borderRadius: 6 }}>
-                  <div style={{ fontSize: 18, fontWeight: 800, color: '#166534' }}>{r.meta.farmers_reached || 0}</div>
-                  <div style={{ fontSize: 11, color: '#6b7280' }}>Users</div>
+                <div style={{ textAlign: 'center', padding: 8, background: 'var(--surface-soft)', borderRadius: 6 }}>
+                  <div style={{ fontSize: 18, fontWeight: 800, color: 'var(--green-800)' }}>{r.meta.farmers_reached || 0}</div>
+                  <div style={{ fontSize: 11, color: 'var(--gray-500)' }}>Users</div>
                 </div>
-                <div style={{ textAlign: 'center', padding: 8, background: '#f9fafb', borderRadius: 6 }}>
-                  <div style={{ fontSize: 18, fontWeight: 800, color: '#166534' }}>₹{((r.meta.revenue || 0) / 1000).toFixed(0)}K</div>
-                  <div style={{ fontSize: 11, color: '#6b7280' }}>Revenue</div>
+                <div style={{ textAlign: 'center', padding: 8, background: 'var(--surface-soft)', borderRadius: 6 }}>
+                  <div style={{ fontSize: 18, fontWeight: 800, color: 'var(--green-800)' }}>₹{((r.meta.revenue || 0) / 1000).toFixed(0)}K</div>
+                  <div style={{ fontSize: 11, color: 'var(--gray-500)' }}>Revenue</div>
                 </div>
               </div>
             </div>
@@ -181,7 +181,7 @@ export default function StartupsPage() {
       {/* Detail modal */}
       {detail && !editRecord && (
         <Modal title={detail.title} onClose={() => setDetail(null)} maxWidth={640}>
-          <p style={{ margin: '0 0 12px', fontSize: 14, color: '#4b5563' }}>{detail.description}</p>
+          <p style={{ margin: '0 0 12px', fontSize: 14, color: 'var(--gray-600)' }}>{detail.description}</p>
           <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
             <StageBadge stage={detail.stage} />
             {detail.sector && <span className="badge badge-gray">{detail.sector}</span>}
@@ -198,9 +198,9 @@ export default function StartupsPage() {
               { label: 'Revenue', value: `₹${((detail.meta.revenue || 0) / 100000).toFixed(1)}L` },
               { label: 'Impact', value: detail.meta.impact_description || '—' },
             ].map((item, i) => (
-              <div key={i} style={{ background: '#f9fafb', padding: 12, borderRadius: 8 }}>
-                <div style={{ fontSize: 11, color: '#6b7280', fontWeight: 600 }}>{item.label.toUpperCase()}</div>
-                <div style={{ fontSize: i === 3 ? 13 : 18, fontWeight: i === 3 ? 400 : 800, color: '#374151', marginTop: 4 }}>{item.value}</div>
+              <div key={i} style={{ background: 'var(--surface-soft)', padding: 12, borderRadius: 8 }}>
+                <div style={{ fontSize: 11, color: 'var(--gray-500)', fontWeight: 600 }}>{item.label.toUpperCase()}</div>
+                <div style={{ fontSize: i === 3 ? 13 : 18, fontWeight: i === 3 ? 400 : 800, color: 'var(--gray-700)', marginTop: 4 }}>{item.value}</div>
               </div>
             ))}
           </div>
@@ -209,11 +209,11 @@ export default function StartupsPage() {
               <h3 style={{ fontSize: 15, fontWeight: 700, marginBottom: 10 }}>Smart Match Results</h3>
               {['mentors', 'schemes', 'incubators'].map(type => match[type]?.length > 0 && (
                 <div key={type} style={{ marginBottom: 12 }}>
-                  <div style={{ fontSize: 13, fontWeight: 600, color: '#6b7280', marginBottom: 6, textTransform: 'capitalize' }}>{type}</div>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--gray-500)', marginBottom: 6, textTransform: 'capitalize' }}>{type}</div>
                   {match[type].map((m: any) => (
-                    <div key={m.id} style={{ padding: '8px 12px', borderRadius: 8, border: '1px solid #e5e7eb', marginBottom: 6, display: 'flex', justifyContent: 'space-between' }}>
-                      <div><span style={{ fontWeight: 600 }}>{m.title}</span><div style={{ fontSize: 12, color: '#6b7280' }}>{m.match_reason}</div></div>
-                      <span style={{ fontWeight: 700, color: '#16a34a' }}>{m.score}%</span>
+                    <div key={m.id} style={{ padding: '8px 12px', borderRadius: 8, border: '1px solid var(--border-soft)', marginBottom: 6, display: 'flex', justifyContent: 'space-between' }}>
+                      <div><span style={{ fontWeight: 600 }}>{m.title}</span><div style={{ fontSize: 12, color: 'var(--gray-500)' }}>{m.match_reason}</div></div>
+                      <span style={{ fontWeight: 700, color: 'var(--green-600)' }}>{m.score}%</span>
                     </div>
                   ))}
                 </div>

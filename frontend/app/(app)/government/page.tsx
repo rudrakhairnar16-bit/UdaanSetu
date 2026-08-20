@@ -18,20 +18,20 @@ function ResultCard({ data }: { data: GovResponse | null }) {
     <div className="card" style={{ marginTop: 16 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
         <h3 style={{ fontSize: 15, fontWeight: 700 }}>Result</h3>
-        <span className="badge" style={{ background: statusColors[data.status] || '#6b7280', color: 'white', padding: '4px 12px' }}>
+        <span className="badge" style={{ background: statusColors[data.status] || 'var(--gray-500)', color: 'white', padding: '4px 12px' }}>
           {data.status?.toUpperCase()}
         </span>
       </div>
-      {data.message && <p style={{ fontSize: 14, color: '#4b5563', marginBottom: 12 }}>{data.message}</p>}
+      {data.message && <p style={{ fontSize: 14, color: 'var(--gray-600)', marginBottom: 12 }}>{data.message}</p>}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
         {Object.entries(data).filter(([k]) => !['service', 'timestamp', 'request_id', 'demo', 'message', 'products', 'startups', 'benefits', 'patents', 'documents'].includes(k)).map(([k, v]) => (
-          <div key={k} style={{ padding: '8px 12px', background: '#f9fafb', borderRadius: 6 }}>
-            <div style={{ fontSize: 11, color: '#6b7280', fontWeight: 600, textTransform: 'uppercase' }}>{k.replace(/_/g, ' ')}</div>
-            <div style={{ fontSize: 14, fontWeight: 600, color: '#374151', marginTop: 2 }}>{String(v)}</div>
+          <div key={k} style={{ padding: '8px 12px', background: 'var(--surface-soft)', borderRadius: 6 }}>
+            <div style={{ fontSize: 11, color: 'var(--gray-500)', fontWeight: 600, textTransform: 'uppercase' }}>{k.replace(/_/g, ' ')}</div>
+            <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--gray-700)', marginTop: 2 }}>{String(v)}</div>
           </div>
         ))}
       </div>
-      {data.request_id && <div style={{ fontSize: 11, color: '#9ca3af', marginTop: 12 }}>Request ID: {data.request_id} · Demo mode</div>}
+      {data.request_id && <div style={{ fontSize: 11, color: 'var(--gray-400)', marginTop: 12 }}>Request ID: {data.request_id} · Demo mode</div>}
     </div>
   );
 }
@@ -82,7 +82,7 @@ function AadhaarTab() {
   return (
     <div>
       <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 4 }}>Aadhaar eKYC</h3>
-      <p style={{ fontSize: 13, color: '#6b7280', marginBottom: 16 }}>Verify identity using Aadhaar number. Supports direct verification and OTP-based flow.</p>
+      <p style={{ fontSize: 13, color: 'var(--gray-500)', marginBottom: 16 }}>Verify identity using Aadhaar number. Supports direct verification and OTP-based flow.</p>
 
       <form onSubmit={handleVerify} style={{ display: 'grid', gap: 12, maxWidth: 400 }}>
         <div className="form-group"><label>Aadhaar Number (12 digits)</label>
@@ -143,7 +143,7 @@ function DigiLockerTab() {
   return (
     <div>
       <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 4 }}>DigiLocker Documents</h3>
-      <p style={{ fontSize: 13, color: '#6b7280', marginBottom: 16 }}>Verify documents through DigiLocker. Supports Aadhaar, PAN, DL, education certificates, and more.</p>
+      <p style={{ fontSize: 13, color: 'var(--gray-500)', marginBottom: 16 }}>Verify documents through DigiLocker. Supports Aadhaar, PAN, DL, education certificates, and more.</p>
 
       <form onSubmit={handleVerify} style={{ display: 'grid', gap: 12, maxWidth: 400 }}>
         <div className="form-group"><label>Document Type</label>
@@ -196,7 +196,7 @@ function StartupIndiaTab() {
   return (
     <div>
       <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 4 }}>Startup India Registry</h3>
-      <p style={{ fontSize: 13, color: '#6b7280', marginBottom: 16 }}>Verify DPIIT recognition, check benefits (tax exemption, patent rebates), and register new startups.</p>
+      <p style={{ fontSize: 13, color: 'var(--gray-500)', marginBottom: 16 }}>Verify DPIIT recognition, check benefits (tax exemption, patent rebates), and register new startups.</p>
 
       <form onSubmit={handleVerify} style={{ display: 'grid', gap: 12, maxWidth: 400 }}>
         <div className="form-group"><label>Registration Number</label>
@@ -217,7 +217,7 @@ function StartupIndiaTab() {
         <div className="card" style={{ marginTop: 16 }}>
           <h3 style={{ fontSize: 15, fontWeight: 700, marginBottom: 12 }}>Available Benefits</h3>
           {benefits.benefits?.map((b: any, i: number) => (
-            <div key={i} style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid #f3f4f6' }}>
+            <div key={i} style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid var(--gray-100)' }}>
               <span style={{ fontSize: 14 }}>{b.name}</span>
               <span className={`badge ${b.status === 'approved' ? 'badge-green' : b.status === 'eligible' ? 'badge-blue' : b.status === 'applied' ? 'badge-yellow' : 'badge-gray'}`}>{b.status}</span>
             </div>
@@ -264,7 +264,7 @@ function IPIndiaTab() {
   return (
     <div>
       <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 4 }}>IP India Patent Status</h3>
-      <p style={{ fontSize: 13, color: '#6b7280', marginBottom: 16 }}>Check patent application status, search patents by title/applicant, and estimate filing costs.</p>
+      <p style={{ fontSize: 13, color: 'var(--gray-500)', marginBottom: 16 }}>Check patent application status, search patents by title/applicant, and estimate filing costs.</p>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }} className="two-col">
         <form onSubmit={handleVerify} style={{ display: 'grid', gap: 12 }}>
@@ -352,7 +352,7 @@ function ONDCTab() {
   return (
     <div>
       <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 4 }}>ONDC Marketplace</h3>
-      <p style={{ fontSize: 13, color: '#6b7280', marginBottom: 16 }}>Search and verify sellers/products on the Open Network for Digital Commerce. Supports product search and seller verification.</p>
+      <p style={{ fontSize: 13, color: 'var(--gray-500)', marginBottom: 16 }}>Search and verify sellers/products on the Open Network for Digital Commerce. Supports product search and seller verification.</p>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 16 }} className="two-col">
         <form onSubmit={handleSearch} style={{ display: 'grid', gap: 12 }}>
@@ -383,14 +383,14 @@ function ONDCTab() {
           <h3 style={{ fontSize: 15, fontWeight: 700, marginBottom: 12 }}>Products ({products.products?.length || 0})</h3>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: 12 }}>
             {products.products?.map((p: any, i: number) => (
-              <div key={i} style={{ padding: 14, background: '#f9fafb', borderRadius: 8, border: '1px solid #e5e7eb' }}>
+              <div key={i} style={{ padding: 14, background: 'var(--surface-soft)', borderRadius: 8, border: '1px solid var(--border-soft)' }}>
                 <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 4 }}>{p.name}</div>
-                <div style={{ fontSize: 12, color: '#6b7280' }}>{p.category || p.fulfillment}</div>
+                <div style={{ fontSize: 12, color: 'var(--gray-500)' }}>{p.category || p.fulfillment}</div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 8 }}>
-                  <span style={{ fontWeight: 800, color: '#166534' }}>₹{p.price?.toLocaleString()}</span>
+                  <span style={{ fontWeight: 800, color: 'var(--green-800)' }}>₹{p.price?.toLocaleString()}</span>
                   <div>
                     <span style={{ fontSize: 12, color: '#f59e0b' }}>★ {p.rating}</span>
-                    {p.seller && <span style={{ fontSize: 11, color: '#6b7280', marginLeft: 8 }}>by {p.seller}</span>}
+                    {p.seller && <span style={{ fontSize: 11, color: 'var(--gray-500)', marginLeft: 8 }}>by {p.seller}</span>}
                   </div>
                 </div>
               </div>
@@ -417,14 +417,14 @@ export default function GovernmentPage() {
     <div>
       <div style={{ marginBottom: 20 }}>
         <h1 style={{ fontSize: 24, fontWeight: 800 }}>Government Integrations</h1>
-        <p style={{ fontSize: 13, color: '#6b7280' }}>Connect with Aadhaar, DigiLocker, Startup India, IP India, and ONDC. All responses are mock data in demo mode.</p>
+        <p style={{ fontSize: 13, color: 'var(--gray-500)' }}>Connect with Aadhaar, DigiLocker, Startup India, IP India, and ONDC. All responses are mock data in demo mode.</p>
       </div>
 
-      <div style={{ display: 'flex', gap: 4, marginBottom: 20, background: '#f3f4f6', padding: 4, borderRadius: 10 }}>
+<div style={{ display: 'flex', gap: 4, marginBottom: 20, background: 'var(--gray-100)', padding: 4, borderRadius: 10 }}>
         {TABS.map(t => (
           <button key={t.key} onClick={() => setTab(t.key)}
-            style={{ padding: '8px 16px', borderRadius: 8, fontSize: 13, fontWeight: 600, background: tab === t.key ? 'white' : 'transparent', color: tab === t.key ? '#166534' : '#6b7280', boxShadow: tab === t.key ? 'var(--shadow-sm)' : 'none', transition: 'all .15s' }}>
-            <span style={{ marginRight: 6 }}>{t.icon}</span>{t.label}
+            style={{ padding: '8px 16px', borderRadius: 8, fontSize: 13, fontWeight: 600, background: tab === t.key ? 'var(--surface)' : 'transparent', color: tab === t.key ? 'var(--green-800)' : 'var(--gray-500)', boxShadow: tab === t.key ? 'var(--shadow-sm)' : 'none', transition: 'all .15s' }}>
+            {t.label}
           </button>
         ))}
       </div>

@@ -14,7 +14,7 @@ function RiskBadge({ level }: { level: string }) {
 
 const STAT_META: Record<string, { icon: string; color: string }> = {
   research: { icon: 'research', color: '#2563eb' },
-  innovation: { icon: 'innovation', color: '#16a34a' },
+  innovation: { icon: 'innovation', color: 'var(--green-600)' },
   ipr: { icon: 'ipr', color: '#f97316' },
   startup: { icon: 'startup', color: '#7c3aed' },
   mentor: { icon: 'profile', color: '#0891b2' },
@@ -35,8 +35,8 @@ export default function DashboardPage() {
       .catch(e => { setError(e.message); setLoading(false); });
   }, []);
 
-  if (loading) return <div style={{ padding: 40, textAlign: 'center', color: '#6b7280' }}>Loading dashboard...</div>;
-  if (error) return <div style={{ padding: 40, color: '#ef4444' }}>Error: {error}</div>;
+  if (loading) return <div style={{ padding: 40, textAlign: 'center', color: 'var(--gray-500)' }}>Loading dashboard...</div>;
+  if (error) return <div style={{ padding: 40, color: 'var(--red-500)' }}>Error: {error}</div>;
   if (!dash) return null;
 
   const pipelineSteps = ['research', 'innovation', 'ipr', 'startup'];
@@ -45,14 +45,14 @@ export default function DashboardPage() {
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 24 }}>
         <div>
-          <div style={{ fontSize: 11, letterSpacing: '.12em', color: '#16a34a', fontWeight: 700, marginBottom: 4 }}>INNOVATION LIFECYCLE</div>
-          <h1 style={{ fontSize: 28, fontWeight: 800, color: '#14532d', fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}>
+          <div style={{ fontSize: 11, letterSpacing: '.12em', color: 'var(--green-600)', fontWeight: 700, marginBottom: 4 }}>INNOVATION LIFECYCLE</div>
+          <h1 style={{ fontSize: 28, fontWeight: 800, color: 'var(--green-900)', fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}>
             Good {new Date().getHours() < 12 ? 'morning' : new Date().getHours() < 17 ? 'afternoon' : 'evening'}, {user?.name?.split(' ')[0]}.
           </h1>
         </div>
       </div>
 
-      <div style={{ background: '#fefce8', border: '1px solid #fde68a', borderRadius: 10, padding: '10px 14px', fontSize: 13, color: '#854d0e', marginBottom: 20 }}>
+      <div style={{ background: 'var(--yellow-50)', border: '1px solid var(--yellow-100)', borderRadius: 10, padding: '10px 14px', fontSize: 13, color: 'var(--yellow-800)', marginBottom: 20 }}>
         {dash.banner}
       </div>
 
@@ -60,16 +60,16 @@ export default function DashboardPage() {
       <div style={{ display: 'flex', alignItems: 'center', gap: 0, marginBottom: 24, overflowX: 'auto', paddingBottom: 4 }}>
         {pipelineSteps.map((step, i) => (
           <div key={step} style={{ display: 'flex', alignItems: 'center' }}>
-            <div style={{ padding: '12px 20px', borderRadius: 12, fontWeight: 700, fontSize: 13, background: ['#eff6ff', '#f0fdf4', '#fff7ed', '#faf5ff'][i], color: ['#1e40af', '#166534', '#9a3412', '#6b21a8'][i], whiteSpace: 'nowrap', boxShadow: 'var(--shadow-xs)' }}>
+            <div style={{ padding: '12px 20px', borderRadius: 12, fontWeight: 700, fontSize: 13, background: ['var(--blue-50)', 'var(--green-50)', 'var(--orange-50)', 'var(--violet-50)'][i], color: ['var(--blue-700)', 'var(--green-800)', 'var(--orange-800)', 'var(--violet-700)'][i], whiteSpace: 'nowrap', boxShadow: 'var(--shadow-xs)' }}>
               {step.charAt(0).toUpperCase() + step.slice(1)}
               <span style={{ marginLeft: 8, fontWeight: 800, opacity: .8, fontSize: 15 }}>{dash.pipeline?.[step]?.total || 0}</span>
             </div>
-            {i < pipelineSteps.length - 1 && <div style={{ fontSize: 18, color: '#d1d5db', padding: '0 8px' }}>→</div>}
+            {i < pipelineSteps.length - 1 && <div style={{ fontSize: 18, color: 'var(--gray-300)', padding: '0 8px' }}>→</div>}
           </div>
         ))}
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <div style={{ fontSize: 18, color: '#d1d5db', padding: '0 8px' }}>→</div>
-          <div style={{ padding: '12px 20px', borderRadius: 12, fontWeight: 700, fontSize: 13, background: '#fef2f2', color: '#991b1b', whiteSpace: 'nowrap', boxShadow: 'var(--shadow-xs)' }}>Impact</div>
+          <div style={{ fontSize: 18, color: 'var(--gray-300)', padding: '0 8px' }}>→</div>
+          <div style={{ padding: '12px 20px', borderRadius: 12, fontWeight: 700, fontSize: 13, background: 'var(--red-100)', color: 'var(--red-700)', whiteSpace: 'nowrap', boxShadow: 'var(--shadow-xs)' }}>Impact</div>
         </div>
       </div>
 
@@ -101,14 +101,14 @@ export default function DashboardPage() {
           {dash.at_risk.length === 0 ? (
             <p className="empty" style={{ padding: 16 }}>No projects at risk</p>
           ) : dash.at_risk.map(r => (
-            <div key={r.id} style={{ padding: '10px 0', borderBottom: '1px solid #f3f4f6', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
+            <div key={r.id} style={{ padding: '10px 0', borderBottom: '1px solid var(--gray-100)', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
               <div>
                 <div style={{ fontWeight: 600, fontSize: 14 }}>{r.title}</div>
-                <div style={{ fontSize: 12, color: '#6b7280', marginTop: 2 }}>{r.reasons.join(' · ')}</div>
-                {r.confidence !== undefined && <div style={{ fontSize: 11, color: '#9ca3af', marginTop: 2 }}>Confidence: {r.confidence}% · {r.method || 'ML model'}</div>}
+                <div style={{ fontSize: 12, color: 'var(--gray-500)', marginTop: 2 }}>{r.reasons.join(' · ')}</div>
+                {r.confidence !== undefined && <div style={{ fontSize: 11, color: 'var(--gray-400)', marginTop: 2 }}>Confidence: {r.confidence}% · {r.method || 'ML model'}</div>}
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
-                <span style={{ fontSize: 13, fontWeight: 700, color: r.score > 70 ? '#dc2626' : '#d97706' }}>{r.score}/100</span>
+                <span style={{ fontSize: 13, fontWeight: 700, color: r.score > 70 ? 'var(--red-600)' : 'var(--amber-600)' }}>{r.score}/100</span>
                 <RiskBadge level={r.level} />
               </div>
             </div>
@@ -120,10 +120,10 @@ export default function DashboardPage() {
           {dash.recent.length === 0 ? (
             <p className="empty" style={{ padding: 16 }}>No records yet</p>
           ) : dash.recent.map(r => (
-            <div key={r.id} style={{ padding: '10px 0', borderBottom: '1px solid #f3f4f6', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
+            <div key={r.id} style={{ padding: '10px 0', borderBottom: '1px solid var(--gray-100)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
               <div>
                 <div style={{ fontWeight: 600, fontSize: 14 }}>{r.title}</div>
-                <div style={{ fontSize: 12, color: '#6b7280', marginTop: 2 }}>{r.kind} · {r.district || 'No district'}</div>
+                <div style={{ fontSize: 12, color: 'var(--gray-500)', marginTop: 2 }}>{r.kind} · {r.district || 'No district'}</div>
               </div>
               <StageBadge stage={r.stage} />
             </div>

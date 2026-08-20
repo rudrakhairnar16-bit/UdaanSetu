@@ -35,7 +35,7 @@ function LoginForm() {
   if (loading) {
     return (
       <div style={{ minHeight: '100vh', display: 'grid', placeItems: 'center', background: '#f0fdf4' }}>
-        <div style={{ fontSize: 14, color: '#6b7280' }}>Loading...</div>
+        <div style={{ fontSize: 14, color: 'var(--gray-500)' }}>Loading...</div>
       </div>
     );
   }
@@ -45,7 +45,7 @@ function LoginForm() {
       minHeight: '100vh',
       display: 'grid',
       gridTemplateColumns: '1.1fr 1fr',
-      background: '#f9fafb',
+      background: 'var(--surface-soft)',
     }}>
       {/* Left brand panel */}
       <div style={{
@@ -91,19 +91,19 @@ function LoginForm() {
       {/* Right form panel */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 40 }}>
         <div style={{ width: 'min(400px, 100%)' }}>
-          <div style={{ fontSize: 11, letterSpacing: '.14em', color: '#16a34a', fontWeight: 700, marginBottom: 10 }}>
+          <div style={{ fontSize: 11, letterSpacing: '.14em', color: 'var(--green-600)', fontWeight: 700, marginBottom: 10 }}>
             WELCOME BACK
           </div>
-          <h1 style={{ fontSize: 30, fontWeight: 800, marginBottom: 8, color: '#111827', fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}>
+          <h1 style={{ fontSize: 30, fontWeight: 800, marginBottom: 8, color: 'var(--gray-900)', fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}>
             Sign in to UdaanSetu
           </h1>
-          <p style={{ color: '#6b7280', fontSize: 14, marginBottom: 28 }}>
+          <p style={{ color: 'var(--gray-500)', fontSize: 14, marginBottom: 28 }}>
             Enter your credentials to access the workspace.
           </p>
 
           <form onSubmit={handleSubmit} style={{ display: 'grid', gap: 16 }}>
             <div>
-              <label style={{ fontSize: 13, fontWeight: 600, color: '#374151', display: 'block', marginBottom: 6 }}>
+              <label style={{ fontSize: 13, fontWeight: 600, color: 'var(--gray-700)', display: 'block', marginBottom: 6 }}>
                 Email
               </label>
               <input
@@ -116,7 +116,7 @@ function LoginForm() {
               />
             </div>
             <div>
-              <label style={{ fontSize: 13, fontWeight: 600, color: '#374151', display: 'block', marginBottom: 6 }}>
+              <label style={{ fontSize: 13, fontWeight: 600, color: 'var(--gray-700)', display: 'block', marginBottom: 6 }}>
                 Password
               </label>
               <input
@@ -129,7 +129,7 @@ function LoginForm() {
               />
             </div>
             {error && (
-              <div style={{ background: '#fef2f2', border: '1px solid #fecaca', borderRadius: 8, padding: '10px 14px', color: '#991b1b', fontSize: 13 }}>
+              <div style={{ background: 'var(--red-50)', border: '1px solid var(--red-100)', borderRadius: 8, padding: '10px 14px', color: 'var(--red-700)', fontSize: 13 }}>
                 {error}
               </div>
             )}
@@ -143,8 +143,8 @@ function LoginForm() {
             </button>
           </form>
 
-          <div style={{ marginTop: 24, padding: 14, background: '#f3f4f6', borderRadius: 10, fontSize: 12, color: '#4b5563', lineHeight: 1.7 }}>
-            <strong style={{ color: '#111827' }}>Demo Credentials:</strong>
+          <div style={{ marginTop: 24, padding: 14, background: 'var(--gray-100)', borderRadius: 10, fontSize: 12, color: 'var(--gray-600)', lineHeight: 1.7 }}>
+            <strong style={{ color: 'var(--gray-900)' }}>Demo Credentials:</strong>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2px 16px', marginTop: 4 }}>
               <span>Admin · admin@udaansetu.demo</span>
               <span>Researcher · researcher@udaansetu.demo</span>
@@ -152,11 +152,11 @@ function LoginForm() {
               <span>Investor · investor@udaansetu.demo</span>
               <span>Incubator · incubator@udaansetu.demo</span>
             </div>
-            <div style={{ marginTop: 6, color: '#6b7280' }}>Password for all: <strong>Demo@123</strong></div>
+            <div style={{ marginTop: 6, color: 'var(--gray-500)' }}>Password for all: <strong>Demo@123</strong></div>
           </div>
 
-          <p style={{ marginTop: 20, fontSize: 13, color: '#6b7280', textAlign: 'center' }}>
-            New here? <Link href="/register" style={{ color: '#16a34a', fontWeight: 600 }}>Create an account</Link>
+          <p style={{ marginTop: 20, fontSize: 13, color: 'var(--gray-500)', textAlign: 'center' }}>
+            New here? <Link href="/register" style={{ color: 'var(--green-600)', fontWeight: 600 }}>Create an account</Link>
           </p>
         </div>
       </div>

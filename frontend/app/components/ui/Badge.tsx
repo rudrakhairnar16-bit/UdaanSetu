@@ -15,9 +15,9 @@ interface BadgeProps {
 const STYLES: Record<BadgeVariant, { bg: string; color: string }> = {
   primary: { bg: 'var(--green-100)', color: 'var(--green-800)' },
   secondary: { bg: 'var(--gray-100)', color: 'var(--gray-600)' },
-  warning: { bg: 'var(--yellow-100)', color: '#854d0e' },
-  danger: { bg: 'var(--red-100)', color: '#991b1b' },
-  info: { bg: 'var(--blue-100)', color: '#1e40af' },
+  warning: { bg: 'var(--yellow-100)', color: 'var(--yellow-800)' },
+  danger: { bg: 'var(--red-100)', color: 'var(--red-700)' },
+  info: { bg: 'var(--blue-100)', color: 'var(--blue-700)' },
 };
 
 export function Badge({ variant = 'secondary', children, icon, removable = false, onRemove }: BadgeProps) {

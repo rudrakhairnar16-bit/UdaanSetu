@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import Link from 'next/link';
@@ -33,10 +33,10 @@ export default function RegisterPage() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'grid', placeItems: 'center', background: 'radial-gradient(ellipse at 70% 30%, #bbf7d0, #f0fdf4 50%, #f9fafb)', padding: 20 }}>
-      <div style={{ width: 'min(480px, 100%)', background: 'white', border: '1px solid #e5e7eb', borderRadius: 20, padding: '44px 36px', boxShadow: '0 20px 60px rgba(20,67,42,.08)' }}>
-        <h1 style={{ fontSize: 28, fontWeight: 800, marginBottom: 4, color: '#14532d' }}>Create Account</h1>
-        <p style={{ color: '#6b7280', fontSize: 14, marginBottom: 24 }}>Join the UdaanSetu innovation ecosystem</p>
+    <div style={{ minHeight: '100vh', display: 'grid', placeItems: 'center', background: 'radial-gradient(ellipse at 70% 30%, #bbf7d0, var(--green-50) 50%, var(--surface-soft))', padding: 20 }}>
+      <div style={{ width: 'min(480px, 100%)', background: 'var(--surface)', border: '1px solid var(--border-soft)', borderRadius: 20, padding: '44px 36px', boxShadow: '0 20px 60px rgba(20,67,42,.08)' }}>
+        <h1 style={{ fontSize: 28, fontWeight: 800, marginBottom: 4, color: 'var(--green-900)' }}>Create Account</h1>
+        <p style={{ color: 'var(--gray-500)', fontSize: 14, marginBottom: 24 }}>Join the UdaanSetu innovation ecosystem</p>
 
         <form onSubmit={handleSubmit} style={{ display: 'grid', gap: 12 }}>
           <div className="form-group">
@@ -71,14 +71,14 @@ export default function RegisterPage() {
             <input value={form.organization} onChange={e => setForm({ ...form, organization: e.target.value })} placeholder="University / Company" />
           </div>
 
-          {error && <div style={{ background: '#fef2f2', border: '1px solid #fecaca', borderRadius: 8, padding: '10px 14px', color: '#991b1b', fontSize: 13 }}>{error}</div>}
+          {error && <div style={{ background: 'var(--red-50)', border: '1px solid var(--red-100)', borderRadius: 8, padding: '10px 14px', color: 'var(--red-700)', fontSize: 13 }}>{error}</div>}
 
           <button type="submit" disabled={submitting} className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', padding: 13, fontSize: 15 }}>
             {submitting ? 'Creating account...' : 'Create Account'}
           </button>
         </form>
 
-        <p style={{ marginTop: 16, fontSize: 13, color: '#6b7280', textAlign: 'center' }}>
+        <p style={{ marginTop: 16, fontSize: 13, color: 'var(--gray-500)', textAlign: 'center' }}>
           Already have an account? <Link href="/" style={{ color: '#16a34a', fontWeight: 600 }}>Sign in</Link>
         </p>
       </div>

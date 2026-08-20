@@ -16,7 +16,7 @@ export default function AuditPage() {
   }, []);
 
   const actionColor: Record<string, string> = {
-    created: '#16a34a', updated: '#3b82f6', deleted: '#ef4444',
+    created: '#16a34a', updated: '#3b82f6', deleted: 'var(--red-500)',
     seeded: '#9ca3af', uploaded_document: '#f97316',
   };
 
@@ -24,11 +24,11 @@ export default function AuditPage() {
     <div>
       <div style={{ marginBottom: 20 }}>
         <h1 style={{ fontSize: 24, fontWeight: 800 }}>Audit Log</h1>
-        <p style={{ fontSize: 13, color: '#6b7280' }}>Admin-only view of system actions</p>
+        <p style={{ fontSize: 13, color: 'var(--gray-500)' }}>Admin-only view of system actions</p>
       </div>
 
-      {loading ? <div style={{ padding: 40, textAlign: 'center', color: '#6b7280' }}>Loading...</div>
-        : error ? <div style={{ padding: 40, color: '#ef4444' }}>Error: {error}</div>
+      {loading ? <div style={{ padding: 40, textAlign: 'center', color: 'var(--gray-500)' }}>Loading...</div>
+        : error ? <div style={{ padding: 40, color: 'var(--red-500)' }}>Error: {error}</div>
         : logs.length === 0 ? <div className="empty"><div style={{ fontSize: 40 }}>📋</div><p>No audit logs</p></div>
         : (
           <div className="card">
@@ -51,7 +51,7 @@ export default function AuditPage() {
                       <td>
                         <span style={{
                           display: 'inline-block', padding: '2px 10px', borderRadius: 9999, fontSize: 12, fontWeight: 600,
-                          background: `${actionColor[l.action] || '#6b7280'}15`, color: actionColor[l.action] || '#6b7280',
+                          background: `${actionColor[l.action] || 'var(--gray-500)'}15`, color: actionColor[l.action] || 'var(--gray-500)',
                         }}>
                           {l.action}
                         </span>
@@ -59,7 +59,7 @@ export default function AuditPage() {
                       <td style={{ fontWeight: 500, textTransform: 'capitalize' }}>{l.entity}</td>
                       <td style={{ fontFamily: 'monospace', fontSize: 13 }}>{l.entity_id}</td>
                       <td style={{ fontSize: 13 }}>#{l.actor_id || '—'}</td>
-                      <td style={{ fontSize: 13, color: '#6b7280', maxWidth: 200, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      <td style={{ fontSize: 13, color: 'var(--gray-500)', maxWidth: 200, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                         {l.detail.title || JSON.stringify(l.detail)}
                       </td>
                     </tr>

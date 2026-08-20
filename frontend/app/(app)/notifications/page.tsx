@@ -60,7 +60,7 @@ export default function NotificationsPage() {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
         <div>
           <h1 style={{ fontSize: 24, fontWeight: 800 }}>Notifications</h1>
-          <p style={{ fontSize: 13, color: '#6b7280' }}>{unread} unread</p>
+          <p style={{ fontSize: 13, color: 'var(--gray-500)' }}>{unread} unread</p>
         </div>
         {unread > 0 && (
           <button className="btn btn-secondary" onClick={markAllRead}>Mark all as read</button>
@@ -69,7 +69,7 @@ export default function NotificationsPage() {
 
       {loading ? <LoadingSpinner text="Loading notifications..." /> : error ? (
         <div className="card" style={{ padding: 40, textAlign: 'center' }}>
-          <p style={{ color: '#ef4444', marginBottom: 12 }}>{error}</p>
+          <p style={{ color: 'var(--red-500)', marginBottom: 12 }}>{error}</p>
           <button className="btn btn-primary btn-sm" onClick={load}>Retry</button>
         </div>
       ) : notifs.length === 0 ? (
@@ -82,8 +82,8 @@ export default function NotificationsPage() {
               style={{
                 padding: '14px 18px',
                 borderRadius: 10,
-                border: `1px solid ${n.read ? '#e5e7eb' : '#bbf7d0'}`,
-                background: n.read ? 'white' : '#f0fdf4',
+                border: `1px solid ${n.read ? 'var(--border-soft)' : 'var(--green-200)'}`,
+                background: n.read ? 'var(--surface)' : 'var(--green-50)',
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
@@ -95,12 +95,12 @@ export default function NotificationsPage() {
               <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
                 <span style={{ fontSize: 18, marginTop: 2 }}>{kindIcon[n.kind] || '📌'}</span>
                 <div>
-                  <p style={{ fontSize: 14, fontWeight: n.read ? 400 : 600, color: '#374151' }}>{n.message}</p>
-                  <p style={{ fontSize: 12, color: '#9ca3af', marginTop: 2 }}>{new Date(n.created_at).toLocaleString()}</p>
+                  <p style={{ fontSize: 14, fontWeight: n.read ? 400 : 600, color: 'var(--gray-700)' }}>{n.message}</p>
+                  <p style={{ fontSize: 12, color: 'var(--gray-400)', marginTop: 2 }}>{new Date(n.created_at).toLocaleString()}</p>
                 </div>
               </div>
               {!n.read && (
-                <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#16a34a', flexShrink: 0 }} />
+                <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--green-600)', flexShrink: 0 }} />
               )}
             </div>
           ))}

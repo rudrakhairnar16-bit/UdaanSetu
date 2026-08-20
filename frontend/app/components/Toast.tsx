@@ -36,8 +36,8 @@ export function ToastProvider({ children }: { children: ReactNode }) {
     setToasts(prev => prev.filter(t => t.id !== id));
   }, []);
 
-  const COLORS = { success: 'var(--green-800)', error: '#991b1b', info: '#1e40af' };
-  const BGS = { success: 'var(--green-100)', error: 'var(--red-50)', info: 'var(--blue-50)' };
+  const COLORS = { success: 'var(--green-800)', error: 'var(--red-700)', info: 'var(--blue-700)' };
+  const BGS = { success: 'var(--green-100)', error: 'var(--red-100)', info: 'var(--blue-100)' };
 
   return (
     <ToastContext.Provider value={{ toast }}>

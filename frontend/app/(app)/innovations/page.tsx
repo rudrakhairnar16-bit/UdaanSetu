@@ -177,7 +177,7 @@ export default function InnovationsPage() {
 
       {loading ? <SkeletonCards count={4} /> : error ? (
         <div className="card" style={{ padding: 40, textAlign: 'center' }}>
-          <p style={{ color: '#ef4444', marginBottom: 12 }}>{error}</p>
+          <p style={{ color: 'var(--red-500)', marginBottom: 12 }}>{error}</p>
           <Button size="sm" onClick={load}>Retry</Button>
         </div>
       ) : filtered.length === 0 ? (
@@ -195,7 +195,7 @@ export default function InnovationsPage() {
                   <div style={{ fontWeight: 700, fontSize: 15 }}>{r.title}</div>
                   {r.is_demo && <span className="badge badge-yellow">DEMO</span>}
                 </div>
-                <div style={{ fontSize: 12, color: '#6b7280', marginBottom: 10, lineHeight: 1.5 }}>{r.description.slice(0, 120)}...</div>
+                <div style={{ fontSize: 12, color: 'var(--gray-500)', marginBottom: 10, lineHeight: 1.5 }}>{r.description.slice(0, 120)}...</div>
                 <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                   <StageBadge stage={r.stage} />
                   {r.meta.readiness_level && <span className="badge badge-blue">{r.meta.readiness_level}</span>}
@@ -222,24 +222,24 @@ export default function InnovationsPage() {
             <button className="btn btn-secondary btn-sm" onClick={() => setEditRecord(detail)}>Edit</button>
             <button className="btn btn-danger btn-sm" onClick={() => handleDelete(detail)}>Delete</button>
           </div>
-          <p style={{ margin: '0 0 16px', fontSize: 14, color: '#4b5563' }}>{detail.description}</p>
+          <p style={{ margin: '0 0 16px', fontSize: 14, color: 'var(--gray-600)' }}>{detail.description}</p>
 
           {recommendations && (
             <div style={{ marginBottom: 16 }}>
               <h3 style={{ fontSize: 15, fontWeight: 700, marginBottom: 10 }}>AI Recommendations</h3>
-              <div style={{ background: '#f0fdf4', border: '1px solid #dcfce7', borderRadius: 8, padding: 14, marginBottom: 12 }}>
-                <div style={{ fontSize: 12, color: '#6b7280', marginBottom: 4 }}>Insight · <span style={{ fontWeight: 600 }}>{recommendations.method}</span></div>
-                <p style={{ fontSize: 14, color: '#374151' }}>{recommendations.insight}</p>
+              <div style={{ background: 'var(--green-50)', border: '1px solid var(--green-100)', borderRadius: 8, padding: 14, marginBottom: 12 }}>
+                <div style={{ fontSize: 12, color: 'var(--gray-500)', marginBottom: 4 }}>Insight · <span style={{ fontWeight: 600 }}>{recommendations.method}</span></div>
+                <p style={{ fontSize: 14, color: 'var(--gray-700)' }}>{recommendations.insight}</p>
               </div>
               <div style={{ display: 'grid', gap: 8 }}>
                 {recommendations.matches?.slice(0, 5).map((m: any) => (
-                  <div key={m.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 14px', borderRadius: 8, border: '1px solid #e5e7eb', background: '#fafafa' }}>
+                  <div key={m.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 14px', borderRadius: 8, border: '1px solid var(--border-soft)', background: 'var(--surface-soft)' }}>
                     <div>
                       <span className={`badge ${m.type === 'mentor' ? 'badge-blue' : m.type === 'scheme' ? 'badge-green' : 'badge-orange'}`} style={{ marginRight: 8 }}>{m.type}</span>
                       <span style={{ fontWeight: 600, fontSize: 14 }}>{m.title}</span>
-                      <div style={{ fontSize: 12, color: '#6b7280', marginTop: 2 }}>{m.reason}</div>
+                      <div style={{ fontSize: 12, color: 'var(--gray-500)', marginTop: 2 }}>{m.reason}</div>
                     </div>
-                    <div style={{ textAlign: 'right' }}><div style={{ fontSize: 18, fontWeight: 800, color: '#16a34a' }}>{m.score}%</div><div style={{ fontSize: 11, color: '#9ca3af' }}>match</div></div>
+                    <div style={{ textAlign: 'right' }}><div style={{ fontSize: 18, fontWeight: 800, color: 'var(--green-600)' }}>{m.score}%</div><div style={{ fontSize: 11, color: 'var(--gray-400)' }}>match</div></div>
                   </div>
                 ))}
               </div>
@@ -250,9 +250,9 @@ export default function InnovationsPage() {
             <div>
               <h3 style={{ fontSize: 15, fontWeight: 700, marginBottom: 10 }}>Similar Records</h3>
               {similar.map(s => (
-                <div key={s.id} style={{ padding: '8px 0', borderBottom: '1px solid #f3f4f6', display: 'flex', justifyContent: 'space-between' }}>
+                <div key={s.id} style={{ padding: '8px 0', borderBottom: '1px solid var(--gray-100)', display: 'flex', justifyContent: 'space-between' }}>
                   <div><span className="badge badge-gray" style={{ marginRight: 8 }}>{s.type}</span><span style={{ fontSize: 14 }}>{s.title}</span></div>
-                  <span style={{ fontSize: 13, fontWeight: 600, color: '#16a34a' }}>{s.similarity}%</span>
+                  <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--green-600)' }}>{s.similarity}%</span>
                 </div>
               ))}
             </div>

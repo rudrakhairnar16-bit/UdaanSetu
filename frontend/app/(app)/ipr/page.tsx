@@ -112,14 +112,14 @@ function DetailModal({ record, innovations, onClose, onUpdated, onDeleted }: {
       <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
         <button className="btn btn-danger btn-sm" onClick={handleDelete}>Delete</button>
       </div>
-      <p style={{ margin: '0 0 16px', fontSize: 14, color: '#4b5563' }}>{record.description}</p>
+      <p style={{ margin: '0 0 16px', fontSize: 14, color: 'var(--gray-600)' }}>{record.description}</p>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 16 }}>
-        <div style={{ background: '#f9fafb', padding: 12, borderRadius: 8 }}>
-          <div style={{ fontSize: 11, color: '#6b7280', fontWeight: 600 }}>APPLICATION</div>
+        <div style={{ background: 'var(--surface-soft)', padding: 12, borderRadius: 8 }}>
+          <div style={{ fontSize: 11, color: 'var(--gray-500)', fontWeight: 600 }}>APPLICATION</div>
           <div style={{ fontSize: 15, fontWeight: 600, fontFamily: 'monospace' }}>{record.meta.application_no || '—'}</div>
         </div>
-        <div style={{ background: '#f9fafb', padding: 12, borderRadius: 8 }}>
-          <div style={{ fontSize: 11, color: '#6b7280', fontWeight: 600 }}>FILING DATE</div>
+        <div style={{ background: 'var(--surface-soft)', padding: 12, borderRadius: 8 }}>
+          <div style={{ fontSize: 11, color: 'var(--gray-500)', fontWeight: 600 }}>FILING DATE</div>
           <div style={{ fontSize: 15, fontWeight: 600 }}>{record.meta.filing_date || '—'}</div>
         </div>
       </div>
@@ -207,13 +207,13 @@ export default function IPRPage() {
               <div key={s} style={{ display: 'flex', alignItems: 'center' }}>
                 <div style={{
                   padding: '10px 18px', borderRadius: 8, fontWeight: 600, fontSize: 13,
-                  background: ['#f9fafb', '#fff7ed', '#fefce8', '#eff6ff', '#f0fdf4', '#fef2f2'][i],
-                  color: ['#6b7280', '#9a3412', '#854d0e', '#1e40af', '#166534', '#991b1b'][i],
+                  background: ['var(--surface-soft)', 'var(--orange-50)', 'var(--yellow-50)', 'var(--blue-50)', 'var(--green-50)', 'var(--red-50)'][i],
+                  color: ['var(--gray-500)', 'var(--orange-800)', 'var(--yellow-800)', 'var(--blue-700)', 'var(--green-800)', 'var(--red-700)'][i],
                   whiteSpace: 'nowrap',
                 }}>
                   {s} <span style={{ opacity: .6 }}>({count})</span>
                 </div>
-                {i < STAGES.length - 1 && <div style={{ fontSize: 16, color: '#d1d5db', padding: '0 6px' }}>→</div>}
+                {i < STAGES.length - 1 && <div style={{ fontSize: 16, color: 'var(--gray-300)', padding: '0 6px' }}>→</div>}
               </div>
             );
           })}
@@ -222,7 +222,7 @@ export default function IPRPage() {
 
       {loading ? <SkeletonCards count={3} /> : error ? (
         <div className="card" style={{ padding: 40, textAlign: 'center' }}>
-          <p style={{ color: '#ef4444', marginBottom: 12 }}>{error}</p>
+          <p style={{ color: 'var(--red-500)', marginBottom: 12 }}>{error}</p>
           <button className="btn btn-primary btn-sm" onClick={load}>Retry</button>
         </div>
       ) : filtered.length === 0 ? (
@@ -247,7 +247,7 @@ export default function IPRPage() {
                   <tr key={r.id}>
                     <td>
                       <div style={{ fontWeight: 600 }}>{r.title}</div>
-                      <div style={{ fontSize: 12, color: '#6b7280' }}>{r.description.slice(0, 60)}...</div>
+                      <div style={{ fontSize: 12, color: 'var(--gray-500)' }}>{r.description.slice(0, 60)}...</div>
                     </td>
                     <td><StageBadge stage={r.stage} /></td>
                     <td>{r.sector || '—'}</td>

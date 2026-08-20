@@ -167,19 +167,19 @@ function DetailModal({ record, onClose, onEdit, onDelete }: { record: Rec; onClo
         <button className="btn btn-secondary btn-sm" onClick={onEdit}>Edit</button>
         <button className="btn btn-danger btn-sm" onClick={handleDelete}>Delete</button>
       </div>
-      <p style={{ margin: '0 0 16px', fontSize: 14, color: '#4b5563' }}>{record.description}</p>
+      <p style={{ margin: '0 0 16px', fontSize: 14, color: 'var(--gray-600)' }}>{record.description}</p>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, marginBottom: 20 }}>
-        <div style={{ background: '#f9fafb', padding: 12, borderRadius: 8 }}>
-          <div style={{ fontSize: 11, color: '#6b7280', fontWeight: 600 }}>PROGRESS</div>
-          <div style={{ fontSize: 22, fontWeight: 800, color: '#166534' }}>{record.meta.progress || 0}%</div>
+        <div style={{ background: 'var(--surface-soft)', padding: 12, borderRadius: 8 }}>
+          <div style={{ fontSize: 11, color: 'var(--gray-500)', fontWeight: 600 }}>PROGRESS</div>
+          <div style={{ fontSize: 22, fontWeight: 800, color: 'var(--green-800)' }}>{record.meta.progress || 0}%</div>
         </div>
-        <div style={{ background: '#f9fafb', padding: 12, borderRadius: 8 }}>
-          <div style={{ fontSize: 11, color: '#6b7280', fontWeight: 600 }}>FUNDING</div>
-          <div style={{ fontSize: 22, fontWeight: 800, color: '#166534' }}>₹{((record.meta.funding_required || 0) / 100000).toFixed(1)}L</div>
+        <div style={{ background: 'var(--surface-soft)', padding: 12, borderRadius: 8 }}>
+          <div style={{ fontSize: 11, color: 'var(--gray-500)', fontWeight: 600 }}>FUNDING</div>
+          <div style={{ fontSize: 22, fontWeight: 800, color: 'var(--green-800)' }}>₹{((record.meta.funding_required || 0) / 100000).toFixed(1)}L</div>
         </div>
-        <div style={{ background: '#f9fafb', padding: 12, borderRadius: 8 }}>
-          <div style={{ fontSize: 11, color: '#6b7280', fontWeight: 600 }}>INSTITUTION</div>
-          <div style={{ fontSize: 14, fontWeight: 600, color: '#374151' }}>{record.meta.institution || '—'}</div>
+        <div style={{ background: 'var(--surface-soft)', padding: 12, borderRadius: 8 }}>
+          <div style={{ fontSize: 11, color: 'var(--gray-500)', fontWeight: 600 }}>INSTITUTION</div>
+          <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--gray-700)' }}>{record.meta.institution || '—'}</div>
         </div>
       </div>
 
@@ -190,7 +190,7 @@ function DetailModal({ record, onClose, onEdit, onDelete }: { record: Rec; onClo
           <button className="btn btn-sm btn-secondary" onClick={() => setShowMilestoneForm(!showMilestoneForm)}>+ Add Milestone</button>
         </div>
         {showMilestoneForm && (
-          <form onSubmit={addMilestone} style={{ background: '#f9fafb', padding: 14, borderRadius: 8, marginBottom: 10 }}>
+          <form onSubmit={addMilestone} style={{ background: 'var(--surface-soft)', padding: 14, borderRadius: 8, marginBottom: 10 }}>
             <div className="form-row">
               <div className="form-group"><label>Title</label><input value={newMilestone.title} onChange={e => setNewMilestone({ ...newMilestone, title: e.target.value })} required /></div>
               <div className="form-group"><label>Due Date</label><input type="date" value={newMilestone.due_date} onChange={e => setNewMilestone({ ...newMilestone, due_date: e.target.value })} required /></div>
@@ -207,22 +207,22 @@ function DetailModal({ record, onClose, onEdit, onDelete }: { record: Rec; onClo
           return (
             <div key={m.id} style={{
               padding: '10px 14px', borderRadius: 8, marginBottom: 6,
-              background: overdue ? '#fef2f2' : '#f9fafb',
-              border: `1px solid ${overdue ? '#fecaca' : '#e5e7eb'}`,
+              background: overdue ? 'var(--red-50)' : 'var(--surface-soft)',
+              border: `1px solid ${overdue ? 'var(--red-100)' : 'var(--border-soft)'}`,
               display: 'flex', justifyContent: 'space-between', alignItems: 'center',
             }}>
               <div>
                 <div style={{ fontWeight: 600, fontSize: 14 }}>{m.title}</div>
-                <div style={{ fontSize: 12, color: '#6b7280' }}>
+                <div style={{ fontSize: 12, color: 'var(--gray-500)' }}>
                   Due: {m.meta.due_date || '—'} · Progress: {m.meta.progress || 0}%
-                  {overdue && <span style={{ color: '#ef4444', fontWeight: 600 }}> · OVERDUE</span>}
+                  {overdue && <span style={{ color: 'var(--red-500)', fontWeight: 600 }}> · OVERDUE</span>}
                 </div>
               </div>
               <StageBadge stage={m.stage} />
             </div>
           );
         })}
-        {milestones.length === 0 && <p style={{ fontSize: 13, color: '#9ca3af' }}>No milestones yet.</p>}
+        {milestones.length === 0 && <p style={{ fontSize: 13, color: 'var(--gray-400)' }}>No milestones yet.</p>}
       </div>
     </Modal>
   );
@@ -290,7 +290,7 @@ export default function ResearchPage() {
 
       {loading ? <SkeletonCards count={4} /> : error ? (
         <div className="card" style={{ padding: 40, textAlign: 'center' }}>
-          <p style={{ color: '#ef4444', marginBottom: 12 }}>{error}</p>
+          <p style={{ color: 'var(--red-500)', marginBottom: 12 }}>{error}</p>
           <Button variant="primary" size="sm" onClick={load}>Retry</Button>
         </div>
       ) : filtered.length === 0 ? (
@@ -307,7 +307,7 @@ export default function ResearchPage() {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 8 }}>
                   <div>
                     <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 4 }}>{r.title}</div>
-                    <div style={{ fontSize: 12, color: '#6b7280', lineHeight: 1.5 }}>{r.description.slice(0, 100)}...</div>
+                    <div style={{ fontSize: 12, color: 'var(--gray-500)', lineHeight: 1.5 }}>{r.description.slice(0, 100)}...</div>
                   </div>
                   {r.is_demo && <span className="badge badge-yellow" style={{ flexShrink: 0 }}>DEMO</span>}
                 </div>
@@ -318,13 +318,13 @@ export default function ResearchPage() {
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div style={{ display: 'flex', gap: 16 }}>
-                    <div><div style={{ fontSize: 11, color: '#6b7280' }}>Progress</div><div style={{ fontSize: 15, fontWeight: 700 }}>{r.meta.progress || 0}%</div></div>
-                    <div><div style={{ fontSize: 11, color: '#6b7280' }}>Funding</div><div style={{ fontSize: 15, fontWeight: 700 }}>₹{((r.meta.funding_required || 0) / 100000).toFixed(1)}L</div></div>
+                    <div><div style={{ fontSize: 11, color: 'var(--gray-500)' }}>Progress</div><div style={{ fontSize: 15, fontWeight: 700 }}>{r.meta.progress || 0}%</div></div>
+                    <div><div style={{ fontSize: 11, color: 'var(--gray-500)' }}>Funding</div><div style={{ fontSize: 15, fontWeight: 700 }}>₹{((r.meta.funding_required || 0) / 100000).toFixed(1)}L</div></div>
                   </div>
-                  <div style={{ fontSize: 11, color: '#9ca3af' }}>Updated {new Date(r.updated_at).toLocaleDateString()}</div>
+                  <div style={{ fontSize: 11, color: 'var(--gray-400)' }}>Updated {new Date(r.updated_at).toLocaleDateString()}</div>
                 </div>
-                <div style={{ marginTop: 10, height: 6, background: '#e5e7eb', borderRadius: 3, overflow: 'hidden' }}>
-                  <div style={{ height: '100%', width: `${r.meta.progress || 0}%`, background: '#16a34a', borderRadius: 3, transition: 'width .3s' }} />
+                <div style={{ marginTop: 10, height: 6, background: 'var(--gray-200)', borderRadius: 3, overflow: 'hidden' }}>
+                  <div style={{ height: '100%', width: `${r.meta.progress || 0}%`, background: 'var(--green-600)', borderRadius: 3, transition: 'width .3s' }} />
                 </div>
               </div>
             ))}

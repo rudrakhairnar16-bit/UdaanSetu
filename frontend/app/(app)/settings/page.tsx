@@ -9,7 +9,7 @@ export default function SettingsPage() {
     <div>
       <div style={{ marginBottom: 20 }}>
         <h1 style={{ fontSize: 24, fontWeight: 800 }}>Settings</h1>
-        <p style={{ fontSize: 13, color: '#6b7280' }}>Platform information and account details</p>
+        <p style={{ fontSize: 13, color: 'var(--gray-500)' }}>Platform information and account details</p>
       </div>
 
       <div style={{ display: 'grid', gap: 20, maxWidth: 700 }}>
@@ -25,7 +25,7 @@ export default function SettingsPage() {
               ['Organization', user?.organization],
             ].map(([label, value]) => (
               <div key={label} style={{ display: 'flex', gap: 12 }}>
-                <span style={{ fontSize: 13, color: '#6b7280', width: 120, flexShrink: 0 }}>{label}</span>
+                <span style={{ fontSize: 13, color: 'var(--gray-500)', width: 120, flexShrink: 0 }}>{label}</span>
                 <span style={{ fontSize: 14, fontWeight: 500 }}>{value || '—'}</span>
               </div>
             ))}
@@ -44,7 +44,7 @@ export default function SettingsPage() {
               ['Data Notice', 'All records are DEMO DATA. Not government data.'],
             ].map(([label, value]) => (
               <div key={label} style={{ display: 'flex', gap: 12 }}>
-                <span style={{ fontSize: 13, color: '#6b7280', width: 120, flexShrink: 0 }}>{label}</span>
+                <span style={{ fontSize: 13, color: 'var(--gray-500)', width: 120, flexShrink: 0 }}>{label}</span>
                 <span style={{ fontSize: 14, fontWeight: 500 }}>{value}</span>
               </div>
             ))}

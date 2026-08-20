@@ -139,10 +139,10 @@ export default function EcosystemPage() {
         action={<Button onClick={() => setShowCreate(true)} icon={<Icon name="plus" size={16} />}>New {tab.replace('_', ' ').replace(/\b\w/g, c => c.toUpperCase()).slice(0, -1)}</Button>}
       />
 
-      <div style={{ display: 'flex', gap: 4, marginBottom: 16, background: '#f3f4f6', padding: 4, borderRadius: 10 }}>
+<div style={{ display: 'flex', gap: 4, marginBottom: 16, background: 'var(--gray-100)', padding: 4, borderRadius: 10 }}>
         {([['mentors', 'Mentors'], ['schemes', 'Schemes'], ['incubators', 'Incubators'], ['funding_requests', 'Funding Requests']] as [Tab, string][]).map(([key, label]) => (
           <button key={key} onClick={() => { setTab(key); setDetail(null); }}
-            style={{ padding: '8px 16px', borderRadius: 8, fontSize: 13, fontWeight: 600, background: tab === key ? 'white' : 'transparent', color: tab === key ? '#166534' : '#6b7280', boxShadow: tab === key ? 'var(--shadow-sm)' : 'none', transition: 'all .15s' }}>
+            style={{ padding: '8px 16px', borderRadius: 8, fontSize: 13, fontWeight: 600, background: tab === key ? 'var(--surface)' : 'transparent', color: tab === key ? 'var(--green-800)' : 'var(--gray-500)', boxShadow: tab === key ? 'var(--shadow-sm)' : 'none', transition: 'all .15s' }}>
             {label}
           </button>
         ))}
@@ -176,7 +176,7 @@ export default function EcosystemPage() {
                 <div style={{ fontWeight: 700, fontSize: 15 }}>{r.title}</div>
                 {r.is_demo && <span className="badge badge-yellow">DEMO</span>}
               </div>
-              <p style={{ fontSize: 12, color: '#6b7280', marginBottom: 10, lineHeight: 1.5 }}>{r.description.slice(0, 120)}...</p>
+              <p style={{ fontSize: 12, color: 'var(--gray-500)', marginBottom: 10, lineHeight: 1.5 }}>{r.description.slice(0, 120)}...</p>
               <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                 <StageBadge stage={r.stage} />
                 {r.sector && <span className="badge badge-gray">{r.sector}</span>}
@@ -205,11 +205,11 @@ export default function EcosystemPage() {
           <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
             <button className="btn btn-danger btn-sm" onClick={() => handleDelete(detail)}>Delete</button>
           </div>
-          <p style={{ fontSize: 14, color: '#4b5563', marginBottom: 16 }}>{detail.description}</p>
-          {detail.meta.amount && <p style={{ fontSize: 16, fontWeight: 700, color: '#166534' }}>Amount: ₹{(detail.meta.amount / 100000).toFixed(1)}L</p>}
-          {detail.meta.eligibility && <p style={{ fontSize: 13, color: '#6b7280', marginTop: 4 }}>Eligibility: {detail.meta.eligibility}</p>}
-          {detail.meta.deadline && <p style={{ fontSize: 13, color: '#6b7280', marginTop: 4 }}>Deadline: {detail.meta.deadline}</p>}
-          {detail.meta.bio && <p style={{ fontSize: 13, color: '#6b7280', marginTop: 8 }}>{detail.meta.bio}</p>}
+          <p style={{ fontSize: 14, color: 'var(--gray-600)', marginBottom: 16 }}>{detail.description}</p>
+          {detail.meta.amount && <p style={{ fontSize: 16, fontWeight: 700, color: 'var(--green-800)' }}>Amount: ₹{(detail.meta.amount / 100000).toFixed(1)}L</p>}
+          {detail.meta.eligibility && <p style={{ fontSize: 13, color: 'var(--gray-500)', marginTop: 4 }}>Eligibility: {detail.meta.eligibility}</p>}
+          {detail.meta.deadline && <p style={{ fontSize: 13, color: 'var(--gray-500)', marginTop: 4 }}>Deadline: {detail.meta.deadline}</p>}
+          {detail.meta.bio && <p style={{ fontSize: 13, color: 'var(--gray-500)', marginTop: 8 }}>{detail.meta.bio}</p>}
         </Modal>
       )}
 

@@ -5,7 +5,7 @@ import { api } from '../../lib/api';
 import type { Analytics, AIMetrics } from '../../lib/types';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
-const COLORS = ['#16a34a', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4', '#ec4899', '#84cc16'];
+const COLORS = ['#16a34a', '#3b82f6', '#f59e0b', 'var(--red-500)', '#8b5cf6', '#06b6d4', '#ec4899', '#84cc16'];
 
 export default function AnalyticsPage() {
   const [data, setData] = useState<Analytics | null>(null);
@@ -23,8 +23,8 @@ export default function AnalyticsPage() {
       .catch(() => setLoading(false));
   }, []);
 
-  if (loading) return <div style={{ padding: 40, textAlign: 'center', color: '#6b7280' }}>Loading analytics...</div>;
-  if (!data) return <div style={{ padding: 40, color: '#ef4444' }}>Failed to load analytics</div>;
+  if (loading) return <div style={{ padding: 40, textAlign: 'center', color: 'var(--gray-500)' }}>Loading analytics...</div>;
+  if (!data) return <div style={{ padding: 40, color: 'var(--red-500)' }}>Failed to load analytics</div>;
 
   const kindData = Object.entries(data.by_kind)
     .map(([name, value]) => ({ name: name.replace('_', ' '), value }))
@@ -38,7 +38,7 @@ export default function AnalyticsPage() {
     <div>
       <div style={{ marginBottom: 20 }}>
         <h1 style={{ fontSize: 24, fontWeight: 800 }}>Platform Analytics</h1>
-        <p style={{ fontSize: 13, color: '#6b7280' }}>{data.label}</p>
+        <p style={{ fontSize: 13, color: 'var(--gray-500)' }}>{data.label}</p>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: 12, marginBottom: 24 }}>
@@ -141,45 +141,45 @@ export default function AnalyticsPage() {
                     { label: 'Precision', value: `${(mlMetrics.risk_model.precision * 100).toFixed(1)}%`, color: '#3b82f6' },
                     { label: 'Recall', value: `${(mlMetrics.risk_model.recall * 100).toFixed(1)}%`, color: '#8b5cf6' },
                     { label: 'F1 Score', value: `${(mlMetrics.risk_model.f1 * 100).toFixed(1)}%`, color: '#f59e0b' },
-                    { label: 'AUC-ROC', value: `${(mlMetrics.risk_model.auc_roc * 100).toFixed(1)}%`, color: '#ef4444' },
-                    { label: 'Training Samples', value: mlMetrics.risk_model.training_samples, color: '#6b7280' },
+                    { label: 'AUC-ROC', value: `${(mlMetrics.risk_model.auc_roc * 100).toFixed(1)}%`, color: 'var(--red-500)' },
+                    { label: 'Training Samples', value: mlMetrics.risk_model.training_samples, color: 'var(--gray-500)' },
                   ].map(m => (
-                    <div key={m.label} style={{ textAlign: 'center', padding: 10, background: '#f9fafb', borderRadius: 8 }}>
-                      <div style={{ fontSize: 11, color: '#6b7280', fontWeight: 600 }}>{m.label.toUpperCase()}</div>
+                    <div key={m.label} style={{ textAlign: 'center', padding: 10, background: 'var(--surface-soft)', borderRadius: 8 }}>
+                      <div style={{ fontSize: 11, color: 'var(--gray-500)', fontWeight: 600 }}>{m.label.toUpperCase()}</div>
                       <div style={{ fontSize: 20, fontWeight: 800, color: m.color, marginTop: 4 }}>{m.value}</div>
                     </div>
                   ))}
                 </div>
-                <div style={{ fontSize: 11, color: '#9ca3af', marginTop: 8 }}>
+                <div style={{ fontSize: 11, color: 'var(--gray-400)', marginTop: 8 }}>
                   Algorithm: Gradient Boosting · Trained: {new Date(mlMetrics.risk_model.trained_at).toLocaleDateString()}
                 </div>
               </div>
             ) : (
-              <div style={{ padding: 20, textAlign: 'center', color: '#6b7280' }}>Model not trained yet</div>
+              <div style={{ padding: 20, textAlign: 'center', color: 'var(--gray-500)' }}>Model not trained yet</div>
             )}
           </div>
 
           <div className="card">
             <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 16 }}>Semantic Search Engine</h3>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 16 }}>
-              <div style={{ textAlign: 'center', padding: 12, background: '#f9fafb', borderRadius: 8 }}>
-                <div style={{ fontSize: 11, color: '#6b7280', fontWeight: 600 }}>MODEL</div>
+              <div style={{ textAlign: 'center', padding: 12, background: 'var(--surface-soft)', borderRadius: 8 }}>
+                <div style={{ fontSize: 11, color: 'var(--gray-500)', fontWeight: 600 }}>MODEL</div>
                 <div style={{ fontSize: 16, fontWeight: 800, color: '#3b82f6', marginTop: 4 }}>
                   {mlMetrics.semantic_engine.model}
                 </div>
               </div>
-              <div style={{ textAlign: 'center', padding: 12, background: '#f9fafb', borderRadius: 8 }}>
-                <div style={{ fontSize: 11, color: '#6b7280', fontWeight: 600 }}>CORPUS SIZE</div>
-                <div style={{ fontSize: 16, fontWeight: 800, color: '#374151', marginTop: 4 }}>
+              <div style={{ textAlign: 'center', padding: 12, background: 'var(--surface-soft)', borderRadius: 8 }}>
+                <div style={{ fontSize: 11, color: 'var(--gray-500)', fontWeight: 600 }}>CORPUS SIZE</div>
+                <div style={{ fontSize: 16, fontWeight: 800, color: 'var(--gray-700)', marginTop: 4 }}>
                   {mlMetrics.semantic_engine.corpus_size} docs
                 </div>
               </div>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: 12, background: mlMetrics.semantic_engine.ready ? '#f0fdf4' : '#fef2f2', borderRadius: 8 }}>
-              <div style={{ width: 8, height: 8, borderRadius: '50%', background: mlMetrics.semantic_engine.ready ? '#16a34a' : '#ef4444' }} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: 12, background: mlMetrics.semantic_engine.ready ? 'var(--green-50)' : 'var(--red-50)', borderRadius: 8 }}>
+              <div style={{ width: 8, height: 8, borderRadius: '50%', background: mlMetrics.semantic_engine.ready ? 'var(--green-600)' : 'var(--red-500)' }} />
               <span style={{ fontSize: 13, fontWeight: 500 }}>{mlMetrics.semantic_engine.ready ? 'Ready' : 'Not initialized'}</span>
             </div>
-            <div style={{ fontSize: 11, color: '#9ca3af', marginTop: 12 }}>
+            <div style={{ fontSize: 11, color: 'var(--gray-400)', marginTop: 12 }}>
               Powers: recommendations, similar records, duplicate detection
             </div>
           </div>

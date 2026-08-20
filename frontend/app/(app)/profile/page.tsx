@@ -53,7 +53,7 @@ export default function ProfilePage() {
 
       <div className="card" style={{ marginBottom: 20 }}>
         <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 16 }}>Account Info</h3>
-        <div style={{ display: 'grid', gap: 4, fontSize: 14, color: '#4b5563' }}>
+        <div style={{ display: 'grid', gap: 4, fontSize: 14, color: 'var(--gray-600)' }}>
           <div><strong>Email:</strong> {user?.email}</div>
           <div><strong>Role:</strong> <span style={{ textTransform: 'capitalize' }}>{user?.role}</span></div>
         </div>

@@ -24,7 +24,7 @@ export default function ImpactPage() {
   return (
     <div>
       <h1 style={{ fontSize: 24, fontWeight: 800, marginBottom: 4 }}>Impact Dashboard</h1>
-      <p style={{ fontSize: 13, color: '#6b7280', marginBottom: 20 }}>{analytics.label}</p>
+      <p style={{ fontSize: 13, color: 'var(--gray-500)', marginBottom: 20 }}>{analytics.label}</p>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: 12, marginBottom: 24 }}>
         {[
@@ -50,10 +50,10 @@ export default function ImpactPage() {
             <div key={sector} style={{ marginBottom: 8 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, marginBottom: 2 }}>
                 <span style={{ fontWeight: 600 }}>{sector || 'General'}</span>
-                <span style={{ color: '#6b7280' }}>{count}</span>
+                <span style={{ color: 'var(--gray-500)' }}>{count}</span>
               </div>
-              <div style={{ height: 8, background: '#f3f4f6', borderRadius: 4, overflow: 'hidden' }}>
-                <div style={{ height: '100%', width: `${(count / maxSector) * 100}%`, background: '#16a34a', borderRadius: 4, transition: 'width .3s' }} />
+              <div style={{ height: 8, background: 'var(--gray-100)', borderRadius: 4, overflow: 'hidden' }}>
+                <div style={{ height: '100%', width: `${(count / maxSector) * 100}%`, background: 'var(--green-600)', borderRadius: 4, transition: 'width .3s' }} />
               </div>
             </div>
           ))}
@@ -66,10 +66,10 @@ export default function ImpactPage() {
             <div key={district} style={{ marginBottom: 8 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, marginBottom: 2 }}>
                 <span style={{ fontWeight: 600 }}>{district}</span>
-                <span style={{ color: '#6b7280' }}>{count}</span>
+                <span style={{ color: 'var(--gray-500)' }}>{count}</span>
               </div>
-              <div style={{ height: 8, background: '#f3f4f6', borderRadius: 4, overflow: 'hidden' }}>
-                <div style={{ height: '100%', width: `${(count / maxDistrict) * 100}%`, background: '#3b82f6', borderRadius: 4, transition: 'width .3s' }} />
+              <div style={{ height: 8, background: 'var(--gray-100)', borderRadius: 4, overflow: 'hidden' }}>
+                <div style={{ height: '100%', width: `${(count / maxDistrict) * 100}%`, background: 'var(--blue-500)', borderRadius: 4, transition: 'width .3s' }} />
               </div>
             </div>
           ))}
