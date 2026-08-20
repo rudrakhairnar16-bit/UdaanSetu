@@ -13,3 +13,7 @@ venv/
 .venv/
 .pytest_cache/
 *.egg-info/
+*.tsbuildinfo
+test.db
+uploads/
+frontend/coverage/
