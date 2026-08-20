@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
+  color-scheme: light;
   --green-50: #f0fdf4;
   --green-100: #dcfce7;
   --green-200: #bbf7d0;
@@ -71,29 +72,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --gray-50: #0f172a;
-    --gray-100: #1e293b;
-    --gray-200: #334155;
-    --gray-300: #475569;
-    --gray-400: #64748b;
-    --gray-500: #94a3b8;
-    --gray-600: #cbd5e1;
-    --gray-700: #e2e8f0;
-    --gray-800: #f1f5f9;
-    --gray-900: #f8fafc;
-    --green-50: #052e16;
-    --green-100: #14532d;
-    --green-800: #22c55e;
-    --red-50: #450a0a;
-    --red-100: #7f1d1d;
-    --yellow-50: #422006;
-    --yellow-100: #713f12;
-    --blue-50: #172554;
-    --blue-100: #1e3a5f;
-    --orange-50: #431407;
-    --orange-100: #7c2d12;
-    --violet-100: #3b0764;
-    --violet-800: #a78bfa;
+    color-scheme: light;
   }
 }
 
