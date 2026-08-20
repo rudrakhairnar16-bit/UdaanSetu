@@ -8,6 +8,9 @@ import { Modal } from '../../components/Modal';
 import { SkeletonCards } from '../../components/LoadingSpinner';
 import { useToast } from '../../components/Toast';
 import { useConfirm } from '../../components/ConfirmDialog';
+import { Button, Input, Breadcrumb, Pagination } from '../../components/ui';
+
+const PAGE_SIZE = 12;
 
 export default function StartupsPage() {
   const [records, setRecords] = useState<Rec[]>([]);
@@ -18,6 +21,7 @@ export default function StartupsPage() {
   const [detail, setDetail] = useState<Rec | null>(null);
   const [match, setMatch] = useState<any>(null);
   const [search, setSearch] = useState('');
+  const [page, setPage] = useState(1);
   const [error, setError] = useState('');
   const { toast } = useToast();
   const { confirm } = useConfirm();
@@ -88,21 +92,26 @@ export default function StartupsPage() {
     r.sector.toLowerCase().includes(search.toLowerCase())
   );
 
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const safePage = Math.min(page, totalPages);
+  const paged = filtered.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE);
+
   const totalJobs = records.reduce((a, r) => a + (r.meta.jobs_created || 0), 0);
   const totalFarmers = records.reduce((a, r) => a + (r.meta.farmers_reached || 0), 0);
   const totalRevenue = records.reduce((a, r) => a + (r.meta.revenue || 0), 0);
 
   return (
     <div>
+      <Breadcrumb items={[{ label: 'Dashboard', href: '/dashboard' }, { label: 'Startups', active: true }]} />
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
         <div>
           <h1 style={{ fontSize: 24, fontWeight: 800 }}>Startups</h1>
           <p style={{ fontSize: 13, color: '#6b7280' }}>{records.length} startups · Track impact and growth</p>
         </div>
-        <button className="btn btn-primary" onClick={() => setShowCreate(true)}>+ New Startup</button>
+        <Button onClick={() => setShowCreate(true)} icon={<span>+</span>}>New Startup</Button>
       </div>
 
-      <input placeholder="Search startups..." value={search} onChange={e => setSearch(e.target.value)} style={{ width: '100%', maxWidth: 400, marginBottom: 16 }} />
+      <Input label="" placeholder="Search startups..." value={search} onChange={e => setSearch(e.target.value)} style={{ width: '100%', maxWidth: 400, marginBottom: 16 }} />
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: 12, marginBottom: 24 }}>
         <div className="stat-card"><span className="label">Total Startups</span><span className="value">{records.length}</span></div>
@@ -119,8 +128,9 @@ export default function StartupsPage() {
       ) : filtered.length === 0 ? (
         <div className="empty"><div style={{ fontSize: 40 }}>🚀</div><p>No startups found</p></div>
       ) : (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: 14 }}>
-          {filtered.map(r => (
+        <div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: 14 }}>
+            {paged.map(r => (
             <div key={r.id} className="card" style={{ cursor: 'pointer' }} onClick={() => loadMatch(r)}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
                 <div style={{ fontWeight: 700, fontSize: 15 }}>{r.title}</div>
@@ -148,6 +158,10 @@ export default function StartupsPage() {
               </div>
             </div>
           ))}
+          </div>
+          {filtered.length > PAGE_SIZE && (
+            <Pagination current={safePage} total={totalPages} onChange={setPage} />
+          )}
         </div>
       )}
 

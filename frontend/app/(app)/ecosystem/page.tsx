@@ -9,6 +9,9 @@ import { Modal } from '../../components/Modal';
 import { SkeletonCards } from '../../components/LoadingSpinner';
 import { useToast } from '../../components/Toast';
 import { useConfirm } from '../../components/ConfirmDialog';
+import { Button, Input, Breadcrumb, Pagination } from '../../components/ui';
+
+const PAGE_SIZE = 12;
 
 type Tab = 'mentors' | 'schemes' | 'incubators' | 'funding_requests';
 
@@ -70,8 +73,8 @@ function CreateModal({ kind, onClose, onCreated }: { kind: string; onClose: () =
           <div className="form-group"><label>Bio</label><input name="bio" /></div>
         </>}
         <div className="form-actions">
-          <button type="button" className="btn btn-secondary" onClick={onClose}>Cancel</button>
-          <button type="submit" className="btn btn-primary" disabled={saving}>{saving ? 'Creating...' : 'Create'}</button>
+          <Button variant="secondary" type="button" onClick={onClose}>Cancel</Button>
+          <Button type="submit" isLoading={saving}>Create</Button>
         </div>
       </form>
     </Modal>
@@ -87,6 +90,7 @@ export default function EcosystemPage() {
   const [showCreate, setShowCreate] = useState(false);
   const [detail, setDetail] = useState<Rec | null>(null);
   const [search, setSearch] = useState('');
+  const [page, setPage] = useState(1);
   const { toast } = useToast();
   const { confirm } = useConfirm();
 
@@ -111,6 +115,10 @@ export default function EcosystemPage() {
     r.sector.toLowerCase().includes(search.toLowerCase())
   );
 
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const safePage = Math.min(page, totalPages);
+  const paged = filtered.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE);
+
   const handleDelete = async (r: Rec) => {
     const ok = await confirm(`Delete "${r.title}"? This cannot be undone.`);
     if (!ok) return;
@@ -124,12 +132,13 @@ export default function EcosystemPage() {
 
   return (
     <div>
+      <Breadcrumb items={[{ label: 'Dashboard', href: '/dashboard' }, { label: 'Ecosystem', active: true }]} />
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
         <div>
           <h1 style={{ fontSize: 24, fontWeight: 800 }}>Ecosystem Support</h1>
           <p style={{ fontSize: 13, color: '#6b7280' }}>Mentors · Funding Schemes · Incubators · Funding Requests</p>
         </div>
-        <button className="btn btn-primary" onClick={() => setShowCreate(true)}>+ New {tab.replace('_', ' ').replace(/\b\w/g, c => c.toUpperCase()).slice(0, -1)}</button>
+        <Button onClick={() => setShowCreate(true)} icon={<span>+</span>}>New {tab.replace('_', ' ').replace(/\b\w/g, c => c.toUpperCase()).slice(0, -1)}</Button>
       </div>
 
       <div style={{ display: 'flex', gap: 4, marginBottom: 16, background: '#f3f4f6', padding: 4, borderRadius: 10 }}>
@@ -141,13 +150,14 @@ export default function EcosystemPage() {
         ))}
       </div>
 
-      <input placeholder={`Search ${tab.replace('_', ' ')}...`} value={search} onChange={e => setSearch(e.target.value)} style={{ width: '100%', maxWidth: 400, marginBottom: 16 }} />
+      <Input label="" placeholder={`Search ${tab.replace('_', ' ')}...`} value={search} onChange={e => setSearch(e.target.value)} style={{ width: '100%', maxWidth: 400, marginBottom: 16 }} />
 
       {loading ? <SkeletonCards count={4} /> : filtered.length === 0 ? (
         <div className="empty"><div style={{ fontSize: 40 }}>🤝</div><p>No {tab.replace('_', ' ')} found</p></div>
       ) : (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 14 }}>
-          {filtered.map(r => (
+        <div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 14 }}>
+            {paged.map(r => (
             <div key={r.id} className="card" style={{ cursor: 'pointer' }} onClick={() => setDetail(r)}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
                 <div style={{ fontWeight: 700, fontSize: 15 }}>{r.title}</div>
@@ -165,6 +175,10 @@ export default function EcosystemPage() {
               {r.meta.services && <div style={{ marginTop: 10, display: 'flex', gap: 4, flexWrap: 'wrap' }}>{r.meta.services.map((s: string) => <span key={s} className="badge badge-blue" style={{ fontSize: 11 }}>{s}</span>)}</div>}
             </div>
           ))}
+          </div>
+          {filtered.length > PAGE_SIZE && (
+            <Pagination current={safePage} total={totalPages} onChange={setPage} />
+          )}
         </div>
       )}
 

@@ -8,6 +8,9 @@ import { Modal } from '../../components/Modal';
 import { LoadingSpinner, SkeletonCards } from '../../components/LoadingSpinner';
 import { useToast } from '../../components/Toast';
 import { useConfirm } from '../../components/ConfirmDialog';
+import { Button, Input, Select, Breadcrumb, Pagination } from '../../components/ui';
+
+const PAGE_SIZE = 12;
 
 function CreateModal({ onClose, onCreated }: { onClose: () => void; onCreated: () => void }) {
   const [projects, setProjects] = useState<Rec[]>([]);
@@ -78,6 +81,7 @@ export default function InnovationsPage() {
   const [recommendations, setRecommendations] = useState<any>(null);
   const [similar, setSimilar] = useState<any[]>([]);
   const [search, setSearch] = useState('');
+  const [page, setPage] = useState(1);
   const [error, setError] = useState('');
   const { toast } = useToast();
   const { confirm } = useConfirm();
@@ -145,42 +149,52 @@ export default function InnovationsPage() {
     r.sector.toLowerCase().includes(search.toLowerCase())
   );
 
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const safePage = Math.min(page, totalPages);
+  const paged = filtered.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE);
+
   return (
     <div>
+      <Breadcrumb items={[{ label: 'Dashboard', href: '/dashboard' }, { label: 'Innovations', active: true }]} />
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
         <div>
           <h1 style={{ fontSize: 24, fontWeight: 800 }}>Innovations</h1>
           <p style={{ fontSize: 13, color: '#6b7280' }}>{records.length} innovations · Click for AI recommendations</p>
         </div>
-        <button className="btn btn-primary" onClick={() => setShowCreate(true)}>+ New Innovation</button>
+        <Button onClick={() => setShowCreate(true)} icon={<span>+</span>}>New Innovation</Button>
       </div>
 
-      <input placeholder="Search innovations..." value={search} onChange={e => setSearch(e.target.value)} style={{ width: '100%', maxWidth: 400, marginBottom: 16 }} />
+      <Input label="" placeholder="Search innovations..." value={search} onChange={e => setSearch(e.target.value)} style={{ width: '100%', maxWidth: 400, marginBottom: 16 }} />
 
       {loading ? <SkeletonCards count={4} /> : error ? (
         <div className="card" style={{ padding: 40, textAlign: 'center' }}>
           <p style={{ color: '#ef4444', marginBottom: 12 }}>{error}</p>
-          <button className="btn btn-primary btn-sm" onClick={load}>Retry</button>
+          <Button size="sm" onClick={load}>Retry</Button>
         </div>
       ) : filtered.length === 0 ? (
         <div className="empty"><div style={{ fontSize: 40 }}>💡</div><p>No innovations found</p></div>
       ) : (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: 14 }}>
-          {filtered.map(r => (
-            <div key={r.id} className="card" style={{ cursor: 'pointer' }} onClick={() => loadAI(r)}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
-                <div style={{ fontWeight: 700, fontSize: 15 }}>{r.title}</div>
-                {r.is_demo && <span className="badge badge-yellow">DEMO</span>}
+        <div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: 14 }}>
+            {paged.map(r => (
+              <div key={r.id} className="card" style={{ cursor: 'pointer' }} onClick={() => loadAI(r)}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
+                  <div style={{ fontWeight: 700, fontSize: 15 }}>{r.title}</div>
+                  {r.is_demo && <span className="badge badge-yellow">DEMO</span>}
+                </div>
+                <div style={{ fontSize: 12, color: '#6b7280', marginBottom: 10, lineHeight: 1.5 }}>{r.description.slice(0, 120)}...</div>
+                <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                  <StageBadge stage={r.stage} />
+                  {r.meta.readiness_level && <span className="badge badge-blue">{r.meta.readiness_level}</span>}
+                  {r.sector && <span className="badge badge-gray">{r.sector}</span>}
+                  {r.district && <span className="badge badge-gray">{r.district}</span>}
+                </div>
               </div>
-              <div style={{ fontSize: 12, color: '#6b7280', marginBottom: 10, lineHeight: 1.5 }}>{r.description.slice(0, 120)}...</div>
-              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                <StageBadge stage={r.stage} />
-                {r.meta.readiness_level && <span className="badge badge-blue">{r.meta.readiness_level}</span>}
-                {r.sector && <span className="badge badge-gray">{r.sector}</span>}
-                {r.district && <span className="badge badge-gray">{r.district}</span>}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          {filtered.length > PAGE_SIZE && (
+            <Pagination current={safePage} total={totalPages} onChange={setPage} />
+          )}
         </div>
       )}
 

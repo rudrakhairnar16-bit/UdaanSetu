@@ -9,8 +9,10 @@ import { LoadingSpinner, SkeletonCards } from '../../components/LoadingSpinner';
 import { useToast } from '../../components/Toast';
 import { useConfirm } from '../../components/ConfirmDialog';
 import { useDebounce } from '../../hooks/useDebounce';
+import { Button, Input, Breadcrumb, Pagination } from '../../components/ui';
 
 const STAGES = ['Idea', 'Screening', 'Filed', 'Examination', 'Granted', 'Rejected'];
+const PAGE_SIZE = 10;
 
 function CreateIPRModal({ innovations, onClose, onCreated }: { innovations: Rec[]; onClose: () => void; onCreated: () => void }) {
   const [form, setForm] = useState({ title: '', description: '', stage: 'Idea', sector: '', district: '', parent_id: '', filing_date: '', application_no: '' });
@@ -141,6 +143,7 @@ export default function IPRPage() {
   const [showCreate, setShowCreate] = useState(false);
   const [detail, setDetail] = useState<Rec | null>(null);
   const [search, setSearch] = useState('');
+  const [page, setPage] = useState(1);
   const debouncedSearch = useDebounce(search);
   const { toast } = useToast();
 
@@ -169,17 +172,22 @@ export default function IPRPage() {
     r.description.toLowerCase().includes(debouncedSearch.toLowerCase())
   ), [records, debouncedSearch]);
 
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const safePage = Math.min(page, totalPages);
+  const paged = filtered.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE);
+
   return (
     <div>
+      <Breadcrumb items={[{ label: 'Dashboard', href: '/dashboard' }, { label: 'IPR / Patents', active: true }]} />
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
         <div>
           <h1 style={{ fontSize: 24, fontWeight: 800 }}>IPR / Patents</h1>
           <p style={{ fontSize: 13, color: '#6b7280' }}>Idea → Screening → Filed → Examination → Granted</p>
         </div>
-        <button className="btn btn-primary" onClick={() => setShowCreate(true)}>+ New Patent</button>
+        <Button onClick={() => setShowCreate(true)} icon={<span>+</span>}>New Patent</Button>
       </div>
 
-      <input placeholder="Search patents..." value={search} onChange={e => setSearch(e.target.value)} style={{ width: '100%', maxWidth: 400, marginBottom: 16 }} />
+      <Input label="" placeholder="Search patents..." value={search} onChange={e => setSearch(e.target.value)} style={{ width: '100%', maxWidth: 400, marginBottom: 16 }} />
 
       {/* Lifecycle visualization */}
       {!loading && records.length > 0 && (
@@ -226,7 +234,7 @@ export default function IPRPage() {
                 </tr>
               </thead>
               <tbody>
-                {filtered.map(r => (
+                {paged.map(r => (
                   <tr key={r.id}>
                     <td>
                       <div style={{ fontWeight: 600 }}>{r.title}</div>
@@ -245,6 +253,9 @@ export default function IPRPage() {
               </tbody>
             </table>
           </div>
+          {filtered.length > PAGE_SIZE && (
+            <Pagination current={safePage} total={totalPages} onChange={setPage} />
+          )}
         </div>
       )}
 
