@@ -8,7 +8,7 @@ from app.dependencies import current
 from app.ml.production import (
     get_model_registry, get_drift_detector, get_feedback_store, get_batch_predictor,
 )
-from app.ml.engine import get_risk_engine, get_semantic_engine, get_training_pipeline
+from app.ml.engine import get_risk_engine, get_semantic_engine, get_training_pipeline, build_records_data
 from dataclasses import asdict
 
 router = APIRouter(prefix="/ml", tags=["ML Production"])
@@ -144,11 +144,7 @@ async def retrain_model(user=Depends(current)):
     try:
         records = s.query(Record).all()
         pipeline = get_training_pipeline()
-        results = pipeline.train_all([
-            {"id": r.id, "title": r.title, "description": r.description,
-             "sector": r.sector, "district": r.district}
-            for r in records
-        ])
+        results = pipeline.train_all(build_records_data(records))
 
         # Register new version
         registry = get_model_registry()

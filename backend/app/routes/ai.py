@@ -6,7 +6,7 @@ from app.dependencies import current, authorize, db
 from app.models import Record
 from app.ml.engine import (
     get_semantic_engine, get_risk_engine, get_success_predictor,
-    get_duplicate_detector, get_training_pipeline,
+    get_duplicate_detector, get_training_pipeline, build_records_data,
 )
 
 router = APIRouter(prefix="/ai", tags=["ai"])
@@ -63,7 +63,7 @@ async def recommend(innovation_id: int, s: Session = Depends(db), u=Depends(curr
     corpus_texts = [f"{x.title} {x.description} {x.sector} {x.district}" for x in corpus]
     corpus_ids = [x.id for x in corpus]
 
-    if set(corpus_ids) != set(sem._corpus_ids):
+    if set(corpus_ids) != set(sem.snapshot()[1]):
         sem.initialize(corpus_texts, corpus_ids)
 
     semantic_results = sem.similarity(query_text, top_k=len(corpus))
@@ -135,7 +135,7 @@ def smart_match(innovation_id: int, s: Session = Depends(db), u=Depends(current)
         item_texts = [f"{x.title} {x.description} {x.sector} {x.district}" for x in items]
         item_ids = [x.id for x in items]
 
-        old_texts, old_ids = sem._corpus_texts[:], sem._corpus_ids[:]
+        old_texts, old_ids = sem.snapshot()
         sem.initialize(item_texts + [query_text], item_ids + [-1])
         results = sem.similarity(query_text, top_k=min(limit, len(items)))
         sem.initialize(old_texts, old_ids)
@@ -199,17 +199,8 @@ def ai_metrics(u=Depends(authorize("admin"))):
 @router.post("/retrain")
 def retrain_models(s: Session = Depends(db), u=Depends(authorize("admin"))):
     records = s.query(Record).all()
-    records_data = [
-        {"id": r.id, "title": r.title, "description": r.description,
-         "sector": r.sector, "district": r.district}
-        for r in records
-    ]
+    records_data = build_records_data(records)
     pipeline = get_training_pipeline()
     results = pipeline.train_all(records_data)
-
-    texts = [f"{r.title} {r.description} {r.sector} {r.district}" for r in records]
-    ids = [r.id for r in records]
-    sem = get_semantic_engine()
-    sem.initialize(texts, ids)
 
     return {"message": "Models retrained", "results": results}

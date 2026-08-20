@@ -10,7 +10,7 @@ Components:
 4. DuplicateDetector - NLP-based duplicate detection with clustering
 5. TrainingPipeline - Train, evaluate, and serialize models
 """
-import os, json, hashlib, logging
+import os, json, hashlib, logging, threading
 from pathlib import Path
 from datetime import datetime, timedelta
 from typing import Optional
@@ -77,6 +77,7 @@ class SemanticEngine:
     """Real semantic similarity using sentence-transformers embeddings."""
 
     def __init__(self):
+        self._lock = threading.Lock()
         self._model = None
         self._tfidf_vectorizer = None
         self._tfidf_matrix = None
@@ -111,50 +112,57 @@ class SemanticEngine:
 
     def initialize(self, texts: list[str], ids: list[int]):
         """Build embedding index from corpus texts."""
-        self._corpus_texts = texts
-        self._corpus_ids = ids
+        with self._lock:
+            self._corpus_texts = texts
+            self._corpus_ids = ids
 
-        if self._model is None and self._tfidf_vectorizer is None:
-            self._load_sentence_transformer()
-            if not self._use_sentence_transformers:
-                self._load_tfidf()
+            if self._model is None and self._tfidf_vectorizer is None:
+                self._load_sentence_transformer()
+                if not self._use_sentence_transformers:
+                    self._load_tfidf()
 
-        if self._use_sentence_transformers and self._model:
-            self._embeddings = self._model.encode(texts, show_progress_bar=False)
-            logger.info(f"Computed embeddings for {len(texts)} documents")
-        elif self._tfidf_vectorizer:
-            self._tfidf_matrix = self._tfidf_vectorizer.fit_transform(texts)
-            logger.info(f"Built TF-IDF matrix for {len(texts)} documents")
+            if self._use_sentence_transformers and self._model:
+                self._embeddings = self._model.encode(texts, show_progress_bar=False)
+                logger.info(f"Computed embeddings for {len(texts)} documents")
+            elif self._tfidf_vectorizer:
+                self._tfidf_matrix = self._tfidf_vectorizer.fit_transform(texts)
+                logger.info(f"Built TF-IDF matrix for {len(texts)} documents")
 
     def similarity(self, query: str, top_k: int = 10) -> list[SimilarityResult]:
         """Find most similar documents to query using semantic embeddings."""
         if not self._corpus_texts:
             return []
 
-        if self._use_sentence_transformers and self._model:
-            query_embedding = self._model.encode([query])
-            from sklearn.metrics.pairwise import cosine_similarity
-            scores = cosine_similarity(query_embedding, self._embeddings)[0]
-            method = "sentence-transformers (all-MiniLM-L6-v2)"
-        elif self._tfidf_vectorizer and self._tfidf_matrix is not None:
-            query_tfidf = self._tfidf_vectorizer.transform([query])
-            scores = self._sklearn_cosine(query_tfidf, self._tfidf_matrix).flatten()
-            method = "TF-IDF cosine similarity"
-        else:
-            return self._keyword_fallback(query, top_k)
+        with self._lock:
+            if self._use_sentence_transformers and self._model:
+                query_embedding = self._model.encode([query])
+                from sklearn.metrics.pairwise import cosine_similarity
+                scores = cosine_similarity(query_embedding, self._embeddings)[0]
+                method = "sentence-transformers (all-MiniLM-L6-v2)"
+            elif self._tfidf_vectorizer and self._tfidf_matrix is not None:
+                query_tfidf = self._tfidf_vectorizer.transform([query])
+                scores = self._sklearn_cosine(query_tfidf, self._tfidf_matrix).flatten()
+                method = "TF-IDF cosine similarity"
+            else:
+                return self._keyword_fallback(query, top_k)
 
-        top_indices = np.argsort(scores)[::-1][:top_k]
-        results = []
-        for idx in top_indices:
-            if scores[idx] > 0.01:
-                results.append(SimilarityResult(
-                    id=self._corpus_ids[idx],
-                    title=self._corpus_texts[idx][:80],
-                    kind="",
-                    score=round(float(scores[idx]) * 100, 1),
-                    method=method,
-                ))
-        return results
+            top_indices = np.argsort(scores)[::-1][:top_k]
+            results = []
+            for idx in top_indices:
+                if scores[idx] > 0.01:
+                    results.append(SimilarityResult(
+                        id=self._corpus_ids[idx],
+                        title=self._corpus_texts[idx][:80],
+                        kind="",
+                        score=round(float(scores[idx]) * 100, 1),
+                        method=method,
+                    ))
+            return results
+
+    def snapshot(self) -> tuple[list[str], list[int]]:
+        """Thread-safe snapshot of the current corpus texts and ids."""
+        with self._lock:
+            return list(self._corpus_texts), list(self._corpus_ids)
 
     def encode(self, texts: list[str]) -> np.ndarray:
         """Encode texts to embeddings."""
@@ -217,6 +225,118 @@ class RiskEngine:
             return
 
         self._train_synthetic_model()
+
+    def train_on_real_data(self, records_data: list[dict]) -> dict:
+        """Train the risk model on real innovation records.
+
+        Records carry a pseudo-label derived from domain heuristics
+        (overdue milestones, stalled stage, low progress on old projects)
+        so the gradient boosting model can learn patterns from actual data.
+        Falls back to synthetic training when there are too few samples.
+        """
+        from sklearn.ensemble import GradientBoostingClassifier
+        from sklearn.preprocessing import StandardScaler
+        from sklearn.model_selection import cross_val_score
+        from sklearn.metrics import (
+            accuracy_score, precision_score, recall_score,
+            f1_score, roc_auc_score, confusion_matrix,
+        )
+        import pickle
+
+        rows = []
+        labels = []
+        now = datetime.utcnow()
+
+        for r in records_data:
+            meta = r.get("meta") or {}
+            created_at = r.get("created_at")
+            created = created_at if isinstance(created_at, datetime) else now
+
+            milestones = r.get("milestones") or []
+            overdue = sum(
+                1 for m in milestones
+                if (m.get("stage") or "").lower() not in ("done", "complete", "completed")
+                and (m.get("meta") or {}).get("due_date", "") < now.date().isoformat()
+            )
+            done = sum(
+                1 for m in milestones
+                if (m.get("stage") or "").lower() in ("done", "complete", "completed")
+            )
+            funding_required = meta.get("funding_required", 0)
+            funding_received = meta.get("funding_received", 0)
+            funding_ratio = min(1.0, funding_received / max(1, funding_required))
+
+            stage = (r.get("stage") or "draft").lower()
+            progress = float(meta.get("progress", 0))
+
+            features = {
+                "progress": progress,
+                "milestones_total": len(milestones),
+                "milestones_overdue": overdue,
+                "milestones_done": done,
+                "days_since_creation": (now - created).days,
+                "stage_encoded": self._stage_map.get(stage, 0),
+                "has_funding": 1 if funding_received > 0 else 0,
+                "funding_ratio": funding_ratio,
+                "sector_encoded": hash(r.get("sector", "")) % 10 if r.get("sector") else 0,
+                "district_encoded": hash(r.get("district", "")) % 20 if r.get("district") else 0,
+            }
+
+            risk_score = (
+                overdue * 0.35
+                + (100 - progress) * 0.003
+                + (0.25 if self._stage_map.get(stage, 0) < 0 else 0)
+                + (0.15 if funding_ratio < 0.2 else 0)
+                + (0.1 if (now - created).days > 365 else 0)
+            )
+            label = 1 if risk_score > 0.45 else 0
+
+            rows.append([features[f] for f in self._feature_names])
+            labels.append(label)
+
+        n_samples = len(rows)
+        logger.info(f"Real-data training samples: {n_samples}")
+
+        if n_samples >= 20:
+            X = np.array(rows, dtype=float)
+            y = np.array(labels, dtype=int)
+
+            self._scaler = StandardScaler()
+            X_scaled = self._scaler.fit_transform(X)
+
+            self._model = GradientBoostingClassifier(
+                n_estimators=100, max_depth=4, learning_rate=0.1,
+                subsample=0.8, random_state=42,
+            )
+            self._model.fit(X_scaled, y)
+
+            cv_scores = cross_val_score(self._model, X_scaled, y, cv=min(5, n_samples), scoring="accuracy")
+            y_pred = self._model.predict(X_scaled)
+            y_proba = self._model.predict_proba(X_scaled)[:, 1]
+
+            self._metrics = ModelMetrics(
+                accuracy=round(float(cv_scores.mean()), 3),
+                precision=round(float(precision_score(y, y_pred, zero_division=0)), 3),
+                recall=round(float(recall_score(y, y_pred, zero_division=0)), 3),
+                f1=round(float(f1_score(y, y_pred, zero_division=0)), 3),
+                auc_roc=round(float(roc_auc_score(y, y_proba)), 3),
+                training_samples=n_samples,
+                feature_names=self._feature_names,
+                confusion_matrix=confusion_matrix(y, y_pred).tolist(),
+                trained_at=datetime.utcnow().isoformat(),
+            )
+
+            with open(MODEL_DIR / "risk_model.pkl", "wb") as f:
+                pickle.dump({"model": self._model, "scaler": self._scaler}, f)
+            with open(MODEL_DIR / "risk_metrics.json", "w") as f:
+                json.dump(asdict(self._metrics), f, indent=2)
+
+            logger.info(f"Trained risk model on real data: accuracy={self._metrics.accuracy:.3f}")
+            return {"trained": True, "source": "real", "samples": n_samples}
+
+        # Not enough real records - fall back to synthetic
+        self._train_synthetic_model()
+        return {"trained": True, "source": "synthetic", "samples": self._metrics.training_samples}
 
     def _train_synthetic_model(self):
         """Train on synthetic data that mimics real innovation project patterns."""
@@ -483,12 +603,13 @@ class DuplicateDetector:
 
     def detect(self, threshold: float = 0.75) -> list[DuplicateCluster]:
         """Find clusters of similar records that might be duplicates."""
-        if not self._semantic._corpus_texts or len(self._semantic._corpus_texts) < 2:
+        texts, ids = self._semantic.snapshot()
+        if not texts or len(texts) < 2:
             return []
 
         try:
             from sklearn.cluster import AgglomerativeClustering
-            embeddings = self._semantic.encode(self._semantic._corpus_texts)
+            embeddings = self._semantic.encode(texts)
 
             if hasattr(embeddings, 'toarray'):
                 embeddings = embeddings.toarray()
@@ -527,8 +648,8 @@ class DuplicateDetector:
                 records = []
                 for idx in indices:
                     records.append({
-                        "id": self._semantic._corpus_ids[idx],
-                        "title": self._semantic._corpus_texts[idx][:100],
+                        "id": ids[idx],
+                        "title": texts[idx][:100],
                     })
 
                 duplicates.append(DuplicateCluster(
@@ -546,10 +667,12 @@ class DuplicateDetector:
 
     def check_single(self, record_id: int, threshold: float = 0.75) -> list[SimilarityResult]:
         """Check if a specific record has duplicates."""
-        if record_id not in self._semantic._corpus_ids:
+        _, ids = self._semantic.snapshot()
+        if record_id not in ids:
             return []
-        idx = self._semantic._corpus_ids.index(record_id)
-        query = self._semantic._corpus_texts[idx]
+        texts, _ = self._semantic.snapshot()
+        idx = ids.index(record_id)
+        query = texts[idx]
         results = self._semantic.similarity(query, top_k=6)
         return [r for r in results if r.id != record_id and r.score >= threshold * 100]
 
@@ -567,10 +690,10 @@ class TrainingPipeline:
         """Train all models and return metrics."""
         results = {}
 
-        # Train risk model
-        self.risk_engine._get_or_train_model()
-        if self.risk_engine._metrics:
-            results["risk_model"] = asdict(self.risk_engine._metrics)
+        # Train risk model on real records (synthetic fallback when sparse)
+        risk_result = self.risk_engine.train_on_real_data(records_data)
+        results["risk_model"] = asdict(self.risk_engine._metrics)
+        results["risk_source"] = risk_result
 
         # Build semantic index
         texts = [f"{r.get('title', '')} {r.get('description', '')} {r.get('sector', '')}" for r in records_data]
@@ -585,12 +708,13 @@ class TrainingPipeline:
 
     def get_all_metrics(self) -> dict:
         """Get all model metrics."""
+        texts, _ = self.semantic_engine.snapshot()
         return {
             "risk_model": asdict(self.risk_engine.get_metrics()) if self.risk_engine._metrics else None,
             "semantic_engine": {
                 "model": "all-MiniLM-L6-v2" if self.semantic_engine._use_sentence_transformers else "TF-IDF",
-                "corpus_size": len(self.semantic_engine._corpus_texts),
-                "ready": len(self.semantic_engine._corpus_texts) > 0,
+                "corpus_size": len(texts),
+                "ready": len(texts) > 0,
             },
         }
 
@@ -632,3 +756,33 @@ def get_training_pipeline() -> TrainingPipeline:
     if _training_pipeline is None:
         _training_pipeline = TrainingPipeline()
     return _training_pipeline
+
+
+def build_records_data(records: list) -> list[dict]:
+    """Flatten DB records into training-ready dicts, attaching child milestones."""
+    child_map: dict[int, list] = {}
+    for r in records:
+        if r.parent_id is not None:
+            child_map.setdefault(r.parent_id, []).append(r)
+
+    data = []
+    for r in records:
+        milestones = [
+            {
+                "stage": m.stage,
+                "meta": m.meta or {},
+            }
+            for m in child_map.get(r.id, [])
+        ]
+        data.append({
+            "id": r.id,
+            "title": r.title,
+            "description": r.description,
+            "stage": r.stage,
+            "district": r.district,
+            "sector": r.sector,
+            "meta": r.meta or {},
+            "created_at": r.created_at,
+            "milestones": milestones,
+        })
+    return data

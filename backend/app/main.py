@@ -32,7 +32,7 @@ def _init_ml_background():
         try:
             records = s.query(Record).all()
             if records:
-                from app.ml.engine import get_semantic_engine, get_training_pipeline
+                from app.ml.engine import get_semantic_engine, get_training_pipeline, build_records_data
                 sem = get_semantic_engine()
                 _log.info("Loading semantic model (first time downloads ~90MB)...")
                 sem.initialize(
@@ -40,8 +40,7 @@ def _init_ml_background():
                     [r.id for r in records],
                 )
                 pipeline = get_training_pipeline()
-                pipeline.train_all([{"id": r.id, "title": r.title, "description": r.description,
-                                    "sector": r.sector, "district": r.district} for r in records])
+                pipeline.train_all(build_records_data(records))
                 _log.info(f"ML init complete: {len(records)} records indexed")
         finally:
             s.close()

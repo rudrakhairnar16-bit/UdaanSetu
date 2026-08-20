@@ -32,6 +32,8 @@
   --yellow-100: #fef9c3;
   --yellow-500: #eab308;
   --amber-600: #d97706;
+  --amber-700: #b45309;
+  --amber-100: #fef3c7;
   --blue-50: #eff6ff;
   --blue-100: #dbeafe;
   --blue-500: #3b82f6;
@@ -103,6 +105,8 @@
     --yellow-50: #422006;
     --yellow-100: #713f12;
     --amber-600: #fbbf24;
+    --amber-700: #f59e0b;
+    --amber-100: #78350f;
     --blue-50: #172554;
     --blue-100: #1e3a5f;
     --orange-50: #431407;
@@ -204,6 +208,8 @@ tr:hover td { background: var(--gray-50); }
 .flow-innovation { background: var(--green-100); color: var(--green-800); }
 .flow-ipr { background: var(--orange-100); color: var(--orange-800); }
 .flow-startup { background: var(--violet-100); color: var(--violet-700); }
+.flow-mentor { background: var(--amber-100); color: var(--amber-700); }
+.flow-impact { background: var(--yellow-100); color: var(--yellow-800); }
 
 /* Page header */
 .page-header { margin-bottom: 24px; }
