@@ -9,7 +9,7 @@ import { Modal } from '../../components/Modal';
 import { SkeletonCards } from '../../components/LoadingSpinner';
 import { useToast } from '../../components/Toast';
 import { useConfirm } from '../../components/ConfirmDialog';
-import { Button, Input, Breadcrumb, Pagination } from '../../components/ui';
+import { Button, Breadcrumb, Pagination, PageHeader, Icon } from '../../components/ui';
 
 const PAGE_SIZE = 12;
 
@@ -132,14 +132,12 @@ export default function EcosystemPage() {
 
   return (
     <div>
-      <Breadcrumb items={[{ label: 'Dashboard', href: '/dashboard' }, { label: 'Ecosystem', active: true }]} />
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
-        <div>
-          <h1 style={{ fontSize: 24, fontWeight: 800 }}>Ecosystem Support</h1>
-          <p style={{ fontSize: 13, color: '#6b7280' }}>Mentors · Funding Schemes · Incubators · Funding Requests</p>
-        </div>
-        <Button onClick={() => setShowCreate(true)} icon={<span>+</span>}>New {tab.replace('_', ' ').replace(/\b\w/g, c => c.toUpperCase()).slice(0, -1)}</Button>
-      </div>
+      <PageHeader
+        crumb="Ecosystem"
+        title="Ecosystem Support"
+        subtitle="Mentors · Funding Schemes · Incubators · Funding Requests"
+        action={<Button onClick={() => setShowCreate(true)} icon={<Icon name="plus" size={16} />}>New {tab.replace('_', ' ').replace(/\b\w/g, c => c.toUpperCase()).slice(0, -1)}</Button>}
+      />
 
       <div style={{ display: 'flex', gap: 4, marginBottom: 16, background: '#f3f4f6', padding: 4, borderRadius: 10 }}>
         {([['mentors', 'Mentors'], ['schemes', 'Schemes'], ['incubators', 'Incubators'], ['funding_requests', 'Funding Requests']] as [Tab, string][]).map(([key, label]) => (
@@ -150,10 +148,25 @@ export default function EcosystemPage() {
         ))}
       </div>
 
-      <Input label="" placeholder={`Search ${tab.replace('_', ' ')}...`} value={search} onChange={e => setSearch(e.target.value)} style={{ width: '100%', maxWidth: 400, marginBottom: 16 }} />
+      <div style={{ position: 'relative', maxWidth: 400, marginBottom: 16 }}>
+        <span style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: 'var(--gray-400)', display: 'flex', pointerEvents: 'none' }}>
+          <Icon name="search" size={16} />
+        </span>
+        <input
+          aria-label={`Search ${tab.replace('_', ' ')}`}
+          placeholder={`Search ${tab.replace('_', ' ')}...`}
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          style={{ paddingLeft: 38 }}
+        />
+      </div>
 
       {loading ? <SkeletonCards count={4} /> : filtered.length === 0 ? (
-        <div className="empty"><div style={{ fontSize: 40 }}>🤝</div><p>No {tab.replace('_', ' ')} found</p></div>
+        <div className="empty">
+          <div style={{ fontSize: 40, marginBottom: 8 }}>🤝</div>
+          <p style={{ fontWeight: 700, color: 'var(--gray-600)' }}>No {tab.replace('_', ' ')} found</p>
+          <p style={{ fontSize: 13, color: 'var(--gray-400)' }}>Try adjusting your search.</p>
+        </div>
       ) : (
         <div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 14 }}>

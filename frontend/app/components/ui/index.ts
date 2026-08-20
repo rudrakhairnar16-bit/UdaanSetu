@@ -8,3 +8,6 @@ export { Table } from './Table';
 export { Select } from './Select';
 export { Pagination } from './Pagination';
 export { Breadcrumb } from './Breadcrumb';
+export { Icon } from './Icon';
+export type { IconProps } from './Icon';
+export { PageHeader } from './PageHeader';

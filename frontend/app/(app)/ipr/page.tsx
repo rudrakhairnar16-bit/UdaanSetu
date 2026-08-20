@@ -9,7 +9,7 @@ import { LoadingSpinner, SkeletonCards } from '../../components/LoadingSpinner';
 import { useToast } from '../../components/Toast';
 import { useConfirm } from '../../components/ConfirmDialog';
 import { useDebounce } from '../../hooks/useDebounce';
-import { Button, Input, Breadcrumb, Pagination } from '../../components/ui';
+import { Button, Pagination, PageHeader, Icon } from '../../components/ui';
 
 const STAGES = ['Idea', 'Screening', 'Filed', 'Examination', 'Granted', 'Rejected'];
 const PAGE_SIZE = 10;
@@ -178,16 +178,25 @@ export default function IPRPage() {
 
   return (
     <div>
-      <Breadcrumb items={[{ label: 'Dashboard', href: '/dashboard' }, { label: 'IPR / Patents', active: true }]} />
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
-        <div>
-          <h1 style={{ fontSize: 24, fontWeight: 800 }}>IPR / Patents</h1>
-          <p style={{ fontSize: 13, color: '#6b7280' }}>Idea → Screening → Filed → Examination → Granted</p>
-        </div>
-        <Button onClick={() => setShowCreate(true)} icon={<span>+</span>}>New Patent</Button>
-      </div>
+      <PageHeader
+        crumb="IPR / Patents"
+        title="IPR / Patents"
+        subtitle="Idea → Screening → Filed → Examination → Granted"
+        action={<Button onClick={() => setShowCreate(true)} icon={<Icon name="plus" size={16} />}>New Patent</Button>}
+      />
 
-      <Input label="" placeholder="Search patents..." value={search} onChange={e => setSearch(e.target.value)} style={{ width: '100%', maxWidth: 400, marginBottom: 16 }} />
+      <div style={{ position: 'relative', maxWidth: 400, marginBottom: 16 }}>
+        <span style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: 'var(--gray-400)', display: 'flex', pointerEvents: 'none' }}>
+          <Icon name="search" size={16} />
+        </span>
+        <input
+          aria-label="Search patents"
+          placeholder="Search patents..."
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          style={{ paddingLeft: 38 }}
+        />
+      </div>
 
       {/* Lifecycle visualization */}
       {!loading && records.length > 0 && (

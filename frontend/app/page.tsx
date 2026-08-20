@@ -44,85 +44,121 @@ function LoginForm() {
     <div style={{
       minHeight: '100vh',
       display: 'grid',
-      placeItems: 'center',
-      background: 'radial-gradient(ellipse at 70% 30%, #bbf7d0, #f0fdf4 50%, #f9fafb)',
-      padding: 20,
+      gridTemplateColumns: '1.1fr 1fr',
+      background: '#f9fafb',
     }}>
+      {/* Left brand panel */}
       <div style={{
-        width: 'min(440px, 100%)',
-        background: 'white',
-        border: '1px solid #e5e7eb',
-        borderRadius: 20,
-        padding: '44px 36px',
-        boxShadow: '0 20px 60px rgba(20,67,42,.08)',
+        background: 'linear-gradient(160deg, #064e3b 0%, #0c3b26 55%, #14532d 100%)',
+        color: 'white',
+        padding: '56px 48px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        position: 'relative',
+        overflow: 'hidden',
       }}>
-        <div style={{ fontSize: 36, marginBottom: 4 }}>↗</div>
-        <div style={{ fontSize: 11, letterSpacing: '.15em', color: '#16a34a', fontWeight: 700, marginBottom: 8 }}>
-          SIH1608 PROTOTYPE
+        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(600px 400px at 80% 20%, rgba(74,222,128,.14), transparent 60%)', pointerEvents: 'none' }} />
+        <div>
+          <div style={{ fontSize: 28, fontWeight: 800, letterSpacing: '-0.02em', fontFamily: 'var(--font-display)' }}>↗ UdaanSetu</div>
+          <div style={{ fontSize: 12, color: '#86efac', marginTop: 4, fontWeight: 500 }}>SIH1608 · Prototype</div>
         </div>
-        <h1 style={{ fontSize: 36, fontWeight: 800, marginBottom: 6, color: '#14532d' }}>UdaanSetu</h1>
-        <p style={{ color: '#6b7280', fontSize: 15, marginBottom: 28 }}>
-          Turn research into enduring impact.
-        </p>
 
-        <form onSubmit={handleSubmit} style={{ display: 'grid', gap: 12 }}>
-          <div>
-            <label style={{ fontSize: 13, fontWeight: 600, color: '#4b5563', display: 'block', marginBottom: 4 }}>
-              Email
-            </label>
-            <input
-              type="email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              required
-              autoComplete="username"
-              style={{ width: '100%' }}
-            />
+        <div style={{ position: 'relative' }}>
+          <div style={{ fontSize: 34, fontWeight: 800, lineHeight: 1.2, letterSpacing: '-0.02em', fontFamily: 'var(--font-display)', maxWidth: 480 }}>
+            Turn research into<br />enduring impact.
           </div>
-          <div>
-            <label style={{ fontSize: 13, fontWeight: 600, color: '#4b5563', display: 'block', marginBottom: 4 }}>
-              Password
-            </label>
-            <input
-              type="password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              required
-              autoComplete="current-password"
-              style={{ width: '100%' }}
-            />
+          <div style={{ marginTop: 20, fontSize: 15, color: '#a7f3d0', lineHeight: 1.7, maxWidth: 440 }}>
+            One platform connecting research, innovation, IPR, startups and
+            ecosystem support — from lab bench to market.
           </div>
-          {error && (
-            <div style={{ background: '#fef2f2', border: '1px solid #fecaca', borderRadius: 8, padding: '10px 14px', color: '#991b1b', fontSize: 13 }}>
-              {error}
+
+          <div style={{ marginTop: 32, display: 'flex', gap: 24, flexWrap: 'wrap' }}>
+            {['🔬 Research', '💡 Innovation', '🚀 Startup', '🌍 Impact'].map(f => (
+              <div key={f} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, fontWeight: 600, color: '#ecfdf5' }}>
+                <span style={{ width: 32, height: 32, borderRadius: 10, background: 'rgba(255,255,255,.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 15 }}>{f.split(' ')[0]}</span>
+                {f.split(' ')[1]}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div style={{ fontSize: 11, color: '#6ee7b7', opacity: .7, position: 'relative' }}>
+          Demo prototype — all data is representative, not government data.
+        </div>
+      </div>
+
+      {/* Right form panel */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 40 }}>
+        <div style={{ width: 'min(400px, 100%)' }}>
+          <div style={{ fontSize: 11, letterSpacing: '.14em', color: '#16a34a', fontWeight: 700, marginBottom: 10 }}>
+            WELCOME BACK
+          </div>
+          <h1 style={{ fontSize: 30, fontWeight: 800, marginBottom: 8, color: '#111827', fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}>
+            Sign in to UdaanSetu
+          </h1>
+          <p style={{ color: '#6b7280', fontSize: 14, marginBottom: 28 }}>
+            Enter your credentials to access the workspace.
+          </p>
+
+          <form onSubmit={handleSubmit} style={{ display: 'grid', gap: 16 }}>
+            <div>
+              <label style={{ fontSize: 13, fontWeight: 600, color: '#374151', display: 'block', marginBottom: 6 }}>
+                Email
+              </label>
+              <input
+                type="email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                required
+                autoComplete="username"
+                style={{ width: '100%' }}
+              />
             </div>
-          )}
-          <button
-            type="submit"
-            disabled={submitting}
-            className="btn btn-primary"
-            style={{ width: '100%', justifyContent: 'center', padding: 13, fontSize: 15, marginTop: 4 }}
-          >
-            {submitting ? 'Signing in...' : 'Enter demo workspace'}
-          </button>
-        </form>
+            <div>
+              <label style={{ fontSize: 13, fontWeight: 600, color: '#374151', display: 'block', marginBottom: 6 }}>
+                Password
+              </label>
+              <input
+                type="password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+                required
+                autoComplete="current-password"
+                style={{ width: '100%' }}
+              />
+            </div>
+            {error && (
+              <div style={{ background: '#fef2f2', border: '1px solid #fecaca', borderRadius: 8, padding: '10px 14px', color: '#991b1b', fontSize: 13 }}>
+                {error}
+              </div>
+            )}
+            <button
+              type="submit"
+              disabled={submitting}
+              className="btn btn-primary btn-lg"
+              style={{ width: '100%', justifyContent: 'center', marginTop: 4 }}
+            >
+              {submitting ? 'Signing in...' : 'Enter demo workspace'}
+            </button>
+          </form>
 
-        <div style={{ marginTop: 20, padding: 14, background: '#f9fafb', borderRadius: 8, fontSize: 12, color: '#6b7280', lineHeight: 1.6 }}>
-          <strong style={{ color: '#374151' }}>Demo Credentials:</strong><br />
-          Admin: admin@udaansetu.demo / Demo@123<br />
-          Researcher: researcher@udaansetu.demo / Demo@123<br />
-          Mentor: mentor@udaansetu.demo / Demo@123<br />
-          Investor: investor@udaansetu.demo / Demo@123<br />
-          Incubator: incubator@udaansetu.demo / Demo@123
+          <div style={{ marginTop: 24, padding: 14, background: '#f3f4f6', borderRadius: 10, fontSize: 12, color: '#4b5563', lineHeight: 1.7 }}>
+            <strong style={{ color: '#111827' }}>Demo Credentials:</strong>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2px 16px', marginTop: 4 }}>
+              <span>Admin · admin@udaansetu.demo</span>
+              <span>Researcher · researcher@udaansetu.demo</span>
+              <span>Mentor · mentor@udaansetu.demo</span>
+              <span>Investor · investor@udaansetu.demo</span>
+              <span>Incubator · incubator@udaansetu.demo</span>
+            </div>
+            <div style={{ marginTop: 6, color: '#6b7280' }}>Password for all: <strong>Demo@123</strong></div>
+          </div>
+
+          <p style={{ marginTop: 20, fontSize: 13, color: '#6b7280', textAlign: 'center' }}>
+            New here? <Link href="/register" style={{ color: '#16a34a', fontWeight: 600 }}>Create an account</Link>
+          </p>
         </div>
-
-        <p style={{ marginTop: 16, fontSize: 13, color: '#6b7280', textAlign: 'center' }}>
-          New here? <Link href="/register" style={{ color: '#16a34a', fontWeight: 600 }}>Create an account</Link>
-        </p>
-
-        <p style={{ marginTop: 12, fontSize: 11, color: '#9ca3af', textAlign: 'center' }}>
-          All data is DEMO DATA. Not government data.
-        </p>
       </div>
     </div>
   );

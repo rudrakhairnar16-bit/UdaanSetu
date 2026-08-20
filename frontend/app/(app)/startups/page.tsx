@@ -8,7 +8,7 @@ import { Modal } from '../../components/Modal';
 import { SkeletonCards } from '../../components/LoadingSpinner';
 import { useToast } from '../../components/Toast';
 import { useConfirm } from '../../components/ConfirmDialog';
-import { Button, Input, Breadcrumb, Pagination } from '../../components/ui';
+import { Button, Pagination, PageHeader, Icon } from '../../components/ui';
 
 const PAGE_SIZE = 12;
 
@@ -102,16 +102,25 @@ export default function StartupsPage() {
 
   return (
     <div>
-      <Breadcrumb items={[{ label: 'Dashboard', href: '/dashboard' }, { label: 'Startups', active: true }]} />
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
-        <div>
-          <h1 style={{ fontSize: 24, fontWeight: 800 }}>Startups</h1>
-          <p style={{ fontSize: 13, color: '#6b7280' }}>{records.length} startups · Track impact and growth</p>
-        </div>
-        <Button onClick={() => setShowCreate(true)} icon={<span>+</span>}>New Startup</Button>
-      </div>
+      <PageHeader
+        crumb="Startups"
+        title="Startups"
+        subtitle={`${records.length} startups · Track impact and growth`}
+        action={<Button onClick={() => setShowCreate(true)} icon={<Icon name="plus" size={16} />}>New Startup</Button>}
+      />
 
-      <Input label="" placeholder="Search startups..." value={search} onChange={e => setSearch(e.target.value)} style={{ width: '100%', maxWidth: 400, marginBottom: 16 }} />
+      <div style={{ position: 'relative', maxWidth: 400, marginBottom: 16 }}>
+        <span style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: 'var(--gray-400)', display: 'flex', pointerEvents: 'none' }}>
+          <Icon name="search" size={16} />
+        </span>
+        <input
+          aria-label="Search startups"
+          placeholder="Search startups..."
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          style={{ paddingLeft: 38 }}
+        />
+      </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: 12, marginBottom: 24 }}>
         <div className="stat-card"><span className="label">Total Startups</span><span className="value">{records.length}</span></div>
@@ -126,7 +135,11 @@ export default function StartupsPage() {
           <button className="btn btn-primary btn-sm" onClick={load}>Retry</button>
         </div>
       ) : filtered.length === 0 ? (
-        <div className="empty"><div style={{ fontSize: 40 }}>🚀</div><p>No startups found</p></div>
+        <div className="empty">
+          <div style={{ fontSize: 40, marginBottom: 8 }}>🚀</div>
+          <p style={{ fontWeight: 700, color: 'var(--gray-600)' }}>No startups found</p>
+          <p style={{ fontSize: 13, color: 'var(--gray-400)' }}>Try adjusting your search or create a new startup.</p>
+        </div>
       ) : (
         <div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: 14 }}>
