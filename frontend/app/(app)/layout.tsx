@@ -84,7 +84,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       {/* Mobile overlay */}
       {mobileOpen && (
         <div
-          style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,.3)', zIndex: 40 }}
+          style={{ position: 'fixed', inset: 0, background: 'transparent', zIndex: 40 }}
           onClick={() => setMobileOpen(false)}
           aria-hidden="true"
         />
