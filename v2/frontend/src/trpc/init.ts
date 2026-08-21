@@ -2,7 +2,13 @@ import { initTRPC, TRPCError } from '@trpc/server';
 import { ZodError } from 'zod';
 import superjson from 'superjson';
 
-export const t = initTRPC.context<{ user?: any }>().create({
+interface Context {
+  user?: any;
+  token?: string | null;
+  backendUrl?: string;
+}
+
+export const t = initTRPC.context<Context>().create({
   transformer: superjson,
   errorFormatter({ shape, error }) {
     return {
@@ -18,10 +24,10 @@ export const t = initTRPC.context<{ user?: any }>().create({
 export const createTRPCRouter = t.router;
 export const publicProcedure = t.procedure;
 export const protectedProcedure = t.procedure.use(async ({ ctx, next }) => {
-  if (!ctx.user) {
+  if (!ctx.token) {
     throw new TRPCError({ code: 'UNAUTHORIZED', message: 'Not authenticated' });
   }
-  return next({ ctx: { ...ctx, user: ctx.user } });
+  return next({ ctx: { ...ctx } });
 });
 
 export const middleware = t.middleware;

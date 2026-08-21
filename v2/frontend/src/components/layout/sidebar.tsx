@@ -129,7 +129,7 @@ export function Sidebar() {
           <Separator className="mb-4" />
           <div className="flex items-center gap-3">
             <Avatar className="h-10 w-10">
-              <AvatarImage src={user.avatar} alt={user.name} />
+              <AvatarImage src="" alt={user.name} />
               <AvatarFallback>{user.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
             </Avatar>
             <div className="flex-1 min-w-0">

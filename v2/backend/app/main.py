@@ -4,7 +4,7 @@ from contextlib import asynccontextmanager
 
 from app.core.config import settings
 from app.core.database import engine, Base
-from app.api import auth, entities, dashboard, analytics, govt, ml
+from app.api import auth, entities, dashboard, analytics, govt, ml, notifications, audit
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -26,12 +26,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(auth.router, prefix="/auth", tags=["auth"])
-app.include_router(entities.router, prefix="/entities", tags=["entities"])
-app.include_router(dashboard.router, prefix="/dashboard", tags=["dashboard"])
-app.include_router(analytics.router, prefix="/analytics", tags=["analytics"])
-app.include_router(govt.router, prefix="/govt", tags=["government"])
-app.include_router(ml.router, prefix="/ml", tags=["ml"])
+app.include_router(auth.router, tags=["auth"])
+app.include_router(entities.router, tags=["entities"])
+app.include_router(dashboard.router, tags=["dashboard"])
+app.include_router(analytics.router, tags=["analytics"])
+app.include_router(govt.router, tags=["government"])
+app.include_router(ml.router, tags=["ml"])
+app.include_router(notifications.router, tags=["notifications"])
+app.include_router(audit.router, tags=["audit"])
 
 @app.get("/health")
 async def health():

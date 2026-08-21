@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { createTRPCRouter, publicProcedure, protectedProcedure } from '../init';
+import { backendFetch } from '../backend';
 
 export const authRouter = createTRPCRouter({
   register: publicProcedure
@@ -11,9 +12,12 @@ export const authRouter = createTRPCRouter({
       district: z.string().optional(),
       organization: z.string().optional(),
     }))
-    .mutation(async ({ input }) => {
-      // Implementation will call backend API
-      return { success: true, message: 'Registration endpoint to be implemented' };
+    .mutation(async ({ input, ctx }) => {
+      const data = await backendFetch(ctx.backendUrl!, ctx.token, '/auth/register', {
+        method: 'POST',
+        body: JSON.stringify(input),
+      });
+      return data;
     }),
 
   login: publicProcedure
@@ -21,8 +25,16 @@ export const authRouter = createTRPCRouter({
       email: z.string().email(),
       password: z.string(),
     }))
-    .mutation(async ({ input }) => {
-      return { success: true, message: 'Login endpoint to be implemented' };
+    .mutation(async ({ input, ctx }) => {
+      const body = new URLSearchParams();
+      body.append('username', input.email);
+      body.append('password', input.password);
+      const data = await backendFetch(ctx.backendUrl!, null, '/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body.toString(),
+      });
+      return data;
     }),
 
   logout: protectedProcedure.mutation(async () => {
@@ -30,7 +42,8 @@ export const authRouter = createTRPCRouter({
   }),
 
   me: protectedProcedure.query(async ({ ctx }) => {
-    return ctx.user;
+    const data = await backendFetch(ctx.backendUrl!, ctx.token, '/auth/me');
+    return data;
   }),
 
   updateProfile: protectedProcedure
@@ -39,8 +52,12 @@ export const authRouter = createTRPCRouter({
       district: z.string().optional(),
       organization: z.string().optional(),
     }))
-    .mutation(async ({ input }) => {
-      return { success: true };
+    .mutation(async ({ input, ctx }) => {
+      const data = await backendFetch(ctx.backendUrl!, ctx.token, '/auth/me', {
+        method: 'PATCH',
+        body: JSON.stringify(input),
+      });
+      return data;
     }),
 
   changePassword: protectedProcedure
@@ -48,7 +65,14 @@ export const authRouter = createTRPCRouter({
       currentPassword: z.string(),
       newPassword: z.string().min(8).regex(/[A-Z]/).regex(/[a-z]/).regex(/[0-9]/),
     }))
-    .mutation(async ({ input }) => {
-      return { success: true };
+    .mutation(async ({ input, ctx }) => {
+      const data = await backendFetch(ctx.backendUrl!, ctx.token, '/auth/change-password', {
+        method: 'POST',
+        body: JSON.stringify({
+          current_password: input.currentPassword,
+          new_password: input.newPassword,
+        }),
+      });
+      return data;
     }),
 });

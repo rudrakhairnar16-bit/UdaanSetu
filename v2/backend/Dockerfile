@@ -8,6 +8,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY app ./app
+COPY seed.py scripts/ ./
 
 RUN mkdir -p /app/uploads && chown -R udaansetu:udaansetu /app
 

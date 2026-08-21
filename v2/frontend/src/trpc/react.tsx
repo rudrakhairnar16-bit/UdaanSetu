@@ -24,10 +24,10 @@ export function TRPCProvider({ children }: TRPCProviderProps) {
 
   const [trpcClient] = useState(() =>
     trpc.createClient({
+      transformer: superjson,
       links: [
         httpBatchLink({
           url: '/api/trpc',
-          transformer: superjson,
           headers() {
             const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
             return token ? { Authorization: `Bearer ${token}` } : {};

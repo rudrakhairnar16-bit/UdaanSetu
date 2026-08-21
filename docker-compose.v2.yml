@@ -8,9 +8,9 @@ services:
       POSTGRES_USER: udaansetu
       POSTGRES_PASSWORD: udaansetu
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_v2_data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5434:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U udaansetu -d udaansetu"]
       interval: 5s
@@ -21,9 +21,8 @@ services:
     build:
       context: ./v2/backend
       dockerfile: Dockerfile
-    env_file: .env
     ports:
-      - "8080:8000"
+      - "8081:8000"
     depends_on:
       db:
         condition: service_healthy
@@ -31,13 +30,15 @@ services:
       - ./v2/backend/uploads:/app/uploads
     environment:
       - DATABASE_URL=postgresql://udaansetu:udaansetu@db:5432/udaansetu
+      - SECRET_KEY=dev-secret-key-change-in-production-2026
+      - CORS_ORIGINS=["http://localhost:3002","http://localhost:3000"]
 
   ml-service:
     build:
       context: ./v2/ml-service
       dockerfile: Dockerfile
     ports:
-      - "8001:8000"
+      - "8002:8000"
     depends_on:
       - db
     environment:
@@ -48,11 +49,13 @@ services:
       context: ./v2/frontend
       dockerfile: Dockerfile
       args:
-        NEXT_PUBLIC_API_URL: http://localhost:8080
+        NEXT_PUBLIC_API_URL: http://localhost:8081
     ports:
-      - "3001:3000"
+      - "3002:3000"
     depends_on:
       - backend
+    environment:
+      - BACKEND_URL=http://backend:8000
 
 volumes:
-  postgres_data:
+  postgres_v2_data:

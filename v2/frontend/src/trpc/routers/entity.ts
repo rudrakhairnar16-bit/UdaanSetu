@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { createTRPCRouter, protectedProcedure } from '../init';
+import { backendFetch } from '../backend';
 
 const entityKinds = [
   'research', 'innovation', 'ipr', 'startup', 'milestone',
@@ -17,14 +18,25 @@ export const entityRouter = createTRPCRouter({
       cursor: z.string().optional(),
       search: z.string().optional(),
     }))
-    .query(async ({ input }) => {
-      return { items: [], nextCursor: undefined };
+    .query(async ({ input, ctx }) => {
+      const params = new URLSearchParams();
+      if (input.kind) params.set('kind', input.kind);
+      if (input.district) params.set('district', input.district);
+      if (input.sector) params.set('sector', input.sector);
+      if (input.stage) params.set('stage', input.stage);
+      params.set('size', String(input.limit));
+      if (input.cursor) params.set('cursor', input.cursor);
+      if (input.search) params.set('search', input.search);
+      const qs = params.toString();
+      const data = await backendFetch(ctx.backendUrl!, ctx.token, `/entities?${qs}`);
+      return data;
     }),
 
   getById: protectedProcedure
     .input(z.object({ id: z.string() }))
-    .query(async ({ input }) => {
-      return null;
+    .query(async ({ input, ctx }) => {
+      const data = await backendFetch(ctx.backendUrl!, ctx.token, `/entities/${input.id}`);
+      return data;
     }),
 
   create: protectedProcedure
@@ -38,8 +50,15 @@ export const entityRouter = createTRPCRouter({
       parentId: z.string().optional(),
       meta: z.record(z.any()).optional(),
     }))
-    .mutation(async ({ input }) => {
-      return { id: 'new-id', ...input };
+    .mutation(async ({ input, ctx }) => {
+      const body: any = { ...input };
+      if (input.parentId) body.parent_id = input.parentId;
+      delete body.parentId;
+      const data = await backendFetch(ctx.backendUrl!, ctx.token, '/entities', {
+        method: 'POST',
+        body: JSON.stringify(body),
+      });
+      return data;
     }),
 
   update: protectedProcedure
@@ -52,26 +71,26 @@ export const entityRouter = createTRPCRouter({
       district: z.string().optional(),
       meta: z.record(z.any()).optional(),
     }))
-    .mutation(async ({ input }) => {
-      return { success: true };
+    .mutation(async ({ input, ctx }) => {
+      const { id, ...updates } = input;
+      const data = await backendFetch(ctx.backendUrl!, ctx.token, `/entities/${id}`, {
+        method: 'PATCH',
+        body: JSON.stringify(updates),
+      });
+      return data;
     }),
 
   delete: protectedProcedure
     .input(z.object({ id: z.string() }))
-    .mutation(async ({ input }) => {
+    .mutation(async ({ input, ctx }) => {
+      await backendFetch(ctx.backendUrl!, ctx.token, `/entities/${input.id}`, {
+        method: 'DELETE',
+      });
       return { success: true };
     }),
 
-  getStats: protectedProcedure.query(async () => {
-    return {
-      research: 0,
-      innovation: 0,
-      ipr: 0,
-      startup: 0,
-      mentor: 0,
-      scheme: 0,
-      incubator: 0,
-      funding_request: 0,
-    };
+  getStats: protectedProcedure.query(async ({ ctx }) => {
+    const data = await backendFetch(ctx.backendUrl!, ctx.token, '/entities/stats/summary');
+    return data;
   }),
 });

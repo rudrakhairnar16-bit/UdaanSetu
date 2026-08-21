@@ -1,29 +1,20 @@
 import { z } from 'zod';
 import { createTRPCRouter, protectedProcedure } from '../init';
+import { backendFetch } from '../backend';
 
 export const analyticsRouter = createTRPCRouter({
-  overview: protectedProcedure.query(async () => {
-    return {
-      totalRecords: 0,
-      avgResearchProgress: 0,
-      totalFundingRequired: 0,
-      totalStartupRevenue: 0,
-      totalJobsCreated: 0,
-      totalFarmersReached: 0,
-      byKind: {},
-      bySector: {},
-      byDistrict: {},
-    };
+  overview: protectedProcedure.query(async ({ ctx }) => {
+    const data = await backendFetch(ctx.backendUrl!, ctx.token, '/analytics/overview');
+    return data;
   }),
 
-  districts: protectedProcedure.query(async () => {
-    return { districts: [] };
+  districts: protectedProcedure.query(async ({ ctx }) => {
+    const data = await backendFetch(ctx.backendUrl!, ctx.token, '/analytics/districts');
+    return data;
   }),
 
-  mlMetrics: protectedProcedure.query(async () => {
-    return {
-      riskModel: null,
-      semanticEngine: { ready: false, model: '', corpusSize: 0 },
-    };
+  mlMetrics: protectedProcedure.query(async ({ ctx }) => {
+    const data = await backendFetch(ctx.backendUrl!, ctx.token, '/analytics/ml-metrics');
+    return data;
   }),
 });

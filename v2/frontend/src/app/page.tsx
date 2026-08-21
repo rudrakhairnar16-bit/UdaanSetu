@@ -22,9 +22,22 @@ export default function LoginPage() {
     setError('');
 
     try {
-      // TODO: Call trpc auth.login
-      await new Promise(r => setTimeout(r, 1000));
-      localStorage.setItem('auth_token', 'demo-token');
+      const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8081';
+      const body = new URLSearchParams();
+      body.append('username', email);
+      body.append('password', password);
+      const res = await fetch(`${backendUrl}/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body.toString(),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({ detail: 'Login failed' }));
+        throw new Error(err.detail || 'Login failed');
+      }
+      const data = await res.json();
+      localStorage.setItem('auth_token', data.access_token);
+      localStorage.setItem('auth_user', JSON.stringify(data.user));
       router.push('/dashboard');
     } catch (err: any) {
       setError(err.message || 'Login failed');
