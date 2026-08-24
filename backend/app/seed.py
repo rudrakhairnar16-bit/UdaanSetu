@@ -18,7 +18,7 @@ from app.utils import audit, audit_entity, notify
 # ── JSON loader ──
 
 def _load_json(filename):
-    base = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     path = os.path.join(base, "data", filename)
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)

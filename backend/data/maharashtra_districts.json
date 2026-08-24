@@ -1,0 +1,336 @@
+{
+  "districts": [
+    {
+      "name": "Ahmednagar",
+      "population": 4543159,
+      "area_sq_km": 17048,
+      "major_city": "Ahmednagar",
+      "latitude": 19.0952,
+      "longitude": 74.7394,
+      "division": "Nashik"
+    },
+    {
+      "name": "Akola",
+      "population": 1813906,
+      "area_sq_km": 5428,
+      "major_city": "Akola",
+      "latitude": 20.7067,
+      "longitude": 77.0023,
+      "division": "Amravati"
+    },
+    {
+      "name": "Amravati",
+      "population": 2888445,
+      "area_sq_km": 12235,
+      "major_city": "Amravati",
+      "latitude": 20.9374,
+      "longitude": 77.7798,
+      "division": "Amravati"
+    },
+    {
+      "name": "Aurangabad",
+      "population": 3701282,
+      "area_sq_km": 10107,
+      "major_city": "Chhatrapati Sambhajinagar",
+      "latitude": 19.8762,
+      "longitude": 75.3433,
+      "division": "Aurangabad"
+    },
+    {
+      "name": "Beed",
+      "population": 2585049,
+      "area_sq_km": 10693,
+      "major_city": "Beed",
+      "latitude": 18.9890,
+      "longitude": 75.7584,
+      "division": "Aurangabad"
+    },
+    {
+      "name": "Bhandara",
+      "population": 1200334,
+      "area_sq_km": 3716,
+      "major_city": "Bhandara",
+      "latitude": 21.1665,
+      "longitude": 79.6516,
+      "division": "Nagpur"
+    },
+    {
+      "name": "Buldhana",
+      "population": 2586258,
+      "area_sq_km": 9661,
+      "major_city": "Buldhana",
+      "latitude": 20.5293,
+      "longitude": 76.1804,
+      "division": "Amravati"
+    },
+    {
+      "name": "Chandrapur",
+      "population": 2204307,
+      "area_sq_km": 10690,
+      "major_city": "Chandrapur",
+      "latitude": 19.9615,
+      "longitude": 79.2961,
+      "division": "Nagpur"
+    },
+    {
+      "name": "Dhule",
+      "population": 2050589,
+      "area_sq_km": 8063,
+      "major_city": "Dhule",
+      "latitude": 20.9017,
+      "longitude": 74.7753,
+      "division": "Nashik"
+    },
+    {
+      "name": "Gadchiroli",
+      "population": 1072942,
+      "area_sq_km": 14412,
+      "major_city": "Gadchiroli",
+      "latitude": 20.1833,
+      "longitude": 80.0000,
+      "division": "Nagpur"
+    },
+    {
+      "name": "Gondia",
+      "population": 1322507,
+      "area_sq_km": 5431,
+      "major_city": "Gondia",
+      "latitude": 20.4930,
+      "longitude": 80.2434,
+      "division": "Nagpur"
+    },
+    {
+      "name": "Hingoli",
+      "population": 1177345,
+      "area_sq_km": 4526,
+      "major_city": "Hingoli",
+      "latitude": 19.7185,
+      "longitude": 77.7740,
+      "division": "Aurangabad"
+    },
+    {
+      "name": "Jalgaon",
+      "population": 4229917,
+      "area_sq_km": 11765,
+      "major_city": "Jalgaon",
+      "latitude": 21.0077,
+      "longitude": 75.5663,
+      "division": "Nashik"
+    },
+    {
+      "name": "Jalna",
+      "population": 1959046,
+      "area_sq_km": 7718,
+      "major_city": "Jalna",
+      "latitude": 20.0459,
+      "longitude": 75.8878,
+      "division": "Aurangabad"
+    },
+    {
+      "name": "Kolhapur",
+      "population": 3876001,
+      "area_sq_km": 7685,
+      "major_city": "Kolhapur",
+      "latitude": 16.7050,
+      "longitude": 74.2433,
+      "division": "Pune"
+    },
+    {
+      "name": "Latur",
+      "population": 2454196,
+      "area_sq_km": 7157,
+      "major_city": "Latur",
+      "latitude": 18.4088,
+      "longitude": 76.5604,
+      "division": "Aurangabad"
+    },
+    {
+      "name": "Mumbai City",
+      "population": 3145966,
+      "area_sq_km": 603,
+      "major_city": "Mumbai",
+      "latitude": 19.0760,
+      "longitude": 72.8777,
+      "division": "Konkan"
+    },
+    {
+      "name": "Mumbai Suburban",
+      "population": 9356675,
+      "area_sq_km": 446,
+      "major_city": "Bandra",
+      "latitude": 19.0596,
+      "longitude": 72.8295,
+      "division": "Konkan"
+    },
+    {
+      "name": "Nagpur",
+      "population": 4653570,
+      "area_sq_km": 9892,
+      "major_city": "Nagpur",
+      "latitude": 21.1458,
+      "longitude": 79.0882,
+      "division": "Nagpur"
+    },
+    {
+      "name": "Nanded",
+      "population": 3361292,
+      "area_sq_km": 10428,
+      "major_city": "Nanded",
+      "latitude": 19.1550,
+      "longitude": 77.3240,
+      "division": "Aurangabad"
+    },
+    {
+      "name": "Nandurbar",
+      "population": 1648295,
+      "area_sq_km": 5055,
+      "major_city": "Nandurbar",
+      "latitude": 21.3649,
+      "longitude": 74.2000,
+      "division": "Nashik"
+    },
+    {
+      "name": "Nashik",
+      "population": 5261573,
+      "area_sq_km": 15582,
+      "major_city": "Nashik",
+      "latitude": 19.9975,
+      "longitude": 73.7898,
+      "division": "Nashik"
+    },
+    {
+      "name": "Osmanabad",
+      "population": 1657576,
+      "area_sq_km": 7569,
+      "major_city": "Dharashiv",
+      "latitude": 18.1847,
+      "longitude": 76.0349,
+      "division": "Aurangabad"
+    },
+    {
+      "name": "Palghar",
+      "population": 3107002,
+      "area_sq_km": 5344,
+      "major_city": "Palghar",
+      "latitude": 19.6939,
+      "longitude": 72.7861,
+      "division": "Konkan"
+    },
+    {
+      "name": "Parbhani",
+      "population": 1836086,
+      "area_sq_km": 6512,
+      "major_city": "Parbhani",
+      "latitude": 19.2688,
+      "longitude": 76.7708,
+      "division": "Aurangabad"
+    },
+    {
+      "name": "Pune",
+      "population": 9426959,
+      "area_sq_km": 15643,
+      "major_city": "Pune",
+      "latitude": 18.5204,
+      "longitude": 73.8567,
+      "division": "Pune"
+    },
+    {
+      "name": "Raigad",
+      "population": 5420307,
+      "area_sq_km": 7144,
+      "major_city": "Alibag",
+      "latitude": 18.6104,
+      "longitude": 72.9908,
+      "division": "Konkan"
+    },
+    {
+      "name": "Ratnagiri",
+      "population": 1615061,
+      "area_sq_km": 8208,
+      "major_city": "Ratnagiri",
+      "latitude": 16.9908,
+      "longitude": 73.3120,
+      "division": "Konkan"
+    },
+    {
+      "name": "Sangli",
+      "population": 2822143,
+      "area_sq_km": 8572,
+      "major_city": "Sangli",
+      "latitude": 16.8524,
+      "longitude": 74.5815,
+      "division": "Pune"
+    },
+    {
+      "name": "Satara",
+      "population": 3003749,
+      "area_sq_km": 10480,
+      "major_city": "Satara",
+      "latitude": 17.6805,
+      "longitude": 73.9786,
+      "division": "Pune"
+    },
+    {
+      "name": "Sindhudurg",
+      "population": 849651,
+      "area_sq_km": 5207,
+      "major_city": "Oras",
+      "latitude": 16.0014,
+      "longitude": 73.6761,
+      "division": "Konkan"
+    },
+    {
+      "name": "Solapur",
+      "population": 4310527,
+      "area_sq_km": 14895,
+      "major_city": "Solapur",
+      "latitude": 17.6599,
+      "longitude": 75.9064,
+      "division": "Pune"
+    },
+    {
+      "name": "Thane",
+      "population": 11060148,
+      "area_sq_km": 5344,
+      "major_city": "Thane",
+      "latitude": 19.2183,
+      "longitude": 72.9781,
+      "division": "Konkan"
+    },
+    {
+      "name": "Wardha",
+      "population": 1300812,
+      "area_sq_km": 6309,
+      "major_city": "Wardha",
+      "latitude": 20.7453,
+      "longitude": 78.6132,
+      "division": "Nagpur"
+    },
+    {
+      "name": "Washim",
+      "population": 1197160,
+      "area_sq_km": 5151,
+      "major_city": "Washim",
+      "latitude": 20.1062,
+      "longitude": 77.1369,
+      "division": "Amravati"
+    },
+    {
+      "name": "Yavatmal",
+      "population": 2772348,
+      "area_sq_km": 13582,
+      "major_city": "Yavatmal",
+      "latitude": 20.3888,
+      "longitude": 78.1203,
+      "division": "Amravati"
+    }
+  ],
+  "metadata": {
+    "total_districts": 36,
+    "census_year": 2011,
+    "state": "Maharashtra",
+    "capital": "Mumbai",
+    "divisions": ["Pune", "Nashik", "Aurangabad", "Amravati", "Nagpur", "Konkan"],
+    "created_at": "2026-01-05T09:30:00"
+  }
+}
