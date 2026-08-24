@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { api } from '../../lib/api';
 import { Modal } from '../../components/Modal';
 import { useToast } from '../../components/Toast';
+import { Button, PageHeader, Icon } from '../../components/ui';
 import type { GovResponse } from '../../lib/types';
 
 type Tab = 'aadhaar' | 'digilocker' | 'startup-india' | 'ip-india' | 'ondc';
@@ -11,8 +12,8 @@ type Tab = 'aadhaar' | 'digilocker' | 'startup-india' | 'ip-india' | 'ondc';
 function ResultCard({ data }: { data: GovResponse | null }) {
   if (!data) return null;
   const statusColors: Record<string, string> = {
-    verified: '#16a34a', registered: '#16a34a', ok: '#16a34a', fetched: '#16a34a',
-    otp_sent: '#3b82f6', pending: '#f59e0b', not_found: '#ef4444', failed: '#ef4444', error: '#ef4444',
+    verified: '#d4880f', registered: '#d4880f', ok: '#d4880f', fetched: '#d4880f',
+    otp_sent: '#1a5296', pending: '#f59e0b', not_found: '#ef4444', failed: '#ef4444', error: '#ef4444',
   };
   return (
     <div className="card" style={{ marginTop: 16 }}>
@@ -405,6 +406,28 @@ function ONDCTab() {
 export default function GovernmentPage() {
   const [tab, setTab] = useState<Tab>('aadhaar');
 
+  const exportData = async (format: 'csv' | 'json') => {
+    try {
+      const token = api.getToken();
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+      const res = await fetch(`${API_URL}/records/export?kind=scheme&format=${format}`, {
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+      });
+      if (!res.ok) throw new Error('Export failed');
+      const blob = await res.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `scheme_export.${format}`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
+    } catch (err: any) {
+      alert(err.message);
+    }
+  };
+
   const TABS: { key: Tab; label: string; icon: string }[] = [
     { key: 'aadhaar', label: 'Aadhaar eKYC', icon: '🪪' },
     { key: 'digilocker', label: 'DigiLocker', icon: '📄' },
@@ -415,10 +438,21 @@ export default function GovernmentPage() {
 
   return (
     <div>
-      <div style={{ marginBottom: 20 }}>
-        <h1 style={{ fontSize: 24, fontWeight: 800 }}>Government Integrations</h1>
-        <p style={{ fontSize: 13, color: 'var(--gray-500)' }}>Connect with Aadhaar, DigiLocker, Startup India, IP India, and ONDC. All responses are mock data in demo mode.</p>
-      </div>
+      <PageHeader
+        crumb="Government"
+        title="Government Integrations"
+        subtitle="Connect with Aadhaar, DigiLocker, Startup India, IP India, and ONDC. All responses are mock data in demo mode."
+        action={
+          <div style={{ display: 'flex', gap: 8 }}>
+            <button className="btn btn-secondary btn-sm" onClick={() => exportData('csv')} style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+              <Icon name="download" size={14} /> CSV
+            </button>
+            <button className="btn btn-secondary btn-sm" onClick={() => exportData('json')} style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+              <Icon name="download" size={14} /> JSON
+            </button>
+          </div>
+        }
+      />
 
 <div style={{ display: 'flex', gap: 4, marginBottom: 20, background: 'var(--gray-100)', padding: 4, borderRadius: 10 }}>
         {TABS.map(t => (

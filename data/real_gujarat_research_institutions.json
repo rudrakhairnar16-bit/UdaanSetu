@@ -1,0 +1,188 @@
+{
+  "fetched_at": "2026-08-21T13:32:39.405707+00:00",
+  "total_fetched": 11,
+  "source": "OpenAlex API",
+  "cities_searched": [
+    "ahmedabad",
+    "surat",
+    "vadodara"
+  ],
+  "institutions": [
+    {
+      "id": "https://openalex.org/I4210102411",
+      "name": "National Institute of Pharmaceutical Education and Research - Ahmedabad",
+      "city": "Ahmedabad",
+      "country": "IN",
+      "type": "government",
+      "homepage_url": "https://niperahm.ac.in",
+      "image_url": null,
+      "works_count": 4964,
+      "cited_by_count": 373771,
+      "summary_stats": {
+        "2yr_mean_citedness": 5.43758573388203,
+        "i10_index": 7913,
+        "h_index": 178
+      }
+    },
+    {
+      "id": "https://openalex.org/I52527943",
+      "name": "Ahmedabad University",
+      "city": "Ahmedabad",
+      "country": "IN",
+      "type": "education",
+      "homepage_url": "https://ahduni.edu.in/",
+      "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Logo%20Entrance%20Ahmedabad%20University%20Gujarat%20India%20Jul22%20R16%2006157.jpg",
+      "works_count": 4460,
+      "cited_by_count": 76440,
+      "summary_stats": {
+        "2yr_mean_citedness": 1.887981711299804,
+        "i10_index": 1748,
+        "h_index": 111
+      }
+    },
+    {
+      "id": "https://openalex.org/I150870154",
+      "name": "Indian Institute of Management Ahmedabad",
+      "city": "Ahmedabad",
+      "country": "IN",
+      "type": "education",
+      "homepage_url": "https://www.iima.ac.in",
+      "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Iima%20panorama%20complex.jpg",
+      "works_count": 6728,
+      "cited_by_count": 145403,
+      "summary_stats": {
+        "2yr_mean_citedness": 4.6084788029925186,
+        "i10_index": 2462,
+        "h_index": 147
+      }
+    },
+    {
+      "id": "https://openalex.org/I3016035982",
+      "name": "Ahmedabad Civil Hospital",
+      "city": "Ahmedabad",
+      "country": "IN",
+      "type": "healthcare",
+      "homepage_url": "http://civilhospitalamdavad.org/",
+      "image_url": null,
+      "works_count": 1995,
+      "cited_by_count": 26118,
+      "summary_stats": {
+        "2yr_mean_citedness": 0.8479567307692307,
+        "i10_index": 735,
+        "h_index": 51
+      }
+    },
+    {
+      "id": "https://openalex.org/I4210147161",
+      "name": "Mudra Institute of Communications Ahmedabad",
+      "city": "Ahmedabad",
+      "country": "IN",
+      "type": "education",
+      "homepage_url": "https://www.mica.ac.in/",
+      "image_url": null,
+      "works_count": 631,
+      "cited_by_count": 19666,
+      "summary_stats": {
+        "2yr_mean_citedness": 6.53030303030303,
+        "i10_index": 285,
+        "h_index": 64
+      }
+    },
+    {
+      "id": "https://openalex.org/I64157871",
+      "name": "B.J. Medical College",
+      "city": "Ahmedabad",
+      "country": "IN",
+      "type": "healthcare",
+      "homepage_url": "http://www.bjmc.org/",
+      "image_url": null,
+      "works_count": 6949,
+      "cited_by_count": 141137,
+      "summary_stats": {
+        "2yr_mean_citedness": 2.2910122164048867,
+        "i10_index": 2933,
+        "h_index": 134
+      }
+    },
+    {
+      "id": "https://openalex.org/I4405263272",
+      "name": "Narendra Modi Medical College",
+      "city": "Ahmedabad",
+      "country": "IN",
+      "type": "education",
+      "homepage_url": "https://www.narendramodimedicalcollege.edu.in",
+      "image_url": null,
+      "works_count": 568,
+      "cited_by_count": 3375,
+      "summary_stats": {
+        "2yr_mean_citedness": 0.8100961538461539,
+        "i10_index": 102,
+        "h_index": 21
+      }
+    },
+    {
+      "id": "https://openalex.org/I42014448",
+      "name": "Sardar Vallabhbhai National Institute of Technology Surat",
+      "city": "Surat",
+      "country": "IN",
+      "type": "education",
+      "homepage_url": "http://www.svnit.ac.in/",
+      "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/SVNIT%2C%20SURAT.jpg",
+      "works_count": 15113,
+      "cited_by_count": 450116,
+      "summary_stats": {
+        "2yr_mean_citedness": 2.652292779917982,
+        "i10_index": 9455,
+        "h_index": 185
+      }
+    },
+    {
+      "id": "https://openalex.org/I4405261310",
+      "name": "Indian Institute of Information Technology Surat",
+      "city": "Surat",
+      "country": "IN",
+      "type": "government",
+      "homepage_url": "https://iiitsurat.ac.in",
+      "image_url": null,
+      "works_count": 78,
+      "cited_by_count": 500,
+      "summary_stats": {
+        "2yr_mean_citedness": 1.492537313432836,
+        "i10_index": 18,
+        "h_index": 12
+      }
+    },
+    {
+      "id": "https://openalex.org/I4210092041",
+      "name": "Suratthani Rajabhat University",
+      "city": "Surat",
+      "country": "TH",
+      "type": "education",
+      "homepage_url": "http://www.sru.ac.th",
+      "image_url": null,
+      "works_count": 1355,
+      "cited_by_count": 11014,
+      "summary_stats": {
+        "2yr_mean_citedness": 1.0893719806763285,
+        "i10_index": 305,
+        "h_index": 43
+      }
+    },
+    {
+      "id": "https://openalex.org/I4210100893",
+      "name": "Indian Institute of Information Technology Vadodara",
+      "city": "Vadodara",
+      "country": "IN",
+      "type": "education",
+      "homepage_url": "https://iiitvadodara.ac.in",
+      "image_url": null,
+      "works_count": 1983,
+      "cited_by_count": 29548,
+      "summary_stats": {
+        "2yr_mean_citedness": 1.0118460019743336,
+        "i10_index": 695,
+        "h_index": 64
+      }
+    }
+  ]
+}

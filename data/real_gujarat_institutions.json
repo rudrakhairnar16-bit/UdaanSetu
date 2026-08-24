@@ -1,0 +1,155 @@
+[
+  {
+    "name": "National Institute of Pharmaceutical Education and Research - Ahmedabad",
+    "country": "IN",
+    "city": "",
+    "type": "government",
+    "openalex_id": "https://openalex.org/I4210102411",
+    "ror": "https://ror.org/01dphnv87",
+    "homepage": "https://niperahm.ac.in"
+  },
+  {
+    "name": "Ahmedabad University",
+    "country": "IN",
+    "city": "",
+    "type": "education",
+    "openalex_id": "https://openalex.org/I52527943",
+    "ror": "https://ror.org/02swff503",
+    "homepage": "https://ahduni.edu.in/"
+  },
+  {
+    "name": "Indian Institute of Management Ahmedabad",
+    "country": "IN",
+    "city": "",
+    "type": "education",
+    "openalex_id": "https://openalex.org/I150870154",
+    "ror": "https://ror.org/02egcpy68",
+    "homepage": "https://www.iima.ac.in"
+  },
+  {
+    "name": "Ahmedabad Civil Hospital",
+    "country": "IN",
+    "city": "",
+    "type": "healthcare",
+    "openalex_id": "https://openalex.org/I3016035982",
+    "ror": "https://ror.org/00k8adf88",
+    "homepage": "http://civilhospitalamdavad.org/"
+  },
+  {
+    "name": "Mudra Institute of Communications Ahmedabad",
+    "country": "IN",
+    "city": "",
+    "type": "education",
+    "openalex_id": "https://openalex.org/I4210147161",
+    "ror": "https://ror.org/03thb9733",
+    "homepage": "https://www.mica.ac.in/"
+  },
+  {
+    "name": "B.J. Medical College",
+    "country": "IN",
+    "city": "",
+    "type": "healthcare",
+    "openalex_id": "https://openalex.org/I64157871",
+    "ror": "https://ror.org/0408b4j80",
+    "homepage": "http://www.bjmc.org/"
+  },
+  {
+    "name": "Narendra Modi Medical College",
+    "country": "IN",
+    "city": "",
+    "type": "education",
+    "openalex_id": "https://openalex.org/I4405263272",
+    "ror": "https://ror.org/04j6nz437",
+    "homepage": "https://www.narendramodimedicalcollege.edu.in"
+  },
+  {
+    "name": "Sardar Vallabhbhai National Institute of Technology Surat",
+    "country": "IN",
+    "city": "",
+    "type": "education",
+    "openalex_id": "https://openalex.org/I42014448",
+    "ror": "https://ror.org/02y394t43",
+    "homepage": "http://www.svnit.ac.in/"
+  },
+  {
+    "name": "Indian Institute of Information Technology Surat",
+    "country": "IN",
+    "city": "",
+    "type": "government",
+    "openalex_id": "https://openalex.org/I4405261310",
+    "ror": "https://ror.org/053p6zp61",
+    "homepage": "https://iiitsurat.ac.in"
+  },
+  {
+    "name": "Suratthani Rajabhat University",
+    "country": "TH",
+    "city": "",
+    "type": "education",
+    "openalex_id": "https://openalex.org/I4210092041",
+    "ror": "https://ror.org/00mmgx583",
+    "homepage": "http://www.sru.ac.th"
+  },
+  {
+    "name": "Indian Institute of Information Technology Vadodara",
+    "country": "IN",
+    "city": "",
+    "type": "education",
+    "openalex_id": "https://openalex.org/I4210100893",
+    "ror": "https://ror.org/0163rt176",
+    "homepage": "https://iiitvadodara.ac.in"
+  },
+  {
+    "name": "Government Polytechnic College, Rajkot",
+    "country": null,
+    "city": "",
+    "type": "education",
+    "openalex_id": "https://openalex.org/I4387152295",
+    "ror": "https://ror.org/04djvs197",
+    "homepage": "http://www.gprj.cteguj.in"
+  },
+  {
+    "name": "Government Engineering College, Rajkot",
+    "country": "IN",
+    "city": "",
+    "type": "education",
+    "openalex_id": "https://openalex.org/I4405270285",
+    "ror": "https://ror.org/00dkde447",
+    "homepage": "https://gecrajkot.ac.in"
+  },
+  {
+    "name": "All India Institute of Medical Sciences, Rajkot",
+    "country": "IN",
+    "city": "",
+    "type": "government",
+    "openalex_id": "https://openalex.org/I4405254203",
+    "ror": "https://ror.org/01hw1ck36",
+    "homepage": "https://aiimsrajkot.edu.in"
+  },
+  {
+    "name": "Indian Institute of Technology Gandhinagar",
+    "country": "IN",
+    "city": "",
+    "type": "education",
+    "openalex_id": "https://openalex.org/I27674431",
+    "ror": "https://ror.org/0036p5w23",
+    "homepage": "https://iitgn.ac.in"
+  },
+  {
+    "name": "Indian Institute of Public Health Gandhinagar",
+    "country": "IN",
+    "city": "",
+    "type": "education",
+    "openalex_id": "https://openalex.org/I4210156591",
+    "ror": "https://ror.org/0592ben86",
+    "homepage": "http://iiphg.edu.in/"
+  },
+  {
+    "name": "Dhirubhai Ambani University",
+    "country": "IN",
+    "city": "",
+    "type": "education",
+    "openalex_id": "https://openalex.org/I98389781",
+    "ror": "https://ror.org/02d5b7g69",
+    "homepage": "https://www.daiict.ac.in"
+  }
+]

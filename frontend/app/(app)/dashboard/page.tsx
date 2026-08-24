@@ -5,7 +5,16 @@ import { api } from '../../lib/api';
 import { useAuth } from '../../lib/auth';
 import type { Dashboard } from '../../lib/types';
 import { StageBadge } from '../../components/StageBadge';
-import { PageHeader, Icon } from '../../components/ui';
+import { Icon } from '../../components/ui';
+
+interface GujaratAnalytics {
+  total_startups: number;
+  districts_count: number;
+  sectors_count: number;
+  by_district: Record<string, number>;
+  by_sector: Record<string, number>;
+  by_stage: Record<string, number>;
+}
 
 function RiskBadge({ level }: { level: string }) {
   const cls = level === 'High' ? 'badge-red' : level === 'Medium' ? 'badge-yellow' : 'badge-green';
@@ -13,26 +22,45 @@ function RiskBadge({ level }: { level: string }) {
 }
 
 const STAT_META: Record<string, { icon: string; color: string }> = {
-  research: { icon: 'research', color: '#2563eb' },
+  research: { icon: 'research', color: '#012348' },
   innovation: { icon: 'innovation', color: 'var(--green-600)' },
   ipr: { icon: 'ipr', color: '#f97316' },
   startup: { icon: 'startup', color: '#7c3aed' },
-  mentor: { icon: 'profile', color: '#0891b2' },
-  scheme: { icon: 'government', color: '#059669' },
+  mentor: { icon: 'profile', color: '#2ebdff' },
+  scheme: { icon: 'government', color: '#b37209' },
   incubator: { icon: 'ecosystem', color: '#db2777' },
   funding_request: { icon: 'rocket', color: '#ea580c' },
+};
+
+const STAGE_COLORS: Record<string, string> = {
+  Active: 'var(--green-600)',
+  Scaling: 'var(--blue-600)',
+  'Early Traction': 'var(--orange-500)',
+  Prototype: 'var(--violet-800)',
+  Validation: 'var(--yellow-500)',
 };
 
 export default function DashboardPage() {
   const { user } = useAuth();
   const [dash, setDash] = useState<Dashboard | null>(null);
+  const [gujarat, setGujarat] = useState<GujaratAnalytics | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    api.get<Dashboard>('/dashboard')
-      .then(d => { setDash(d); setLoading(false); })
-      .catch(e => { setError(e.message); setLoading(false); });
+    Promise.all([
+      api.get<Dashboard>('/dashboard'),
+      api.get<GujaratAnalytics>('/analytics/gujarat'),
+    ])
+      .then(([d, g]) => {
+        setDash(d);
+        setGujarat(g);
+        setLoading(false);
+      })
+      .catch(e => {
+        setError(e.message);
+        setLoading(false);
+      });
   }, []);
 
   if (loading) return <div style={{ padding: 40, textAlign: 'center', color: 'var(--gray-500)' }}>Loading dashboard...</div>;
@@ -40,6 +68,25 @@ export default function DashboardPage() {
   if (!dash) return null;
 
   const pipelineSteps = ['research', 'innovation', 'ipr', 'startup'];
+
+  const topDistricts = gujarat
+    ? Object.entries(gujarat.by_district)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 10)
+    : [];
+  const districtMax = topDistricts.length > 0 ? topDistricts[0][1] : 1;
+
+  const topSectors = gujarat
+    ? Object.entries(gujarat.by_sector)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 10)
+    : [];
+  const sectorMax = topSectors.length > 0 ? topSectors[0][1] : 1;
+
+  const stageEntries = gujarat
+    ? Object.entries(gujarat.by_stage).sort((a, b) => b[1] - a[1])
+    : [];
+  const stageMax = stageEntries.length > 0 ? stageEntries[0][1] : 1;
 
   return (
     <div>
@@ -52,11 +99,31 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      <div style={{ background: 'var(--yellow-50)', border: '1px solid var(--yellow-100)', borderRadius: 10, padding: '10px 14px', fontSize: 13, color: 'var(--yellow-800)', marginBottom: 20 }}>
-        {dash.banner}
+      <div style={{ background: '#fef7e8', border: '1px solid #fdecc8', borderRadius: 10, padding: '10px 14px', fontSize: 13, color: '#7a4d06', marginBottom: 20, fontWeight: 600 }}>
+        REAL Gujarat DPIIT Data — {gujarat ? gujarat.total_startups.toLocaleString() : '—'} registered startups across {gujarat ? gujarat.districts_count : '—'} districts
       </div>
 
-      {/* Pipeline flow */}
+      {gujarat && (
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 14, marginBottom: 24 }}>
+          {(() => {
+            const topEntry = Object.entries(gujarat.by_district).sort((a, b) => b[1] - a[1])[0];
+            const topDistrict = topEntry ? topEntry[0] : '—';
+            const topCount = topEntry ? topEntry[1] : 0;
+            return [
+              { label: 'Total Startups', value: gujarat.total_startups.toLocaleString(), color: '#7c3aed' },
+              { label: 'Districts', value: String(gujarat.districts_count), color: '#2ebdff' },
+              { label: 'Sectors', value: String(gujarat.sectors_count), color: '#b37209' },
+              { label: 'Top District', value: `${topDistrict} (${topCount.toLocaleString()})`, color: '#ea580c' },
+            ].map(kpi => (
+              <div key={kpi.label} style={{ background: 'var(--surface)', border: '1px solid var(--border-soft)', borderRadius: 12, padding: '16px 18px', boxShadow: 'var(--shadow-xs)' }}>
+                <div style={{ fontSize: 12, fontWeight: 600, color: 'var(--gray-500)', marginBottom: 6 }}>{kpi.label}</div>
+                <div style={{ fontSize: 22, fontWeight: 800, color: kpi.color, fontFamily: 'var(--font-display)' }}>{kpi.value}</div>
+              </div>
+            ));
+          })()}
+        </div>
+      )}
+
       <div style={{ display: 'flex', alignItems: 'center', gap: 0, marginBottom: 24, overflowX: 'auto', paddingBottom: 4 }}>
         {pipelineSteps.map((step, i) => (
           <div key={step} style={{ display: 'flex', alignItems: 'center' }}>
@@ -73,15 +140,15 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* Stats grid */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(170px, 1fr))', gap: 14, marginBottom: 24 }}>
         {Object.entries(dash.counts).map(([k, v]) => {
           const meta = STAT_META[k] || { icon: 'dashboard', color: '#64748b' };
+          const displayVal = k === 'startup' && gujarat ? gujarat.total_startups.toLocaleString() : String(v);
           return (
             <div className="stat-card" key={k}>
               <span className="label">{k.replace('_', ' ')}</span>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <span className="value">{String(v)}</span>
+                <span className="value">{displayVal}</span>
                 <span style={{ width: 36, height: 36, borderRadius: 10, background: `${meta.color}14`, color: meta.color, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <Icon name={meta.icon} size={18} />
                 </span>
@@ -91,7 +158,75 @@ export default function DashboardPage() {
         })}
       </div>
 
-      {/* Two-column layout */}
+      {gujarat && topDistricts.length > 0 && (
+        <div className="card" style={{ marginBottom: 24 }}>
+          <div className="card-header"><h3>Top 10 Districts by Startup Count</h3></div>
+          <div style={{ padding: '12px 16px' }}>
+            {topDistricts.map(([district, count]) => (
+              <div key={district} style={{ display: 'flex', alignItems: 'center', marginBottom: 8, gap: 12 }}>
+                <div style={{ width: 120, fontSize: 13, fontWeight: 600, color: 'var(--gray-700)', textAlign: 'right', flexShrink: 0 }}>{district}</div>
+                <div style={{ flex: 1, height: 24, background: 'var(--gray-100)', borderRadius: 6, overflow: 'hidden', position: 'relative' }}>
+                  <div style={{
+                    height: '100%',
+                    width: `${(count / districtMax) * 100}%`,
+                    background: 'linear-gradient(90deg, var(--green-500), var(--green-600))',
+                    borderRadius: 6,
+                    transition: 'width 0.3s ease',
+                  }} />
+                </div>
+                <div style={{ width: 60, fontSize: 13, fontWeight: 700, color: 'var(--green-700)', textAlign: 'right' }}>{count.toLocaleString()}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {gujarat && topSectors.length > 0 && (
+        <div className="card" style={{ marginBottom: 24 }}>
+          <div className="card-header"><h3>Top 10 Sectors</h3></div>
+          <div style={{ padding: '12px 16px' }}>
+            {topSectors.map(([sector, count]) => (
+              <div key={sector} style={{ display: 'flex', alignItems: 'center', marginBottom: 8, gap: 12 }}>
+                <div style={{ width: 140, fontSize: 13, fontWeight: 600, color: 'var(--gray-700)', textAlign: 'right', flexShrink: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{sector}</div>
+                <div style={{ flex: 1, height: 24, background: 'var(--gray-100)', borderRadius: 6, overflow: 'hidden' }}>
+                  <div style={{
+                    height: '100%',
+                    width: `${(count / sectorMax) * 100}%`,
+                    background: 'linear-gradient(90deg, var(--blue-500), var(--blue-600))',
+                    borderRadius: 6,
+                    transition: 'width 0.3s ease',
+                  }} />
+                </div>
+                <div style={{ width: 60, fontSize: 13, fontWeight: 700, color: 'var(--blue-600)', textAlign: 'right' }}>{count.toLocaleString()}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {gujarat && stageEntries.length > 0 && (
+        <div className="card" style={{ marginBottom: 24 }}>
+          <div className="card-header"><h3>Stage Distribution</h3></div>
+          <div style={{ padding: '12px 16px' }}>
+            {stageEntries.map(([stage, count]) => (
+              <div key={stage} style={{ display: 'flex', alignItems: 'center', marginBottom: 8, gap: 12 }}>
+                <div style={{ width: 140, fontSize: 13, fontWeight: 600, color: 'var(--gray-700)', textAlign: 'right', flexShrink: 0 }}>{stage}</div>
+                <div style={{ flex: 1, height: 24, background: 'var(--gray-100)', borderRadius: 6, overflow: 'hidden' }}>
+                  <div style={{
+                    height: '100%',
+                    width: `${(count / stageMax) * 100}%`,
+                    background: STAGE_COLORS[stage] || 'var(--gray-500)',
+                    borderRadius: 6,
+                    transition: 'width 0.3s ease',
+                  }} />
+                </div>
+                <div style={{ width: 60, fontSize: 13, fontWeight: 700, color: 'var(--gray-700)', textAlign: 'right' }}>{count.toLocaleString()}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }} className="two-col">
         <div className="card">
           <div className="card-header">
@@ -100,8 +235,8 @@ export default function DashboardPage() {
           </div>
           {dash.at_risk.length === 0 ? (
             <p className="empty" style={{ padding: 16 }}>No projects at risk</p>
-          ) : dash.at_risk.map(r => (
-            <div key={r.id} style={{ padding: '10px 0', borderBottom: '1px solid var(--gray-100)', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
+          ) : dash.at_risk.map((r, idx) => (
+            <div key={r.id || idx} style={{ padding: '10px 0', borderBottom: '1px solid var(--gray-100)', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
               <div>
                 <div style={{ fontWeight: 600, fontSize: 14 }}>{r.title}</div>
                 <div style={{ fontSize: 12, color: 'var(--gray-500)', marginTop: 2 }}>{r.reasons.join(' · ')}</div>
@@ -119,8 +254,8 @@ export default function DashboardPage() {
           <div className="card-header"><h3>Recent Activity</h3></div>
           {dash.recent.length === 0 ? (
             <p className="empty" style={{ padding: 16 }}>No records yet</p>
-          ) : dash.recent.map(r => (
-            <div key={r.id} style={{ padding: '10px 0', borderBottom: '1px solid var(--gray-100)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
+          ) : dash.recent.map((r, idx) => (
+            <div key={r.id || idx} style={{ padding: '10px 0', borderBottom: '1px solid var(--gray-100)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
               <div>
                 <div style={{ fontWeight: 600, fontSize: 14 }}>{r.title}</div>
                 <div style={{ fontSize: 12, color: 'var(--gray-500)', marginTop: 2 }}>{r.kind} · {r.district || 'No district'}</div>

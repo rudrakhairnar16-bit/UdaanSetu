@@ -3,10 +3,11 @@ from sqlalchemy.orm import Session
 
 from app.config import settings
 from app.dependencies import current, authorize, db
-from app.models import Record
+from app.models import Record, Challenge
 from app.ml.engine import (
     get_semantic_engine, get_risk_engine, get_success_predictor,
     get_duplicate_detector, get_training_pipeline, build_records_data,
+    get_startup_matcher, get_pilot_risk_scorer, get_scale_predictor,
 )
 
 router = APIRouter(prefix="/ai", tags=["ai"])
@@ -204,3 +205,202 @@ def retrain_models(s: Session = Depends(db), u=Depends(authorize("admin"))):
     results = pipeline.train_all(records_data)
 
     return {"message": "Models retrained", "results": results}
+
+
+# ── SIH26136 — Startup Procurement AI Endpoints ──
+
+@router.get("/match-startup/{challenge_id}")
+def match_startups(challenge_id: int, top_k: int = Query(5, ge=1, le=20),
+                   s: Session = Depends(db), u=Depends(current)):
+    """Match startups to a government challenge based on semantic similarity."""
+    challenge = s.get(Challenge, challenge_id)
+    if not challenge:
+        raise HTTPException(404, "Challenge not found")
+
+    startups = s.query(Record).filter(Record.kind == "startup").all()
+    startup_list = []
+    for st in startups:
+        startup_list.append({
+            "id": st.id, "title": st.title, "description": st.description or "",
+            "sector": st.sector or "", "district": st.district or "",
+            "stage": st.stage or "",
+            "capabilities": st.meta.get("impact", "") + " " + st.meta.get("revenue", ""),
+        })
+
+    challenge_text = f"{challenge.title} {challenge.description} {challenge.sector} {challenge.category}"
+    matcher = get_startup_matcher()
+    results = matcher.match_startups_to_challenge(challenge_text, startup_list, top_k=top_k)
+
+    return {
+        "challenge_id": challenge.id, "title": challenge.title,
+        "matches": results, "total_startups_checked": len(startup_list),
+    }
+
+
+@router.get("/pilot-risk/{pilot_id}")
+def pilot_risk(pilot_id: int, s: Session = Depends(db), u=Depends(current)):
+    """Predict pilot success/failure risk using ML."""
+    from app.models import Pilot, PilotMilestone
+    pilot = s.get(Pilot, pilot_id)
+    if not pilot:
+        raise HTTPException(404, "Pilot not found")
+
+    milestones = s.query(PilotMilestone).filter_by(pilot_id=pilot.id).all()
+    completed = sum(1 for m in milestones if m.approval_status == "approved")
+    total = len(milestones)
+
+    features = {
+        "budget_amount": float(pilot.budget or 0),
+        "duration_weeks": pilot.duration_weeks or 12,
+        "milestone_count": total,
+        "department_match": 1.0,
+        "startup_experience": 0.7,
+        "risk_management_score": 0.8,
+    }
+
+    scorer = get_pilot_risk_scorer()
+    result = scorer.predict(features)
+
+    return {
+        "pilot_id": pilot.id,
+        "status": pilot.status,
+        "milestones_completed": completed,
+        "milestones_total": total,
+        **result,
+    }
+
+
+@router.get("/scale-predict/{pilot_id}")
+def scale_predict(pilot_id: int, s: Session = Depends(db), u=Depends(current)):
+    """Predict whether a pilot should be scaled up."""
+    from app.models import Pilot, PilotMilestone, ScaleUpDecision
+    pilot = s.get(Pilot, pilot_id)
+    if not pilot:
+        raise HTTPException(404, "Pilot not found")
+
+    milestones = s.query(PilotMilestone).filter_by(pilot_id=pilot.id).all()
+    completed = sum(1 for m in milestones if m.approval_status == "approved")
+    total = len(milestones)
+    last_scale = s.query(ScaleUpDecision).filter_by(pilot_id=pilot.id).order_by(ScaleUpDecision.id.desc()).first()
+
+    predictor = get_scale_predictor()
+    result = predictor.predict({
+        "success_probability": 0.85 if pilot.status == "in_progress" else 0.5,
+        "budget_amount": float(pilot.budget or 0),
+        "duration_weeks": pilot.duration_weeks or 12,
+        "milestones_completed": completed,
+        "total_milestones": total or 1,
+    })
+
+    return {
+        "pilot_id": pilot.id,
+        "status": pilot.status,
+        "last_decision": last_scale.decision if last_scale else None,
+        **result,
+    }
+
+
+@router.post("/challenge-draft")
+def generate_challenge_draft(x: dict, u=Depends(authorize("govt_officer", "admin"))):
+    """AI Challenge Generator — convert raw problem into structured challenge draft."""
+    raw_problem = x.get("problem", "")
+    department = x.get("department", "")
+    sector = x.get("sector", "")
+
+    if not raw_problem:
+        raise HTTPException(400, "Problem description is required")
+
+    MAHARASHTRA_DEPARTMENTS = [
+        "Urban Development", "Information Technology", "Health & Family Welfare",
+        "Agriculture", "School Education & Sports", "Water Resources & Irrigation",
+        "Transport", "Industries & Energy", "Finance & Planning",
+        "Public Works", "Housing", "Rural Development",
+    ]
+
+    MAHARASHTRA_KPI_MAP = {
+        "Urban Development": [
+            {"name": "Slum Rehousing Coverage", "target": "1000 households", "unit": "households"},
+            {"name": "Infrastructure Delivery Time", "target": "< 6 months", "unit": "months"},
+            {"name": "Citizen Satisfaction Score", "target": "4.0+ / 5.0", "unit": "rating"},
+        ],
+        "IT": [
+            {"name": "Digital Service Uptime", "target": "99.5%", "unit": "percentage"},
+            {"name": "Citizen Onboarding", "target": "10,000 users", "unit": "count"},
+            {"name": "Data Breach Incidents", "target": "0", "unit": "count"},
+        ],
+        "Health & Family Welfare": [
+            {"name": "Rural Clinic Coverage", "target": "80% PHCs connected", "unit": "percentage"},
+            {"name": "Avg Response Time (Emergency)", "target": "< 15 min", "unit": "minutes"},
+            {"name": "Patient Records Digitized", "target": "50,000", "unit": "count"},
+        ],
+        "Agriculture": [
+            {"name": "Crop Yield Improvement", "target": "15% increase", "unit": "percentage"},
+            {"name": "Farmer Adoption Rate", "target": "5000 farmers", "unit": "count"},
+            {"name": "Water Usage Reduction", "target": "20% savings", "unit": "percentage"},
+        ],
+        "default": [
+            {"name": "Solution Effectiveness", "target": "80% improvement over baseline", "unit": "percentage"},
+            {"name": "User Adoption", "target": "500+ users in pilot phase", "unit": "count"},
+            {"name": "Cost Efficiency", "target": "30% cost reduction vs current approach", "unit": "percentage"},
+        ],
+    }
+
+    dept_display = department or "General Administration"
+    dept_kpis = MAHARASHTRA_KPI_MAP.get(department, MAHARASHTRA_KPI_MAP["default"])
+
+    generated = {
+        "problem_statement": raw_problem,
+        "suggested_title": f"Innovation Challenge — {dept_display}: {raw_problem[:80]}",
+        "department": dept_display,
+        "sector": sector or "Cross-cutting",
+        "suggested_outcomes": [
+            "Develop a scalable prototype addressing the stated problem",
+            "Demonstrate measurable impact in pilot deployment across Maharashtra districts",
+            "Provide documentation and training materials for state-wide rollout",
+            "Meet Maharashtra e-Governance Standards (MeeSeva / GRAS integration where applicable)",
+        ],
+        "suggested_kpis": dept_kpis,
+        "suggested_eligibility": [
+            "DPIIT-registered startup",
+            f"Sector: {sector or dept_display}",
+            "Annual revenue < 100 Crore",
+            "Not blacklisted by any Central or State government entity",
+            "Minimum 1 year of operational history",
+        ],
+        "suggested_evaluation_criteria": [
+            {"name": "Technical Feasibility", "weight": 0.25, "scale": "1-10", "description": "Can the solution be built and deployed within the pilot timeline?"},
+            {"name": "Impact Potential", "weight": 0.25, "scale": "1-10", "description": "Expected benefit to Maharashtra citizens"},
+            {"name": "Cost Efficiency", "weight": 0.15, "scale": "1-10", "description": "TCO vs current manual/legacy approach"},
+            {"name": "Scalability", "weight": 0.15, "scale": "1-10", "description": "Can it scale to 36 districts?"},
+            {"name": "Team Capability", "weight": 0.10, "scale": "1-10", "description": "Domain expertise and past delivery track record"},
+            {"name": "Data & Privacy Compliance", "weight": 0.10, "scale": "1-10", "description": "DPDP Act 2023 and state data governance compliance"},
+        ],
+        "suggested_duration_weeks": 16,
+        "suggested_budget_range": "5-25 Lakh INR (pilot phase)",
+        "suggested_procurement_pathway": [
+            {"channel": "GeM (Government e-Marketplace)", "suitability": "High", "notes": "Listed DPIIT startups can be sourced via GeM for direct purchase up to INR 50 Lakh"},
+            {"channel": "Single Tender (below threshold)", "suitability": "Medium", "notes": "If only one eligible vendor, justify via single tender per GFR Rule 165"},
+            {"channel": "Competitive Tender / RFP", "suitability": "High", "notes": "Standard route for higher-value procurement; publish on GeM and state portal"},
+        ],
+        "suggested_risks": [
+            "Technical complexity may require iterative prototyping",
+            "User adoption in government setting requires training and change management",
+            "Data privacy compliance with DPDP Act 2023 and Maharashtra state data policy",
+            "Interoperability with existing legacy systems (e.g., MeeSeva, GRAS)",
+        ],
+        "suggested_evidence_requirements": [
+            "Working prototype demo (live or video walkthrough)",
+            "User feedback from pilot group (min. 50 respondents)",
+            "Cost-benefit analysis report with 3-year TCO projection",
+            "Security audit certificate (CERT-In empanelled auditor)",
+            "DPDP Act compliance self-assessment",
+        ],
+        "meta": {
+            "department": department,
+            "sector": sector,
+            "generated_by": "ai_challenge_generator",
+            "requires_officer_review": True,
+            "note": "Officer must review and edit before publishing. KPIs are suggestions based on Maharashtra department context.",
+        },
+    }
+    return generated

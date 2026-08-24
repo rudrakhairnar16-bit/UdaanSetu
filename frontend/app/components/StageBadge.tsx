@@ -43,7 +43,7 @@ const STAGE_STYLES: Record<string, { bg: string; color: string }> = {
 };
 
 export function StageBadge({ stage }: StageBadgeProps) {
-  const s = stage.toLowerCase();
+  const s = (stage || '').toLowerCase();
   const style = STAGE_STYLES[s] || { bg: 'var(--gray-100)', color: 'var(--gray-600)' };
   return (
     <span style={{
@@ -51,7 +51,7 @@ export function StageBadge({ stage }: StageBadgeProps) {
       borderRadius: 9999, fontSize: 12, fontWeight: 600,
       background: style.bg, color: style.color,
     }}>
-      {stage}
+      {stage || 'Unknown'}
     </span>
   );
 }

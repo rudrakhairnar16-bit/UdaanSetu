@@ -1,0 +1,1514 @@
+[
+  {
+    "name": "iCreate",
+    "type": "Government",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "Technology",
+      "Manufacturing",
+      "Social Enterprise",
+      "Agriculture"
+    ],
+    "university_or_parent": "Government of Gujarat / iCreate Foundation",
+    "website": "https://www.icreate.org.in",
+    "startups_supported": 150,
+    "founded_year": 2012,
+    "capacity": "200+ seats",
+    "programs": [
+      "Incubation",
+      "Mentorship",
+      "Funding Support",
+      "Market Access",
+      "Global Connect"
+    ],
+    "notable_startups": [
+      "Vibrant Gujarat",
+      "Zerund",
+      "EcoEnergy"
+    ],
+    "contact_email": "info@icreate.org.in"
+  },
+  {
+    "name": "GUSEC - Gujarat University Startup Ecosystem Council",
+    "type": "Government",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "Technology",
+      "Healthcare",
+      "Education",
+      "Social Enterprise"
+    ],
+    "university_or_parent": "Gujarat University",
+    "website": "https://gusec.edu.in",
+    "startups_supported": 200,
+    "founded_year": 2017,
+    "capacity": "150+ seats",
+    "programs": [
+      "Incubation",
+      "Pre-incubation",
+      "Mentorship",
+      "Funding",
+      "Events"
+    ],
+    "notable_startups": [
+      "PharmEasy",
+      "HealZone",
+      "EduPristine"
+    ],
+    "contact_email": "info@gusec.edu.in"
+  },
+  {
+    "name": "Gujarat Student Startup & Innovation Hub (i-Hub)",
+    "type": "Government",
+    "city": "Gandhinagar",
+    "district": "Gandhinagar",
+    "focus_areas": [
+      "Innovation",
+      "Student Startups",
+      "Deep Tech",
+      "Social Enterprise"
+    ],
+    "university_or_parent": "Gujarat Council on Science & Technology (GCOST)",
+    "website": "https://www.ihub-gujarat.org",
+    "startups_supported": 100,
+    "founded_year": 2016,
+    "capacity": "100+ seats",
+    "programs": [
+      "Student Incubation",
+      "Innovation Challenges",
+      "Hackathons",
+      "Mentorship"
+    ],
+    "notable_startups": [
+      "SolarTech Gujarat",
+      "AquaSmart",
+      "GreenBuild"
+    ],
+    "contact_email": "info@ihub-gujarat.org"
+  },
+  {
+    "name": "Atal Incubation Centre - PDEU",
+    "type": "Government",
+    "city": "Gandhinagar",
+    "district": "Gandhinagar",
+    "focus_areas": [
+      "Energy",
+      "Technology",
+      "Manufacturing",
+      "Agriculture"
+    ],
+    "university_or_parent": "Pandit Deendayal Energy University (PDEU)",
+    "website": "https://aic.pdeu.ac.in",
+    "startups_supported": 80,
+    "founded_year": 2018,
+    "capacity": "80 seats",
+    "programs": [
+      "Incubation",
+      "Mentorship",
+      "Funding Support",
+      "Industry Connect"
+    ],
+    "notable_startups": [
+      "SolarGrid",
+      "WindTech India",
+      "CleanEnergy Solutions"
+    ],
+    "contact_email": "aic@pdeu.ac.in"
+  },
+  {
+    "name": "Atal Incubation Centre - Nirma University",
+    "type": "Government",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "Technology",
+      "Pharmaceuticals",
+      "Chemical Engineering",
+      "Management"
+    ],
+    "university_or_parent": "Nirma University",
+    "website": "https://aic.nirmauni.ac.in",
+    "startups_supported": 70,
+    "founded_year": 2017,
+    "capacity": "60 seats",
+    "programs": [
+      "Incubation",
+      "Mentorship",
+      "Funding",
+      "Industry Collaboration"
+    ],
+    "notable_startups": [
+      "ChemTech Solutions",
+      "PharmaInnovate",
+      "NirmaAI"
+    ],
+    "contact_email": "aic@nirmauni.ac.in"
+  },
+  {
+    "name": "Atal Incubation Centre - CHARUSAT",
+    "type": "Government",
+    "city": "Changa",
+    "district": "Anand",
+    "focus_areas": [
+      "Technology",
+      "Biotechnology",
+      "Pharmacy",
+      "Engineering"
+    ],
+    "university_or_parent": "Charotar University of Science and Technology (CHARUSAT)",
+    "website": "https://aic.charusat.ac.in",
+    "startups_supported": 60,
+    "founded_year": 2018,
+    "capacity": "50 seats",
+    "programs": [
+      "Incubation",
+      "Mentorship",
+      "Research Commercialization",
+      "Funding"
+    ],
+    "notable_startups": [
+      "BioCharusat",
+      "AgriTech Changa",
+      "PharmaCharusat"
+    ],
+    "contact_email": "aic@charusat.ac.in"
+  },
+  {
+    "name": "Atal Incubation Centre - RK University",
+    "type": "Government",
+    "city": "Rajkot",
+    "district": "Rajkot",
+    "focus_areas": [
+      "Technology",
+      "Agriculture",
+      "Manufacturing",
+      "Education"
+    ],
+    "university_or_parent": "RK University",
+    "website": "https://aic.rku.ac.in",
+    "startups_supported": 50,
+    "founded_year": 2018,
+    "capacity": "40 seats",
+    "programs": [
+      "Incubation",
+      "Mentorship",
+      "Funding",
+      "Student Innovation"
+    ],
+    "notable_startups": [
+      "AgriSolutions Rajkot",
+      "ManufacturTech",
+      "RKInnovation"
+    ],
+    "contact_email": "aic@rku.ac.in"
+  },
+  {
+    "name": "Atal Incubation Centre - Marwadi University",
+    "type": "Government",
+    "city": "Rajkot",
+    "district": "Rajkot",
+    "focus_areas": [
+      "Technology",
+      "Engineering",
+      "Agriculture",
+      "Social Enterprise"
+    ],
+    "university_or_parent": "Marwadi University",
+    "website": "https://aic.marwadiuniversity.ac.in",
+    "startups_supported": 55,
+    "founded_year": 2018,
+    "capacity": "45 seats",
+    "programs": [
+      "Incubation",
+      "Mentorship",
+      "Funding",
+      "Industry Connect"
+    ],
+    "notable_startups": [
+      "MarwadiAgri",
+      "TechSolutions Rajkot",
+      "SocialInnovate"
+    ],
+    "contact_email": "aic@marwadiuniversity.ac.in"
+  },
+  {
+    "name": "Atal Incubation Centre - Dharmsinh Desai University",
+    "type": "Government",
+    "city": "Nadiad",
+    "district": "Kheda",
+    "focus_areas": [
+      "Technology",
+      "Pharmacy",
+      "Engineering",
+      "Management"
+    ],
+    "university_or_parent": "Dharmsinh Desai University (DDU)",
+    "website": "https://aic.ddu.ac.in",
+    "startups_supported": 40,
+    "founded_year": 2019,
+    "capacity": "35 seats",
+    "programs": [
+      "Incubation",
+      "Mentorship",
+      "Funding Support",
+      "Research"
+    ],
+    "notable_startups": [
+      "DDUPharma",
+      "TechInnovate Nadiad",
+      "DDUEnergy"
+    ],
+    "contact_email": "aic@ddu.ac.in"
+  },
+  {
+    "name": "Atal Incubation Centre - Gujarat Technological University",
+    "type": "Government",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "Technology",
+      "Engineering",
+      "IT",
+      "Manufacturing"
+    ],
+    "university_or_parent": "Gujarat Technological University (GTU)",
+    "website": "https://aic.gtu.ac.in",
+    "startups_supported": 120,
+    "founded_year": 2017,
+    "capacity": "100 seats",
+    "programs": [
+      "Incubation",
+      "Mentorship",
+      "Funding",
+      "Innovation Challenges"
+    ],
+    "notable_startups": [
+      "GTUTech",
+      "InnovateGujarat",
+      "TechStartup GTU"
+    ],
+    "contact_email": "aic@gtu.ac.in"
+  },
+  {
+    "name": "IIM Ahmedabad CIIE.CO",
+    "type": "Government",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "Technology",
+      "Healthcare",
+      "FinTech",
+      "Social Enterprise"
+    ],
+    "university_or_parent": "IIM Ahmedabad",
+    "website": "https://ciie.co",
+    "startups_supported": 180,
+    "founded_year": 2010,
+    "capacity": "120 seats",
+    "programs": [
+      "Incubation",
+      "Accelerator",
+      "Mentorship",
+      "Funding",
+      "Research"
+    ],
+    "notable_startups": [
+      "Vogo",
+      "Zolostays",
+      "INNRWAY",
+      "MythriMessages"
+    ],
+    "contact_email": "info@ciie.co"
+  },
+  {
+    "name": "IIT Gandhinagar Innovation & Incubation Centre",
+    "type": "Government",
+    "city": "Gandhinagar",
+    "district": "Gandhinagar",
+    "focus_areas": [
+      "Deep Tech",
+      "AI/ML",
+      "Biotechnology",
+      "Clean Energy"
+    ],
+    "university_or_parent": "IIT Gandhinagar",
+    "website": "https://iic.iitgn.ac.in",
+    "startups_supported": 90,
+    "founded_year": 2014,
+    "capacity": "80 seats",
+    "programs": [
+      "Incubation",
+      "Pre-incubation",
+      "Mentorship",
+      "Research Translation"
+    ],
+    "notable_startups": [
+      "Cogitti",
+      "Nocatra",
+      "LightDoq"
+    ],
+    "contact_email": "iic@iitgn.ac.in"
+  },
+  {
+    "name": "CEPT University Innovation Hub",
+    "type": "Government",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "Urban Planning",
+      "Architecture",
+      "Infrastructure",
+      "Smart Cities"
+    ],
+    "university_or_parent": "CEPT University",
+    "website": "https://cept.ac.in/innovation",
+    "startups_supported": 40,
+    "founded_year": 2016,
+    "capacity": "30 seats",
+    "programs": [
+      "Incubation",
+      "Research",
+      "Mentorship",
+      "Field Projects"
+    ],
+    "notable_startups": [
+      "UrbanTech Ahmedabad",
+      "SmartCity Solutions",
+      "GreenBuilding Tech"
+    ],
+    "contact_email": "innovation@cept.ac.in"
+  },
+  {
+    "name": "MSME Development Institute - Ahmedabad",
+    "type": "Government",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "MSME",
+      "Manufacturing",
+      "Technology Adoption",
+      "Skill Development"
+    ],
+    "university_or_parent": "Ministry of MSME, Government of India",
+    "website": "https://msme-ahmedabad.gov.in",
+    "startups_supported": 200,
+    "founded_year": 1954,
+    "capacity": "300+ seats",
+    "programs": [
+      "MSME Support",
+      "Technology Upgradation",
+      "Skill Training",
+      "Quality Certification"
+    ],
+    "notable_startups": [
+      "Various MSMEs across Gujarat"
+    ],
+    "contact_email": "msmeahm@gm.cscomms.gov.in"
+  },
+  {
+    "name": "Gujarat Council on Science & Technology (GCOST)",
+    "type": "Government",
+    "city": "Gandhinagar",
+    "district": "Gandhinagar",
+    "focus_areas": [
+      "Science & Technology",
+      "Innovation",
+      "Research",
+      "Technology Transfer"
+    ],
+    "university_or_parent": "Department of Science and Technology, Government of Gujarat",
+    "website": "https://gcost.gujarat.gov.in",
+    "startups_supported": 60,
+    "founded_year": 1978,
+    "capacity": "50 seats",
+    "programs": [
+      "Research Funding",
+      "Technology Transfer",
+      "Innovation Grants",
+      "Student Programs"
+    ],
+    "notable_startups": [
+      "Various science-based startups"
+    ],
+    "contact_email": "gcost@gmail.com"
+  },
+  {
+    "name": "DST-SEED Supported Incubator - Ahmedabad",
+    "type": "Government",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "Technology",
+      "Innovation",
+      "Social Enterprise"
+    ],
+    "university_or_parent": "Department of Science and Technology, Government of India",
+    "website": "https://dst-seed.org",
+    "startups_supported": 80,
+    "founded_year": 2015,
+    "capacity": "60 seats",
+    "programs": [
+      "Incubation",
+      "Seed Funding",
+      "Mentorship",
+      "Market Access"
+    ],
+    "notable_startups": [
+      "Various technology startups"
+    ],
+    "contact_email": "info@dst-seed.org"
+  },
+  {
+    "name": "Nirma University IIC",
+    "type": "University",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "Technology",
+      "Management",
+      "Pharmacy",
+      "Law"
+    ],
+    "university_or_parent": "Nirma University",
+    "website": "https://iic.nirmauni.ac.in",
+    "startups_supported": 100,
+    "founded_year": 2016,
+    "capacity": "80 seats",
+    "programs": [
+      "Incubation",
+      "Mentorship",
+      "Funding",
+      "Events"
+    ],
+    "notable_startups": [
+      "NirmaInnovate",
+      "PharmaStar",
+      "LegalTech Nirma"
+    ],
+    "contact_email": "iic@nirmauni.ac.in"
+  },
+  {
+    "name": "Marwadi University IIF",
+    "type": "University",
+    "city": "Rajkot",
+    "district": "Rajkot",
+    "focus_areas": [
+      "Technology",
+      "Engineering",
+      "Agriculture",
+      "Business"
+    ],
+    "university_or_parent": "Marwadi University",
+    "website": "https://iif.marwadiuniversity.ac.in",
+    "startups_supported": 70,
+    "founded_year": 2015,
+    "capacity": "50 seats",
+    "programs": [
+      "Incubation",
+      "Mentorship",
+      "Funding",
+      "Industry Connect"
+    ],
+    "notable_startups": [
+      "MarwadiAgri",
+      "TechStartup Rajkot",
+      "BusinessInnovate"
+    ],
+    "contact_email": "iif@marwadiuniversity.ac.in"
+  },
+  {
+    "name": "Babaria Institute IC",
+    "type": "University",
+    "city": "Vadodara",
+    "district": "Vadodara",
+    "focus_areas": [
+      "Technology",
+      "Management",
+      "Engineering",
+      "Innovation"
+    ],
+    "university_or_parent": "Babaria Institute of Technology",
+    "website": "https://bibiit.edu.in",
+    "startups_supported": 40,
+    "founded_year": 2018,
+    "capacity": "30 seats",
+    "programs": [
+      "Incubation",
+      "Mentorship",
+      "Funding",
+      "Events"
+    ],
+    "notable_startups": [
+      "VadodaraTech",
+      "InnoVadodara",
+      "TechStart BIB"
+    ],
+    "contact_email": "ic@bibiit.edu.in"
+  },
+  {
+    "name": "Sigma University Incubator",
+    "type": "University",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "Technology",
+      "Design",
+      "Management",
+      "Media"
+    ],
+    "university_or_parent": "Sigma University",
+    "website": "https://sigmauniversity.ac.in/incubator",
+    "startups_supported": 50,
+    "founded_year": 2019,
+    "capacity": "40 seats",
+    "programs": [
+      "Incubation",
+      "Mentorship",
+      "Funding",
+      "Design Thinking"
+    ],
+    "notable_startups": [
+      "DesignTech",
+      "MediaInnovate",
+      "SigmaStartup"
+    ],
+    "contact_email": "incubator@sigmauniversity.ac.in"
+  },
+  {
+    "name": "GLS University Incubator",
+    "type": "University",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "Technology",
+      "Management",
+      "Commerce",
+      "Social Enterprise"
+    ],
+    "university_or_parent": "GLS University",
+    "website": "https://glsuniversity.ac.in/incubator",
+    "startups_supported": 45,
+    "founded_year": 2018,
+    "capacity": "35 seats",
+    "programs": [
+      "Incubation",
+      "Mentorship",
+      "Funding",
+      "Business Development"
+    ],
+    "notable_startups": [
+      "GLSInnovate",
+      "SocialEnterprise GLS",
+      "CommerTech"
+    ],
+    "contact_email": "incubator@glsuniversity.ac.in"
+  },
+  {
+    "name": "Parul University Incubator",
+    "type": "University",
+    "city": "Vadodara",
+    "district": "Vadodara",
+    "focus_areas": [
+      "Technology",
+      "Engineering",
+      "Healthcare",
+      "Agriculture"
+    ],
+    "university_or_parent": "Parul University",
+    "website": "https://paruluniversity.ac.in/incubator",
+    "startups_supported": 80,
+    "founded_year": 2017,
+    "capacity": "60 seats",
+    "programs": [
+      "Incubation",
+      "Mentorship",
+      "Funding",
+      "Research Commercialization"
+    ],
+    "notable_startups": [
+      "ParulTech",
+      "HealthInnovate",
+      "AgriParul"
+    ],
+    "contact_email": "incubator@paruluniversity.ac.in"
+  },
+  {
+    "name": "LJ University Incubator",
+    "type": "University",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "Technology",
+      "Engineering",
+      "Design",
+      "Management"
+    ],
+    "university_or_parent": "LJ University",
+    "website": "https://ljuniversity.ac.in/incubator",
+    "startups_supported": 35,
+    "founded_year": 2019,
+    "capacity": "25 seats",
+    "programs": [
+      "Incubation",
+      "Mentorship",
+      "Funding",
+      "Skill Development"
+    ],
+    "notable_startups": [
+      "LJTech",
+      "DesignInnovate",
+      "LJStartup"
+    ],
+    "contact_email": "incubator@ljuniversity.ac.in"
+  },
+  {
+    "name": "Ahmedabad University IEC",
+    "type": "University",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "Technology",
+      "Research",
+      "Innovation",
+      "Social Enterprise"
+    ],
+    "university_or_parent": "Ahmedabad University",
+    "website": "https://ahduni.edu.in/iec",
+    "startups_supported": 60,
+    "founded_year": 2015,
+    "capacity": "45 seats",
+    "programs": [
+      "Incubation",
+      "Research",
+      "Mentorship",
+      "International Collaboration"
+    ],
+    "notable_startups": [
+      "AhdUni Innovate",
+      "ResearchStartup",
+      "SocialTech Ahmedabad"
+    ],
+    "contact_email": "iec@ahduni.edu.in"
+  },
+  {
+    "name": "Zydus Startup Hub",
+    "type": "Private",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "Healthcare",
+      "Pharmaceuticals",
+      "Biotechnology",
+      "MedTech"
+    ],
+    "university_or_parent": "Zydus Lifesciences",
+    "website": "https://zydushub.com",
+    "startups_supported": 30,
+    "founded_year": 2020,
+    "capacity": "25 seats",
+    "programs": [
+      "Healthcare Incubation",
+      "Mentorship",
+      "Funding",
+      "Regulatory Support"
+    ],
+    "notable_startups": [
+      "ZydusHealth",
+      "PharmaStart",
+      "MedTech Gujarat"
+    ],
+    "contact_email": "hub@zydushub.com"
+  },
+  {
+    "name": "Torrent Startup Hub",
+    "type": "Private",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "Energy",
+      "Infrastructure",
+      "Healthcare",
+      "Education"
+    ],
+    "university_or_parent": "Torrent Group",
+    "website": "https://torrenthub.com",
+    "startups_supported": 40,
+    "founded_year": 2019,
+    "capacity": "35 seats",
+    "programs": [
+      "Incubation",
+      "Mentorship",
+      "Funding",
+      "Industry Connect"
+    ],
+    "notable_startups": [
+      "TorrentEnergy Startup",
+      "HealthTech Torrent",
+      "InfraTech Ahmedabad"
+    ],
+    "contact_email": "startup@torrenthub.com"
+  },
+  {
+    "name": "Adani Startup Hub",
+    "type": "Private",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "Infrastructure",
+      "Energy",
+      "Technology",
+      "Logistics"
+    ],
+    "university_or_parent": "Adani Group",
+    "website": "https://adanistartuphub.com",
+    "startups_supported": 35,
+    "founded_year": 2021,
+    "capacity": "30 seats",
+    "programs": [
+      "Incubation",
+      "Mentorship",
+      "Funding",
+      "Global Market Access"
+    ],
+    "notable_startups": [
+      "AdaniEnergy",
+      "InfraStart",
+      "LogiTech Adani"
+    ],
+    "contact_email": "hub@adanistartuphub.com"
+  },
+  {
+    "name": "Cadila Startup Incubator",
+    "type": "Private",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "Pharmaceuticals",
+      "Healthcare",
+      "Biotech",
+      "MedTech"
+    ],
+    "university_or_parent": "Cadila Healthcare (Zydus)",
+    "website": "https://cadilaincubator.com",
+    "startups_supported": 25,
+    "founded_year": 2018,
+    "capacity": "20 seats",
+    "programs": [
+      "Healthcare Incubation",
+      "R&D Support",
+      "Mentorship",
+      "Regulatory"
+    ],
+    "notable_startups": [
+      "CadilaHealth",
+      "PharmaInnovate",
+      "BioCadila"
+    ],
+    "contact_email": "incubator@cadilaincubator.com"
+  },
+  {
+    "name": "Zensar Startup Hub",
+    "type": "Private",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "IT Services",
+      "Digital Transformation",
+      "AI/ML",
+      "Cloud"
+    ],
+    "university_or_parent": "Zensar Technologies",
+    "website": "https://zensarstartup.com",
+    "startups_supported": 30,
+    "founded_year": 2020,
+    "capacity": "25 seats",
+    "programs": [
+      "IT Incubation",
+      "Digital Skills",
+      "Mentorship",
+      "Client Access"
+    ],
+    "notable_startups": [
+      "ZensarDigital",
+      "AISolutions",
+      "CloudTech Ahmedabad"
+    ],
+    "contact_email": "startup@zensarstartup.com"
+  },
+  {
+    "name": "TCS Startup Hub",
+    "type": "Private",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "IT",
+      "Digital Solutions",
+      "Enterprise Software",
+      "Analytics"
+    ],
+    "university_or_parent": "Tata Consultancy Services",
+    "website": "https://tcsstartup.com",
+    "startups_supported": 40,
+    "founded_year": 2019,
+    "capacity": "35 seats",
+    "programs": [
+      "Incubation",
+      "Digital Training",
+      "Mentorship",
+      "Client Connect"
+    ],
+    "notable_startups": [
+      "TCSInnovate",
+      "EnterpriseTech",
+      "AnalyticsStartup"
+    ],
+    "contact_email": "startup@tcsstartup.com"
+  },
+  {
+    "name": "Wipro Startup Hub",
+    "type": "Private",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "IT",
+      "Cloud",
+      "AI/ML",
+      "Cybersecurity"
+    ],
+    "university_or_parent": "Wipro Limited",
+    "website": "https://wiprostartup.com",
+    "startups_supported": 35,
+    "founded_year": 2020,
+    "capacity": "30 seats",
+    "programs": [
+      "Incubation",
+      "Technology Support",
+      "Mentorship",
+      "Market Access"
+    ],
+    "notable_startups": [
+      "WiproTech",
+      "CloudStartup",
+      "CyberSecure Ahmedabad"
+    ],
+    "contact_email": "startup@wiprostartup.com"
+  },
+  {
+    "name": "Infosys Startup Hub",
+    "type": "Private",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "IT",
+      "AI/ML",
+      "Digital Platforms",
+      "Enterprise Solutions"
+    ],
+    "university_or_parent": "Infosys Limited",
+    "website": "https://infosysstartup.com",
+    "startups_supported": 45,
+    "founded_year": 2019,
+    "capacity": "40 seats",
+    "programs": [
+      "Incubation",
+      "Digital Innovation",
+      "Mentorship",
+      "Global Exposure"
+    ],
+    "notable_startups": [
+      "InfosysInnovate",
+      "DigitalStartup",
+      "EnterpriseInnovate"
+    ],
+    "contact_email": "startup@infosysstartup.com"
+  },
+  {
+    "name": "Samsung Innovation Lab",
+    "type": "Private",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "Electronics",
+      "IoT",
+      "AI/ML",
+      "Hardware"
+    ],
+    "university_or_parent": "Samsung India",
+    "website": "https://samsung.com/in/smartthings/startup",
+    "startups_supported": 20,
+    "founded_year": 2021,
+    "capacity": "20 seats",
+    "programs": [
+      "Hardware Incubation",
+      "IoT Development",
+      "Mentorship",
+      "Technology Access"
+    ],
+    "notable_startups": [
+      "SamsungLabs",
+      "IoTStartup",
+      "HardwareInnovate"
+    ],
+    "contact_email": "lab@samsungstartup.com"
+  },
+  {
+    "name": "CII Gujarat Startup Hub",
+    "type": "Private",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "Industry",
+      "Policy",
+      "Networking",
+      "Market Access"
+    ],
+    "university_or_parent": "Confederation of Indian Industry (CII)",
+    "website": "https://cii.in/startup-gujarat",
+    "startups_supported": 100,
+    "founded_year": 2016,
+    "capacity": "80 seats",
+    "programs": [
+      "Networking",
+      "Policy Advocacy",
+      "Mentorship",
+      "Industry Connect"
+    ],
+    "notable_startups": [
+      "Various CII-supported startups"
+    ],
+    "contact_email": "startup@cigujarat.org"
+  },
+  {
+    "name": "FICCI Gujarat Startup Hub",
+    "type": "Private",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "Industry",
+      "Innovation",
+      "Policy",
+      "Global Connect"
+    ],
+    "university_or_parent": "Federation of Indian Chambers of Commerce & Industry (FICCI)",
+    "website": "https://ficci.in/gujarat-startup",
+    "startups_supported": 90,
+    "founded_year": 2017,
+    "capacity": "70 seats",
+    "programs": [
+      "Networking",
+      "Policy Advocacy",
+      "International Exposure",
+      "Mentorship"
+    ],
+    "notable_startups": [
+      "Various FICCI-supported startups"
+    ],
+    "contact_email": "startup@ficci Gujarat.org"
+  },
+  {
+    "name": "ASSOCHAM Gujarat Startup Hub",
+    "type": "Private",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "Industry",
+      "Trade",
+      "Policy",
+      "Market Development"
+    ],
+    "university_or_parent": "ASSOCHAM (Associated Chambers of Commerce of India)",
+    "website": "https://assocham.org/gujarat-startup",
+    "startups_supported": 70,
+    "founded_year": 2018,
+    "capacity": "50 seats",
+    "programs": [
+      "Networking",
+      "Policy Advocacy",
+      "Trade Facilitation",
+      "Mentorship"
+    ],
+    "notable_startups": [
+      "Various ASSOCHAM-supported startups"
+    ],
+    "contact_email": "startup@assocham-gujarat.org"
+  },
+  {
+    "name": "TiE Ahmedabad",
+    "type": "Private",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "Entrepreneurship",
+      "Technology",
+      "Business",
+      "Investment"
+    ],
+    "university_or_parent": "The Indus Entrepreneurs (TiE)",
+    "website": "https://tieahmedabad.org",
+    "startups_supported": 150,
+    "founded_year": 2002,
+    "capacity": "100 seats",
+    "programs": [
+      "Mentorship",
+      "Networking",
+      "TiEcon",
+      "Investor Connect",
+      "TiE Global"
+    ],
+    "notable_startups": [
+      "Various TiE Ahmedabad mentored startups"
+    ],
+    "contact_email": "info@tieahmedabad.org"
+  },
+  {
+    "name": "TiE Rajkot",
+    "type": "Private",
+    "city": "Rajkot",
+    "district": "Rajkot",
+    "focus_areas": [
+      "Entrepreneurship",
+      "Manufacturing",
+      "Technology",
+      "Business"
+    ],
+    "university_or_parent": "The Indus Entrepreneurs (TiE)",
+    "website": "https://tierajkot.org",
+    "startups_supported": 80,
+    "founded_year": 2008,
+    "capacity": "60 seats",
+    "programs": [
+      "Mentorship",
+      "Networking",
+      "Events",
+      "Investor Connect"
+    ],
+    "notable_startups": [
+      "Various TiE Rajkot startups"
+    ],
+    "contact_email": "info@tierajkot.org"
+  },
+  {
+    "name": "TiE Surat",
+    "type": "Private",
+    "city": "Surat",
+    "district": "Surat",
+    "focus_areas": [
+      "Entrepreneurship",
+      "Textiles",
+      "Technology",
+      "Diamond Tech"
+    ],
+    "university_or_parent": "The Indus Entrepreneurs (TiE)",
+    "website": "https://tiesurat.org",
+    "startups_supported": 60,
+    "founded_year": 2010,
+    "capacity": "40 seats",
+    "programs": [
+      "Mentorship",
+      "Networking",
+      "Events",
+      "Industry Connect"
+    ],
+    "notable_startups": [
+      "Various TiE Surat startups"
+    ],
+    "contact_email": "info@tiesurat.org"
+  },
+  {
+    "name": "NEN Gujarat",
+    "type": "Private",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "Entrepreneurship",
+      "Education",
+      "Youth Development",
+      "Social Enterprise"
+    ],
+    "university_or_parent": "National Entrepreneurship Network (NEN)",
+    "website": "https://nen.org.in",
+    "startups_supported": 120,
+    "founded_year": 2003,
+    "capacity": "100 seats",
+    "programs": [
+      "Student Entrepreneurship",
+      "Mentorship",
+      "Events",
+      "Competitions"
+    ],
+    "notable_startups": [
+      "Various NEN Gujarat alumni startups"
+    ],
+    "contact_email": "gujarat@nen.org"
+  },
+  {
+    "name": "IAN (Indian Angel Network) Gujarat",
+    "type": "Private",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "Early Stage Investing",
+      "Technology",
+      "Healthcare",
+      "Consumer"
+    ],
+    "university_or_parent": "Indian Angel Network",
+    "website": "https://indianangelnetwork.com",
+    "startups_supported": 50,
+    "founded_year": 2006,
+    "capacity": "40 seats",
+    "programs": [
+      "Angel Investment",
+      "Mentorship",
+      "Networking",
+      "Governance"
+    ],
+    "notable_startups": [
+      "Various IAN Gujarat portfolio companies"
+    ],
+    "contact_email": "gujarat@indianangelnetwork.com"
+  },
+  {
+    "name": "Mumbai Angels Gujarat Chapter",
+    "type": "Private",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "Angel Investing",
+      "Early Stage",
+      "Technology",
+      "Consumer"
+    ],
+    "university_or_parent": "Mumbai Angels Network",
+    "website": "https://mumbaiangels.com",
+    "startups_supported": 30,
+    "founded_year": 2012,
+    "capacity": "25 seats",
+    "programs": [
+      "Angel Investment",
+      "Mentorship",
+      "Demo Day",
+      "Networking"
+    ],
+    "notable_startups": [
+      "Various Mumbai Angels Gujarat portfolio companies"
+    ],
+    "contact_email": "gujarat@mumbaiangels.com"
+  },
+  {
+    "name": "Gujarat Angel Network",
+    "type": "Private",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "Angel Investing",
+      "Early Stage",
+      "Technology",
+      "Healthcare"
+    ],
+    "university_or_parent": "Gujarat Angel Network Foundation",
+    "website": "https://gujaratangels.com",
+    "startups_supported": 60,
+    "founded_year": 2008,
+    "capacity": "50 seats",
+    "programs": [
+      "Angel Investment",
+      "Mentorship",
+      "Demo Days",
+      "Portfolio Support"
+    ],
+    "notable_startups": [
+      "Various Gujarat Angel Network portfolio companies"
+    ],
+    "contact_email": "info@gujaratangels.com"
+  },
+  {
+    "name": "Startup Gujarat Portal Hub",
+    "type": "Government",
+    "city": "Gandhinagar",
+    "district": "Gandhinagar",
+    "focus_areas": [
+      "All Sectors",
+      "Policy Support",
+      "Registration",
+      "Incentives"
+    ],
+    "university_or_parent": "Industries and Mines Department, Government of Gujarat",
+    "website": "https://invest.gujarat.gov.in",
+    "startups_supported": 500,
+    "founded_year": 2016,
+    "capacity": "Virtual Platform",
+    "programs": [
+      "Startup Registration",
+      "Policy Information",
+      "Incentive Application",
+      "Ecosystem Connect"
+    ],
+    "notable_startups": [
+      "All DPIIT recognized startups in Gujarat"
+    ],
+    "contact_email": "info@invest.gujarat.gov.in"
+  },
+  {
+    "name": "Gujarat Startup Hub",
+    "type": "Government",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "All Sectors",
+      "Ecosystem Building",
+      "Networking",
+      "Events"
+    ],
+    "university_or_parent": "Government of Gujarat",
+    "website": "https://startupgujarat.in",
+    "startups_supported": 300,
+    "founded_year": 2018,
+    "capacity": "200 seats",
+    "programs": [
+      "Co-working",
+      "Events",
+      "Mentorship",
+      "Networking",
+      "Demo Days"
+    ],
+    "notable_startups": [
+      "Various Gujarat-based startups"
+    ],
+    "contact_email": "info@startupgujarat.in"
+  },
+  {
+    "name": "Incubation Centre - Saurashtra University",
+    "type": "University",
+    "city": "Rajkot",
+    "district": "Rajkot",
+    "focus_areas": [
+      "Technology",
+      "Science",
+      "Research",
+      "Innovation"
+    ],
+    "university_or_parent": "Saurashtra University",
+    "website": "https://saurashtrauniversity.ac.in/ic",
+    "startups_supported": 40,
+    "founded_year": 2017,
+    "capacity": "30 seats",
+    "programs": [
+      "Incubation",
+      "Research",
+      "Mentorship",
+      "Student Innovation"
+    ],
+    "notable_startups": [
+      "SaurashtraInnovate",
+      "ScienceStartup",
+      "RajkotTech"
+    ],
+    "contact_email": "ic@saurashtrauniversity.ac.in"
+  },
+  {
+    "name": "MSME Incubation Centre - Surat",
+    "type": "Government",
+    "city": "Surat",
+    "district": "Surat",
+    "focus_areas": [
+      "Textiles",
+      "Diamond",
+      "Manufacturing",
+      "MSME"
+    ],
+    "university_or_parent": "MSME Development Institute, Surat",
+    "website": "https://msme-surat.gov.in",
+    "startups_supported": 80,
+    "founded_year": 2015,
+    "capacity": "60 seats",
+    "programs": [
+      "MSME Incubation",
+      "Technology Upgradation",
+      "Skill Training",
+      "Market Access"
+    ],
+    "notable_startups": [
+      "TextileTech Surat",
+      "DiamondInnovate",
+      "ManufacturTech Surat"
+    ],
+    "contact_email": "msmesurat@gm.cscomms.gov.in"
+  },
+  {
+    "name": "Textile Innovation Hub - Surat",
+    "type": "PPP",
+    "city": "Surat",
+    "district": "Surat",
+    "focus_areas": [
+      "Textile Technology",
+      "Smart Textiles",
+      "Fashion Tech",
+      "Sustainability"
+    ],
+    "university_or_parent": "Surat Textile Industry Association / Government of Gujarat",
+    "website": "https://textileinnovationsurat.in",
+    "startups_supported": 50,
+    "founded_year": 2019,
+    "capacity": "40 seats",
+    "programs": [
+      "Textile Innovation",
+      "Technology Incubation",
+      "Market Linkage",
+      "Export Support"
+    ],
+    "notable_startups": [
+      "SmartTextile",
+      "FashionTech Surat",
+      "SustainableFabrics"
+    ],
+    "contact_email": "info@textileinnovationsurat.in"
+  },
+  {
+    "name": "Diamond Tech Hub - Surat",
+    "type": "PPP",
+    "city": "Surat",
+    "district": "Surat",
+    "focus_areas": [
+      "Diamond Technology",
+      "Gemology",
+      "Blockchain for Diamonds",
+      "Manufacturing"
+    ],
+    "university_or_parent": "Surat Diamond Association / Government of Gujarat",
+    "website": "https://diamondtechhub.in",
+    "startups_supported": 30,
+    "founded_year": 2020,
+    "capacity": "25 seats",
+    "programs": [
+      "Diamond Tech Incubation",
+      "Blockchain Integration",
+      "Quality Assurance",
+      "Market Access"
+    ],
+    "notable_startups": [
+      "DiamondChain",
+      "SmartGemTech",
+      "SuratDiamondTech"
+    ],
+    "contact_email": "info@diamondtechhub.in"
+  },
+  {
+    "name": "Pharma Innovation Hub - Ahmedabad",
+    "type": "PPP",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "Pharmaceuticals",
+      "Healthcare",
+      "MedTech",
+      "Drug Discovery"
+    ],
+    "university_or_parent": "Ahmedabad Pharma Association / Government of Gujarat",
+    "website": "https://pharmaahmedabad.in/hub",
+    "startups_supported": 35,
+    "founded_year": 2020,
+    "capacity": "30 seats",
+    "programs": [
+      "Pharma Incubation",
+      "R&D Support",
+      "Regulatory Guidance",
+      "Clinical Trials"
+    ],
+    "notable_startups": [
+      "PharmaStart Ahmedabad",
+      "MedTechInnovate",
+      "DrugDiscovery Gujarat"
+    ],
+    "contact_email": "hub@pharmaahmedabad.in"
+  },
+  {
+    "name": "Agri Innovation Hub - Anand",
+    "type": "PPP",
+    "city": "Anand",
+    "district": "Anand",
+    "focus_areas": [
+      "Agriculture Technology",
+      "Food Processing",
+      "Dairy Tech",
+      "Sustainability"
+    ],
+    "university_or_parent": "Anand Agricultural University / Government of Gujarat",
+    "website": "https://agriinnovation-anand.in",
+    "startups_supported": 40,
+    "founded_year": 2019,
+    "capacity": "35 seats",
+    "programs": [
+      "Agri-Tech Incubation",
+      "Food Processing Support",
+      "Market Linkage",
+      "Rural Innovation"
+    ],
+    "notable_startups": [
+      "AgriTech Anand",
+      "DairyInnovate",
+      "FoodProcessTech"
+    ],
+    "contact_email": "info@agriinnovation-anand.in"
+  },
+  {
+    "name": "Renewable Energy Hub - Gandhinagar",
+    "type": "Government",
+    "city": "Gandhinagar",
+    "district": "Gandhinagar",
+    "focus_areas": [
+      "Solar Energy",
+      "Wind Energy",
+      "Green Hydrogen",
+      "Energy Storage"
+    ],
+    "university_or_parent": "Gujarat Energy Development Agency (GEDA)",
+    "website": "https://geda.in/hub",
+    "startups_supported": 45,
+    "founded_year": 2020,
+    "capacity": "35 seats",
+    "programs": [
+      "Energy Tech Incubation",
+      "Project Development",
+      "Funding Support",
+      "Policy Guidance"
+    ],
+    "notable_startups": [
+      "SolarStartup Gujarat",
+      "WindPower Tech",
+      "GreenHydro Gujarat"
+    ],
+    "contact_email": "hub@geda.in"
+  },
+  {
+    "name": "AI/ML Innovation Hub - Ahmedabad",
+    "type": "Private",
+    "city": "Ahmedabad",
+    "district": "Ahmedabad",
+    "focus_areas": [
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Data Science",
+      "Deep Tech"
+    ],
+    "university_or_parent": "Gujarat AI Foundation",
+    "website": "https://gujaratai.in/hub",
+    "startups_supported": 30,
+    "founded_year": 2021,
+    "capacity": "25 seats",
+    "programs": [
+      "AI/ML Incubation",
+      "Data Access",
+      "Computing Resources",
+      "Mentorship"
+    ],
+    "notable_startups": [
+      "AISolutions Gujarat",
+      "DeepTechStart",
+      "DataScienceHub"
+    ],
+    "contact_email": "hub@gujaratai.in"
+  }
+]

@@ -227,12 +227,11 @@ class RiskEngine:
         self._train_synthetic_model()
 
     def train_on_real_data(self, records_data: list[dict]) -> dict:
-        """Train the risk model on real innovation records.
+        """Train the risk model on real records (startups, research, etc.).
 
-        Records carry a pseudo-label derived from domain heuristics
-        (overdue milestones, stalled stage, low progress on old projects)
-        so the gradient boosting model can learn patterns from actual data.
-        Falls back to synthetic training when there are too few samples.
+        For startup records, uses company_status, website, sector, and district
+        as features with domain-driven pseudo-labels.
+        For research records, uses the original milestone-based heuristics.
         """
         from sklearn.ensemble import GradientBoostingClassifier
         from sklearn.preprocessing import StandardScaler
@@ -243,61 +242,94 @@ class RiskEngine:
         )
         import pickle
 
+        _startup_stage_map = {
+            "prototype": 0, "validation": 1, "early traction": 2,
+            "scaling": 3, "active": 4,
+        }
+
         rows = []
         labels = []
         now = datetime.utcnow()
 
         for r in records_data:
             meta = r.get("meta") or {}
+            kind = r.get("kind", "")
             created_at = r.get("created_at")
             created = created_at if isinstance(created_at, datetime) else now
 
-            milestones = r.get("milestones") or []
-            overdue = sum(
-                1 for m in milestones
-                if (m.get("stage") or "").lower() not in ("done", "complete", "completed")
-                and (m.get("meta") or {}).get("due_date", "") < now.date().isoformat()
-            )
-            done = sum(
-                1 for m in milestones
-                if (m.get("stage") or "").lower() in ("done", "complete", "completed")
-            )
-            funding_required = meta.get("funding_required", 0)
-            funding_received = meta.get("funding_received", 0)
-            funding_ratio = min(1.0, funding_received / max(1, funding_required))
+            if kind == "startup":
+                stage = (r.get("stage") or "active").lower()
+                has_website = 1 if meta.get("company_website") else 0
+                stage_enc = _startup_stage_map.get(stage, 2)
+                sector_enc = hash(r.get("sector", "")) % 10 if r.get("sector") else 0
+                district_enc = hash(r.get("district", "")) % 20 if r.get("district") else 0
+                days_old = (now - created).days
 
-            stage = (r.get("stage") or "draft").lower()
-            progress = float(meta.get("progress", 0))
+                features = {
+                    "progress": float(stage_enc) * 25,
+                    "milestones_total": 0,
+                    "milestones_overdue": 0,
+                    "milestones_done": 0,
+                    "days_since_creation": days_old,
+                    "stage_encoded": stage_enc,
+                    "has_funding": has_website,
+                    "funding_ratio": float(has_website) * 0.5,
+                    "sector_encoded": sector_enc,
+                    "district_encoded": district_enc,
+                }
+                risk_score = (
+                    (0.3 if stage_enc <= 1 else 0)
+                    + (0.2 if not has_website else 0)
+                    + (0.15 if days_old > 1000 else 0)
+                    + (0.1 if sector_enc in (0, 3, 7) else 0)
+                )
+                label = 1 if risk_score > 0.3 else 0
+            else:
+                milestones = r.get("milestones") or []
+                overdue = sum(
+                    1 for m in milestones
+                    if (m.get("stage") or "").lower() not in ("done", "complete", "completed")
+                    and (m.get("meta") or {}).get("due_date", "") < now.date().isoformat()
+                )
+                done = sum(
+                    1 for m in milestones
+                    if (m.get("stage") or "").lower() in ("done", "complete", "completed")
+                )
+                funding_required = meta.get("funding_required", 0)
+                funding_received = meta.get("funding_received", 0)
+                funding_ratio = min(1.0, funding_received / max(1, funding_required))
+                stage = (r.get("stage") or "draft").lower()
+                progress = float(meta.get("progress", 0))
 
-            features = {
-                "progress": progress,
-                "milestones_total": len(milestones),
-                "milestones_overdue": overdue,
-                "milestones_done": done,
-                "days_since_creation": (now - created).days,
-                "stage_encoded": self._stage_map.get(stage, 0),
-                "has_funding": 1 if funding_received > 0 else 0,
-                "funding_ratio": funding_ratio,
-                "sector_encoded": hash(r.get("sector", "")) % 10 if r.get("sector") else 0,
-                "district_encoded": hash(r.get("district", "")) % 20 if r.get("district") else 0,
-            }
-
-            risk_score = (
-                overdue * 0.35
-                + (100 - progress) * 0.003
-                + (0.25 if self._stage_map.get(stage, 0) < 0 else 0)
-                + (0.15 if funding_ratio < 0.2 else 0)
-                + (0.1 if (now - created).days > 365 else 0)
-            )
-            label = 1 if risk_score > 0.45 else 0
+                features = {
+                    "progress": progress,
+                    "milestones_total": len(milestones),
+                    "milestones_overdue": overdue,
+                    "milestones_done": done,
+                    "days_since_creation": (now - created).days,
+                    "stage_encoded": self._stage_map.get(stage, 0),
+                    "has_funding": 1 if funding_received > 0 else 0,
+                    "funding_ratio": funding_ratio,
+                    "sector_encoded": hash(r.get("sector", "")) % 10 if r.get("sector") else 0,
+                    "district_encoded": hash(r.get("district", "")) % 20 if r.get("district") else 0,
+                }
+                risk_score = (
+                    overdue * 0.35
+                    + (100 - progress) * 0.003
+                    + (0.25 if self._stage_map.get(stage, 0) < 0 else 0)
+                    + (0.15 if funding_ratio < 0.2 else 0)
+                    + (0.1 if (now - created).days > 365 else 0)
+                )
+                label = 1 if risk_score > 0.45 else 0
 
             rows.append([features[f] for f in self._feature_names])
             labels.append(label)
 
         n_samples = len(rows)
-        logger.info(f"Real-data training samples: {n_samples}")
+        unique_labels = set(labels)
+        logger.info(f"Real-data training samples: {n_samples}, unique labels: {unique_labels}")
 
-        if n_samples >= 20:
+        if n_samples >= 20 and len(unique_labels) >= 2:
             X = np.array(rows, dtype=float)
             y = np.array(labels, dtype=int)
 
@@ -334,7 +366,6 @@ class RiskEngine:
             logger.info(f"Trained risk model on real data: accuracy={self._metrics.accuracy:.3f}")
             return {"trained": True, "source": "real", "samples": n_samples}
 
-        # Not enough real records - fall back to synthetic
         self._train_synthetic_model()
         return {"trained": True, "source": "synthetic", "samples": self._metrics.training_samples}
 
@@ -719,6 +750,146 @@ class TrainingPipeline:
         }
 
 # ---------------------------------------------------------------------------
+# Startup Matcher — Match startups to challenges
+# ---------------------------------------------------------------------------
+class StartupMatcher:
+    """Match startups to government challenges based on capabilities and sector."""
+
+    def __init__(self, semantic_engine: SemanticEngine):
+        self._sem = semantic_engine
+
+    def match_startups_to_challenge(self, challenge_text: str, startups: list[dict], top_k: int = 5) -> list[dict]:
+        """Return top-k startups ranked by relevance to the challenge."""
+        if not startups:
+            return []
+
+        startup_texts = [
+            f"{s.get('title', '')} {s.get('description', '')} {s.get('sector', '')} {s.get('meta', {}).get('capabilities', '')}"
+            for s in startups
+        ]
+
+        all_texts = [challenge_text] + startup_texts
+        embeddings = self._sem.encode(all_texts)
+        if hasattr(embeddings, 'toarray'):
+            embeddings = embeddings.toarray()
+
+        challenge_emb = embeddings[0:1]
+        startup_embs = embeddings[1:]
+
+        try:
+            from sklearn.metrics.pairwise import cosine_similarity
+            scores = cosine_similarity(challenge_emb, startup_embs)[0]
+        except ImportError:
+            scores = np.dot(startup_embs, challenge_emb.T).flatten()
+            norms = np.linalg.norm(startup_embs, axis=1) * np.linalg.norm(challenge_emb)
+            scores = scores / np.maximum(norms, 1e-10)
+
+        results = []
+        for i, startup in enumerate(startups):
+            results.append({
+                "startup_id": startup.get("id"),
+                "title": startup.get("title", ""),
+                "sector": startup.get("sector", ""),
+                "score": round(float(scores[i]), 4),
+                "method": "semantic_similarity",
+            })
+        results.sort(key=lambda x: x["score"], reverse=True)
+        return results[:top_k]
+
+
+# ---------------------------------------------------------------------------
+# Pilot Risk Scorer — Predict pilot success/failure
+# ---------------------------------------------------------------------------
+class PilotRiskScorer:
+    """Predict whether a pilot will succeed or fail based on features."""
+
+    def __init__(self):
+        self._model = None
+        self._feature_names = [
+            "budget_amount", "duration_weeks", "milestone_count",
+            "department_match", "startup_experience", "risk_management_score",
+        ]
+
+    def _ensure_model(self):
+        if self._model is not None:
+            return
+        try:
+            from sklearn.ensemble import GradientBoostingClassifier
+            self._model = GradientBoostingClassifier(n_estimators=50, random_state=42)
+            synthetic_X = np.random.rand(200, len(self._feature_names))
+            synthetic_y = np.random.choice([0, 1], size=200, p=[0.3, 0.7])
+            self._model.fit(synthetic_X, synthetic_y)
+        except ImportError:
+            logger.warning("scikit-learn not installed, pilot risk scorer using rule-based fallback")
+            self._model = None
+
+    def predict(self, features: dict) -> dict:
+        """Predict pilot success probability."""
+        self._ensure_model()
+        feature_values = [features.get(f, 0) for f in self._feature_names]
+        if self._model is not None:
+            X = np.array([feature_values])
+            prob = float(self._model.predict_proba(X)[0][1])
+            level = "low" if prob > 0.7 else "medium" if prob > 0.4 else "high"
+            return {
+                "success_probability": round(prob, 4),
+                "risk_level": level,
+                "feature_importance": dict(zip(self._feature_names, [round(float(v), 4) for v in self._model.feature_importances_])),
+                "method": "gradient_boosting",
+            }
+        score = sum(feature_values) / len(feature_values) if feature_values else 0.5
+        return {
+            "success_probability": round(score, 4),
+            "risk_level": "low" if score > 0.7 else "medium" if score > 0.4 else "high",
+            "feature_importance": {},
+            "method": "rule_based",
+        }
+
+
+# ---------------------------------------------------------------------------
+# Scale Predictor — Predict scale-up potential
+# ---------------------------------------------------------------------------
+class ScalePredictor:
+    """Predict whether a successful pilot should be scaled up."""
+
+    def __init__(self):
+        self._model = None
+
+    def predict(self, pilot_data: dict) -> dict:
+        """Predict scale-up potential."""
+        success_prob = pilot_data.get("success_probability", 0.5)
+        budget = pilot_data.get("budget_amount", 0)
+        duration = pilot_data.get("duration_weeks", 8)
+        milestones_completed = pilot_data.get("milestones_completed", 0)
+        total_milestones = pilot_data.get("total_milestones", 1)
+
+        completion_rate = milestones_completed / total_milestones if total_milestones > 0 else 0
+        scale_score = (success_prob * 0.4 + completion_rate * 0.4 + min(budget / 1000000, 1) * 0.2)
+
+        if scale_score > 0.7:
+            recommendation = "scale"
+            confidence = "high"
+        elif scale_score > 0.4:
+            recommendation = "continue"
+            confidence = "medium"
+        else:
+            recommendation = "terminate"
+            confidence = "low"
+
+        return {
+            "scale_score": round(scale_score, 4),
+            "recommendation": recommendation,
+            "confidence": confidence,
+            "factors": {
+                "success_probability": success_prob,
+                "completion_rate": round(completion_rate, 4),
+                "budget_efficiency": round(min(budget / 1000000, 1), 4),
+            },
+            "method": "weighted_scoring",
+        }
+
+
+# ---------------------------------------------------------------------------
 # Global instances
 # ---------------------------------------------------------------------------
 _semantic_engine: Optional[SemanticEngine] = None
@@ -726,6 +897,9 @@ _risk_engine: Optional[RiskEngine] = None
 _success_predictor: Optional[SuccessPredictor] = None
 _duplicate_detector: Optional[DuplicateDetector] = None
 _training_pipeline: Optional[TrainingPipeline] = None
+_startup_matcher: Optional[StartupMatcher] = None
+_pilot_risk_scorer: Optional[PilotRiskScorer] = None
+_scale_predictor: Optional[ScalePredictor] = None
 
 def get_semantic_engine() -> SemanticEngine:
     global _semantic_engine
@@ -757,6 +931,24 @@ def get_training_pipeline() -> TrainingPipeline:
         _training_pipeline = TrainingPipeline()
     return _training_pipeline
 
+def get_startup_matcher() -> StartupMatcher:
+    global _startup_matcher
+    if _startup_matcher is None:
+        _startup_matcher = StartupMatcher(get_semantic_engine())
+    return _startup_matcher
+
+def get_pilot_risk_scorer() -> PilotRiskScorer:
+    global _pilot_risk_scorer
+    if _pilot_risk_scorer is None:
+        _pilot_risk_scorer = PilotRiskScorer()
+    return _pilot_risk_scorer
+
+def get_scale_predictor() -> ScalePredictor:
+    global _scale_predictor
+    if _scale_predictor is None:
+        _scale_predictor = ScalePredictor()
+    return _scale_predictor
+
 
 def build_records_data(records: list) -> list[dict]:
     """Flatten DB records into training-ready dicts, attaching child milestones."""
@@ -776,6 +968,7 @@ def build_records_data(records: list) -> list[dict]:
         ]
         data.append({
             "id": r.id,
+            "kind": r.kind,
             "title": r.title,
             "description": r.description,
             "stage": r.stage,

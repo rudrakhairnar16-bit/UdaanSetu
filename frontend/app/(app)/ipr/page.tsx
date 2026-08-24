@@ -147,6 +147,28 @@ export default function IPRPage() {
   const debouncedSearch = useDebounce(search);
   const { toast } = useToast();
 
+  const exportData = async (format: 'csv' | 'json') => {
+    try {
+      const token = api.getToken();
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+      const res = await fetch(`${API_URL}/records/export?kind=ipr&format=${format}`, {
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+      });
+      if (!res.ok) throw new Error('Export failed');
+      const blob = await res.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `ipr_export.${format}`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
+    } catch (err: any) {
+      alert(err.message);
+    }
+  };
+
   const load = async () => {
     setLoading(true);
     setError('');
@@ -182,7 +204,17 @@ export default function IPRPage() {
         crumb="IPR / Patents"
         title="IPR / Patents"
         subtitle="Idea → Screening → Filed → Examination → Granted"
-        action={<Button onClick={() => setShowCreate(true)} icon={<Icon name="plus" size={16} />}>New Patent</Button>}
+        action={
+          <div style={{ display: 'flex', gap: 8 }}>
+            <button className="btn btn-secondary btn-sm" onClick={() => exportData('csv')} style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+              <Icon name="download" size={14} /> CSV
+            </button>
+            <button className="btn btn-secondary btn-sm" onClick={() => exportData('json')} style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+              <Icon name="download" size={14} /> JSON
+            </button>
+            <Button onClick={() => setShowCreate(true)} icon={<Icon name="plus" size={16} />}>New Patent</Button>
+          </div>
+        }
       />
 
       <div style={{ position: 'relative', maxWidth: 400, marginBottom: 16 }}>

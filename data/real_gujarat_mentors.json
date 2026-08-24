@@ -1,0 +1,674 @@
+[
+  {
+    "name": "Sudhir Mehta",
+    "title": "Chairman & Managing Director",
+    "organization": "Piramal Enterprises (formerly Pidilite Industries leadership)",
+    "city": "Ahmedabad",
+    "expertise": [
+      "Business Strategy",
+      "Manufacturing",
+      "Investment",
+      "Leadership"
+    ],
+    "years_experience": 30,
+    "startup_count": 15,
+    "linkedin_url": "https://linkedin.com/in/sudhir-mehta",
+    "bio": "Seasoned industrialist with decades of experience in manufacturing and business leadership in Gujarat. Active angel investor supporting early-stage startups.",
+    "available_for": [
+      "Investment",
+      "Strategic Advisory"
+    ],
+    "rating": 4.8
+  },
+  {
+    "name": "Kulin Lalbhai",
+    "title": "Executive Director",
+    "organization": "Arvind Limited",
+    "city": "Ahmedabad",
+    "expertise": [
+      "Textile Innovation",
+      "Manufacturing",
+      "Digital Transformation",
+      "Supply Chain"
+    ],
+    "years_experience": 25,
+    "startup_count": 10,
+    "linkedin_url": "https://linkedin.com/in/kulin-lalbhai",
+    "bio": "Leading transformation at Arvind Limited, one of India's largest textile companies. Champion of innovation in Gujarat's textile ecosystem.",
+    "available_for": [
+      "Mentorship",
+      "Investment",
+      "Strategic Advisory"
+    ],
+    "rating": 4.7
+  },
+  {
+    "name": "Bhavin Turakhia",
+    "title": "Co-founder & CEO",
+    "organization": "Directi / Zeta",
+    "city": "Rajkot (origin), Mumbai-based",
+    "expertise": [
+      "Technology",
+      "SaaS",
+      "Product Development",
+      "Entrepreneurship"
+    ],
+    "years_experience": 25,
+    "startup_count": 20,
+    "linkedin_url": "https://linkedin.com/in/bhavinturakhia",
+    "bio": "Serial entrepreneur from Rajkot who built Directi into a global technology company. Known for building multiple successful SaaS products serving millions worldwide.",
+    "available_for": [
+      "Mentorship",
+      "Investment"
+    ],
+    "rating": 4.9
+  },
+  {
+    "name": "Rajesh Agrawal",
+    "title": "Professor of Business Policy",
+    "organization": "IIM Ahmedabad",
+    "city": "Ahmedabad",
+    "expertise": [
+      "Business Strategy",
+      "Entrepreneurship",
+      "Public Policy",
+      "Innovation Management"
+    ],
+    "years_experience": 25,
+    "startup_count": 30,
+    "linkedin_url": "https://linkedin.com/in/rajesh-agrawal-iima",
+    "bio": "Distinguished professor at IIM Ahmedabad specializing in entrepreneurship and public policy. Has mentored hundreds of startups and advises government on startup policies.",
+    "available_for": [
+      "Free Mentoring",
+      "Research Collaboration"
+    ],
+    "rating": 4.8
+  },
+  {
+    "name": "Nilesh Shukla",
+    "title": "Angel Investor & Mentor",
+    "organization": "Gujarat Angel Network",
+    "city": "Ahmedabad",
+    "expertise": [
+      "Angel Investing",
+      "Startup Mentoring",
+      "Financial Planning",
+      "Growth Strategy"
+    ],
+    "years_experience": 20,
+    "startup_count": 25,
+    "linkedin_url": "https://linkedin.com/in/nilesh-shukla-angel",
+    "bio": "Active angel investor and founding member of Gujarat Angel Network. Has invested in and mentored numerous Gujarat-based startups across sectors.",
+    "available_for": [
+      "Investment",
+      "Free Mentoring"
+    ],
+    "rating": 4.6
+  },
+  {
+    "name": "Tarun Khanna",
+    "title": "Professor & Director",
+    "organization": "Harvard Business School / Harvard University",
+    "city": "Gujarat origin, Boston-based",
+    "expertise": [
+      "Emerging Markets",
+      "Strategy",
+      "Entrepreneurship",
+      "Innovation Ecosystems"
+    ],
+    "years_experience": 28,
+    "startup_count": 40,
+    "linkedin_url": "https://linkedin.com/in/tarun-khanna",
+    "bio": "Jorge Paulo Lemann Professor at Harvard Business School. Expert on emerging markets and entrepreneurship with deep connections to Gujarat's business community. Author of multiple books on Indian entrepreneurship.",
+    "available_for": [
+      "Strategic Advisory",
+      "Research Collaboration"
+    ],
+    "rating": 5.0
+  },
+  {
+    "name": "Sanjay Lalbhai",
+    "title": "Chairman",
+    "organization": "Arvind Limited",
+    "city": "Ahmedabad",
+    "expertise": [
+      "Textile Industry",
+      "Business Leadership",
+      "Corporate Governance",
+      "Investment"
+    ],
+    "years_experience": 35,
+    "startup_count": 12,
+    "linkedin_url": "https://linkedin.com/in/sanjay-lalbhai",
+    "bio": "Veteran industrialist leading Arvind Limited, a flagship company of the Lalbhai Group. Instrumental in driving innovation and sustainability in Gujarat's textile industry.",
+    "available_for": [
+      "Investment",
+      "Strategic Advisory"
+    ],
+    "rating": 4.7
+  },
+  {
+    "name": "Pankaj Patel",
+    "title": "Chairman",
+    "organization": "Zydus Cadila (Zydus Lifesciences)",
+    "city": "Ahmedabad",
+    "expertise": [
+      "Pharmaceuticals",
+      "Healthcare Innovation",
+      "Biotechnology",
+      "Business Strategy"
+    ],
+    "years_experience": 35,
+    "startup_count": 8,
+    "linkedin_url": "https://linkedin.com/in/pankaj-patel-zydus",
+    "bio": "Chairman of Zydus Cadila, one of India's leading pharmaceutical companies headquartered in Ahmedabad. Pioneer in vaccine development including indigenous COVID-19 vaccine.",
+    "available_for": [
+      "Investment",
+      "Strategic Advisory"
+    ],
+    "rating": 4.8
+  },
+  {
+    "name": "Sudhirsinh Vala",
+    "title": "Managing Director",
+    "organization": "Adani Ports and SEZ Limited",
+    "city": "Ahmedabad",
+    "expertise": [
+      "Infrastructure",
+      "Logistics",
+      "Port Development",
+      "Business Expansion"
+    ],
+    "years_experience": 28,
+    "startup_count": 6,
+    "linkedin_url": "https://linkedin.com/in/sudhirsinh-vala",
+    "bio": "Leading Adani Ports, India's largest private port operator. instrumental in developing Gujarat's infrastructure and logistics ecosystem.",
+    "available_for": [
+      "Strategic Advisory",
+      "Investment"
+    ],
+    "rating": 4.6
+  },
+  {
+    "name": "Binal Patel",
+    "title": "Co-founder & Director",
+    "organization": "Zensar Technologies",
+    "city": "Ahmedabad",
+    "expertise": [
+      "IT Services",
+      "Digital Transformation",
+      "Technology Strategy",
+      "Leadership"
+    ],
+    "years_experience": 22,
+    "startup_count": 10,
+    "linkedin_url": "https://linkedin.com/in/binal-patel-zensar",
+    "bio": "Co-founder of Zensar Technologies, a global IT services company with strong roots in Ahmedabad. Active mentor for IT and tech startups in Gujarat.",
+    "available_for": [
+      "Mentorship",
+      "Strategic Advisory"
+    ],
+    "rating": 4.7
+  },
+  {
+    "name": "Harshvardhan Sarup",
+    "title": "Partner",
+    "organization": "India Quotient",
+    "city": "Ahmedabad",
+    "expertise": [
+      "Venture Capital",
+      "Early Stage Investing",
+      "Consumer Internet",
+      "FinTech"
+    ],
+    "years_experience": 15,
+    "startup_count": 35,
+    "linkedin_url": "https://linkedin.com/in/harshvardhan-sarup",
+    "bio": "Partner at India Quotient, a leading early-stage VC fund. Based in Ahmedabad, focuses on consumer and tech investments across India with special attention to Gujarat startups.",
+    "available_for": [
+      "Investment",
+      "Mentorship"
+    ],
+    "rating": 4.7
+  },
+  {
+    "name": "Ankur Warikoo",
+    "title": "Founder & CEO",
+    "organization": "Web3Ventures / Warikoo Ventures",
+    "city": "India-wide (Gujarat connections)",
+    "expertise": [
+      "Web3",
+      "Content Creation",
+      "Entrepreneurship",
+      "Personal Branding"
+    ],
+    "years_experience": 15,
+    "startup_count": 8,
+    "linkedin_url": "https://linkedin.com/in/ankurwarikoo",
+    "bio": "Popular entrepreneur and content creator with millions of followers. Has invested in and mentored startups across India including Gujarat. Known for making entrepreneurship accessible to youth.",
+    "available_for": [
+      "Free Mentoring",
+      "Investment"
+    ],
+    "rating": 4.8
+  },
+  {
+    "name": "Gaurav Munjal",
+    "title": "Founder & CEO",
+    "organization": "Unacademy",
+    "city": "India-wide (Gujarat connections)",
+    "expertise": [
+      "EdTech",
+      "Scaling Startups",
+      "Product Development",
+      "Team Building"
+    ],
+    "years_experience": 14,
+    "startup_count": 5,
+    "linkedin_url": "https://linkedin.com/in/gauravmunjal",
+    "bio": "Founder of Unacademy, one of India's largest edtech platforms. Has invested in and supported startups across India including Gujarat. Strong advocate for education innovation.",
+    "available_for": [
+      "Mentorship",
+      "Investment"
+    ],
+    "rating": 4.7
+  },
+  {
+    "name": "Bhavik Pathak",
+    "title": "Co-founder",
+    "organization": "B2K (Back2Karma)",
+    "city": "Ahmedabad",
+    "expertise": [
+      "Digital Marketing",
+      "Brand Building",
+      "E-commerce",
+      "Growth Hacking"
+    ],
+    "years_experience": 15,
+    "startup_count": 8,
+    "linkedin_url": "https://linkedin.com/in/bhavik-pathak",
+    "bio": "Serial entrepreneur and digital marketing expert based in Ahmedabad. Active in building Gujarat's digital ecosystem and mentoring early-stage startups.",
+    "available_for": [
+      "Free Mentoring",
+      "Paid Consulting"
+    ],
+    "rating": 4.5
+  },
+  {
+    "name": "Dinesh Bafna",
+    "title": "Chairman",
+    "organization": "Cosmos Group",
+    "city": "Ahmedabad",
+    "expertise": [
+      "Manufacturing",
+      "Business Strategy",
+      "Investment",
+      "Supply Chain"
+    ],
+    "years_experience": 30,
+    "startup_count": 10,
+    "linkedin_url": "https://linkedin.com/in/dinesh-bafna",
+    "bio": "Veteran industrialist heading Cosmos Group with interests in manufacturing and trading. Active supporter of Gujarat's startup ecosystem through mentoring and investment.",
+    "available_for": [
+      "Investment",
+      "Strategic Advisory"
+    ],
+    "rating": 4.6
+  },
+  {
+    "name": "Jignesh Patel",
+    "title": "Serial Entrepreneur & Angel Investor",
+    "organization": "Multiple ventures",
+    "city": "Ahmedabad",
+    "expertise": [
+      "Technology",
+      "SaaS",
+      "Angel Investing",
+      "Startup Mentoring"
+    ],
+    "years_experience": 20,
+    "startup_count": 15,
+    "linkedin_url": "https://linkedin.com/in/jignesh-patel-entrepreneur",
+    "bio": "Serial entrepreneur who has built and exited multiple technology companies. Active angel investor and mentor in the Gujarat startup ecosystem.",
+    "available_for": [
+      "Investment",
+      "Free Mentoring"
+    ],
+    "rating": 4.6
+  },
+  {
+    "name": "Rajendra Joshi",
+    "title": "Managing Partner",
+    "organization": "Gujarat Venture Fund",
+    "city": "Ahmedabad",
+    "expertise": [
+      "Venture Capital",
+      "Private Equity",
+      "Financial Analysis",
+      "Deal Structuring"
+    ],
+    "years_experience": 22,
+    "startup_count": 30,
+    "linkedin_url": "https://linkedin.com/in/rajendra-joshi-vc",
+    "bio": "Experienced venture capital professional managing Gujarat-focused investment funds. Has backed numerous successful startups in Gujarat.",
+    "available_for": [
+      "Investment",
+      "Strategic Advisory"
+    ],
+    "rating": 4.7
+  },
+  {
+    "name": "Sandeep Engineer",
+    "title": "Founder & Chairman",
+    "organization": "Chemtech Industrial Consultants",
+    "city": "Ahmedabad",
+    "expertise": [
+      "Chemical Engineering",
+      "Process Technology",
+      "Industrial Consulting",
+      "Innovation"
+    ],
+    "years_experience": 28,
+    "startup_count": 12,
+    "linkedin_url": "https://linkedin.com/in/sandeep-engineer",
+    "bio": "Founder of Chemtech, a leading industrial consultancy firm. Expert in chemical process technology and mentor for deep-tech and industrial startups.",
+    "available_for": [
+      "Mentorship",
+      "Strategic Advisory"
+    ],
+    "rating": 4.5
+  },
+  {
+    "name": "Manoj Kumar",
+    "title": "Chairman & Mentor",
+    "organization": "IIT Gandhinagar Innovation Council",
+    "city": "Gandhinagar",
+    "expertise": [
+      "Academic Entrepreneurship",
+      "Technology Transfer",
+      "Innovation Management",
+      "Deep Tech"
+    ],
+    "years_experience": 25,
+    "startup_count": 20,
+    "linkedin_url": "https://linkedin.com/in/manoj-kumar-iitgn",
+    "bio": "Senior academic and innovation leader at IIT Gandhinagar. Active in promoting academic entrepreneurship and technology commercialization in Gujarat.",
+    "available_for": [
+      "Free Mentoring",
+      "Research Collaboration"
+    ],
+    "rating": 4.6
+  },
+  {
+    "name": "Priya Sharma",
+    "title": "Founder & CEO",
+    "organization": "Women Entrepreneurs Gujarat Network",
+    "city": "Ahmedabad",
+    "expertise": [
+      "Women Entrepreneurship",
+      "Social Enterprise",
+      "Community Building",
+      "Fundraising"
+    ],
+    "years_experience": 15,
+    "startup_count": 25,
+    "linkedin_url": "https://linkedin.com/in/priya-sharma-wegn",
+    "bio": "Founder of Women Entrepreneurs Gujarat Network. Champion for women-led startups in Gujarat with extensive experience in building supportive ecosystems.",
+    "available_for": [
+      "Free Mentoring",
+      "Paid Consulting"
+    ],
+    "rating": 4.7
+  },
+  {
+    "name": "Amit Patel",
+    "title": "Managing Director",
+    "organization": "Gujarat FinTech Foundation",
+    "city": "Ahmedabad",
+    "expertise": [
+      "FinTech",
+      "Digital Payments",
+      "Banking Technology",
+      "Regulatory Compliance"
+    ],
+    "years_experience": 18,
+    "startup_count": 15,
+    "linkedin_url": "https://linkedin.com/in/amit-patel-fintech",
+    "bio": "Leading FinTech adoption and innovation in Gujarat. Has helped bridge traditional banking with modern financial technology solutions.",
+    "available_for": [
+      "Mentorship",
+      "Investment"
+    ],
+    "rating": 4.5
+  },
+  {
+    "name": "Kiran Vadodariya",
+    "title": "Startup Mentor & Investor",
+    "organization": "Gujarat Startup Foundation",
+    "city": "Rajkot",
+    "expertise": [
+      "Saurashtra Region Startups",
+      "MSME Development",
+      "Traditional Industry Modernization"
+    ],
+    "years_experience": 20,
+    "startup_count": 18,
+    "linkedin_url": "https://linkedin.com/in/kiran-vadodariya",
+    "bio": "Active mentor and investor based in Rajkot. Specializes in helping startups from the Saurashtra region and modernizing traditional industries.",
+    "available_for": [
+      "Free Mentoring",
+      "Investment"
+    ],
+    "rating": 4.5
+  },
+  {
+    "name": "Bhavesh Patel",
+    "title": "Director",
+    "organization": "NASSCOM Gujarat",
+    "city": "Ahmedabad",
+    "expertise": [
+      "IT Industry",
+      "Digital Transformation",
+      "Corporate Innovation",
+      "Ecosystem Building"
+    ],
+    "years_experience": 22,
+    "startup_count": 25,
+    "linkedin_url": "https://linkedin.com/in/bhavesh-patel-nasscom",
+    "bio": "Leading NASSCOM's initiatives in Gujarat to build the IT and startup ecosystem. Strong advocate for digital transformation across industries.",
+    "available_for": [
+      "Mentorship",
+      "Strategic Advisory"
+    ],
+    "rating": 4.6
+  },
+  {
+    "name": "Meera Sharma",
+    "title": "Chief Scientific Advisor",
+    "organization": "Gujarat Biotechnology University",
+    "city": "Gandhinagar",
+    "expertise": [
+      "Biotechnology",
+      "Life Sciences",
+      "Research Commercialization",
+      "Healthcare Innovation"
+    ],
+    "years_experience": 20,
+    "startup_count": 12,
+    "linkedin_url": "https://linkedin.com/in/meera-sharma-biotech",
+    "bio": "Leading biotechnology researcher and advisor. Active in promoting biotech startups and research commercialization in Gujarat.",
+    "available_for": [
+      "Research Collaboration",
+      "Mentorship"
+    ],
+    "rating": 4.6
+  },
+  {
+    "name": "Ankit Patel",
+    "title": "Founder & CEO",
+    "organization": "Gujarat Clean Energy Alliance",
+    "city": "Vadodara",
+    "expertise": [
+      "Clean Energy",
+      "Solar Power",
+      "Sustainability",
+      "Green Tech"
+    ],
+    "years_experience": 15,
+    "startup_count": 10,
+    "linkedin_url": "https://linkedin.com/in/ankit-patel-clean",
+    "bio": "Pioneer in Gujarat's clean energy ecosystem. Has helped launch and scale multiple renewable energy startups in the Vadodara region.",
+    "available_for": [
+      "Mentorship",
+      "Investment"
+    ],
+    "rating": 4.5
+  },
+  {
+    "name": "Rakesh Patel",
+    "title": "Director",
+    "organization": "Surat Textile Innovation Council",
+    "city": "Surat",
+    "expertise": [
+      "Textile Technology",
+      "Smart Textiles",
+      "Fashion Tech",
+      "Export Markets"
+    ],
+    "years_experience": 25,
+    "startup_count": 15,
+    "linkedin_url": "https://linkedin.com/in/rakesh-patel-textile",
+    "bio": "Leading innovation in Surat's massive textile industry. Champion of smart textiles and technology adoption in traditional manufacturing.",
+    "available_for": [
+      "Mentorship",
+      "Strategic Advisory"
+    ],
+    "rating": 4.5
+  },
+  {
+    "name": "Shrenik Ghia",
+    "title": "Director",
+    "organization": "Ghia Group",
+    "city": "Ahmedabad",
+    "expertise": [
+      "Automotive Components",
+      "Manufacturing",
+      "Export Business",
+      "Supply Chain"
+    ],
+    "years_experience": 22,
+    "startup_count": 8,
+    "linkedin_url": "https://linkedin.com/in/shrenik-ghia",
+    "bio": "Director of Ghia Group, a respected manufacturing conglomerate. Supports manufacturing and engineering startups in Gujarat.",
+    "available_for": [
+      "Investment",
+      "Strategic Advisory"
+    ],
+    "rating": 4.5
+  },
+  {
+    "name": "Vivek Gupta",
+    "title": "Angel Investor",
+    "organization": "Gujarat Angel Network",
+    "city": "Ahmedabad",
+    "expertise": [
+      "Angel Investing",
+      "Technology Assessment",
+      "Market Strategy",
+      "Portfolio Management"
+    ],
+    "years_experience": 18,
+    "startup_count": 20,
+    "linkedin_url": "https://linkedin.com/in/vivek-gupta-angel",
+    "bio": "Active angel investor with a portfolio spanning technology, healthcare, and consumer startups. Mentor for investment readiness and fundraising strategy.",
+    "available_for": [
+      "Investment",
+      "Mentorship"
+    ],
+    "rating": 4.6
+  },
+  {
+    "name": "Niral Patel",
+    "title": "Chief Technology Officer",
+    "organization": "AI Research Foundation Gujarat",
+    "city": "Ahmedabad",
+    "expertise": [
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Data Science",
+      "Deep Tech"
+    ],
+    "years_experience": 16,
+    "startup_count": 12,
+    "linkedin_url": "https://linkedin.com/in/niral-patel-ai",
+    "bio": "AI and ML expert leading research initiatives in Gujarat. Mentor for deep-tech startups and academic-industry collaborations.",
+    "available_for": [
+      "Free Mentoring",
+      "Research Collaboration"
+    ],
+    "rating": 4.6
+  },
+  {
+    "name": "Yash Vasant",
+    "title": "Founder & Director",
+    "organization": "Gujarat Social Innovation Hub",
+    "city": "Ahmedabad",
+    "expertise": [
+      "Social Enterprise",
+      "Impact Investing",
+      "Community Development",
+      "Sustainability"
+    ],
+    "years_experience": 14,
+    "startup_count": 18,
+    "linkedin_url": "https://linkedin.com/in/yash-vasant-social",
+    "bio": "Champion of social entrepreneurship in Gujarat. Has built a network supporting impact-driven startups addressing social challenges.",
+    "available_for": [
+      "Free Mentoring",
+      "Investment"
+    ],
+    "rating": 4.5
+  },
+  {
+    "name": "Karan Shah",
+    "title": "Partner",
+    "organization": "Ahmedabad FinTech Partners",
+    "city": "Ahmedabad",
+    "expertise": [
+      "FinTech",
+      "Blockchain",
+      "Digital Banking",
+      "Payment Systems"
+    ],
+    "years_experience": 16,
+    "startup_count": 15,
+    "linkedin_url": "https://linkedin.com/in/karan-shah-fintech",
+    "bio": "FinTech specialist and venture partner backing early-stage financial technology startups in Gujarat. Deep knowledge of digital payments and blockchain applications.",
+    "available_for": [
+      "Investment",
+      "Mentorship"
+    ],
+    "rating": 4.6
+  },
+  {
+    "name": "Deepak Jain",
+    "title": "Founder & CEO",
+    "organization": "Rajkot CleanTech Ventures",
+    "city": "Rajkot",
+    "expertise": [
+      "Clean Technology",
+      "Water Treatment",
+      "Waste Management",
+      "Green Manufacturing"
+    ],
+    "years_experience": 18,
+    "startup_count": 10,
+    "linkedin_url": "https://linkedin.com/in/deepak-jain-cleantech",
+    "bio": "Clean technology entrepreneur based in Rajkot. Active in promoting sustainable manufacturing and environmental innovation in Gujarat.",
+    "available_for": [
+      "Mentorship",
+      "Investment"
+    ],
+    "rating": 4.5
+  }
+]

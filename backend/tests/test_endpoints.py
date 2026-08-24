@@ -33,7 +33,7 @@ class TestDashboard:
     def test_dashboard_district_filter(self, client, tokens, seed_records):
         resp = client.get("/dashboard?district=TestCity", headers={"Authorization": f"Bearer {tokens['admin']}"})
         assert resp.status_code == 200
-        assert resp.json()["banner"] == "DEMO DATA — representative prototype records only"
+        assert resp.json()["banner"] == "UdaanSetu — Maharashtra Startup Procurement Platform"
 
     def test_dashboard_requires_auth(self, client, seed_records):
         resp = client.get("/dashboard")
@@ -58,7 +58,7 @@ class TestAnalytics:
 
     def test_overview_has_demo_label(self, client, tokens, seed_records):
         resp = client.get("/analytics/overview", headers={"Authorization": f"Bearer {tokens['admin']}"})
-        assert "DEMO DATA" in resp.json()["label"]
+        assert "Maharashtra" in resp.json()["label"]
 
     def test_district_analytics(self, client, tokens, seed_records):
         resp = client.get("/analytics/districts", headers={"Authorization": f"Bearer {tokens['admin']}"})

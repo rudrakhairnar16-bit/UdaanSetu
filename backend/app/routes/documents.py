@@ -6,9 +6,9 @@ from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
 from sqlalchemy.orm import Session
 
 from app.config import settings
-from app.dependencies import current, db
+from app.dependencies import current, authorize, db
 from app.models import Record
-from app.utils import audit
+from app.utils import audit, audit_entity
 
 router = APIRouter(tags=["documents"])
 
@@ -55,3 +55,28 @@ async def upload_document(
     return {"filename": file.filename, "size": len(content),
             "extracted_preview": text[:2000],
             "note": "Best-effort extraction; validate source content manually."}
+
+
+# ── Document ACL ──
+
+@router.get("/{record_id}/acl")
+def get_document_acl(record_id: int, s: Session = Depends(db), u=Depends(current)):
+    from app.models import DocumentACL
+    return s.query(DocumentACL).filter_by(record_id=record_id).all()
+
+
+@router.post("/{record_id}/acl")
+def set_document_acl(
+    record_id: int, role: str = "", can_read: bool = True, can_write: bool = False,
+    s: Session = Depends(db), u=Depends(authorize("admin")),
+):
+    from app.models import DocumentACL
+    existing = s.query(DocumentACL).filter_by(record_id=record_id, role=role).first()
+    if existing:
+        existing.can_read = can_read
+        existing.can_write = can_write
+    else:
+        acl = DocumentACL(record_id=record_id, role=role, can_read=can_read, can_write=can_write)
+        s.add(acl)
+    s.commit()
+    return {"message": "ACL updated", "role": role, "can_read": can_read, "can_write": can_write}

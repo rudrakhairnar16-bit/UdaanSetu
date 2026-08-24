@@ -2,17 +2,42 @@
 
 :root {
   color-scheme: light;
-  --green-50: #f0fdf4;
-  --green-100: #dcfce7;
-  --green-200: #bbf7d0;
-  --green-300: #86efac;
-  --green-400: #4ade80;
-  --green-500: #22c55e;
-  --green-600: #16a34a;
-  --green-700: #15803d;
-  --green-800: #166534;
-  --green-900: #14532d;
-  --green-950: #052e16;
+  /* ── Maharashtra Govt Primary: Saffron ── */
+  --green-50: #fef7e8;
+  --green-100: #fdecc8;
+  --green-200: #f9d99a;
+  --green-300: #f5c462;
+  --green-400: #f3ae39;
+  --green-500: #e69a1a;
+  --green-600: #d4880f;
+  --green-700: #b37209;
+  --green-800: #7a4d06;
+  --green-900: #4a2f03;
+  --green-950: #2a1a01;
+  /* ── Maharashtra Govt Secondary: Prussian Blue ── */
+  --prussian-50: #e8f0f8;
+  --prussian-100: #c5d9ed;
+  --prussian-200: #8fb5db;
+  --prussian-300: #5991c9;
+  --prussian-400: #2f6fb8;
+  --prussian-500: #1a5296;
+  --prussian-600: #0f3d75;
+  --prussian-700: #0a2d58;
+  --prussian-800: #051e3c;
+  --prussian-900: #012348;
+  --prussian-950: #001428;
+  /* ── Maharashtra Govt Accent: Anakiwa ── */
+  --anakiwa-50: #f0fbff;
+  --anakiwa-100: #ddf5ff;
+  --anakiwa-200: #b8ebff;
+  --anakiwa-300: #92eaFF;
+  --anakiwa-400: #5cd9ff;
+  --anakiwa-500: #2ebdff;
+  --anakiwa-600: #14a3e6;
+  --anakiwa-700: #0a7fb8;
+  --anakiwa-800: #055d8a;
+  --anakiwa-900: #013d5c;
+  --anakiwa-950: #002438;
   --gray-50: #f9fafb;
   --gray-100: #f3f4f6;
   --gray-200: #e5e7eb;
@@ -96,9 +121,9 @@
     --gray-700: #e2e8f0;
     --gray-800: #f1f5f9;
     --gray-900: #f8fafc;
-    --green-50: #052e16;
-    --green-100: #14532d;
-    --green-800: #22c55e;
+    --green-50: #2a1a01;
+    --green-100: #4a2f03;
+    --green-800: #f3ae39;
     --red-50: #450a0a;
     --red-100: #7f1d1d;
     --red-600: #f87171;
@@ -107,8 +132,8 @@
     --amber-600: #fbbf24;
     --amber-700: #f59e0b;
     --amber-100: #78350f;
-    --blue-50: #172554;
-    --blue-100: #1e3a5f;
+    --blue-50: #002438;
+    --blue-100: #013d5c;
     --orange-50: #431407;
     --orange-100: #7c2d12;
     --violet-50: #2e1065;
@@ -119,7 +144,7 @@
     --border-soft: #334155;
     --yellow-800: #fde047;
     --red-700: #fca5a5;
-    --blue-700: #93c5fd;
+    --blue-700: #92eaFF;
     --orange-800: #fdba74;
     --violet-700: #c4b5fd;
   }
@@ -131,9 +156,9 @@ a { color: inherit; text-decoration: none; }
 button { cursor: pointer; font: inherit; border: none; background: none; }
 button:focus-visible, a:focus-visible, select:focus-visible, textarea:focus-visible, input:focus-visible { outline: 3px solid rgba(59,130,246,.45); outline-offset: 2px; }
 input, select, textarea { font: inherit; border: 1px solid var(--gray-200); border-radius: var(--radius-sm); padding: 10px 14px; min-height: 44px; outline: none; background: var(--surface-soft); transition: border-color .15s, box-shadow .15s, background .15s; width: 100%; }
-input:focus, select:focus, textarea:focus { border-color: var(--green-500); background: var(--surface); box-shadow: 0 0 0 3px rgba(22,163,74,.12); }
+input:focus, select:focus, textarea:focus { border-color: var(--green-500); background: var(--surface); box-shadow: 0 0 0 3px rgba(212,136,15,.12); }
 input:invalid:not(:placeholder-shown), textarea:invalid:not(:placeholder-shown) { border-color: var(--red-500); }
-::selection { background: rgba(22,163,74,.2); }
+::selection { background: rgba(212,136,15,.2); }
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-thumb { background: var(--gray-200); border-radius: 8px; border: 2px solid transparent; background-clip: content-box; }
 ::-webkit-scrollbar-thumb:hover { background: var(--gray-300); background-clip: content-box; border: 2px solid transparent; }
@@ -143,8 +168,8 @@ h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
 /* Buttons */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 20px; border-radius: var(--radius); font-weight: 600; font-size: 14px; transition: var(--transition-base); min-height: var(--touch-min); white-space: nowrap; }
 .btn:active { transform: translateY(0) scale(.98); }
-.btn-primary { background: linear-gradient(135deg, var(--green-600), var(--green-700)); color: white; box-shadow: 0 2px 8px -2px rgba(22,163,74,.45); }
-.btn-primary:hover { box-shadow: 0 6px 18px -4px rgba(22,163,74,.55); transform: translateY(-1px); filter: brightness(1.04); }
+.btn-primary { background: linear-gradient(135deg, var(--green-600), var(--green-700)); color: white; box-shadow: 0 2px 8px -2px rgba(212,136,15,.45); }
+.btn-primary:hover { box-shadow: 0 6px 18px -4px rgba(212,136,15,.55); transform: translateY(-1px); filter: brightness(1.04); }
 .btn-secondary { background: var(--surface); color: var(--gray-700); border: 1px solid var(--gray-200); box-shadow: var(--shadow-xs); }
 .btn-secondary:hover { background: var(--gray-100); border-color: var(--gray-300); }
 .btn-danger { background: linear-gradient(135deg, #f87171, #ef4444); color: white; box-shadow: 0 2px 8px -2px rgba(239,68,68,.4); }
@@ -176,7 +201,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
 .stat-card .label { font-size: 11px; color: var(--gray-500); font-weight: 600; text-transform: uppercase; letter-spacing: .07em; }
 .stat-card .value { font-size: 30px; font-weight: 800; color: var(--gray-900); font-family: var(--font-display); letter-spacing: -0.02em; }
 .stat-card .sub { font-size: 12px; color: var(--gray-500); }
-.stat-card.gradient-green { background: linear-gradient(135deg, #10b981, #059669); border: none; color: white; }
+.stat-card.gradient-green { background: linear-gradient(135deg, var(--green-500), var(--green-700)); border: none; color: white; }
 .stat-card.gradient-green .label, .stat-card.gradient-green .value, .stat-card.gradient-green .sub { color: white; }
 
 /* Empty state */
@@ -217,7 +242,7 @@ tr:hover td { background: var(--gray-50); }
 .page-header .subtitle { font-size: 13.5px; color: var(--gray-500); }
 
 /* Skip link */
-.skip-link { position: absolute; top: -40px; left: 0; background: var(--green-700); color: white; padding: 8px 16px; z-index: 10000; font-weight: 600; border-radius: 0 0 var(--radius) 0; transition: top .2s; }
+.skip-link { position: absolute; top: -40px; left: 0; background: var(--prussian-900); color: white; padding: 8px 16px; z-index: 10000; font-weight: 600; border-radius: 0 0 var(--radius) 0; transition: top .2s; }
 .skip-link:focus { top: 0; }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }

@@ -24,6 +24,13 @@ def audit(s, u, action, r):
     ))
 
 
+def audit_entity(s, user_id, entity_type, entity_id, action, detail=None):
+    s.add(AuditLog(
+        action=action, entity=entity_type, entity_id=entity_id,
+        actor_id=user_id, detail=detail or {}
+    ))
+
+
 def notify(s, user_id, message, kind="info"):
     s.add(Notification(user_id=user_id, message=message, kind=kind))
 

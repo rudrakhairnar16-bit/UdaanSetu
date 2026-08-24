@@ -1,0 +1,330 @@
+import json
+import os
+
+SCHEMES = [
+    {
+        "id": "GJ-S001",
+        "name": "Gujarat Startup Policy 2022-27",
+        "description": "Comprehensive policy to promote startups in Gujarat with seed funding up to Rs. 30 lakh, mentorship, incubation support, and tax incentives for DPIIT-recognized startups",
+        "ministry": "Industries & Mines Department, Government of Gujarat",
+        "budget": "500 Crore",
+        "benefit_type": "Financial Assistance",
+        "eligibility": "DPIIT recognized startups registered in Gujarat with at least one founder residing in Gujarat",
+        "apply_url": "https://invest.gujarat.gov.in",
+        "status": "Active",
+        "sector": "All",
+        "stage": ["Idea", "MVP", "Early Traction", "Scaling"],
+        "category": "Government of Gujarat"
+    },
+    {
+        "id": "GJ-S002",
+        "name": "Gujarat Industrial Policy 2020",
+        "description": "Capital subsidy up to 25% on fixed capital investment, stamp duty exemption, SGST reimbursement, and interest subsidy for new and existing industrial units in Gujarat",
+        "ministry": "Industries & Mines Department, Government of Gujarat",
+        "budget": "4000 Crore",
+        "benefit_type": "Capital Subsidy",
+        "eligibility": "Industrial units setting up new projects or expanding existing units in Gujarat with minimum investment of Rs. 10 crore",
+        "apply_url": "https://invest.gujarat.gov.in",
+        "status": "Active",
+        "sector": "Manufacturing",
+        "stage": ["Early Traction", "Scaling"],
+        "category": "Government of Gujarat"
+    },
+    {
+        "id": "GJ-S003",
+        "name": "MSME Policy Gujarat",
+        "description": "Interest subsidy of 5-7% on term loans for micro, small, and medium enterprises, credit guarantee support, and technology upgradation assistance",
+        "ministry": "Industries & Mines Department, Government of Gujarat",
+        "budget": "1500 Crore",
+        "benefit_type": "Interest Subsidy",
+        "eligibility": "MSMEs registered under MSMED Act 2006 with Udyam registration certificate operating in Gujarat",
+        "apply_url": "https://udyamregister.gov.in",
+        "status": "Active",
+        "sector": "MSME",
+        "stage": ["MVP", "Early Traction", "Scaling"],
+        "category": "Government of Gujarat"
+    },
+    {
+        "id": "GJ-S004",
+        "name": "Gujarat Venture Finance Program",
+        "description": "GVCF-managed venture capital fund providing seed and early-stage equity funding to technology-driven startups in Gujarat",
+        "ministry": "Gujarat Venture Finance Corporation (GVFC)",
+        "budget": "200 Crore",
+        "benefit_type": "Equity Funding",
+        "eligibility": "Technology startups with innovative products/services, minimum 51% ownership by Gujarat-based founders",
+        "apply_url": "https://www.gvfc.org.in",
+        "status": "Active",
+        "sector": "Technology",
+        "stage": ["MVP", "Early Traction"],
+        "category": "Government of Gujarat"
+    },
+    {
+        "id": "GJ-S005",
+        "name": "Gujarat Biotechnology Policy 2022-27",
+        "description": "Establishment of biotechnology parks, infrastructure support, research grants, and fiscal incentives for biotech startups and companies in Gujarat",
+        "ministry": "Department of Science & Technology, Government of Gujarat",
+        "budget": "300 Crore",
+        "benefit_type": "Infrastructure & Incentives",
+        "eligibility": "Biotech startups and companies engaged in biotech research, manufacturing, or services registered in Gujarat",
+        "apply_url": "https://gujaratbiotech.org",
+        "status": "Active",
+        "sector": "Biotechnology",
+        "stage": ["Idea", "MVP", "Early Traction", "Scaling"],
+        "category": "Government of Gujarat"
+    },
+    {
+        "id": "GJ-S006",
+        "name": "Gujarat IT/ITeS Policy 2022-27",
+        "description": "Dedicated IT parks, co-working spaces, stamp duty exemption, electricity duty exemption, and special incentives for IT and ITeS companies in Gujarat",
+        "ministry": "Department of Information Technology, Government of Gujarat",
+        "budget": "500 Crore",
+        "benefit_type": "Infrastructure & Incentives",
+        "eligibility": "IT/ITeS companies and startups providing software, BPO, KPO, or digital services registered in Gujarat",
+        "apply_url": "https://digital.gujarat.gov.in",
+        "status": "Active",
+        "sector": "Information Technology",
+        "stage": ["MVP", "Early Traction", "Scaling"],
+        "category": "Government of Gujarat"
+    },
+    {
+        "id": "GJ-S007",
+        "name": "Gujarat Textile Policy 2022-27",
+        "description": "Textile parks with plug-and-play infrastructure, capital subsidy, interest subsidy, and SGST reimbursement for textile manufacturing and processing units",
+        "ministry": "Industries & Mines Department, Government of Gujarat",
+        "budget": "2000 Crore",
+        "benefit_type": "Capital Subsidy",
+        "eligibility": "Textile manufacturing, processing, and garment units setting up in Gujarat's textile parks or designated clusters",
+        "apply_url": "https://invest.gujarat.gov.in",
+        "status": "Active",
+        "sector": "Textile",
+        "stage": ["Early Traction", "Scaling"],
+        "category": "Government of Gujarat"
+    },
+    {
+        "id": "GJ-S008",
+        "name": "Gujarat Solar Park Policy",
+        "description": "Land allocation, transmission infrastructure, and fiscal incentives for solar energy developers and renewable energy startups in Gujarat",
+        "ministry": "Energy & Petrochemicals Department, Government of Gujarat",
+        "budget": "3000 Crore",
+        "benefit_type": "Infrastructure & Incentives",
+        "eligibility": "Solar and renewable energy developers, EPC companies, and clean energy startups with projects in Gujarat",
+        "apply_url": "https://gujaratpowergujarat.com",
+        "status": "Active",
+        "sector": "Renewable Energy",
+        "stage": ["MVP", "Early Traction", "Scaling"],
+        "category": "Government of Gujarat"
+    },
+    {
+        "id": "GJ-S009",
+        "name": "Gujarat Agro Food Park Policy",
+        "description": "Food processing clusters with shared infrastructure, cold chain support, capital subsidy, and market linkage assistance for agro-food startups",
+        "ministry": "Industries & Mines Department, Government of Gujarat",
+        "budget": "800 Crore",
+        "benefit_type": "Infrastructure & Subsidy",
+        "eligibility": "Food processing units and agro-based startups operating in Gujarat with minimum investment of Rs. 50 lakh",
+        "apply_url": "https://invest.gujarat.gov.in",
+        "status": "Active",
+        "sector": "Food Processing",
+        "stage": ["MVP", "Early Traction", "Scaling"],
+        "category": "Government of Gujarat"
+    },
+    {
+        "id": "GJ-S010",
+        "name": "Gujarat Pharma Policy",
+        "description": "Pharmaceutical cluster development, common testing laboratory, R&D incentives, and marketing support for pharma and healthcare startups in Gujarat",
+        "ministry": "Industries & Mines Department, Government of Gujarat",
+        "budget": "600 Crore",
+        "benefit_type": "Cluster Development",
+        "eligibility": "Pharmaceutical, biopharmaceutical, and healthcare device startups with operations in Gujarat",
+        "apply_url": "https://invest.gujarat.gov.in",
+        "status": "Active",
+        "sector": "Pharmaceutical",
+        "stage": ["MVP", "Early Traction", "Scaling"],
+        "category": "Government of Gujarat"
+    },
+    {
+        "id": "GJ-S011",
+        "name": "Gujarat Tourism Policy 2022-27",
+        "description": "Incentives for tourism-related ventures including heritage hotels, adventure tourism, eco-tourism, and homestays with capital subsidy and stamp duty exemption",
+        "ministry": "Tourism Department, Government of Gujarat",
+        "budget": "500 Crore",
+        "benefit_type": "Capital Subsidy",
+        "eligibility": "Tourism startups and hospitality ventures including homestays, heritage hotels, and adventure tourism operators in Gujarat",
+        "apply_url": "https://www.gujarattourism.com",
+        "status": "Active",
+        "sector": "Tourism & Hospitality",
+        "stage": ["MVP", "Early Traction", "Scaling"],
+        "category": "Government of Gujarat"
+    },
+    {
+        "id": "GJ-S012",
+        "name": "Gujarat Education Policy - EdTech Incentives",
+        "description": "Support for EdTech startups through incubation, seed funding, government school partnerships, and digital learning platform development grants",
+        "ministry": "Education Department, Government of Gujarat",
+        "budget": "200 Crore",
+        "benefit_type": "Grant & Incubation",
+        "eligibility": "EdTech startups providing digital learning solutions for K-12, higher education, or skill development registered in Gujarat",
+        "apply_url": "https://gujarateducation.gov.in",
+        "status": "Active",
+        "sector": "Education Technology",
+        "stage": ["Idea", "MVP", "Early Traction"],
+        "category": "Government of Gujarat"
+    },
+    {
+        "id": "GJ-S013",
+        "name": "Gujarat Green Technology Policy",
+        "description": "Incentives for clean technology startups including waste management, water treatment, pollution control, and circular economy ventures",
+        "ministry": "Environment & Forest Department, Government of Gujarat",
+        "budget": "300 Crore",
+        "benefit_type": "Financial Assistance",
+        "eligibility": "Clean tech and green technology startups with solutions for waste management, water treatment, or environmental conservation in Gujarat",
+        "apply_url": "https://gujaratpollutioncontrol.org",
+        "status": "Active",
+        "sector": "Clean Technology",
+        "stage": ["Idea", "MVP", "Early Traction", "Scaling"],
+        "category": "Government of Gujarat"
+    },
+    {
+        "id": "GJ-S014",
+        "name": "Gujarat Drone Policy 2022-27",
+        "description": "Drone corridor establishment, testing facility access, pilot training support, and regulatory facilitation for UAV and drone technology startups",
+        "ministry": "Industries & Mines Department, Government of Gujarat",
+        "budget": "150 Crore",
+        "benefit_type": "Infrastructure & Training",
+        "eligibility": "Drone/UAV startups, manufacturers, and operators with DGCA approval operating in Gujarat",
+        "apply_url": "https://invest.gujarat.gov.in",
+        "status": "Active",
+        "sector": "Drone Technology",
+        "stage": ["MVP", "Early Traction", "Scaling"],
+        "category": "Government of Gujarat"
+    },
+    {
+        "id": "GJ-S015",
+        "name": "Gujarat Electric Vehicle Policy 2022-27",
+        "description": "Purchase subsidies for EVs, charging infrastructure development support, manufacturing incentives, and R&D grants for electric vehicle ecosystem startups",
+        "ministry": "Industries & Mines Department, Government of Gujarat",
+        "budget": "500 Crore",
+        "benefit_type": "Subsidy & Grant",
+        "eligibility": "EV manufacturers, component makers, charging infrastructure providers, and mobility startups registered in Gujarat",
+        "apply_url": "https://invest.gujarat.gov.in",
+        "status": "Active",
+        "sector": "Electric Vehicle",
+        "stage": ["MVP", "Early Traction", "Scaling"],
+        "category": "Government of Gujarat"
+    },
+    {
+        "id": "GJ-S016",
+        "name": "Gujarat MSME Competitive Capital Subsidy (PLI Scheme)",
+        "description": "Production-linked incentive for MSMEs achieving competitive performance in manufacturing, with capital subsidy linked to incremental production output",
+        "ministry": "Industries & Mines Department, Government of Gujarat",
+        "budget": "1000 Crore",
+        "benefit_type": "PLI Incentive",
+        "eligibility": "MSMEs with minimum 2 years of operation in Gujarat achieving year-on-year production growth of 10% or more",
+        "apply_url": "https://invest.gujarat.gov.in",
+        "status": "Active",
+        "sector": "Manufacturing",
+        "stage": ["Early Traction", "Scaling"],
+        "category": "Government of Gujarat"
+    },
+    {
+        "id": "GJ-S017",
+        "name": "Gujarat SC/ST Startup Scheme",
+        "description": "Special seed funding up to Rs. 50 lakh, mentorship, and incubation support for SC/ST entrepreneurs to promote inclusive startup ecosystem in Gujarat",
+        "ministry": "Social Justice & Empowerment Department, Government of Gujarat",
+        "budget": "100 Crore",
+        "benefit_type": "Seed Funding",
+        "eligibility": "SC/ST entrepreneurs with DPIIT-registered startups, minimum 51% ownership by SC/ST founder, resident of Gujarat",
+        "apply_url": "https://invest.gujarat.gov.in",
+        "status": "Active",
+        "sector": "All",
+        "stage": ["Idea", "MVP", "Early Traction"],
+        "category": "Government of Gujarat"
+    },
+    {
+        "id": "GJ-S018",
+        "name": "Gujarat Women Entrepreneurship Scheme",
+        "description": "Dedicated support for women-led startups including subsidized co-working, seed funding up to Rs. 25 lakh, and women-focused incubation programs",
+        "ministry": "Women & Child Development Department, Government of Gujarat",
+        "budget": "150 Crore",
+        "benefit_type": "Seed Funding & Incubation",
+        "eligibility": "Women entrepreneurs with at least 51% ownership in DPIIT-registered startups based in Gujarat",
+        "apply_url": "https://invest.gujarat.gov.in",
+        "status": "Active",
+        "sector": "All",
+        "stage": ["Idea", "MVP", "Early Traction"],
+        "category": "Government of Gujarat"
+    },
+    {
+        "id": "GJ-S019",
+        "name": "Gujarat Youth Startup Scheme",
+        "description": "Support for entrepreneurs under 30 years with seed funding up to Rs. 20 lakh, free co-working space, and mentorship through dedicated youth startup cells",
+        "ministry": "Youth Affairs & Sports Department, Government of Gujarat",
+        "budget": "100 Crore",
+        "benefit_type": "Seed Funding",
+        "eligibility": "Entrepreneurs aged below 30 years with DPIIT-registered startups, resident of Gujarat",
+        "apply_url": "https://invest.gujarat.gov.in",
+        "status": "Active",
+        "sector": "All",
+        "stage": ["Idea", "MVP"],
+        "category": "Government of Gujarat"
+    },
+    {
+        "id": "GJ-S020",
+        "name": "Gujarat Tribal Startup Scheme",
+        "description": "Startup support for entrepreneurs from tribal districts of Gujarat including seed funding, skill development, and market access for tribal enterprise development",
+        "ministry": "Tribal Development Department, Government of Gujarat",
+        "budget": "80 Crore",
+        "benefit_type": "Seed Funding & Training",
+        "eligibility": "Tribal entrepreneurs from designated tribal districts of Gujarat with startup ideas or early-stage ventures",
+        "apply_url": "https://invest.gujarat.gov.in",
+        "status": "Active",
+        "sector": "All",
+        "stage": ["Idea", "MVP"],
+        "category": "Government of Gujarat"
+    },
+    {
+        "id": "GJ-S021",
+        "name": "Gujarat Film Policy 2022-27",
+        "description": "Incentives for film production, post-production facilities, film city infrastructure, and entertainment technology startups including single-window clearance",
+        "ministry": "Industries & Mines Department, Government of Gujarat",
+        "budget": "300 Crore",
+        "benefit_type": "Infrastructure & Incentives",
+        "eligibility": "Film production houses, post-production studios, VFX companies, and entertainment tech startups operating in Gujarat",
+        "apply_url": "https://invest.gujarat.gov.in",
+        "status": "Active",
+        "sector": "Film & Entertainment",
+        "stage": ["MVP", "Early Traction", "Scaling"],
+        "category": "Government of Gujarat"
+    },
+    {
+        "id": "GJ-S022",
+        "name": "Gujarat Sports Policy 2023-28",
+        "description": "Support for sports technology startups, sports equipment manufacturing, fitness tech ventures, and sports infrastructure development with fiscal incentives",
+        "ministry": "Youth Affairs & Sports Department, Government of Gujarat",
+        "budget": "200 Crore",
+        "benefit_type": "Capital Subsidy & Grant",
+        "eligibility": "Sports tech startups, fitness equipment manufacturers, and sports infrastructure developers registered in Gujarat",
+        "apply_url": "https://invest.gujarat.gov.in",
+        "status": "Active",
+        "sector": "Sports Technology",
+        "stage": ["MVP", "Early Traction", "Scaling"],
+        "category": "Government of Gujarat"
+    }
+]
+
+
+def generate_json():
+    output_dir = os.path.dirname(os.path.abspath(__file__))
+    output_path = os.path.join(output_dir, "gujarat_schemes.json")
+
+    data = {"schemes": SCHEMES}
+
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+
+    print(f"Generated {len(SCHEMES)} Gujarat government schemes.")
+    print(f"Output written to: {output_path}")
+
+
+if __name__ == "__main__":
+    generate_json()

@@ -7,17 +7,27 @@ import { useEffect, useState, useRef, useCallback } from 'react';
 import { Icon } from '../components/ui/Icon';
 
 const NAV_ITEMS = [
-  { href: '/dashboard', label: 'Dashboard', icon: 'dashboard', roles: ['admin', 'researcher', 'mentor', 'investor', 'incubator'] },
+  { href: '/dashboard', label: 'Dashboard', icon: 'dashboard', roles: ['admin', 'researcher', 'mentor', 'investor', 'incubator', 'govt_officer'] },
   { href: '/research', label: 'Research Projects', icon: 'research', roles: ['admin', 'researcher'] },
   { href: '/innovations', label: 'Innovations', icon: 'innovation', roles: ['admin', 'researcher', 'mentor'] },
   { href: '/ipr', label: 'IPR / Patents', icon: 'ipr', roles: ['admin', 'researcher'] },
-  { href: '/startups', label: 'Startups', icon: 'startup', roles: ['admin', 'researcher', 'investor'] },
+  { href: '/startups', label: 'Startups', icon: 'startup', roles: ['admin', 'researcher', 'investor', 'govt_officer'] },
   { href: '/ecosystem', label: 'Ecosystem', icon: 'ecosystem', roles: ['admin', 'mentor', 'investor', 'incubator', 'researcher'] },
   { href: '/government', label: 'Govt APIs', icon: 'government', roles: ['admin', 'researcher'] },
-  { href: '/analytics', label: 'Analytics', icon: 'analytics', roles: ['admin', 'researcher'] },
+  { href: '/analytics', label: 'Analytics', icon: 'analytics', roles: ['admin', 'researcher', 'govt_officer'] },
   { href: '/impact', label: 'Impact', icon: 'impact', roles: ['admin', 'researcher', 'investor'] },
-  { href: '/notifications', label: 'Notifications', icon: 'notifications', roles: ['admin', 'researcher', 'mentor', 'investor', 'incubator'] },
-  { href: '/profile', label: 'Profile', icon: 'profile', roles: ['admin', 'researcher', 'mentor', 'investor', 'incubator'] },
+  { href: '/challenges', label: 'Challenges', icon: 'research', roles: ['admin', 'govt_officer', 'researcher'] },
+  { href: '/applications', label: 'Applications', icon: 'startup', roles: ['admin', 'govt_officer', 'startup'] },
+  { href: '/evaluations', label: 'Evaluations', icon: 'audit', roles: ['admin', 'evaluator', 'govt_officer'] },
+  { href: '/pilots', label: 'Pilots', icon: 'startup', roles: ['admin', 'govt_officer', 'investor'] },
+  { href: '/validation', label: 'Validation', icon: 'audit', roles: ['admin', 'validator', 'govt_officer'] },
+  { href: '/procurement', label: 'Procurement', icon: 'government', roles: ['admin', 'procurement_officer', 'govt_officer'] },
+  { href: '/contracts', label: 'Contracts & POs', icon: 'government', roles: ['admin', 'procurement_officer', 'govt_officer'] },
+  { href: '/departments', label: 'Departments', icon: 'government', roles: ['admin', 'govt_officer'] },
+  { href: '/grievances', label: 'Grievances', icon: 'notifications', roles: ['admin', 'govt_officer', 'startup'] },
+  { href: '/templates', label: 'Templates', icon: 'audit', roles: ['admin', 'govt_officer'] },
+  { href: '/notifications', label: 'Notifications', icon: 'notifications', roles: ['admin', 'researcher', 'mentor', 'investor', 'incubator', 'govt_officer'] },
+  { href: '/profile', label: 'Profile', icon: 'profile', roles: ['admin', 'researcher', 'mentor', 'investor', 'incubator', 'govt_officer'] },
   { href: '/audit', label: 'Audit Log', icon: 'audit', roles: ['admin'] },
   { href: '/settings', label: 'Settings', icon: 'settings', roles: ['admin'] },
 ];
@@ -96,8 +106,8 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         className={`sidebar ${mobileOpen ? 'sidebar-open' : ''}`}
         style={{
           width: 'var(--sidebar-width)',
-          background: 'linear-gradient(180deg, #0c3b26 0%, #0a2f1e 100%)',
-          color: '#d1fae5',
+          background: 'linear-gradient(180deg, #012348 0%, #011a38 100%)',
+          color: '#e0f7ff',
           display: 'flex',
           flexDirection: 'column',
           padding: '20px 12px',
@@ -107,7 +117,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           bottom: 0,
           zIndex: 50,
           transition: 'transform .2s',
-          boxShadow: '4px 0 24px rgba(5,46,22,.12)',
+          boxShadow: '4px 0 24px rgba(1,35,72,.12)',
         }}
         role="navigation"
         aria-label="Main navigation"
@@ -115,7 +125,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         {/* Brand */}
         <div style={{ padding: '0 12px 22px' }}>
           <Link href="/dashboard" style={{ fontWeight: 800, fontSize: 20, color: 'white', textDecoration: 'none', fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}>↗ UdaanSetu</Link>
-          <div style={{ fontSize: 11, color: '#86efac', marginTop: 3, fontWeight: 500 }}>Research to impact</div>
+          <div style={{ fontSize: 11, color: '#92eaFF', marginTop: 3, fontWeight: 500 }}>Research to impact</div>
         </div>
 
         <nav style={{ display: 'flex', flexDirection: 'column', gap: 2, flex: 1, overflowY: 'auto' }} aria-label="Primary">
@@ -135,7 +145,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                   fontSize: 14,
                   fontWeight: active ? 600 : 400,
                   background: active ? 'rgba(255,255,255,.1)' : 'transparent',
-                  color: active ? 'white' : '#a7f3d0',
+                  color: active ? 'white' : '#b0f0ff',
                   transition: 'background .15s, color .15s',
                   textDecoration: 'none',
                   border: active ? '1px solid rgba(255,255,255,.08)' : '1px solid transparent',
@@ -156,9 +166,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           border: '1px solid rgba(255,255,255,.08)',
           marginTop: 12,
         }}>
-          <div style={{ fontWeight: 600, color: '#ecfdf5', fontSize: 13 }}>{user.name}</div>
-          <div style={{ textTransform: 'capitalize', fontSize: 12, color: '#86efac', marginTop: 2 }}>{user.role}</div>
-          {user.district && <div style={{ fontSize: 11, color: '#a7f3d0', marginTop: 2 }}>{user.district}</div>}
+          <div style={{ fontWeight: 600, color: '#e0f7ff', fontSize: 13 }}>{user.name}</div>
+          <div style={{ textTransform: 'capitalize', fontSize: 12, color: '#92eaFF', marginTop: 2 }}>{user.role}</div>
+          {user.district && <div style={{ fontSize: 11, color: '#b0f0ff', marginTop: 2 }}>{user.district}</div>}
         </div>
 
         <button

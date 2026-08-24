@@ -8,8 +8,8 @@ import { useAuth } from './lib/auth';
 function LoginForm() {
   const { user, login, loading } = useAuth();
   const router = useRouter();
-  const [email, setEmail] = useState('admin@udaansetu.demo');
-  const [password, setPassword] = useState('Demo@123');
+  const [email, setEmail] = useState('admin@udaansetu.gov.in');
+  const [password, setPassword] = useState('Admin@123');
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
@@ -34,7 +34,7 @@ function LoginForm() {
 
   if (loading) {
     return (
-      <div style={{ minHeight: '100vh', display: 'grid', placeItems: 'center', background: '#f0fdf4' }}>
+      <div style={{ minHeight: '100vh', display: 'grid', placeItems: 'center', background: '#fef7e8' }}>
         <div style={{ fontSize: 14, color: 'var(--gray-500)' }}>Loading...</div>
       </div>
     );
@@ -49,7 +49,7 @@ function LoginForm() {
     }}>
       {/* Left brand panel */}
       <div style={{
-        background: 'linear-gradient(160deg, #064e3b 0%, #0c3b26 55%, #14532d 100%)',
+        background: 'linear-gradient(160deg, #012348 0%, #011a38 55%, #013158 100%)',
         color: 'white',
         padding: '56px 48px',
         display: 'flex',
@@ -58,33 +58,40 @@ function LoginForm() {
         position: 'relative',
         overflow: 'hidden',
       }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(600px 400px at 80% 20%, rgba(74,222,128,.14), transparent 60%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(600px 400px at 80% 20%, rgba(243,174,57,.14), transparent 60%)', pointerEvents: 'none' }} />
         <div>
           <div style={{ fontSize: 28, fontWeight: 800, letterSpacing: '-0.02em', fontFamily: 'var(--font-display)' }}>↗ UdaanSetu</div>
-          <div style={{ fontSize: 12, color: '#86efac', marginTop: 4, fontWeight: 500 }}>SIH1608 · Prototype</div>
+          <div style={{ fontSize: 12, color: '#92eaFF', marginTop: 4, fontWeight: 500 }}>SIH26136 · Govt of Maharashtra</div>
         </div>
 
         <div style={{ position: 'relative' }}>
-          <div style={{ fontSize: 34, fontWeight: 800, lineHeight: 1.2, letterSpacing: '-0.02em', fontFamily: 'var(--font-display)', maxWidth: 480 }}>
-            Turn research into<br />enduring impact.
+          <div style={{ fontSize: 28, fontWeight: 800, lineHeight: 1.2, letterSpacing: '-0.02em', fontFamily: 'var(--font-display)', maxWidth: 480 }}>
+            Startup-Friendly Public Procurement
           </div>
-          <div style={{ marginTop: 20, fontSize: 15, color: '#a7f3d0', lineHeight: 1.7, maxWidth: 440 }}>
-            One platform connecting research, innovation, IPR, startups and
-            ecosystem support — from lab bench to market.
+          <div style={{ marginTop: 16, fontSize: 14, color: '#b0f0ff', lineHeight: 1.8, maxWidth: 440 }}>
+            A platform enabling government departments to identify, pilot, procure and scale innovative solutions from eligible startups — with complete auditability and transparency.
           </div>
 
-          <div style={{ marginTop: 32, display: 'flex', gap: 24, flexWrap: 'wrap' }}>
-            {['🔬 Research', '💡 Innovation', '🚀 Startup', '🌍 Impact'].map(f => (
-              <div key={f} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, fontWeight: 600, color: '#ecfdf5' }}>
-                <span style={{ width: 32, height: 32, borderRadius: 10, background: 'rgba(255,255,255,.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 15 }}>{f.split(' ')[0]}</span>
-                {f.split(' ')[1]}
+          <div style={{ marginTop: 24, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
+            {[
+              { icon: '🔍', label: 'Identify', desc: 'Government challenges' },
+              { icon: '🚀', label: 'Pilot', desc: 'Milestone-based execution' },
+              { icon: '✅', label: 'Validate', desc: 'Independent assessment' },
+              { icon: '📋', label: 'Procure', desc: 'Auditable decisions' },
+            ].map(f => (
+              <div key={f.label} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, color: '#e0f7ff', padding: '6px 8px', background: 'rgba(255,255,255,.05)', borderRadius: 8 }}>
+                <span style={{ fontSize: 16 }}>{f.icon}</span>
+                <div>
+                  <div style={{ fontWeight: 700, fontSize: 12 }}>{f.label}</div>
+                  <div style={{ fontSize: 10, color: '#92eaFF' }}>{f.desc}</div>
+                </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div style={{ fontSize: 11, color: '#6ee7b7', opacity: .7, position: 'relative' }}>
-          Demo prototype — all data is representative, not government data.
+        <div style={{ fontSize: 11, color: '#6adbff', opacity: .7, position: 'relative' }}>
+          Government Innovation Procurement & Startup Pilot Platform
         </div>
       </div>
 
@@ -146,13 +153,17 @@ function LoginForm() {
           <div style={{ marginTop: 24, padding: 14, background: 'var(--gray-100)', borderRadius: 10, fontSize: 12, color: 'var(--gray-600)', lineHeight: 1.7 }}>
             <strong style={{ color: 'var(--gray-900)' }}>Demo Credentials:</strong>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2px 16px', marginTop: 4 }}>
-              <span>Admin · admin@udaansetu.demo</span>
-              <span>Researcher · researcher@udaansetu.demo</span>
-              <span>Mentor · mentor@udaansetu.demo</span>
-              <span>Investor · investor@udaansetu.demo</span>
-              <span>Incubator · incubator@udaansetu.demo</span>
+              <span>Admin · admin@udaansetu.gov.in</span>
+              <span>Govt Officer · rajesh.patil@maharashtra.gov.in</span>
+              <span>Procurement · meera.sharma@maharashtra.gov.in</span>
+              <span>Evaluator · vikram.patil@ieee.org</span>
+              <span>Validator · anjali.kulkarni@ncssc.in</span>
+              <span>Auditor · suresh.jogani@cag.gov.in</span>
             </div>
-            <div style={{ marginTop: 6, color: 'var(--gray-500)' }}>Password for all: <strong>Demo@123</strong></div>
+            <div style={{ marginTop: 6, color: 'var(--gray-500)' }}>
+              Admin: <strong>Admin@123</strong> · Govt: <strong>Govt@123</strong> · Procurement: <strong>Procure@123</strong><br/>
+              Evaluator: <strong>Eval@123</strong> · Validator: <strong>Valid@123</strong> · Auditor: <strong>Audit@123</strong>
+            </div>
           </div>
 
           <p style={{ marginTop: 20, fontSize: 13, color: 'var(--gray-500)', textAlign: 'center' }}>

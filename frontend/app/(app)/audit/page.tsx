@@ -16,7 +16,7 @@ export default function AuditPage() {
   }, []);
 
   const actionColor: Record<string, string> = {
-    created: '#16a34a', updated: '#3b82f6', deleted: 'var(--red-500)',
+    created: '#d4880f', updated: '#1a5296', deleted: 'var(--red-500)',
     seeded: '#9ca3af', uploaded_document: '#f97316',
   };
 

@@ -1,0 +1,262 @@
+[
+  {
+    "name": "Gujarat University",
+    "country": "India",
+    "city": "",
+    "works_count": 9507,
+    "cited_by_count": 171201,
+    "type": "education",
+    "openalex_id": "https://openalex.org/I114173286",
+    "source": "OpenAlex"
+  },
+  {
+    "name": "Central University of Gujarat",
+    "country": "India",
+    "city": "",
+    "works_count": 3062,
+    "cited_by_count": 86756,
+    "type": "education",
+    "openalex_id": "https://openalex.org/I89095802",
+    "source": "OpenAlex"
+  },
+  {
+    "name": "Gujarat Cancer & Research Institute",
+    "country": "India",
+    "city": "",
+    "works_count": 1818,
+    "cited_by_count": 83396,
+    "type": "facility",
+    "openalex_id": "https://openalex.org/I135230010",
+    "source": "OpenAlex"
+  },
+  {
+    "name": "Gujarat Technological University",
+    "country": "India",
+    "city": "",
+    "works_count": 4674,
+    "cited_by_count": 57162,
+    "type": "education",
+    "openalex_id": "https://openalex.org/I29563240",
+    "source": "OpenAlex"
+  },
+  {
+    "name": "Veer Narmad South Gujarat University",
+    "country": "India",
+    "city": "",
+    "works_count": 3053,
+    "cited_by_count": 67476,
+    "type": "education",
+    "openalex_id": "https://openalex.org/I10926426",
+    "source": "OpenAlex"
+  },
+  {
+    "name": "Government of Gujarat",
+    "country": "India",
+    "city": "",
+    "works_count": 2207,
+    "cited_by_count": 45032,
+    "type": "government",
+    "openalex_id": "https://openalex.org/I2802014819",
+    "source": "OpenAlex"
+  },
+  {
+    "name": "Gujarat Ayurved University",
+    "country": "India",
+    "city": "",
+    "works_count": 1945,
+    "cited_by_count": 22079,
+    "type": "education",
+    "openalex_id": "https://openalex.org/I2800605627",
+    "source": "OpenAlex"
+  },
+  {
+    "name": "Hemchandracharya North Gujarat University",
+    "country": "India",
+    "city": "",
+    "works_count": 2243,
+    "cited_by_count": 22556,
+    "type": "education",
+    "openalex_id": "https://openalex.org/I335036346",
+    "source": "OpenAlex"
+  },
+  {
+    "name": "Gujarat Cancer Society",
+    "country": "India",
+    "city": "",
+    "works_count": 872,
+    "cited_by_count": 17501,
+    "type": "education",
+    "openalex_id": "https://openalex.org/I4210089564",
+    "source": "OpenAlex"
+  },
+  {
+    "name": "Gujarat Institute of Desert Ecology",
+    "country": "India",
+    "city": "",
+    "works_count": 814,
+    "cited_by_count": 15043,
+    "type": "facility",
+    "openalex_id": "https://openalex.org/I4210159133",
+    "source": "OpenAlex"
+  },
+  {
+    "name": "Gujarat Kidney Foundation",
+    "country": "India",
+    "city": "",
+    "works_count": 426,
+    "cited_by_count": 9562,
+    "type": "other",
+    "openalex_id": "https://openalex.org/I4210116344",
+    "source": "OpenAlex"
+  },
+  {
+    "name": "Gujarat Vidyapith",
+    "country": "India",
+    "city": "",
+    "works_count": 682,
+    "cited_by_count": 7503,
+    "type": "education",
+    "openalex_id": "https://openalex.org/I347335806",
+    "source": "OpenAlex"
+  },
+  {
+    "name": "Gujarat Institute of Development Research",
+    "country": "India",
+    "city": "",
+    "works_count": 638,
+    "cited_by_count": 9440,
+    "type": "facility",
+    "openalex_id": "https://openalex.org/I4210092074",
+    "source": "OpenAlex"
+  },
+  {
+    "name": "Gujarat Matikam Kalakari & Rural Technology Institute",
+    "country": "India",
+    "city": "",
+    "works_count": 603,
+    "cited_by_count": 6270,
+    "type": "nonprofit",
+    "openalex_id": "https://openalex.org/I4210113358",
+    "source": "OpenAlex"
+  },
+  {
+    "name": "Gujarat National Law University",
+    "country": "India",
+    "city": "",
+    "works_count": 893,
+    "cited_by_count": 2878,
+    "type": "education",
+    "openalex_id": "https://openalex.org/I266678185",
+    "source": "OpenAlex"
+  },
+  {
+    "name": "National Forensic Sciences University",
+    "country": "India",
+    "city": "",
+    "works_count": 2446,
+    "cited_by_count": 48194,
+    "type": "education",
+    "openalex_id": "https://openalex.org/I1331084196",
+    "source": "OpenAlex"
+  },
+  {
+    "name": "Gujarat Science City",
+    "country": "India",
+    "city": "",
+    "works_count": 8,
+    "cited_by_count": 76,
+    "type": "government",
+    "openalex_id": "https://openalex.org/I4210106024",
+    "source": "OpenAlex"
+  },
+  {
+    "name": "GCS Medical College",
+    "country": "India",
+    "city": "",
+    "works_count": 596,
+    "cited_by_count": 3848,
+    "type": "education",
+    "openalex_id": "https://openalex.org/I4405260799",
+    "source": "OpenAlex"
+  },
+  {
+    "name": "Gujarat Biodiversity Board",
+    "country": "India",
+    "city": "",
+    "works_count": 0,
+    "cited_by_count": 0,
+    "type": "government",
+    "openalex_id": "https://openalex.org/I4405273487",
+    "source": "OpenAlex"
+  },
+  {
+    "name": "Gujarat Maritime University",
+    "country": "India",
+    "city": "",
+    "works_count": 0,
+    "cited_by_count": 0,
+    "type": "education",
+    "openalex_id": "https://openalex.org/I4405267348",
+    "source": "OpenAlex"
+  },
+  {
+    "name": "Gujarat Biotechnology Research Centre",
+    "country": "India",
+    "city": "",
+    "works_count": 0,
+    "cited_by_count": 0,
+    "type": "government",
+    "openalex_id": "https://openalex.org/I4405268643",
+    "source": "OpenAlex"
+  },
+  {
+    "name": "Society of Extension Education Gujarat",
+    "country": "India",
+    "city": "",
+    "works_count": 0,
+    "cited_by_count": 0,
+    "type": "other",
+    "openalex_id": "https://openalex.org/I4405266494",
+    "source": "OpenAlex"
+  },
+  {
+    "name": "Gujarat Industries Power Company Limited",
+    "country": "India",
+    "city": "",
+    "works_count": 0,
+    "cited_by_count": 0,
+    "type": "government",
+    "openalex_id": "https://openalex.org/I4405267345",
+    "source": "OpenAlex"
+  },
+  {
+    "name": "Gujarat Natural Farming Science University, Halol",
+    "country": "India",
+    "city": "",
+    "works_count": 0,
+    "cited_by_count": 0,
+    "type": "education",
+    "openalex_id": "https://openalex.org/I4405261131",
+    "source": "OpenAlex"
+  },
+  {
+    "name": "Indian Association of Preventive & Social Medicine - Gujarat Chapter",
+    "country": "India",
+    "city": "",
+    "works_count": 0,
+    "cited_by_count": 0,
+    "type": "nonprofit",
+    "openalex_id": "https://openalex.org/I4405266277",
+    "source": "OpenAlex"
+  },
+  {
+    "name": "Shroff S.R. Rotary Institute of Chemical Technology",
+    "country": "India",
+    "city": "",
+    "works_count": 0,
+    "cited_by_count": 0,
+    "type": "education",
+    "openalex_id": "https://openalex.org/I4405269504",
+    "source": "OpenAlex"
+  }
+]

@@ -1,0 +1,848 @@
+[
+  {
+    "name": "Artificial Intelligence in Healthcare and Education",
+    "openalex_id": "https://openalex.org/T11636",
+    "description": "This cluster of papers explores the intersection of artificial intelligence and medicine, focusing on applications in healthcare, medical imaging, clinical decision support, and the ethical challenges associated with AI implementation. It delves into topics such as machine learning, big data, precision medicine, and the potential impact of AI on health equity.",
+    "cited_by_count": 977661,
+    "works_count": 146889,
+    "domain": "Health Sciences",
+    "field": "Medicine"
+  },
+  {
+    "name": "Artificial Intelligence in Healthcare",
+    "openalex_id": "https://openalex.org/T11396",
+    "description": "This cluster of papers focuses on the application of machine learning, big data analytics, and data mining techniques in healthcare and medicine. It covers topics such as medical diagnosis, classification models, heart disease prediction, and the use of support vector machines and logistic regression. The cluster emphasizes the potential of machine learning in improving healthcare outcomes through advanced data analysis.",
+    "cited_by_count": 542671,
+    "works_count": 79787,
+    "domain": "Health Sciences",
+    "field": "Health Professions"
+  },
+  {
+    "name": "Explainable Artificial Intelligence (XAI)",
+    "openalex_id": "https://openalex.org/T12026",
+    "description": "This cluster of papers focuses on Explainable Artificial Intelligence (XAI) and the development of interpretable models, visual explanations, and responsible machine learning interpretability. It explores concepts, challenges, and opportunities in XAI, including the use of gradient-based localization, understanding deep neural networks, feature importance, and addressing black box models. The papers also discuss the responsibility and ethical considerations in AI.",
+    "cited_by_count": 466719,
+    "works_count": 57124,
+    "domain": "Physical Sciences",
+    "field": "Computer Science"
+  },
+  {
+    "name": "Artificial Intelligence in Games",
+    "openalex_id": "https://openalex.org/T11574",
+    "description": "This cluster of papers focuses on the research and development of artificial intelligence techniques for games, including Monte Carlo Tree Search, procedural content generation, interactive storytelling, player modeling, real-time strategy games, computational creativity, behavior trees, general game playing, and level generation.",
+    "cited_by_count": 332489,
+    "works_count": 54829,
+    "domain": "Physical Sciences",
+    "field": "Computer Science"
+  },
+  {
+    "name": "Artificial Intelligence in Law",
+    "openalex_id": "https://openalex.org/T13643",
+    "description": "This cluster of papers focuses on the application of predictive legal technology, including machine learning, natural language processing, and artificial intelligence, to forecast judicial decisions in various courts. The topics also cover the use of big data and behavior control in legal contexts, as well as the ethical implications of integrating technology into the legal profession.",
+    "cited_by_count": 78754,
+    "works_count": 30136,
+    "domain": "Social Sciences",
+    "field": "Social Sciences"
+  },
+  {
+    "name": "Artificial Intelligence Applications",
+    "openalex_id": "https://openalex.org/T13904",
+    "description": "This cluster of papers covers a wide range of topics related to artificial intelligence, technology innovation, and their impact on various domains such as business, healthcare, education, and social governance. It includes discussions on neural networks, deep learning, machine learning, digital transformation, data mining, robotics, and the internet of things.",
+    "cited_by_count": 39182,
+    "works_count": 24222,
+    "domain": "Physical Sciences",
+    "field": "Computer Science"
+  },
+  {
+    "name": "Artificial Intelligence in Education",
+    "openalex_id": "https://openalex.org/T14414",
+    "description": "This cluster of papers explores the intersection of education and technology, focusing on topics such as artificial intelligence in educational systems, distance learning, depression diagnosis using neural networks and fuzzy logic, e-learning platforms, and pedagogical innovation. It also delves into the application of digital technologies in teaching and learning processes, knowledge management in educational settings, and the impact of digital transformation on education.",
+    "cited_by_count": 18180,
+    "works_count": 14760,
+    "domain": "Physical Sciences",
+    "field": "Computer Science"
+  },
+  {
+    "name": "Multi-Agent Systems and Negotiation",
+    "openalex_id": "https://openalex.org/T10456",
+    "description": "This cluster of papers focuses on methods and techniques for agent-based modeling, encompassing topics such as multi-agent systems, argumentation frameworks, software engineering, simulation, negotiation, artificial intelligence, dialectical argumentation, formal methods, and social simulation.",
+    "cited_by_count": 569241,
+    "works_count": 60646,
+    "domain": "Physical Sciences",
+    "field": "Computer Science"
+  },
+  {
+    "name": "Ethics and Social Impacts of AI",
+    "openalex_id": "https://openalex.org/T10883",
+    "description": "This cluster of papers explores the ethical implications of artificial intelligence, focusing on fairness, algorithmic bias, and accountability in the context of big data, machine learning, and surveillance. It delves into topics such as the societal impact of AI, discrimination in algorithms, transparency in decision-making processes, and the challenges of ensuring fairness and ethics in AI applications.",
+    "cited_by_count": 613504,
+    "works_count": 117695,
+    "domain": "Social Sciences",
+    "field": "Social Sciences"
+  },
+  {
+    "name": "Textile materials and evaluations",
+    "openalex_id": "https://openalex.org/T11595",
+    "description": "This cluster of papers focuses on the science of clothing comfort and textile properties, including moisture management, thermal properties, wicking mechanisms, and the influence of fiber properties on fabric comfort. It also explores the application of artificial intelligence in fabric testing and the engineering of knitted fabrics for improved heat transfer.",
+    "cited_by_count": 608778,
+    "works_count": 134533,
+    "domain": "Physical Sciences",
+    "field": "Materials Science"
+  },
+  {
+    "name": "AI in Service Interactions",
+    "openalex_id": "https://openalex.org/T12128",
+    "description": "This cluster of papers explores the impact of artificial intelligence, service robots, and chatbots on the service industry, focusing on customer experience, hospitality, marketing, voice assistants, human-robot interaction, and technology adoption.",
+    "cited_by_count": 448688,
+    "works_count": 68316,
+    "domain": "Physical Sciences",
+    "field": "Computer Science"
+  },
+  {
+    "name": "Dental Radiography and Imaging",
+    "openalex_id": "https://openalex.org/T11363",
+    "description": "This cluster of papers focuses on the application of Cone-Beam Computed Tomography (CBCT) in dentistry, particularly in dental imaging, radiation dosimetry, maxillofacial radiology, dental implantology, and the diagnosis and treatment of periodontal disease. It also explores the use of artificial intelligence for dental image diagnostics, anatomical landmark detection, and the impact of CBCT on third molar surgery and osteoporosis assessment.",
+    "cited_by_count": 635570,
+    "works_count": 71654,
+    "domain": "Health Sciences",
+    "field": "Dentistry"
+  },
+  {
+    "name": "COVID-19 diagnosis using AI",
+    "openalex_id": "https://openalex.org/T11775",
+    "description": "This cluster of papers focuses on the application of deep learning, particularly convolutional neural networks, in medical imaging for the detection and diagnosis of COVID-19, pneumonia, and other thoracic diseases using chest X-ray and CT scan images. The research explores the use of artificial intelligence, transfer learning, and image-based deep learning techniques to develop automated systems for accurate medical diagnoses.",
+    "cited_by_count": 611793,
+    "works_count": 54584,
+    "domain": "Health Sciences",
+    "field": "Medicine"
+  },
+  {
+    "name": "AI-based Problem Solving and Planning",
+    "openalex_id": "https://openalex.org/T10906",
+    "description": "This cluster of papers focuses on artificial intelligence planning and reasoning, covering topics such as planning systems, heuristic search, case-based reasoning, temporal planning, knowledge-based systems, robot control, model-based programming, probabilistic plan recognition, cognitive architecture, and autonomous systems.",
+    "cited_by_count": 614587,
+    "works_count": 55555,
+    "domain": "Physical Sciences",
+    "field": "Computer Science"
+  },
+  {
+    "name": "Smart Cities and Technologies",
+    "openalex_id": "https://openalex.org/T11479",
+    "description": "This cluster of papers explores the innovations and challenges in the development of smart cities, focusing on aspects such as urban innovation, big data, Internet of Things, sustainability, governance, citizen participation, privacy concerns, and the role of artificial intelligence. The research covers a wide range of topics related to the conceptualization, implementation, and impact of smart city initiatives.",
+    "cited_by_count": 388554,
+    "works_count": 54623,
+    "domain": "Physical Sciences",
+    "field": "Engineering"
+  },
+  {
+    "name": "Artificial Intelligence and Decision Support Systems",
+    "openalex_id": "https://openalex.org/T14174",
+    "description": "This cluster of papers covers a wide range of topics related to smart systems and IoT applications, including machine learning, smart cities, health monitoring, blockchain technology, Arduino, data analysis, environmental monitoring, artificial intelligence, and electric vehicles.",
+    "cited_by_count": 6383,
+    "works_count": 3289,
+    "domain": "Physical Sciences",
+    "field": "Computer Science"
+  },
+  {
+    "name": "Architecture and Computational Design",
+    "openalex_id": "https://openalex.org/T13518",
+    "description": "This cluster of papers explores the intersection of architecture, urban design, and technology, with a focus on parametricism, digital fabrication, biomimetic materials, and virtual reality. It delves into the use of computational design and artificial intelligence to create sustainable and innovative architectural solutions, contributing to a new global style in architecture and urban design.",
+    "cited_by_count": 299316,
+    "works_count": 145905,
+    "domain": "Physical Sciences",
+    "field": "Engineering"
+  },
+  {
+    "name": "Digital Innovation in Industries",
+    "openalex_id": "https://openalex.org/T12885",
+    "description": "This cluster of papers explores the multifaceted aspects of digital transformation, including the development of business models, the role of artificial intelligence, customer experience management, technology innovation, big data utilization, e-commerce strategies, mobile health applications, omni-channel retailing, and the impact on sustainable development goals.",
+    "cited_by_count": 211304,
+    "works_count": 158926,
+    "domain": "Social Sciences",
+    "field": "Business, Management and Accounting"
+  },
+  {
+    "name": "Edcuational Technology Systems",
+    "openalex_id": "https://openalex.org/T13559",
+    "description": "This cluster of papers focuses on the development and application of expert systems, including decision support systems, data mining, artificial intelligence, knowledge management, machine learning, information systems, natural language processing, fuzzy logic, and educational technology.",
+    "cited_by_count": 179896,
+    "works_count": 84104,
+    "domain": "Physical Sciences",
+    "field": "Computer Science"
+  },
+  {
+    "name": "Robotics and Automated Systems",
+    "openalex_id": "https://openalex.org/T13382",
+    "description": "This cluster of papers encompasses a wide range of research on cloud robotics, automation, and related technologies. It covers topics such as cloud robotics architecture, challenges, and applications, internet of robotic things, cognitive infocommunications, service robots in cloud computing, virtual reality for robotics, and the integration of artificial intelligence in robotic systems. The research also explores the use of cloud robotics in smart city applications and emphasizes human-robot interaction.",
+    "cited_by_count": 233209,
+    "works_count": 53713,
+    "domain": "Physical Sciences",
+    "field": "Engineering"
+  },
+  {
+    "name": "History of Computing Technologies",
+    "openalex_id": "https://openalex.org/T12797",
+    "description": "This cluster of papers covers a wide range of topics related to the history of computing and information technology, including the development of the internet, evolution of software and artificial intelligence, impact on industries, societal changes, and the role of key individuals and organizations. It explores the historical, social, and technological aspects of computing from its early origins to contemporary advancements.",
+    "cited_by_count": 171235,
+    "works_count": 340235,
+    "domain": "Physical Sciences",
+    "field": "Computer Science"
+  },
+  {
+    "name": "Data Mining and Machine Learning Applications",
+    "openalex_id": "https://openalex.org/T13373",
+    "description": "This cluster of papers covers a wide range of applications of data mining, including the use of classification algorithms, neural networks, clustering methods, predictive modeling, artificial intelligence, backpropagation algorithm, association rule method, K-means clustering, and Naive Bayes classifier in various domains such as agriculture, education, healthcare, and business.",
+    "cited_by_count": 145235,
+    "works_count": 57012,
+    "domain": "Physical Sciences",
+    "field": "Computer Science"
+  },
+  {
+    "name": "Decision Support System Applications",
+    "openalex_id": "https://openalex.org/T11734",
+    "description": "This cluster of papers covers a wide range of topics related to the management of information systems in business and technology, including information technology, systems analysis and design, accounting information systems, decision support systems, software engineering, artificial intelligence, database management, fuzzy logic, mobile applications, and geographic information systems.",
+    "cited_by_count": 137182,
+    "works_count": 80856,
+    "domain": "Social Sciences",
+    "field": "Business, Management and Accounting"
+  },
+  {
+    "name": "Internet of Things and AI",
+    "openalex_id": "https://openalex.org/T13038",
+    "description": "This cluster of papers explores a wide range of topics related to the Internet of Things (IoT), including applications, challenges, and advancements in areas such as machine learning, security, healthcare, cloud computing, artificial intelligence, wireless sensor networks, big data analytics, cybersecurity, and smart cities.",
+    "cited_by_count": 118193,
+    "works_count": 28992,
+    "domain": "Physical Sciences",
+    "field": "Computer Science"
+  },
+  {
+    "name": "Advanced Computational Techniques and Applications",
+    "openalex_id": "https://openalex.org/T13734",
+    "description": "This cluster of papers covers a wide range of topics related to artificial intelligence, expert systems, machine learning, control systems, fault diagnosis, ontology, and spatial information. It explores applications such as wavelet analysis, bioenergy, small business strategies, and multidisciplinary design optimization. The papers also delve into topics like language, logic, fluid mechanics, and marine data services.",
+    "cited_by_count": 204537,
+    "works_count": 180070,
+    "domain": "Physical Sciences",
+    "field": "Computer Science"
+  },
+  {
+    "name": "Impact of AI and Big Data on Business and Society",
+    "openalex_id": "https://openalex.org/T14260",
+    "description": "This cluster of papers focuses on the application of data-driven decision-making, big data analytics, and artificial intelligence in smart manufacturing systems. It explores topics such as Internet of Things, sustainable industry 4.0, machine learning algorithms, real-time process monitoring, and supply chain management in the context of smart factories and cyber-physical systems.",
+    "cited_by_count": 100415,
+    "works_count": 29014,
+    "domain": "Social Sciences",
+    "field": "Decision Sciences"
+  },
+  {
+    "name": "Cybernetics and Technology in Society",
+    "openalex_id": "https://openalex.org/T13308",
+    "description": "This cluster of papers explores the concept of cultural techniques within the intersection of media theory and neuroscience, encompassing topics such as cybernetics, artificial intelligence, philosophy of mind, human-computer interaction, and the history of science. It delves into the technological reproducibility of art, embodiment, and the impact of media on human cognition and behavior.",
+    "cited_by_count": 72808,
+    "works_count": 42689,
+    "domain": "Social Sciences",
+    "field": "Arts and Humanities"
+  },
+  {
+    "name": "Innovation, Sustainability, Human-Machine Systems",
+    "openalex_id": "https://openalex.org/T14350",
+    "description": "This cluster of papers explores the interconnectedness and interdependence of various scientific, societal, and environmental factors, including human population growth, climate change, biodiversity protection, organizational performance, corporate social responsibility, ethical sustainability, and the role of artificial intelligence in shaping human-machine teams. The papers highlight the need for sustainable and responsible approaches to address the complex challenges facing our planet and emphasize the importance of interdisciplinary collaboration and ethical decision-making.",
+    "cited_by_count": 96354,
+    "works_count": 21981,
+    "domain": "Social Sciences",
+    "field": "Social Sciences"
+  },
+  {
+    "name": "Technology and Human Factors in Education and Health",
+    "openalex_id": "https://openalex.org/T14512",
+    "description": "This cluster of papers explores the future of personalized medicine in healthcare, focusing on topics such as artificial intelligence, healthcare technology, medical innovation, ergonomics, biomedical signal analysis, digital health, cyber-physical systems, healthcare automation, and clinical decision support. The papers cover a wide range of interdisciplinary research related to advancing personalized medical treatments and technologies.",
+    "cited_by_count": 81699,
+    "works_count": 27596,
+    "domain": "Health Sciences",
+    "field": "Medicine"
+  },
+  {
+    "name": "Digital Media and Visual Art",
+    "openalex_id": "https://openalex.org/T14254",
+    "description": "This cluster of papers focuses on the innovations and applications of visual communication design, digital media technology, and artificial intelligence in various fields such as art, education, urban landscape design, and animation. It explores the intersection of technology and design, including topics like interactive design, virtual reality, multimedia technology, and the impact of color research on graphic design.",
+    "cited_by_count": 77899,
+    "works_count": 106068,
+    "domain": "Physical Sciences",
+    "field": "Computer Science"
+  },
+  {
+    "name": "Feminism, Gender, and Sexuality Studies",
+    "openalex_id": "https://openalex.org/T13926",
+    "description": "This cluster of papers explores feminist legal theory, social justice, and governance in the context of public health, mutual aid, artificial intelligence, and gender equality. It delves into intersectionality, ethics in law, and the global impact of feminism.",
+    "cited_by_count": 54688,
+    "works_count": 12616,
+    "domain": "Social Sciences",
+    "field": "Social Sciences"
+  },
+  {
+    "name": "Educational Technology and Pedagogy",
+    "openalex_id": "https://openalex.org/T12260",
+    "description": "This cluster of papers explores the application of artificial intelligence, machine learning, and deep learning in various aspects of education, including teaching evaluation, online education platforms, multimedia teaching, and physical education. It also delves into the intersection of artificial intelligence with technology such as Internet of Things, cloud computing, and data mining.",
+    "cited_by_count": 36176,
+    "works_count": 46871,
+    "domain": "Physical Sciences",
+    "field": "Computer Science"
+  },
+  {
+    "name": "Economic and Business Development Strategies",
+    "openalex_id": "https://openalex.org/T13278",
+    "description": "This cluster of papers covers a wide range of topics related to sustainable development, economic management, and environmental responsibility. It includes research on resource efficiency, green economy, innovation culture, global value chains, renewable energy sources, artificial intelligence, and economic security. The papers also delve into the management of agricultural enterprises and environmental activities to ensure sustainable development.",
+    "cited_by_count": 67196,
+    "works_count": 49295,
+    "domain": "Social Sciences",
+    "field": "Economics, Econometrics and Finance"
+  },
+  {
+    "name": "Law, AI, and Intellectual Property",
+    "openalex_id": "https://openalex.org/T13851",
+    "description": "This cluster of papers explores the intersection of cyberbiosecurity, artificial intelligence, and legal implications, focusing on regulatory challenges, ethical issues, and innovation policy. It discusses the emerging discipline of cyberbiosecurity to safeguard the bioeconomy, the impact of AI technology on patent law, and the digitalization of legal fields. The papers also address copyright protection for AI-generated works and the role of technology in biological disaster management.",
+    "cited_by_count": 63725,
+    "works_count": 35168,
+    "domain": "Physical Sciences",
+    "field": "Computer Science"
+  },
+  {
+    "name": "Dispute Resolution and Class Actions",
+    "openalex_id": "https://openalex.org/T13191",
+    "description": "This cluster of papers focuses on the role of online dispute resolution (ODR) in the context of global trade, with a specific emphasis on consumer redress, class actions, regulatory challenges, e-commerce, mediation, arbitration, and the use of artificial intelligence. The papers explore the challenges and opportunities of implementing ODR systems for cross-border disputes and highlight the evolving landscape of dispute resolution in the digital age.",
+    "cited_by_count": 60723,
+    "works_count": 58634,
+    "domain": "Social Sciences",
+    "field": "Business, Management and Accounting"
+  },
+  {
+    "name": "Digitalization, Law, and Regulation",
+    "openalex_id": "https://openalex.org/T13364",
+    "description": "This cluster of papers explores the legal implications of digital technologies, covering topics such as data protection, artificial intelligence, cybersecurity, autonomous vehicles, big data, robotics liability, privacy regulations, the internet of things, and economic sanctions. It delves into the challenges and opportunities presented by the digital transformation across various sectors and addresses ethical and regulatory considerations in the use of digital technologies.",
+    "cited_by_count": 54844,
+    "works_count": 86367,
+    "domain": "Social Sciences",
+    "field": "Social Sciences"
+  },
+  {
+    "name": "Legal and Policy Issues",
+    "openalex_id": "https://openalex.org/T14258",
+    "description": "This cluster of papers focuses on the constitutional reform, legal modernization, and the impact of digital technologies on public policy in Russia. It covers topics such as the application of blockchain technology for diploma authenticity, the role of artificial intelligence in law, cybersecurity challenges, and the fiscal impact of the COVID-19 pandemic. The cluster also addresses issues related to local self-government, e-government, and the use of digital technologies in the oil and gas industry.",
+    "cited_by_count": 53470,
+    "works_count": 64679,
+    "domain": "Social Sciences",
+    "field": "Social Sciences"
+  },
+  {
+    "name": "Educational Systems and Policies",
+    "openalex_id": "https://openalex.org/T14409",
+    "description": "This cluster of papers focuses on innovations in smart education systems, including the use of semantic network analysis, digital library systems, and text analytics. It also explores vocational high school education, career development, the role of volunteer fire brigades, and the impact of artificial intelligence on education. The papers highlight various aspects of educational innovation and the integration of technology in learning environments.",
+    "cited_by_count": 38546,
+    "works_count": 116692,
+    "domain": "Physical Sciences",
+    "field": "Computer Science"
+  },
+  {
+    "name": "Digitalization and Economic Development in Agriculture",
+    "openalex_id": "https://openalex.org/T12662",
+    "description": "This cluster of papers explores the intersection of sustainable development, knowledge economy, industry 4.0, and digital economy. It delves into topics such as energy alternatives, social entrepreneurship, global economy, artificial intelligence, and regional development. The papers analyze the challenges and opportunities for sustainable development in the context of evolving economic and technological landscapes.",
+    "cited_by_count": 29913,
+    "works_count": 18590,
+    "domain": "Social Sciences",
+    "field": "Business, Management and Accounting"
+  },
+  {
+    "name": "Security, Politics, and Digital Transformation",
+    "openalex_id": "https://openalex.org/T14282",
+    "description": "This cluster of papers explores the concept of digital sovereignty, focusing on its implications in transition economies such as Hungary and Iran. It covers a wide range of topics including information security, legal regulation of digital assets, communication regimes, artificial intelligence, cryptocurrency, and the impact on national security in the context of globalization.",
+    "cited_by_count": 27674,
+    "works_count": 41537,
+    "domain": "Social Sciences",
+    "field": "Social Sciences"
+  },
+  {
+    "name": "Information Systems and Technology Applications",
+    "openalex_id": "https://openalex.org/T12734",
+    "description": "This cluster of papers focuses on the fundamentals, drivers, and business models of enterprise content management, including topics such as information management, machine learning, predictive modeling, web content management, artificial intelligence, service systems, big data analysis, and digital document management.",
+    "cited_by_count": 26643,
+    "works_count": 16669,
+    "domain": "Social Sciences",
+    "field": "Business, Management and Accounting"
+  },
+  {
+    "name": "Knowledge Management and Technology",
+    "openalex_id": "https://openalex.org/T14222",
+    "description": "This cluster of papers explores the representation and critique of the DIKW (Data, Information, Knowledge, Wisdom) hierarchy, with a focus on artificial intelligence, machine learning, environmental management, and health impact assessment. It delves into the interplay between data, information, knowledge, and wisdom in various domains and their implications for decision-making and problem-solving.",
+    "cited_by_count": 26377,
+    "works_count": 11268,
+    "domain": "Social Sciences",
+    "field": "Decision Sciences"
+  },
+  {
+    "name": "Ideological and Political Education",
+    "openalex_id": "https://openalex.org/T13161",
+    "description": "This cluster of papers focuses on the innovation and development of ideological and political education, particularly in the context of big data, artificial intelligence, wireless sensor networks, and deep learning. It explores topics such as network education, multimedia technology, and information systems for college students.",
+    "cited_by_count": 23104,
+    "works_count": 70265,
+    "domain": "Social Sciences",
+    "field": "Social Sciences"
+  },
+  {
+    "name": "Engineering Education and Technology",
+    "openalex_id": "https://openalex.org/T13482",
+    "description": "This cluster of papers explores the concept of Smart University within the context of Digital Ecosystems, focusing on topics such as Internet of Things, Artificial Intelligence, cognitive modeling, educational technology, innovation management, predictive maintenance, knowledge management, and industrial control systems. The papers discuss the principles and semantics of digital ecosystems, machine learning algorithms for smart data analysis, ontology of smart classrooms, mobile social networking for smart campuses, and the development and evaluation models for smart universities.",
+    "cited_by_count": 34945,
+    "works_count": 12914,
+    "domain": "Physical Sciences",
+    "field": "Computer Science"
+  },
+  {
+    "name": "Robotic Process Automation Applications",
+    "openalex_id": "https://openalex.org/T13287",
+    "description": "This cluster of papers focuses on the implementation, challenges, and impact of Robotic Process Automation (RPA) in various industries and business processes. It explores the intersection of RPA with artificial intelligence, digital transformation, and Industry 4.0, particularly in the context of audit, accounting, and strategic transformation. The papers also discuss the potential benefits and obstacles of RPA implementation.",
+    "cited_by_count": 24915,
+    "works_count": 11069,
+    "domain": "Physical Sciences",
+    "field": "Engineering"
+  },
+  {
+    "name": "Advanced Data and IoT Technologies",
+    "openalex_id": "https://openalex.org/T13918",
+    "description": "This cluster of papers covers a wide range of topics related to advancements in wireless communication technologies, including 5G, IoT, big data, deep learning, edge computing, security, artificial intelligence, and their applications in smart cities and telecom operations.",
+    "cited_by_count": 20373,
+    "works_count": 5722,
+    "domain": "Physical Sciences",
+    "field": "Engineering"
+  },
+  {
+    "name": "Diverse Interdisciplinary Research Studies",
+    "openalex_id": "https://openalex.org/T13898",
+    "description": "This cluster of papers covers a wide range of topics related to cybernetics, information theory, risk management, identity security, statistical stability, logic and probabilistic models, artificial intelligence, digitalization, complex analysis, and the role of social institutions in the modern era.",
+    "cited_by_count": 19603,
+    "works_count": 27149,
+    "domain": "Physical Sciences",
+    "field": "Computer Science"
+  },
+  {
+    "name": "Environmental Sustainability and Technology",
+    "openalex_id": "https://openalex.org/T13432",
+    "description": "This cluster of papers focuses on the spatial development, environmental management, and sustainable development in Russia. It covers topics such as regional policies, artificial intelligence, geographical analysis, economic growth, remote sensing, green economy, and resource management.",
+    "cited_by_count": 17875,
+    "works_count": 12125,
+    "domain": "Physical Sciences",
+    "field": "Environmental Science"
+  },
+  {
+    "name": "Digital Transformation in Law",
+    "openalex_id": "https://openalex.org/T13475",
+    "description": "This cluster of papers explores the impact of digitalization on the economy and society, focusing on topics such as the digital economy, legal regulation in the digital space, genetic information, artificial intelligence, energy efficiency, blockchain technology, socio-economic inequality, smart contracts, information security, and innovation development. The papers cover a wide range of interdisciplinary aspects related to the digital transformation of various sectors and its implications for both the economy and society.",
+    "cited_by_count": 24029,
+    "works_count": 28366,
+    "domain": "Social Sciences",
+    "field": "Economics, Econometrics and Finance"
+  },
+  {
+    "name": "Economic Analysis and Policy",
+    "openalex_id": "https://openalex.org/T14424",
+    "description": "This cluster of papers covers a wide range of topics related to economic policy, development analysis, and the impact of digital technology on various aspects of the economy. It includes studies on the influence of artificial intelligence, taxation policies, financial markets, institutional evolution, and the socio-economic impact of events such as the COVID-19 pandemic. Additionally, it explores the role of intergenerational leadership and globalization in shaping economic policies and development strategies.",
+    "cited_by_count": 21041,
+    "works_count": 28125,
+    "domain": "Social Sciences",
+    "field": "Economics, Econometrics and Finance"
+  },
+  {
+    "name": "Hybrid Renewable Energy Systems",
+    "openalex_id": "https://openalex.org/T11007",
+    "description": "This cluster of papers focuses on the advancements, challenges, and potential of hydrogen energy systems and technologies. It covers various aspects such as renewable energy integration, electrolysis, power-to-gas technology, sustainability, energy storage, techno-economic analysis, fuel cells, and environmental impact.",
+    "cited_by_count": 1047860,
+    "works_count": 95267,
+    "domain": "Physical Sciences",
+    "field": "Energy"
+  },
+  {
+    "name": "Social Acceptance of Renewable Energy",
+    "openalex_id": "https://openalex.org/T12503",
+    "description": "This cluster of papers explores the social acceptance of renewable energy innovation, focusing on public perceptions, community attitudes, and the role of place attachment in the context of wind power and other sustainable energy technologies. It discusses factors influencing acceptance, such as NIMBYism, equity, fairness, and the impact on local communities. The research also delves into the societal and economic implications of renewable energy deployment.",
+    "cited_by_count": 341640,
+    "works_count": 94776,
+    "domain": "Social Sciences",
+    "field": "Social Sciences"
+  },
+  {
+    "name": "Power Systems and Renewable Energy",
+    "openalex_id": "https://openalex.org/T14444",
+    "description": "This cluster of papers focuses on the application of energy storage technologies, such as battery systems and pumped-storage power stations, in integrating renewable energy sources like photovoltaic and wind power into power grids. It also addresses the challenges and benefits of energy storage, including frequency regulation, grid stability, and environmental impact.",
+    "cited_by_count": 138091,
+    "works_count": 76683,
+    "domain": "Physical Sciences",
+    "field": "Energy"
+  },
+  {
+    "name": "Renewable energy and sustainable power systems",
+    "openalex_id": "https://openalex.org/T12271",
+    "description": "This cluster of papers focuses on the transition towards renewable energy sources, integration of carbon capture technologies in coal-fired power plants, energy efficiency improvements, utilization of biomass, restructuring of electricity markets, implementation of smart grids, and the economic analysis of these energy transition initiatives.",
+    "cited_by_count": 88063,
+    "works_count": 62307,
+    "domain": "Physical Sciences",
+    "field": "Energy"
+  },
+  {
+    "name": "Renewable Energy and Sustainability",
+    "openalex_id": "https://openalex.org/T14481",
+    "description": "This cluster of papers focuses on the integration, development, and challenges of renewable energy sources, energy storage, and sustainability in the context of the European Union. It covers topics such as electricity market, climate change mitigation, energy efficiency, and environmental impact.",
+    "cited_by_count": 26756,
+    "works_count": 40494,
+    "domain": "Physical Sciences",
+    "field": "Energy"
+  },
+  {
+    "name": "Energy, Environment, Economic Growth",
+    "openalex_id": "https://openalex.org/T10438",
+    "description": "This cluster of papers explores the economic impact of environmental policies and resources, focusing on CO2 emissions, energy consumption, economic growth, renewable energy, environmental regulation, panel data analysis, Kuznets Curve, trade openness, financial development, and urbanization. The research investigates the relationship between these factors and their implications for sustainable development and environmental degradation.",
+    "cited_by_count": 2110213,
+    "works_count": 95735,
+    "domain": "Social Sciences",
+    "field": "Economics, Econometrics and Finance"
+  },
+  {
+    "name": "Microgrid Control and Optimization",
+    "openalex_id": "https://openalex.org/T10223",
+    "description": "This cluster of papers focuses on the control, synchronization, and management of microgrid systems, with an emphasis on distributed power generation, energy storage technologies, and grid integration of renewable energy sources. The research covers various aspects such as voltage and frequency control, decentralized control strategies, virtual synchronous generators, and the application of power electronics in smart grid environments.",
+    "cited_by_count": 1663222,
+    "works_count": 113817,
+    "domain": "Physical Sciences",
+    "field": "Engineering"
+  },
+  {
+    "name": "Biodiesel Production and Applications",
+    "openalex_id": "https://openalex.org/T10507",
+    "description": "This cluster of papers focuses on the technical aspects of biodiesel production, including transesterification, catalysts, feedstock selection, and the impact of biodiesel on engine performance and emissions. It also covers the use of various vegetable oils and waste cooking oil as feedstocks for biodiesel production, highlighting its role in renewable energy.",
+    "cited_by_count": 1443915,
+    "works_count": 92332,
+    "domain": "Physical Sciences",
+    "field": "Engineering"
+  },
+  {
+    "name": "Smart Grid Energy Management",
+    "openalex_id": "https://openalex.org/T10603",
+    "description": "This cluster of papers focuses on demand response in smart grids, exploring topics such as energy management, electricity markets, real-time pricing, renewable energy integration, and the use of game theory for optimizing load control in smart homes. It also covers the application of demand response to achieve controllability of electric loads and the potential of peer-to-peer energy trading in microgrids.",
+    "cited_by_count": 1209625,
+    "works_count": 121153,
+    "domain": "Physical Sciences",
+    "field": "Engineering"
+  },
+  {
+    "name": "Anaerobic Digestion and Biogas Production",
+    "openalex_id": "https://openalex.org/T10284",
+    "description": "This cluster of papers focuses on the anaerobic digestion process and biogas production from organic waste, highlighting topics such as methane production, hydrogen generation, microbial communities, waste-to-energy conversion, and renewable energy sources. The research covers various aspects of anaerobic digestion technology, including inhibition factors, process optimization, microbial diversity, and potential applications in sustainable bioenergy production.",
+    "cited_by_count": 1269248,
+    "works_count": 66863,
+    "domain": "Physical Sciences",
+    "field": "Engineering"
+  },
+  {
+    "name": "Energy and Environment Impacts",
+    "openalex_id": "https://openalex.org/T11336",
+    "description": "This cluster of papers focuses on the impact of indoor air pollution from household fuel use, particularly in developing countries. It covers topics such as energy poverty, respiratory infections, solid fuel use, renewable energy solutions, health impacts, and rural electrification.",
+    "cited_by_count": 960392,
+    "works_count": 102007,
+    "domain": "Physical Sciences",
+    "field": "Environmental Science"
+  },
+  {
+    "name": "Multilevel Inverters and Converters",
+    "openalex_id": "https://openalex.org/T10228",
+    "description": "This cluster of papers focuses on the design, control, and applications of multilevel converters in power electronics, with an emphasis on renewable energy integration, voltage source inverters, medium voltage drives, PWM strategies, fault tolerance, photovoltaic systems, and electric aircraft.",
+    "cited_by_count": 1012941,
+    "works_count": 69792,
+    "domain": "Physical Sciences",
+    "field": "Engineering"
+  },
+  {
+    "name": "Electric Vehicles and Infrastructure",
+    "openalex_id": "https://openalex.org/T10768",
+    "description": "This cluster of papers focuses on the integration of electric vehicles into power systems, including topics such as vehicle-to-grid technology, charging infrastructure, renewable energy integration, grid impact, battery technology, consumer adoption, smart grid interactions, life cycle assessment, and sustainability.",
+    "cited_by_count": 980968,
+    "works_count": 97840,
+    "domain": "Physical Sciences",
+    "field": "Engineering"
+  },
+  {
+    "name": "Photovoltaic System Optimization Techniques",
+    "openalex_id": "https://openalex.org/T10468",
+    "description": "This cluster of papers focuses on the optimization, modeling, and simulation of photovoltaic arrays, with a specific emphasis on maximum power point tracking (MPPT) techniques. It covers topics such as the role of renewable energy, grid-connected inverters, impact of dust on solar energy, temperature dependence of photovoltaic modules, and the development of control systems for MPPT.",
+    "cited_by_count": 945426,
+    "works_count": 74567,
+    "domain": "Physical Sciences",
+    "field": "Energy"
+  },
+  {
+    "name": "Ammonia Synthesis and Nitrogen Reduction",
+    "openalex_id": "https://openalex.org/T12112",
+    "description": "This cluster of papers focuses on the advances in electrocatalysts and catalytic processes for ammonia synthesis, particularly under ambient conditions and using renewable energy sources. It explores topics such as nitrogen reduction, artificial nitrogen fixation, electrochemical synthesis, and the potential of using ammonia for hydrogen storage.",
+    "cited_by_count": 913594,
+    "works_count": 45312,
+    "domain": "Physical Sciences",
+    "field": "Chemical Engineering"
+  },
+  {
+    "name": "Advanced DC-DC Converters",
+    "openalex_id": "https://openalex.org/T10175",
+    "description": "This cluster of papers covers advancements in power electronics and conversion systems, focusing on topics such as DC-DC converters, high-frequency power conversion, integration of renewable energy sources, solid-state transformers, electric vehicle charging infrastructure, isolated bidirectional converters, switched-capacitor circuits, voltage boosting techniques, and digital control methods.",
+    "cited_by_count": 1071408,
+    "works_count": 97154,
+    "domain": "Physical Sciences",
+    "field": "Engineering"
+  },
+  {
+    "name": "Global Energy and Sustainability Research",
+    "openalex_id": "https://openalex.org/T12639",
+    "description": "This cluster of papers explores the global energy transition, fossil fuel depletion, and the implications for society. It covers topics such as EROI, peak oil, renewable energy potential, and the role of energy in economic growth. The papers also discuss the challenges and opportunities associated with transitioning to sustainable energy sources amidst concerns about climate change and resource constraints.",
+    "cited_by_count": 795688,
+    "works_count": 180829,
+    "domain": "Physical Sciences",
+    "field": "Energy"
+  },
+  {
+    "name": "Energy Load and Power Forecasting",
+    "openalex_id": "https://openalex.org/T11052",
+    "description": "This cluster of papers focuses on the methods and techniques for forecasting electricity prices and load demand, with an emphasis on short-term forecasting using neural networks, ARIMA models, and probabilistic approaches. The cluster also covers topics related to wind power generation, deep learning applications, and renewable energy forecasting.",
+    "cited_by_count": 927948,
+    "works_count": 71750,
+    "domain": "Physical Sciences",
+    "field": "Engineering"
+  },
+  {
+    "name": "Electric Power System Optimization",
+    "openalex_id": "https://openalex.org/T10424",
+    "description": "This cluster of papers focuses on the operation and optimization of electricity markets, with a particular emphasis on unit commitment, economic dispatch, renewable energy integration, market power, transmission expansion planning, stochastic optimization, wind power forecasting, ancillary services, electricity market reform, and price volatility.",
+    "cited_by_count": 847437,
+    "works_count": 80889,
+    "domain": "Physical Sciences",
+    "field": "Engineering"
+  },
+  {
+    "name": "Integrated Energy Systems Optimization",
+    "openalex_id": "https://openalex.org/T11185",
+    "description": "This cluster of papers focuses on the integration of renewable energy systems, including wind, water, and solar power, into existing power grids. It covers topics such as district heating, electricity storage, energy modeling, power grid flexibility, and the transition towards decarbonized energy systems.",
+    "cited_by_count": 664463,
+    "works_count": 86925,
+    "domain": "Physical Sciences",
+    "field": "Engineering"
+  },
+  {
+    "name": "Wind Energy Research and Development",
+    "openalex_id": "https://openalex.org/T10680",
+    "description": "This cluster of papers focuses on wind energy technology, including topics such as wind turbine wakes, renewable energy sustainability indicators, Weibull distribution for wind speed analysis, offshore wind farms, tidal energy conversion systems, blade design, wind farm optimization, CFD simulation for aerodynamics, and environmental impact assessment.",
+    "cited_by_count": 720493,
+    "works_count": 74262,
+    "domain": "Physical Sciences",
+    "field": "Engineering"
+  },
+  {
+    "name": "Municipal Solid Waste Management",
+    "openalex_id": "https://openalex.org/T11108",
+    "description": "This cluster of papers focuses on the challenges and practices in solid waste management, particularly in developing countries. It covers topics such as municipal solid waste, recycling, landfill, life cycle assessment, renewable energy, waste-to-energy, environmental impact, and sustainability.",
+    "cited_by_count": 554140,
+    "works_count": 75922,
+    "domain": "Physical Sciences",
+    "field": "Environmental Science"
+  },
+  {
+    "name": "Solar-Powered Water Purification Methods",
+    "openalex_id": "https://openalex.org/T12008",
+    "description": "This cluster of papers focuses on the development and application of solar-powered water desalination technologies to address severe water scarcity. The research involves photothermal materials, nanoparticles, hydrogels, and plasmonic absorbers for efficient water evaporation and clean water production using renewable energy sources. Additionally, the cluster explores atmospheric water harvesting as a potential solution.",
+    "cited_by_count": 741693,
+    "works_count": 40054,
+    "domain": "Physical Sciences",
+    "field": "Energy"
+  },
+  {
+    "name": "Optimal Power Flow Distribution",
+    "openalex_id": "https://openalex.org/T10454",
+    "description": "This cluster of papers focuses on the integration of distributed generation, including renewable energy sources, into power systems. It covers topics such as optimal power flow, voltage control, resilience to extreme weather events, microgrid formation, and probabilistic analysis of distribution systems. The research also explores optimization techniques and network reconfiguration for efficient integration of distributed generation.",
+    "cited_by_count": 699080,
+    "works_count": 49871,
+    "domain": "Physical Sciences",
+    "field": "Engineering"
+  },
+  {
+    "name": "Physics and Engineering Research Articles",
+    "openalex_id": "https://openalex.org/T12565",
+    "description": "This cluster of papers covers a wide range of topics related to fluid dynamics, renewable energy integration, engineering applications, materials science, vibration analysis, thermal management, sustainability, turbine technology, and mathematical modeling. It includes research on topics such as wind energy systems, hydrodynamics, heat transfer enhancement, and the development of new composite materials for various engineering applications.",
+    "cited_by_count": 536284,
+    "works_count": 433149,
+    "domain": "Physical Sciences",
+    "field": "Engineering"
+  },
+  {
+    "name": "Sustainability and Climate Change Governance",
+    "openalex_id": "https://openalex.org/T10119",
+    "description": "This cluster of papers explores sustainability transitions and resilience in social-ecological systems, focusing on topics such as adaptive governance, climate change adaptation, renewable energy, policy mixes, scenario planning, and transition management. It emphasizes the socio-technical perspective and the need for transformative change to address global environmental challenges.",
+    "cited_by_count": 596733,
+    "works_count": 45842,
+    "domain": "Physical Sciences",
+    "field": "Environmental Science"
+  },
+  {
+    "name": "American Environmental and Regional History",
+    "openalex_id": "https://openalex.org/T12837",
+    "description": "This cluster of papers covers the environmental history of the United States, including topics such as the environmental movement, conservation efforts, renewable energy challenges, industrial agriculture, wilderness preservation, chemical pollution, national parks, sustainability initiatives, historical perspectives on environmental issues, and public policy related to environmental management.",
+    "cited_by_count": 544241,
+    "works_count": 540233,
+    "domain": "Physical Sciences",
+    "field": "Environmental Science"
+  },
+  {
+    "name": "Wave and Wind Energy Systems",
+    "openalex_id": "https://openalex.org/T11250",
+    "description": "This cluster of papers covers a comprehensive review and analysis of wave energy conversion technologies, including power take-off systems, offshore wind integration, control strategies, and hydrodynamic modeling. It also discusses the assessment of wave energy resources in various regions, highlighting the potential for renewable energy generation from ocean waves.",
+    "cited_by_count": 366144,
+    "works_count": 43928,
+    "domain": "Physical Sciences",
+    "field": "Engineering"
+  },
+  {
+    "name": "Global Energy Security and Policy",
+    "openalex_id": "https://openalex.org/T12129",
+    "description": "This cluster of papers explores the complex and multifaceted topic of energy security, with a focus on the supply, demand, and sustainability of energy resources. It delves into issues such as renewable energy deployment, geopolitical implications, global governance, climate change concerns, supply diversity, policy evaluation, and energy system resilience.",
+    "cited_by_count": 301510,
+    "works_count": 122455,
+    "domain": "Physical Sciences",
+    "field": "Energy"
+  },
+  {
+    "name": "Capital Investment and Risk Analysis",
+    "openalex_id": "https://openalex.org/T11976",
+    "description": "This cluster of papers focuses on the application of real options theory in investment strategies, particularly in the context of uncertainty, R&D competition, renewable energy investments, and technology adoption. It explores the use of real options for strategic decision making, risk management in information technology projects, and capital budgeting. The cluster also delves into the evaluation of projects and games theory within the framework of real options.",
+    "cited_by_count": 433789,
+    "works_count": 43913,
+    "domain": "Social Sciences",
+    "field": "Economics, Econometrics and Finance"
+  },
+  {
+    "name": "Bioinformatics and Genomic Networks",
+    "openalex_id": "https://openalex.org/T10887",
+    "description": "This cluster of papers focuses on the analysis and interpretation of gene interaction networks, including gene set enrichment analysis, protein-protein interaction networks, functional annotation, pathway analysis, biological network integration, co-expression networks, disease pathways, genomic data integration, and the development of Cytoscape plugins. The research aims to understand the functional organization of genes and proteins within cellular systems and their implications for human diseases.",
+    "cited_by_count": 2112951,
+    "works_count": 106021,
+    "domain": "Life Sciences",
+    "field": "Biochemistry, Genetics and Molecular Biology"
+  },
+  {
+    "name": "Genetics, Bioinformatics, and Biomedical Research",
+    "openalex_id": "https://openalex.org/T13937",
+    "description": "This cluster of papers focuses on the challenges and innovations in bioinformatics education, including the need to analyze biological big data, defining core competencies, incorporating bioinformatics into life sciences curriculum, and addressing the training needs for genomics and data science. It also explores the development of sustainable capacity for bioinformatics training in Africa, the integration of computational biology into undergraduate education, and the establishment of bioinformatics postgraduate degree programs.",
+    "cited_by_count": 1347125,
+    "works_count": 313268,
+    "domain": "Life Sciences",
+    "field": "Biochemistry, Genetics and Molecular Biology"
+  },
+  {
+    "name": "Machine Learning in Bioinformatics",
+    "openalex_id": "https://openalex.org/T12254",
+    "description": "This cluster of papers focuses on the prediction of protein subcellular localization using various computational methods such as amino acid composition, machine learning algorithms like support vector machines, and the analysis of signal peptides and transmembrane topology. The research aims to improve the accuracy and reliability of predicting the subcellular location of proteins, which has significant implications for understanding protein function and cellular processes.",
+    "cited_by_count": 724068,
+    "works_count": 248915,
+    "domain": "Life Sciences",
+    "field": "Biochemistry, Genetics and Molecular Biology"
+  },
+  {
+    "name": "Gene expression and cancer classification",
+    "openalex_id": "https://openalex.org/T10885",
+    "description": "This cluster of papers focuses on the analysis of microarray data and gene expression profiling, covering topics such as normalization, differential expression, feature selection, machine learning applications, clustering methods, quality control, and bioinformatics tools. The papers discuss various techniques and methods for processing and interpreting gene expression data obtained from microarray experiments.",
+    "cited_by_count": 1763136,
+    "works_count": 349979,
+    "domain": "Life Sciences",
+    "field": "Biochemistry, Genetics and Molecular Biology"
+  },
+  {
+    "name": "Scientific Computing and Data Management",
+    "openalex_id": "https://openalex.org/T11986",
+    "description": "This cluster of papers focuses on the management, reproducibility, and provenance of scientific workflows, particularly in the fields of bioinformatics and computational research. It explores topics such as data provenance, workflow management systems, semantic web services, cyberinfrastructure, and software development for scientific applications.",
+    "cited_by_count": 587561,
+    "works_count": 456338,
+    "domain": "Social Sciences",
+    "field": "Decision Sciences"
+  },
+  {
+    "name": "vaccines and immunoinformatics approaches",
+    "openalex_id": "https://openalex.org/T12576",
+    "description": "This cluster of papers focuses on the prediction of peptide-major histocompatibility complex (MHC) binding affinity, epitope prediction, and immunoinformatics for vaccine design. It covers topics such as antigen presentation, HLA class I and II molecules, bioinformatics tools for epitope prediction, T-cell and B-cell epitopes, and proteasomal cleavage.",
+    "cited_by_count": 341599,
+    "works_count": 39634,
+    "domain": "Life Sciences",
+    "field": "Biochemistry, Genetics and Molecular Biology"
+  },
+  {
+    "name": "Diverse Philosophical and Cultural Studies",
+    "openalex_id": "https://openalex.org/T14063",
+    "description": "This cluster of papers covers a wide range of topics related to interfaith dialogue, religious diversity, ethnicity, philosophy, bioinformatics, ensemble learning algorithms, cultural politics, Islamic perspective, Pentecostalism, and peace-building efforts. The papers explore the complexities of religious interactions, philosophical concepts, and the application of computational methods in bioinformatics.",
+    "cited_by_count": 15560,
+    "works_count": 2794,
+    "domain": "Social Sciences",
+    "field": "Arts and Humanities"
+  },
+  {
+    "name": "Blockchain Technology Applications and Security",
+    "openalex_id": "https://openalex.org/T10270",
+    "description": "This cluster of papers explores the integration of blockchain technology with the Internet of Things (IoT), focusing on topics such as smart contracts, security, supply chain management, decentralization, cryptocurrencies, privacy, energy sector applications, and healthcare. The papers cover a wide range of applications and challenges in utilizing blockchain for IoT-related scenarios.",
+    "cited_by_count": 1594906,
+    "works_count": 151144,
+    "domain": "Physical Sciences",
+    "field": "Computer Science"
+  },
+  {
+    "name": "Blockchain Technology in Education and Learning",
+    "openalex_id": "https://openalex.org/T13913",
+    "description": "This cluster of papers focuses on the application of blockchain technology in education and learning, including topics such as smart courses, decentralized learning platforms, gamification, digital certificates, and e-learning. The papers explore the impact of blockchain on education management, student motivation, accreditation, and the transformation of traditional learning processes into innovative digital experiences.",
+    "cited_by_count": 201143,
+    "works_count": 74937,
+    "domain": "Physical Sciences",
+    "field": "Computer Science"
+  },
+  {
+    "name": "Legal Cases and Commentary",
+    "openalex_id": "https://openalex.org/T11662",
+    "description": "This cluster of papers covers a wide range of scientific research topics, including scientific opinions on health claims, international law, copyright law, antitrust laws, corporate governance, environmental permitting, financial sector supervision, surrogacy regulation, and blockchain and smart contracting.",
+    "cited_by_count": 75819,
+    "works_count": 534551,
+    "domain": "Health Sciences",
+    "field": "Medicine"
+  },
+  {
+    "name": "Legal and Policy Issues",
+    "openalex_id": "https://openalex.org/T14258",
+    "description": "This cluster of papers focuses on the constitutional reform, legal modernization, and the impact of digital technologies on public policy in Russia. It covers topics such as the application of blockchain technology for diploma authenticity, the role of artificial intelligence in law, cybersecurity challenges, and the fiscal impact of the COVID-19 pandemic. The cluster also addresses issues related to local self-government, e-government, and the use of digital technologies in the oil and gas industry.",
+    "cited_by_count": 53470,
+    "works_count": 64679,
+    "domain": "Social Sciences",
+    "field": "Social Sciences"
+  },
+  {
+    "name": "Digital Transformation in Law",
+    "openalex_id": "https://openalex.org/T13475",
+    "description": "This cluster of papers explores the impact of digitalization on the economy and society, focusing on topics such as the digital economy, legal regulation in the digital space, genetic information, artificial intelligence, energy efficiency, blockchain technology, socio-economic inequality, smart contracts, information security, and innovation development. The papers cover a wide range of interdisciplinary aspects related to the digital transformation of various sectors and its implications for both the economy and society.",
+    "cited_by_count": 24029,
+    "works_count": 28366,
+    "domain": "Social Sciences",
+    "field": "Economics, Econometrics and Finance"
+  },
+  {
+    "name": "Artificial Intelligence and Decision Support Systems",
+    "openalex_id": "https://openalex.org/T14174",
+    "description": "This cluster of papers covers a wide range of topics related to smart systems and IoT applications, including machine learning, smart cities, health monitoring, blockchain technology, Arduino, data analysis, environmental monitoring, artificial intelligence, and electric vehicles.",
+    "cited_by_count": 6383,
+    "works_count": 3289,
+    "domain": "Physical Sciences",
+    "field": "Computer Science"
+  },
+  {
+    "name": "Technology and Education Systems",
+    "openalex_id": "https://openalex.org/T14455",
+    "description": "This cluster of papers covers a wide range of topics related to data communications and networking technologies, including security, wireless communication, mobile phone applications, Internet of Things (IoT), quality of service, client-server models, HIPAA privacy rule compliance, and the potential impact of blockchain technology. The papers also touch on areas such as disaster warning systems, early alert and evacuation support systems, and the performance of IP-based services over GPRS.",
+    "cited_by_count": 7951,
+    "works_count": 8136,
+    "domain": "Physical Sciences",
+    "field": "Computer Science"
+  }
+]

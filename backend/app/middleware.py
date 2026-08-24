@@ -33,7 +33,11 @@ def setup_middleware(app):
 
     @app.middleware("http")
     async def security_headers(request: Request, call_next):
+        from app.structured_logging import generate_request_id, request_id_var
+        req_id = generate_request_id()
+        request_id_var.set(req_id)
         response = await call_next(request)
+        response.headers["X-Request-ID"] = req_id
         response.headers["X-Content-Type-Options"] = "nosniff"
         response.headers["X-Frame-Options"] = "DENY"
         response.headers["X-XSS-Protection"] = "1; mode=block"
