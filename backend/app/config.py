@@ -1,5 +1,4 @@
-import secrets
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
@@ -23,7 +22,8 @@ class Settings(BaseSettings):
     ip_india_api_key: str = ""
     ondc_api_url: str = ""
     ondc_api_key: str = ""
-    model_config = {"env_file": ".env", "extra": "ignore"}
+
+    model_config = SettingsConfigDict(env_file=".env", extra="ignore", case_sensitive=False)
 
     @property
     def cors_origin_list(self) -> list[str]:

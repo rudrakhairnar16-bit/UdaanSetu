@@ -1,5 +1,4 @@
-"""Notification service for SLA breaches, escalations, and milestones."""
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from sqlalchemy.orm import Session
 from app.models import Grievance, Pilot, Challenge, Notification
 
@@ -19,12 +18,12 @@ def check_sla_breaches(s: Session) -> list:
             if sla_deadline:
                 try:
                     deadline = datetime.fromisoformat(sla_deadline)
-                    if datetime.utcnow() > deadline:
+                    if datetime.now(timezone.utc) > deadline:
                         breaches.append({
                             "type": "grievance_sla_breach",
                             "id": g.id,
                             "title": g.subject,
-                            "breached_at": str(datetime.utcnow()),
+                            "breached_at": datetime.now(timezone.utc).isoformat(),
                             "deadline": sla_deadline,
                             "category": g.category,
                         })
@@ -40,13 +39,13 @@ def check_sla_breaches(s: Session) -> list:
                 if ms.get("due_date") and not ms.get("completed"):
                     try:
                         due = datetime.fromisoformat(ms["due_date"])
-                        if datetime.utcnow() > due:
+                        if datetime.now(timezone.utc) > due:
                             breaches.append({
                                 "type": "pilot_milestone_overdue",
                                 "pilot_id": p.id,
                                 "milestone": ms.get("name", "Unknown"),
                                 "due_date": ms["due_date"],
-                                "breached_at": str(datetime.utcnow()),
+                                "breached_at": datetime.now(timezone.utc).isoformat(),
                             })
                     except Exception:
                         pass

@@ -104,6 +104,7 @@ export const challenges = {
   validate: (id: number) => api.post<any>(`/challenges/${id}/validate`),
   publish: (id: number) => api.post<any>(`/challenges/${id}/publish`),
   my: () => api.get<any[]>('/challenges/my'),
+  requirements: (id: number) => api.get<any[]>(`/challenges/${id}/requirements`),
 };
 
 export const departments = {
@@ -168,12 +169,40 @@ export const ai = {
   pilotRisk: (pilotId: number) => api.get<any>(`/ai/pilot-risk/${pilotId}`),
   scalePredict: (pilotId: number) => api.get<any>(`/ai/scale-predict/${pilotId}`),
   challengeDraft: (data: any) => api.post<any>('/ai/challenge-draft', data),
+  duplicates: (threshold: number = 75) => api.get<any>(`/ai/duplicates?threshold=${threshold}`),
+  risk: (researchId: number) => api.get<any>(`/ai/risk/${researchId}`),
+  success: (researchId: number) => api.get<any>(`/ai/success/${researchId}`),
+  metrics: () => api.get<any>('/ai/metrics'),
+  retrain: () => api.post<any>('/ai/retrain'),
+  similar: (recordId: number) => api.get<any[]>(`/ai/similar/${recordId}`),
+  smartMatch: (innovationId: number) => api.get<any>(`/ai/match/${innovationId}`),
+  recommendations: (innovationId: number) => api.get<any>(`/ai/recommendations/${innovationId}`),
+};
+
+export const mlProduction = {
+  versions: (modelType?: string) => api.get<any[]>(`/ml/production/versions${modelType ? `?model_type=${modelType}` : ''}`),
+  driftAlerts: () => api.get<any[]>('/ml/production/drift-alerts'),
+  retrain: (data?: any) => api.post<any>('/ml/production/retrain', data),
+};
+
+export const records = {
+  list: (params?: string) => api.get<any[]>(`/records${params ? `?${params}` : ''}`),
+  get: (id: number) => api.get<any>(`/records/${id}`),
+  create: (data: any) => api.post<any>('/records', data),
+  update: (id: number, data: any) => api.patch<any>(`/records/${id}`, data),
+  delete: (id: number) => api.delete<any>(`/records/${id}`),
+  milestones: (parentId: number) => api.get<any[]>(`/records/${parentId}/milestones`),
 };
 
 export const analytics = {
   maharashtra: () => api.get<any>('/analytics/maharashtra'),
-  pipelineFunnel: () => api.get<Record<string, number>>('/analytics/pipeline-funnel'),
-  tat: () => api.get<Record<string, number>>('/analytics/tat'),
+  overview: () => api.get<any>('/analytics/overview'),
+  pipelineFunnel: () => api.get<any>('/analytics/pipeline-funnel'),
+  tat: () => api.get<any>('/analytics/tat'),
+  impact: () => api.get<any>('/analytics/impact'),
+  pilotSuccess: () => api.get<any>('/analytics/pilot-success'),
+  districts: () => api.get<any>('/analytics/districts'),
+  ecosystem: () => api.get<any>('/analytics/ecosystem'),
 };
 
 export const applications = {

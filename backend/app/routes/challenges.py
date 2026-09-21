@@ -34,23 +34,23 @@ def list_challenges(
     s: Session = Depends(db),
     u=Depends(current),
 ):
-    q = s.query(Challenge)
+    stmt = s.query(Challenge)
     if category:
-        q = q.filter(Challenge.category == category)
+        stmt = stmt.filter(Challenge.category == category)
     if district:
-        q = q.filter(Challenge.district == district)
+        stmt = stmt.filter(Challenge.district == district)
     if sector:
-        q = q.filter(Challenge.sector == sector)
+        stmt = stmt.filter(Challenge.sector == sector)
     if status:
-        q = q.filter(Challenge.status == status)
+        stmt = stmt.filter(Challenge.status == status)
     if department_id:
-        q = q.filter(Challenge.department_id == department_id)
+        stmt = stmt.filter(Challenge.department_id == department_id)
     if q_text := (q or "").strip():
-        q = q.filter(
+        stmt = stmt.filter(
             Challenge.title.ilike(f"%{q_text}%")
             | Challenge.description.ilike(f"%{q_text}%")
         )
-    return q.order_by(Challenge.created_at.desc()).all()
+    return stmt.order_by(Challenge.created_at.desc()).all()
 
 
 @router.get("/{challenge_id}", response_model=ChallengeOut)

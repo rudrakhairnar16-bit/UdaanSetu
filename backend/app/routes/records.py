@@ -58,7 +58,7 @@ def search_records(
     min_year: Optional[int] = None,
     max_year: Optional[int] = None,
     has_website: Optional[bool] = None,
-    sort_by: str = Query("relevance", regex="^(relevance|name|date|district)$"),
+    sort_by: str = Query("relevance", pattern="^(relevance|name|date|district)$"),
     page: int = Query(1, ge=1),
     per_page: int = Query(50, ge=1, le=500),
     s: Session = Depends(db),
@@ -148,7 +148,7 @@ def export_records(
     kind: str = Query("startup"),
     district: Optional[str] = None,
     sector: Optional[str] = None,
-    format: str = Query("csv", regex="^(csv|json)$"),
+    format: str = Query("csv", pattern="^(csv|json)$"),
     s: Session = Depends(db),
     u=Depends(current),
 ):

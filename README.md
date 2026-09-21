@@ -1,12 +1,11 @@
 <p align="center">
   <img src="https://img.shields.io/badge/SIH-2026-16a34a?style=for-the-badge&logo=swift&logoColor=white" alt="SIH 2026"/>
-  <img src="https://img.shields.io/badge/Problem-1608-ef4444?style=for-the-badge" alt="Problem ID"/>
-  <img src="https://img.shields.io/badge/Status-Production_Proto-3b82f6?style=for-the-badge" alt="Status"/>
+  <img src="https://img.shields.io/badge/Problem-SIH26136-ef4444?style=for-the-badge" alt="Problem ID"/>
+  <img src="https://img.shields.io/badge/Status-SIH_Prototype-3b82f6?style=for-the-badge" alt="Status"/>
   <img src="https://img.shields.io/badge/Tests-153_passed-16a34a?style=for-the-badge" alt="Tests"/>
-  <img src="https://img.shields.io/badge/Frontend-Next.js_19-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js"/>
+  <img src="https://img.shields.io/badge/Frontend-Next.js_15-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js"/>
   <img src="https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI"/>
   <img src="https://img.shields.io/badge/ML-sentence--transformers-F7C948?style=for-the-badge&logo=python&logoColor=white" alt="ML"/>
-  <img src="https://img.shields.io/badge/Terraform-AWS-7B42BC?style=for-the-badge&logo=terraform&logoColor=white" alt="Terraform"/>
   <img src="https://img.shields.io/badge/License-MIT-6b7280?style=for-the-badge" alt="License"/>
 </p>
 
@@ -18,21 +17,40 @@
 </p>
 
 <p align="center">
-  <a href="#-system-architecture">Architecture</a> ·
-  <a href="#-innovation-lifecycle">Lifecycle</a> ·
-  <a href="#-ml-pipeline">ML Pipeline</a> ·
-  <a href="#-quick-start">Quick Start</a> ·
-  <a href="#-api-reference">API Docs</a> ·
-  <a href="#-testing">Tests</a>
+  <a href="docs/ARCHITECTURE.md">Architecture</a> ·
+  <a href="docs/API.md">API Matrix</a> ·
+  <a href="docs/AI_ML.md">AI/ML Engine</a> ·
+  <a href="docs/SECURITY.md">Security</a> ·
+  <a href="docs/DEPLOYMENT.md">Deployment</a> ·
+  <a href="docs/DEMO.md">Demo Guide</a> ·
+  <a href="docs/TESTING.md">Test Results</a> ·
+  <a href="docs/FINAL_STATUS.md">Quality Gates</a>
 </p>
+
+---
+
+## 📚 Complete Beast Mode Documentation Suite
+- **[System Architecture (ARCHITECTURE.md)](docs/ARCHITECTURE.md)**: High-level topology, component diagrams, and data flows.
+- **[API Reference Matrix (API.md)](docs/API.md)**: Detailed endpoint catalog, auth rules, status codes, and schemas.
+- **[AI/ML Engine & Explainability (AI_ML.md)](docs/AI_ML.md)**: Gradient boosting risk models, TF-IDF / SBERT semantic matching, and duplicate clustering.
+- **[Security & RBAC (SECURITY.md)](docs/SECURITY.md)**: Argon2 password hashing, JWT expiration, IDOR checks, upload hardening, and CORS.
+- **[Deployment & Infrastructure (DEPLOYMENT.md)](docs/DEPLOYMENT.md)**: Render blueprint (`render.yaml`), Docker Compose, and environment configuration.
+- **[SIH Judge Live Demo Script (DEMO.md)](docs/DEMO.md)**: Multi-role demo accounts, step-by-step presentation walkthrough, and trust badges.
+- **[Data Integrity & Schemas (DATA.md)](docs/DATA.md)**: Entity relationships, PostgreSQL schemas, and seed data separation.
+- **[Verified Test Execution (TESTING.md)](docs/TESTING.md)**: 153/153 backend tests passed + 19/19 frontend tests passed + 28 static Next.js pages generated.
+- **[Government Integration Boundaries (INTEGRATIONS.md)](docs/INTEGRATIONS.md)**: Explicit prototype/mock declarations for DigiLocker, Aadhaar, IP India, Startup India, and ONDC.
+- **[Limitations & Roadmap (LIMITATIONS.md)](docs/LIMITATIONS.md)**: Known boundaries and production scaling roadmap.
+- **[Troubleshooting Runbook (TROUBLESHOOTING.md)](docs/TROUBLESHOOTING.md)**: Common setup fixes, dependencies, and database resets.
+- **[Discovery & Beast Mode Audit (BEASTMODE_AUDIT.md)](docs/BEASTMODE_AUDIT.md)**: Comprehensive repository audit and remediation log.
+- **[Final Completion & Quality Gates (FINAL_STATUS.md)](docs/FINAL_STATUS.md)**: Green quality gates summary for Smart India Hackathon 2026.
 
 ---
 
 ## What is UdaanSetu?
 
-**UdaanSetu** (उड़ान सेतु — "Bridge to Flight") is a full-stack innovation lifecycle management platform built for **Smart India Hackathon 2026 (Problem ID: SIH1608)**. It tracks the entire journey from research ideation to startup impact, powered by real ML models for risk prediction, semantic matching, and duplicate detection.
+**UdaanSetu** (उड़ान सेतु — "Bridge to Flight") is a full-stack innovation lifecycle and startup-friendly public procurement management platform built for **Smart India Hackathon 2026 (Problem ID: SIH1608 / SIH26136)**. It tracks the entire journey from research ideation to startup impact, powered by real ML models for risk prediction, semantic matching, and duplicate detection.
 
-> **All data is DEMO DATA.** This is a production-grade prototype — government API integrations use mock endpoints ready for real API swap-in.
+> **Transparency Disclosure**: All mock government integrations (DigiLocker, Aadhaar, IP India, Startup India, ONDC) and demonstration records are clearly labeled as **Prototype / Demo Data** with human-in-the-loop decision boundaries.
 
 ---
 
@@ -287,17 +305,18 @@ npm run dev
 
 ---
 
-## Demo Credentials
+## Demo Credentials & Seed Profiles
 
-All passwords are `Demo@123`.
+> **Security Note:** Demo passwords are NOT bundled into public production frontend assets. For local evaluation and testing, accounts are seeded via `python -m backend.app.seed` and passwords can be configured via environment variables (refer to [`docs/DEMO.md`](docs/DEMO.md)).
 
-| Role | Email | Access |
-|------|-------|--------|
-| **Admin** | `admin@udaansetu.demo` | Everything + admin + ML retrain |
-| **Researcher** | `researcher@udaansetu.demo` | Research, innovations, IPR, govt APIs |
-| **Mentor** | `mentor@udaansetu.demo` | Mentoring, ecosystem |
-| **Investor** | `investor@udaansetu.demo` | Startups, funding, ecosystem |
-| **Incubator** | `incubator@udaansetu.demo` | Incubation, startups, ecosystem |
+| Role | Seeded Email | Local Test Access |
+|------|--------------|-------------------|
+| **Admin** | `admin@udaansetu.gov.in` | System governance, ML retrain, audit logs |
+| **Govt Officer** | `rajesh.patil@maharashtra.gov.in` | Challenge posting, pilot approvals, department metrics |
+| **Procurement Officer** | `meera.sharma@maharashtra.gov.in` | GeM sandbox, milestone escrow, contract SLAs |
+| **Evaluator** | `vikram.patil@ieee.org` | Technical scoring rubrics, blind peer evaluations |
+| **Validator** | `anjali.kulkarni@ncssc.in` | Field validation reports, performance certificates |
+| **Researcher** | `arun.joshi@iitb.ac.in` | Lab publications, patent filings, research milestones |
 
 ---
 

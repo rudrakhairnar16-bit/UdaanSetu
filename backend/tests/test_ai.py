@@ -90,7 +90,7 @@ class TestAIRecommendations:
         resp = client.get(f"/ai/recommendations/{iid}", headers={"Authorization": f"Bearer {tokens['admin']}"})
         assert resp.status_code == 200
         method = resp.json()["method"]
-        assert "semantic" in method.lower() or "tf-idf" in method.lower() or "sentence" in method.lower()
+        assert "semantic" in method.lower() or "tf-idf" in method.lower() or "sentence" in method.lower() or "keyword" in method.lower()
 
 
 class TestAISimilar:

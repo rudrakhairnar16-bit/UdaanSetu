@@ -4,12 +4,15 @@ services:
     runtime: python
     rootDir: backend
     buildCommand: pip install -r requirements.txt
-    startCommand: python -c "from app.seed import seed; seed()" && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
     envVars:
       - key: DATABASE_URL
-        sync: false
+        fromDatabase:
+          name: udaansetu-db
+          property: connectionString
       - key: SECRET_KEY
-        value: cb79f9cdd8d14f960d8f4a9559b3faa7
+        generateValue: true
       - key: OLLAMA_ENABLED
         value: "false"
       - key: CORS_ORIGINS
@@ -18,3 +21,4 @@ services:
     name: udaansetu-db
     plan: free
     databaseName: udaansetu
+    user: udaansetu
