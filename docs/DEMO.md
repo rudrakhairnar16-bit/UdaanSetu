@@ -21,7 +21,9 @@ flowchart TD
 
 ## 2. Pre-Configured Demonstration Accounts
 
-| Role | Email | Password | Primary Demo Responsibilities |
+> **Evaluation & Local Testing Note:** Demonstration credentials listed below apply strictly to local evaluation and seed environments (configured via `backend/app/seed.py`). Production deployments enforce secure environment configuration and prohibit default passwords.
+
+| Role | Email | Password (Local Test) | Primary Demo Responsibilities |
 |---|---|---|---|
 | **Admin** | `admin@udaansetu.gov.in` | `Admin@123` | System audit logs, ML model metrics, retraining triggers |
 | **Govt Officer** | `rajesh.patil@maharashtra.gov.in` | `Govt@123` | Challenge posting, pilot authorization, department oversight |

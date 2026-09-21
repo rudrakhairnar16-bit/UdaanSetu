@@ -1,4 +1,4 @@
-"""UdaanSetu API — SIH1608 Innovation Ecosystem Platform."""
+"""UdaanSetu API — SIH26136 Innovation Ecosystem Platform."""
 import logging
 import threading
 from contextlib import asynccontextmanager
