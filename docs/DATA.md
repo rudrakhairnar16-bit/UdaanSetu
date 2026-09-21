@@ -41,3 +41,9 @@ To ensure absolute transparency and credibility:
 - **Unique Constraints**: Unique indices on `users.email`, `records.code`, and `challenges.ref_no`.
 - **Audit Immutability**: The `audit_logs` table is write-only for standard application routes. Deletion or tampering is restricted to database administrators.
 - **Timezone Standardization**: All timestamps stored with UTC ISO 8601 formatting (`datetime.now(timezone.utc)`).
+
+---
+
+## 4. Local Evaluation Database (`backend/udaansetu.db`)
+
+An initial SQLite database (`backend/udaansetu.db`) is included in the repository to provide zero-configuration offline evaluation and instant local demonstration without requiring a running PostgreSQL instance. When deployed in containerized or cloud production environments (e.g., Docker Compose, Render, AWS), the application automatically connects to PostgreSQL via the `DATABASE_URL` environment variable.

@@ -2,470 +2,222 @@
   <img src="https://img.shields.io/badge/SIH-2026-16a34a?style=for-the-badge&logo=swift&logoColor=white" alt="SIH 2026"/>
   <img src="https://img.shields.io/badge/Problem-SIH26136-ef4444?style=for-the-badge" alt="Problem ID"/>
   <img src="https://img.shields.io/badge/Status-SIH_Prototype-3b82f6?style=for-the-badge" alt="Status"/>
-  <img src="https://img.shields.io/badge/Tests-153_passed-16a34a?style=for-the-badge" alt="Tests"/>
-  <img src="https://img.shields.io/badge/Frontend-Next.js_15-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js"/>
+  <img src="https://img.shields.io/badge/Backend_Tests-153_Passed-16a34a?style=for-the-badge&logo=pytest&logoColor=white" alt="Pytest"/>
+  <img src="https://img.shields.io/badge/Frontend_Tests-19_Passed-16a34a?style=for-the-badge&logo=vitest&logoColor=white" alt="Vitest"/>
+  <img src="https://img.shields.io/badge/Build-30_Routes_Prerendered-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js"/>
   <img src="https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI"/>
-  <img src="https://img.shields.io/badge/ML-sentence--transformers-F7C948?style=for-the-badge&logo=python&logoColor=white" alt="ML"/>
+  <img src="https://img.shields.io/badge/ML-Scikit--Learn_%26_NLP-F7C948?style=for-the-badge&logo=python&logoColor=white" alt="ML"/>
   <img src="https://img.shields.io/badge/License-MIT-6b7280?style=for-the-badge" alt="License"/>
 </p>
 
-<h1 align="center">UdaanSetu</h1>
+# UdaanSetu (उड़ान सेतु)
+
+### From Research to Impact
+> *One idea. One journey. One ecosystem.*
+
+**Smart India Hackathon 2026 · Problem Statement: SIH26136**  
+*National Innovation Lifecycle & Startup-Friendly Public Procurement Platform*
+
+---
 
 <p align="center">
-  <strong>Innovation Ecosystem Platform for India</strong><br/>
-  <em>Research → Innovation → IPR → Mentor/Funding/Incubator → Startup → Impact</em>
-</p>
-
-<p align="center">
-  <a href="docs/ARCHITECTURE.md">Architecture</a> ·
-  <a href="docs/API.md">API Matrix</a> ·
-  <a href="docs/AI_ML.md">AI/ML Engine</a> ·
-  <a href="docs/SECURITY.md">Security</a> ·
-  <a href="docs/DEPLOYMENT.md">Deployment</a> ·
-  <a href="docs/DEMO.md">Demo Guide</a> ·
-  <a href="docs/TESTING.md">Test Results</a> ·
-  <a href="docs/FINAL_STATUS.md">Quality Gates</a>
+  <a href="#overview">Overview</a> ·
+  <a href="#product-journey">11-Stage Journey</a> ·
+  <a href="#ai-innovation-intelligence">AI Intelligence</a> ·
+  <a href="#sih26136-public-procurement-highway">Procurement Highway</a> ·
+  <a href="#technical-architecture">Architecture</a> ·
+  <a href="#evaluator-demo-flow">Demo Guide</a> ·
+  <a href="#testing--verification">Testing</a> ·
+  <a href="#security--governance">Security</a> ·
+  <a href="#documentation-suite">Docs</a>
 </p>
 
 ---
 
-## 📚 Complete Beast Mode Documentation Suite
-- **[System Architecture (ARCHITECTURE.md)](docs/ARCHITECTURE.md)**: High-level topology, component diagrams, and data flows.
-- **[API Reference Matrix (API.md)](docs/API.md)**: Detailed endpoint catalog, auth rules, status codes, and schemas.
-- **[AI/ML Engine & Explainability (AI_ML.md)](docs/AI_ML.md)**: Gradient boosting risk models, TF-IDF / SBERT semantic matching, and duplicate clustering.
-- **[Security & RBAC (SECURITY.md)](docs/SECURITY.md)**: Argon2 password hashing, JWT expiration, IDOR checks, upload hardening, and CORS.
-- **[Deployment & Infrastructure (DEPLOYMENT.md)](docs/DEPLOYMENT.md)**: Render blueprint (`render.yaml`), Docker Compose, and environment configuration.
-- **[SIH Judge Live Demo Script (DEMO.md)](docs/DEMO.md)**: Multi-role demo accounts, step-by-step presentation walkthrough, and trust badges.
-- **[Data Integrity & Schemas (DATA.md)](docs/DATA.md)**: Entity relationships, PostgreSQL schemas, and seed data separation.
-- **[Verified Test Execution (TESTING.md)](docs/TESTING.md)**: 153/153 backend tests passed + 19/19 frontend tests passed + 28 static Next.js pages generated.
-- **[Government Integration Boundaries (INTEGRATIONS.md)](docs/INTEGRATIONS.md)**: Explicit prototype/mock declarations for DigiLocker, Aadhaar, IP India, Startup India, and ONDC.
-- **[Limitations & Roadmap (LIMITATIONS.md)](docs/LIMITATIONS.md)**: Known boundaries and production scaling roadmap.
-- **[Troubleshooting Runbook (TROUBLESHOOTING.md)](docs/TROUBLESHOOTING.md)**: Common setup fixes, dependencies, and database resets.
-- **[Discovery & Beast Mode Audit (BEASTMODE_AUDIT.md)](docs/BEASTMODE_AUDIT.md)**: Comprehensive repository audit and remediation log.
-- **[Final Completion & Quality Gates (FINAL_STATUS.md)](docs/FINAL_STATUS.md)**: Green quality gates summary for Smart India Hackathon 2026.
+## Overview
+
+**UdaanSetu** is an evidence-based national innovation platform built for **Smart India Hackathon 2026 (SIH26136)**. It unifies academic research, high-growth startups, government department challenges, AI validation, pilot sandboxes, and government e-Marketplace (GeM) public procurement into a synchronized, transparent highway.
+
+```
+Research → Innovation → IPR → Funding → Startup → Govt Challenge → AI Match → Pilot → Validation → Escrow → Procurement → Scale → Impact
+```
+
+> **Transparency & Prototype Disclosure**: External government APIs (DigiLocker, Aadhaar eKYC, IP India, Startup India, ONDC) operate with simulated sandbox contracts for demonstration. All machine learning outputs function strictly as **explainable decision support**, requiring human officer review for consequential milestone releases and procurement allocations.
 
 ---
 
-## What is UdaanSetu?
+## Complete Documentation Suite
 
-**UdaanSetu** (उड़ान सेतु — "Bridge to Flight") is a full-stack innovation lifecycle and startup-friendly public procurement management platform built for **Smart India Hackathon 2026 (Problem ID: SIH1608 / SIH26136)**. It tracks the entire journey from research ideation to startup impact, powered by real ML models for risk prediction, semantic matching, and duplicate detection.
-
-> **Transparency Disclosure**: All mock government integrations (DigiLocker, Aadhaar, IP India, Startup India, ONDC) and demonstration records are clearly labeled as **Prototype / Demo Data** with human-in-the-loop decision boundaries.
+- **[System Architecture (docs/ARCHITECTURE.md)](docs/ARCHITECTURE.md)**: High-level topology, component diagrams, and data flows.
+- **[API Reference Matrix (docs/API.md)](docs/API.md)**: Detailed endpoint catalog, auth rules, status codes, and schemas.
+- **[AI/ML Engine & Explainability (docs/AI_ML.md)](docs/AI_ML.md)**: GradientBoosting risk models, TF-IDF / SBERT semantic matching, and duplicate clustering.
+- **[Security & RBAC (docs/SECURITY.md)](docs/SECURITY.md)**: Argon2 hashing, JWT expiration, IDOR checks, upload hardening, and CORS whitelist.
+- **[Deployment & Infrastructure (docs/DEPLOYMENT.md)](docs/DEPLOYMENT.md)**: Render blueprint (`render.yaml`), Docker Compose, and environment configuration.
+- **[SIH Evaluator Demo Script (docs/DEMO.md)](docs/DEMO.md)**: Multi-role demo accounts, step-by-step presentation walkthrough, and trust badges.
+- **[Data Integrity & Schemas (docs/DATA.md)](docs/DATA.md)**: Entity relationships, PostgreSQL schemas, and SQLite demo seed separation.
+- **[Verified Test Execution (docs/TESTING.md)](docs/TESTING.md)**: 153/153 backend tests + 19/19 frontend tests + 30 static Next.js pages generated.
+- **[Government Integration Boundaries (docs/INTEGRATIONS.md)](docs/INTEGRATIONS.md)**: Explicit prototype/mock declarations for DigiLocker, Aadhaar, IP India, Startup India, and ONDC.
+- **[Limitations & Roadmap (docs/LIMITATIONS.md)](docs/LIMITATIONS.md)**: Known prototype boundaries and production scaling roadmap.
+- **[Final SIH Readiness Audit (docs/PHASE6_FINAL_READINESS.md)](docs/PHASE6_FINAL_READINESS.md)**: Credential decoupling, zero-password bundle verification, and security audit.
+- **[Final Release Gate Checklist (docs/FINAL_RELEASE_CHECKLIST.md)](docs/FINAL_RELEASE_CHECKLIST.md)**: Comprehensive release gates, command logs, and pre-merge checklist.
 
 ---
 
-## System Architecture
+## Product Journey
+
+UdaanSetu structures the entire innovation lifecycle into 11 verified milestone gates:
+
+| # | Stage | Actor | Deliverable & Gate Criteria |
+| :---: | :--- | :--- | :--- |
+| **01** | **Research** | Researcher / Faculty | Lab prototype, peer-reviewed paper, provisional patent filing. |
+| **02** | **Govt Challenge** | Department Officer | Problem brief, target KPIs, allocated district pilot budget. |
+| **03** | **Discovery & Match** | UdaanSetu AI | Automated semantic & vector matching (&gt;70% similarity threshold). |
+| **04** | **AI Validation** | ML Risk Engine | Multi-factor delivery risk score (&le;45%) and IP overlap clearance. |
+| **05** | **Expert Evaluation** | Review Committee | Double-blind technical scoring panel (&ge;75/100 consensus score). |
+| **06** | **Pilot Deployment** | Startup + Dept | Controlled district sandbox trial with baseline KPI collection. |
+| **07** | **Validation** | 3rd-Party Validator | On-site performance audit and certified telemetry proof-of-value. |
+| **08** | **Milestone Escrow** | Finance / Treasury | Automated escrow release triggered strictly by validator certification. |
+| **09** | **Procurement** | Procurement Officer | GeM sandbox catalog onboarding with Rule 149 compliant direct purchase order. |
+| **10** | **Statewide Scale** | State Mission | Expansion roadmap across 14+ Urban Local Bodies and districts. |
+| **11** | **Public Impact** | Citizens & State | Quantified societal ROI: citizen lives touched, resources saved, SDG alignment. |
+
+---
+
+## AI Innovation Intelligence
+
+The platform features native, production-tested machine learning pipelines:
+
+```mermaid
+graph LR
+    Submissions[Innovations & Challenges] --> VectorEngine[Semantic Vector Matcher]
+    Submissions --> RiskModel[GradientBoosting Risk Predictor]
+    Submissions --> DuplicateDetector[TF-IDF / Levenshtein Overlap Engine]
+    
+    VectorEngine --> TopMatches[Ranked Matches 0-100%]
+    RiskModel --> RiskScore[Delivery Risk & 95% CI]
+    DuplicateDetector --> ClusterFlag[Prior Art Overlap Matrix]
+    
+    TopMatches --> Explainability[Explainable Feature Importance]
+    RiskScore --> Explainability
+    ClusterFlag --> Explainability
+    
+    Explainability --> HumanOfficer[Human Officer Decision Gateway]
+```
+
+1. **AI Smart Matcher**: Computes cosine and vector similarity (0–100%) between startup capabilities and department requirements.
+2. **Predictive Risk Engine**: GradientBoosting regression estimating delivery delay risks across team capacity, milestone lag, and funding velocity.
+3. **Duplicate & IP Overlap Detection**: Scans state innovation repositories and patent claim texts to flag prior art overlaps (preventing duplicate grants).
+4. **Explainable AI (SHAP Weights)**: Deconstructs every score into contributing positive/negative feature bars (zero black-box scoring).
+5. **Human-in-the-Loop Governance**: AI outputs serve strictly as decision support; no automated financial or procurement sanctions occur without officer signoff.
+
+---
+
+## SIH26136 Public Procurement Highway
+
+Directly addressing the gap between startup innovations and public procurement:
+
+```
+[Challenge Brief] ➔ [AI Discovery] ➔ [Eligibility Filter] ➔ [Peer Review] ➔ [District Pilot] ➔ [Validator Proof] ➔ [Milestone Escrow] ➔ [GeM Direct PO] ➔ [Statewide Scale]
+```
+
+- **Rule 149 Alignment**: Bridges sandbox pilot certifications with direct purchase order eligibility under General Financial Rules (GFR).
+- **Milestone Escrow Mechanism**: Funds disbursed in proof-backed tranches against validator verification certificates.
+- **Auditable Provenance**: Append-only audit logging of all stage transitions, evaluations, and disbursements.
+
+---
+
+## Technical Architecture
 
 ```mermaid
 graph TB
-    subgraph Client["Client Layer"]
-        Browser["Browser"]
+    subgraph Client["Frontend Layer (Next.js 15 + React 19)"]
+        LandingPage["Landing Experience (/)"]
+        AICommand["AI Command Center (/ai-command)"]
+        HeroJourney["Hero Journey (/journey)"]
+        Dashboards["Role Workspaces (Dashboard, Pilots, Procurement)"]
     end
 
-    subgraph Frontend["Frontend — Next.js 15 + React 19"]
-        Login["Login"]
-        Dashboard["Dashboard"]
-        Research["Research"]
-        Innovations["Innovations"]
-        IPR["IPR"]
-        Startups["Startups"]
-        Ecosystem["Ecosystem"]
-        Government["Govt APIs"]
-        Analytics["Analytics"]
-        Profile["Profile"]
-        Notifications["Notifications"]
-        Audit["Audit Log"]
+    subgraph API["Backend API (FastAPI + Python 3.11+)"]
+        AuthService["Auth (JWT + Argon2 + RBAC)"]
+        RecordsService["Records & Lifecycle (9 types)"]
+        ProcureService["Procurement & GeM Escrow Engine"]
+        GovtMock["Govt API Sandbox Connectors"]
     end
 
-    subgraph Backend["Backend — FastAPI + Python 3.12"]
-        Auth["Auth — JWT + Argon2 + RBAC"]
-        CRUD["Records CRUD — 9 types"]
-        GovAPIs["Government APIs — 5 services"]
-        MLEndpoints["ML Endpoints"]
-        DashboardAPI["Dashboard API"]
+    subgraph ML["Machine Learning Engine"]
+        MatchEngine["Semantic Matcher (Sentence-Transformers)"]
+        RiskEngine["Risk Model (GradientBoosting)"]
+        OverlapEngine["IP Overlap & Deduplication (TF-IDF)"]
     end
 
-    subgraph MLEngine["ML Engine"]
-        Semantic["Semantic Engine — sentence-transformers"]
-        Risk["Risk Engine — GradientBoosting"]
-        Success["Success Predictor"]
-        Duplicates["Duplicate Detector"]
-        Registry["Model Registry"]
-        Drift["Drift Detector"]
-        Feedback["Feedback Store"]
+    subgraph Storage["Data & Cache Layer"]
+        PostgreSQL[("PostgreSQL 16 (Production)")]
+        SQLiteDemo[("SQLite Seed DB (Local Evaluation)")]
     end
 
-    subgraph GovServices["Government Services"]
-        Aadhaar["Aadhaar eKYC"]
-        DigiLocker["DigiLocker"]
-        StartupIndia["Startup India"]
-        IPIndia["IP India"]
-        ONDC["ONDC"]
-    end
-
-    subgraph Data["Data Layer"]
-        PostgreSQL[("PostgreSQL 16")]
-        Redis[("Redis")]
-        FileStore["File Storage"]
-    end
-
-    subgraph Infra["Infrastructure"]
-        Docker["Docker Compose"]
-        GitHubActions["GitHub Actions CI/CD"]
-        Terraform["Terraform — AWS ECS"]
-    end
-
-    Browser --> Frontend
-    Frontend --> Auth
-    Auth --> CRUD
-    Auth --> GovAPIs
-    Auth --> MLEndpoints
-    Auth --> DashboardAPI
-    GovAPIs --> GovServices
-    MLEndpoints --> MLEngine
-    CRUD --> PostgreSQL
-    DashboardAPI --> PostgreSQL
-    MLEngine --> PostgreSQL
-    Docker --> Frontend
-    Docker --> Backend
-    Docker --> PostgreSQL
+    Client --> API
+    API --> ML
+    API --> PostgreSQL
+    API --> SQLiteDemo
 ```
+
+- **Frontend**: Next.js 15 (App Router), React 19, TypeScript, Vanilla CSS Token Design System.
+- **Backend**: FastAPI, Python 3.11+, SQLAlchemy ORM, Pydantic v2.
+- **Database**: PostgreSQL 16 (Production / Docker), bundled SQLite (`udaansetu.db`) for instant offline demonstration.
+- **Machine Learning**: Scikit-learn, Sentence-Transformers, NumPy, Pandas.
+- **Security & Headers**: HSTS, CSP, X-Frame-Options DENY, X-Content-Type-Options nosniff, Rate Limiting (120 req/min).
 
 ---
 
-## Quick Start
+## Evaluator Demo Flow
 
-### Prerequisites
-- **Docker Desktop** (recommended) — or Node.js 20+ and Python 3.11+
-- **4 GB RAM** minimum (sentence-transformers model download on first run)
+To evaluate the platform, follow the end-to-end **WaterLens Technologies** demonstration:
 
-### Option 1: Docker (recommended)
+1. **Landing & Identity (`/`)**: Explore the 11-stage highway and problem statement context.
+2. **Sign In (`#workspace`)**: Quick-select pre-configured demo profiles:
+   - `Admin`: `admin@udaansetu.gov.in` (System governance & audit inspection)
+   - `Govt Officer`: `rajesh.patil@maharashtra.gov.in` (Challenge posting & pilot oversight)
+   - `Procurement Officer`: `meera.sharma@maharashtra.gov.in` (GeM purchase orders & escrow)
+   - `Evaluator`: `vikram.patil@ieee.org` (Double-blind technical scoring)
+   - `Validator`: `anjali.kulkarni@ncssc.in` (Field test certification)
+   - `Researcher`: `arun.joshi@iitb.ac.in` (Lab research & patent filings)
+   *(Note: Local passwords configured via seed script; refer to [docs/DEMO.md](docs/DEMO.md))*
+3. **AI Command Center (`/ai-command`)**: Observe AI Match Score (94.2%), Risk Level (24/100 Low Risk), and explainable feature bars for *WaterLens Technologies*.
+4. **Hero Journey (`/journey`)**: Walk through the 10-stage sequential lifecycle from *Smart Water Metering Challenge* to *Statewide Impact*.
+5. **Procurement & Escrow (`/procurement`)**: Inspect GeM-aligned direct purchase orders and validator-triggered escrow payouts.
+6. **Public Impact (`/impact`)**: View real-time SDG outcomes (12.4M L/day water conserved across 14 ULBs).
+
+---
+
+## Testing & Verification
 
 ```bash
-git clone https://github.com/rudrakhairnar16-bit/UdaanSetu.git
-cd UdaanSetu
-cp .env.example .env
-docker compose up --build
-```
+# Backend Test Suite (Pytest)
+python -m pytest backend/tests
+# 153 passed / 153 total (Exit Code: 0)
 
-| Service | URL |
-|---------|-----|
-| Frontend | http://localhost:3001 |
-| API Docs | http://localhost:8080/docs |
-| Database | localhost:5433 |
+# Frontend Test Suite (Vitest)
+npm test (frontend)
+# 4 test files passed, 19 tests passed (Exit Code: 0)
 
-### Option 2: Local Development
-
-<details>
-<summary><strong>Backend Setup</strong></summary>
-
-```bash
-cd backend
-python -m venv venv
-source venv/bin/activate  # or .\venv\Scripts\activate on Windows
-pip install -r requirements.txt
-export DATABASE_URL="postgresql+psycopg://udaansetu:udaansetu@localhost:5432/udaansetu"
-export SECRET_KEY="your-dev-secret"
-uvicorn app.main:app --reload --port 8000
-```
-</details>
-
-<details>
-<summary><strong>Frontend Setup</strong></summary>
-
-```bash
-cd frontend
-npm install
-export NEXT_PUBLIC_API_URL="http://localhost:8000"
-npm run dev
-```
-</details>
-
----
-
-## Features
-
-### Core Platform (18 pages)
-- **JWT Authentication** — Argon2 hashing, token blacklist, refresh
-- **RBAC** — 5 roles (admin, researcher, mentor, investor, incubator)
-- **Research Projects** — CRUD, milestones, progress, funding
-- **Innovations** — TRL tracking, AI recommendations, linked research
-- **IPR/Patents** — Full lifecycle: Idea → Filed → Granted
-- **Startups** — Impact metrics, smart matching, jobs/revenue
-- **Ecosystem** — Mentors, schemes, incubators, funding requests
-- **Government APIs** — Aadhaar eKYC, DigiLocker, Startup India, IP India, ONDC
-- **Analytics** — recharts BarChart + PieChart, ML model metrics
-- **Impact Dashboard** — Sector/district breakdowns, metrics
-- **Profile** — Edit name, district, org, change password
-- **Notifications** — Read/unread, auto-notify on stage changes
-- **Audit Log** — Admin-only action trail
-- **Document Upload** — PDF/DOCX/TXT
-
-### AI/ML Pipeline
-
-| Component | Algorithm | Details |
-|-----------|-----------|---------|
-| **Risk Prediction** | GradientBoosting | 10 features, 2000 samples, cross-validated |
-| **Semantic Search** | sentence-transformers (MiniLM-L6-v2) | 384-dim embeddings, cosine similarity |
-| **Success Prediction** | Risk inversion + confidence intervals | Bootstrap CI |
-| **Duplicate Detection** | Agglomerative Clustering | Distance threshold |
-| **Smart Matching** | Cosine similarity | Mentor/scheme/incubator recs |
-| **Model Registry** | Version tracking | Register/promote/deprecate |
-| **Drift Detection** | PSI + KS approximation | Prediction + feature drift |
-| **Feedback Loop** | User corrections | Accuracy tracking |
-
-### Government Integrations (5 services)
-
-| Service | Endpoints | Status |
-|---------|-----------|--------|
-| **Aadhaar eKYC** | verify, send-otp, verify-otp | Mock (ready for UIDAI API) |
-| **DigiLocker** | verify, list-documents, fetch | Mock (ready for NSDL API) |
-| **Startup India** | verify, register, benefits, recent | Mock (ready for DPIIT API) |
-| **IP India** | verify, search, publication, costs | Mock (ready for IP India API) |
-| **ONDC** | verify, search, products, register-seller | Mock (ready for ONDC API) |
-
-### DevOps
-
-| Component | Details |
-|-----------|---------|
-| **CI/CD** | GitHub Actions — test, security scan, build, deploy |
-| **IaC** | Terraform — VPC, ECR, RDS, Redis, ECS, CloudFront, ALB |
-| **Monitoring** | JSON structured logging, Prometheus metrics, request tracing |
-| **Security** | Trivy scan, Bandit SAST, CSP/HSTS headers, non-root Docker |
-
----
-
-## API Reference
-
-### Authentication
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| `POST` | `/auth/login` | — | Login, returns JWT |
-| `POST` | `/auth/register` | — | Create account |
-| `POST` | `/auth/logout` | JWT | Revoke token |
-| `GET` | `/auth/me` | JWT | Current user |
-| `PATCH` | `/auth/me` | JWT | Update profile |
-| `POST` | `/auth/change-password` | JWT | Change password |
-| `GET` | `/auth/users` | Admin | List all users |
-
-### Records
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| `GET` | `/records?kind=&district=&sector=&q=` | JWT | List with filters |
-| `GET` | `/records/{id}` | JWT | Get single record |
-| `POST` | `/records/{kind}` | JWT | Create record |
-| `PATCH` | `/records/{id}` | Owner/Admin | Update record |
-| `DELETE` | `/records/{id}` | Admin | Delete record |
-
-### AI/ML
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| `GET` | `/ai/risk/{id}` | JWT | Risk score + feature importance |
-| `GET` | `/ai/success/{id}` | JWT | Success probability + CI |
-| `GET` | `/ai/recommendations/{id}` | JWT | Semantic recommendations |
-| `GET` | `/ai/similar/{id}` | JWT | Similar records |
-| `GET` | `/ai/match/{id}` | JWT | Smart matching |
-| `GET` | `/ai/duplicates` | JWT | Duplicate clusters |
-| `GET` | `/ai/metrics` | Admin | Model performance |
-
-### ML Production
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| `POST` | `/ml/feedback` | JWT | Submit prediction feedback |
-| `GET` | `/ml/feedback/accuracy` | JWT | Feedback accuracy metrics |
-| `GET` | `/ml/drift/status` | JWT | Drift detection status |
-| `GET` | `/ml/drift/alerts` | JWT | Drift alerts |
-| `GET` | `/ml/registry/versions` | JWT | Model versions |
-| `POST` | `/ml/registry/promote` | Admin | Promote model version |
-| `POST` | `/ml/batch/risk` | JWT | Batch risk prediction |
-| `POST` | `/ml/retrain` | Admin | Trigger retraining |
-
-### Government APIs
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| `POST` | `/government/aadhaar/verify` | JWT | Verify Aadhaar eKYC |
-| `POST` | `/government/aadhaar/send-otp` | JWT | Send OTP |
-| `POST` | `/government/aadhaar/verify-otp` | JWT | Verify OTP |
-| `POST` | `/government/digilocker/verify` | JWT | Verify document |
-| `GET` | `/government/digilocker/documents` | JWT | List document types |
-| `POST` | `/government/startup-india/verify` | JWT | Verify startup |
-| `POST` | `/government/startup-india/register` | JWT | Register startup |
-| `GET` | `/government/startup-india/benefits/{num}` | JWT | Get benefits |
-| `POST` | `/government/ip-india/verify` | JWT | Check patent status |
-| `POST` | `/government/ip-india/search` | JWT | Search patents |
-| `POST` | `/government/ondc/verify` | JWT | Verify seller |
-| `POST` | `/government/ondc/search` | JWT | Search products |
-
-### Monitoring
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| `GET` | `/health` | — | Health check |
-| `GET` | `/metrics` | — | App metrics (JSON) |
-| `GET` | `/metrics/prometheus` | — | Prometheus format |
-
----
-
-## Demo Credentials & Seed Profiles
-
-> **Security Note:** Demo passwords are NOT bundled into public production frontend assets. For local evaluation and testing, accounts are seeded via `python -m backend.app.seed` and passwords can be configured via environment variables (refer to [`docs/DEMO.md`](docs/DEMO.md)).
-
-| Role | Seeded Email | Local Test Access |
-|------|--------------|-------------------|
-| **Admin** | `admin@udaansetu.gov.in` | System governance, ML retrain, audit logs |
-| **Govt Officer** | `rajesh.patil@maharashtra.gov.in` | Challenge posting, pilot approvals, department metrics |
-| **Procurement Officer** | `meera.sharma@maharashtra.gov.in` | GeM sandbox, milestone escrow, contract SLAs |
-| **Evaluator** | `vikram.patil@ieee.org` | Technical scoring rubrics, blind peer evaluations |
-| **Validator** | `anjali.kulkarni@ncssc.in` | Field validation reports, performance certificates |
-| **Researcher** | `arun.joshi@iitb.ac.in` | Lab publications, patent filings, research milestones |
-
----
-
-## Project Structure
-
-```
-UdaanSetu/
-├── .github/workflows/
-│   ├── ci-cd.yml              # GitHub Actions CI/CD
-│   └── ecs-task-def.json      # ECS task definition
-├── terraform/
-│   └── main.tf                # AWS infrastructure (VPC, ECR, RDS, ECS)
-├── backend/
-│   ├── app/
-│   │   ├── main.py            # FastAPI app + routers
-│   │   ├── config.py          # Settings (env-configurable)
-│   │   ├── database.py        # SQLAlchemy engine
-│   │   ├── models.py          # ORM models (User, Record, AuditLog, etc.)
-│   │   ├── schemas.py         # Pydantic schemas
-│   │   ├── dependencies.py    # Auth (JWT, RBAC)
-│   │   ├── middleware.py      # CORS, rate limit, security headers
-│   │   ├── monitoring.py      # JSON logging, metrics, Prometheus
-│   │   ├── seed.py            # Demo data seeding
-│   │   ├── utils.py           # Similarity, risk, validation
-│   │   ├── ml/
-│   │   │   ├── engine.py      # ML engine (634 lines, 5 components)
-│   │   │   └── production.py  # Model registry, drift, feedback, batch
-│   │   ├── government/
-│   │   │   ├── base.py        # Base government client
-│   │   │   ├── aadhaar.py     # Aadhaar eKYC
-│   │   │   ├── digilocker.py  # DigiLocker documents
-│   │   │   ├── startup_india.py # Startup India registry
-│   │   │   ├── ip_india.py    # IP India patents
-│   │   │   └── ondc.py        # ONDC marketplace
-│   │   └── routes/
-│   │       ├── auth.py        # Auth endpoints
-│   │       ├── records.py     # CRUD endpoints
-│   │       ├── dashboard.py   # Dashboard + analytics
-│   │       ├── ai.py          # ML endpoints
-│   │       ├── government.py  # Government API endpoints
-│   │       ├── ml_production.py # ML production endpoints
-│   │       ├── notifications.py
-│   │       ├── audit.py
-│   │       └── documents.py
-│   ├── tests/                 # 153 tests
-│   ├── alembic/               # DB migrations
-│   ├── requirements.txt
-│   └── Dockerfile
-├── frontend/
-│   ├── app/
-│   │   ├── layout.tsx         # Root layout + providers
-│   │   ├── page.tsx           # Login
-│   │   ├── not-found.tsx      # 404 page
-│   │   ├── lib/
-│   │   │   ├── api.ts         # API client
-│   │   │   ├── auth.tsx       # Auth context
-│   │   │   └── types.ts       # TypeScript types
-│   │   ├── components/
-│   │   │   ├── StageBadge.tsx  # Unified stage badges
-│   │   │   ├── Modal.tsx       # Reusable modal
-│   │   │   ├── Toast.tsx       # Toast notifications
-│   │   │   ├── ConfirmDialog.tsx # Confirmation dialogs
-│   │   │   ├── ErrorBoundary.tsx # Error boundary
-│   │   │   └── LoadingSpinner.tsx # Loading + skeleton
-│   │   ├── hooks/
-│   │   │   ├── useApi.ts       # Data fetching
-│   │   │   └── useDebounce.ts  # Debounce hook
-│   │   └── (app)/             # 18 authenticated pages
-│   │       ├── dashboard/     # Pipeline flow + ML risk
-│   │       ├── research/      # CRUD + milestones + edit
-│   │       ├── innovations/   # AI recommendations + edit
-│   │       ├── startups/      # Smart matching + impact
-│   │       ├── ecosystem/     # Tabbed: mentors/schemes/incubators
-│   │       ├── government/    # 5-tab government integrations
-│   │       ├── analytics/     # recharts + ML metrics
-│   │       ├── impact/        # Impact dashboard
-│   │       ├── profile/       # Edit profile + password
-│   │       ├── register/      # Self-registration
-│   │       ├── notifications/
-│   │       ├── audit/
-│   │       └── settings/
-│   ├── Dockerfile
-│   └── package.json
-├── docker-compose.yml
-├── docker-compose.prod.yml
-└── README.md
+# Production Build & Prerendering (Next.js)
+npm run build (frontend)
+# 30 / 30 static pages compiled cleanly (Exit Code: 0)
 ```
 
 ---
 
-## Testing
+## Security & Governance
 
-```bash
-cd backend
-python -m pytest tests/ -v           # All 153 tests
-python -m pytest tests/test_ai.py    # 27 ML tests
-python -m pytest tests/test_auth.py  # 22 auth tests
-```
-
-| Suite | Tests | Coverage |
-|-------|-------|----------|
-| Security | 35 | Headers, CORS, rate limit, JWT, upload, audit |
-| Records CRUD | 28 | Create, read, update, delete, filters |
-| AI/ML | 27 | Risk, success, recommendations, similar, matching, duplicates |
-| Utilities | 23 | Similarity, risk, password, sanitize |
-| Auth & RBAC | 22 | Login, logout, token validation, role enforcement |
-| Endpoints | 16 | Dashboard, analytics, notifications |
+- **Zero Bundled Credentials**: No passwords or private keys are bundled in client-side production assets.
+- **Dynamic Secrets**: Deployment configs (`render.yaml`) utilize platform-managed runtime secret generation.
+- **RBAC**: 7 distinct roles strictly enforce stage-specific permissions.
+- **Rate Limiting**: 120 requests/minute per IP with health check exemptions.
+- **Audit Trails**: Immutable append-only audit records with ISO 8601 UTC timestamps.
 
 ---
 
-## Environment Variables
+## Team & Attribution
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `DATABASE_URL` | `postgresql+psycopg://udaansetu:udaansetu@db:5432/udaansetu` | PostgreSQL URL |
-| `SECRET_KEY` | `dev-only-change-me-in-production` | JWT signing key |
-| `OLLAMA_ENABLED` | `false` | Enable Ollama LLM |
-| `OLLAMA_URL` | `http://host.docker.internal:11434` | Ollama URL |
-| `OLLAMA_MODEL` | `deepseek-r1:8b` | LLM model |
-| `CORS_ORIGINS` | `http://localhost:3000,http://localhost:3001` | CORS allowed origins |
-| `JWT_EXPIRY_HOURS` | `12` | Token expiry |
-| `NEXT_PUBLIC_API_URL` | `http://localhost:8000` | Frontend → Backend URL |
-| `AADHAAR_API_URL` | — | UIDAI API (production) |
-| `DIGILOCKER_API_URL` | — | DigiLocker API (production) |
-| `STARTUP_INDIA_API_URL` | — | Startup India API (production) |
-| `IP_INDIA_API_URL` | — | IP India API (production) |
-| `ONDC_API_URL` | — | ONDC API (production) |
-
----
-
-## Deployment
-
-### Docker Compose (Development)
-```bash
-docker compose up --build
-```
-
-### AWS ECS (Production)
-```bash
-cd terraform
-terraform init
-terraform plan -var="db_password=YOUR_SECRET"
-terraform apply -var="db_password=YOUR_SECRET"
-```
-
-GitHub Actions automatically builds and deploys on push to `main`.
-
----
-
-## License
-
-MIT License — built with passion for India's innovation ecosystem.
+Developed for **Smart India Hackathon 2026** under Problem Statement **SIH26136**.  
+*Ministry / Department: Government of Maharashtra & National Innovation Ecosystem.*
