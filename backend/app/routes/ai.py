@@ -224,7 +224,7 @@ def match_startups(challenge_id: int, top_k: int = Query(5, ge=1, le=20),
             "id": st.id, "title": st.title, "description": st.description or "",
             "sector": st.sector or "", "district": st.district or "",
             "stage": st.stage or "",
-            "capabilities": st.meta.get("impact", "") + " " + st.meta.get("revenue", ""),
+            "capabilities": (str((st.meta or {}).get("impact", "") or "") + " " + str((st.meta or {}).get("revenue", "") or "")).strip(),
         })
 
     challenge_text = f"{challenge.title} {challenge.description} {challenge.sector} {challenge.category}"
