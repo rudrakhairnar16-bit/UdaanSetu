@@ -32,11 +32,19 @@ async def upload_document(
     if len(content) > settings.max_upload_bytes:
         raise HTTPException(413, f"File too large. Max size: {settings.max_upload_bytes // (1024 * 1024)} MB")
     target = Path("uploads")
-    target.mkdir(exist_ok=True)
+    try:
+        target.mkdir(exist_ok=True)
+    except Exception:
+        import tempfile
+        target = Path(tempfile.gettempdir()) / "uploads"
+        target.mkdir(exist_ok=True)
     safe_name = re.sub(r"[^\w.\-]", "_", file.filename or "upload.txt")
     path = target / f"{int(datetime.now(timezone.utc).timestamp())}_{safe_name}"
-    with path.open("wb") as f:
-        f.write(content)
+    try:
+        with path.open("wb") as f:
+            f.write(content)
+    except Exception as write_err:
+        pass
     text = ""
     try:
         if suffix in (".txt", ".md", ".csv"):

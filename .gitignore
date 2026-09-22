@@ -17,3 +17,5 @@ venv/
 test.db
 uploads/
 frontend/coverage/
+.vercel
+.env*

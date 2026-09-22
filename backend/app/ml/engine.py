@@ -21,7 +21,12 @@ import numpy as np
 logger = logging.getLogger("udaansetu.ml")
 
 MODEL_DIR = Path(__file__).parent / "models"
-MODEL_DIR.mkdir(exist_ok=True)
+try:
+    MODEL_DIR.mkdir(exist_ok=True)
+except Exception:
+    import tempfile
+    MODEL_DIR = Path(tempfile.gettempdir()) / "udaansetu_models"
+    MODEL_DIR.mkdir(exist_ok=True)
 
 # ---------------------------------------------------------------------------
 # Data classes
@@ -458,11 +463,14 @@ class RiskEngine:
             )
 
             # Save model
-            import pickle
-            with open(MODEL_DIR / "risk_model.pkl", "wb") as f:
-                pickle.dump({"model": self._model, "scaler": self._scaler}, f)
-            with open(MODEL_DIR / "risk_metrics.json", "w") as f:
-                json.dump(asdict(self._metrics), f, indent=2)
+            try:
+                import pickle
+                with open(MODEL_DIR / "risk_model.pkl", "wb") as f:
+                    pickle.dump({"model": self._model, "scaler": self._scaler}, f)
+                with open(MODEL_DIR / "risk_metrics.json", "w") as f:
+                    json.dump(asdict(self._metrics), f, indent=2)
+            except Exception as save_err:
+                logger.warning(f"Could not persist model to disk: {save_err}")
 
             logger.info(f"Trained risk model: accuracy={self._metrics.accuracy:.3f}")
 
