@@ -17,8 +17,9 @@ services:
         value: "false"
       - key: CORS_ORIGINS
         value: https://udaansetu.vercel.app
-  - type: pgsql
-    name: udaansetu-db
+
+databases:
+  - name: udaansetu-db
     plan: free
     databaseName: udaansetu
     user: udaansetu
