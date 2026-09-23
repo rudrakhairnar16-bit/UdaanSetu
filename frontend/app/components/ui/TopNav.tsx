@@ -8,11 +8,32 @@ import { Icon } from './Icon';
 
 export interface TopNavProps {
   onOpenMobile?: () => void;
+  onToggleSidebar?: () => void;
+  isSidebarCollapsed?: boolean;
 }
 
-export function TopNav({ onOpenMobile }: TopNavProps) {
+export function TopNav({ onOpenMobile, onToggleSidebar, isSidebarCollapsed }: TopNavProps) {
   const { user } = useAuth();
   const pathname = usePathname();
+  const [theme, setTheme] = React.useState<'light' | 'dark'>('light');
+
+  React.useEffect(() => {
+    const saved = localStorage.getItem('udaan_theme') as 'light' | 'dark' | null;
+    if (saved) {
+      setTheme(saved);
+      document.documentElement.setAttribute('data-theme', saved);
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setTheme('dark');
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const next = theme === 'light' ? 'dark' : 'light';
+    setTheme(next);
+    localStorage.setItem('udaan_theme', next);
+    document.documentElement.setAttribute('data-theme', next);
+  };
 
   // Generate breadcrumb titles
   const getBreadcrumb = () => {
@@ -43,32 +64,116 @@ export function TopNav({ onOpenMobile }: TopNavProps) {
     return 'UdaanSetu Platform';
   };
 
+  const handleHamburgerClick = () => {
+    if (typeof window !== 'undefined' && window.innerWidth <= 768) {
+      onOpenMobile?.();
+    } else {
+      onToggleSidebar?.();
+    }
+  };
+
   return (
     <header style={{
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
-      padding: '12px 24px',
+      padding: '12px 20px',
       background: 'var(--surface)',
       borderBottom: '1px solid var(--border-soft)',
       borderRadius: '12px',
       marginBottom: '24px',
       boxShadow: 'var(--shadow-xs)',
+      gap: 12,
+      flexWrap: 'wrap',
     }}>
-      {/* Left breadcrumb area */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-        <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-tertiary)' }}>
-          UdaanSetu
-        </span>
-        <span style={{ color: 'var(--gray-300)', fontSize: 12 }}>/</span>
-        <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--text-primary)' }}>
-          {getBreadcrumb()}
-        </span>
+      {/* Left breadcrumb & toggle controls */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        {/* Hamburger / Sidebar Toggle Button */}
+        <button
+          onClick={handleHamburgerClick}
+          id="nav-hamburger-btn"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: 36,
+            height: 36,
+            borderRadius: 8,
+            border: '1px solid var(--border-soft)',
+            background: 'var(--surface-soft)',
+            color: 'var(--text-primary)',
+            cursor: 'pointer',
+            transition: 'background 0.15s, transform 0.15s',
+          }}
+          title={isSidebarCollapsed ? 'Expand sidebar (Ctrl+B)' : 'Toggle sidebar / menu (Ctrl+B)'}
+          aria-label="Toggle navigation menu"
+        >
+          <Icon name="menu" size={18} strokeWidth={2} />
+        </button>
+
+        {/* Dedicated Sidebar Collapse / Expand Icon Button (Desktop) */}
+        {onToggleSidebar && (
+          <button
+            onClick={onToggleSidebar}
+            id="sidebar-toggle-btn"
+            className="hide-on-mobile"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: 36,
+              height: 36,
+              borderRadius: 8,
+              border: '1px solid var(--border-soft)',
+              background: isSidebarCollapsed ? 'var(--green-100, #fdecc8)' : 'var(--surface-soft)',
+              color: isSidebarCollapsed ? 'var(--green-800, #7a4d06)' : 'var(--text-secondary)',
+              cursor: 'pointer',
+              transition: 'background 0.15s, color 0.15s',
+            }}
+            title={isSidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+            aria-label="Toggle sidebar collapse"
+          >
+            <Icon name={isSidebarCollapsed ? 'panelLeftOpen' : 'panelLeftClose'} size={18} />
+          </button>
+        )}
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginLeft: 4 }}>
+          <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-tertiary)' }}>
+            UdaanSetu
+          </span>
+          <span style={{ color: 'var(--gray-300)', fontSize: 12 }}>/</span>
+          <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--text-primary)' }}>
+            {getBreadcrumb()}
+          </span>
+        </div>
       </div>
 
       {/* Right control pills */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-
+        {/* Dark / Light Theme Toggle Switch */}
+        <button
+          onClick={toggleTheme}
+          id="theme-toggle-btn"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 6,
+            padding: '6px 12px',
+            borderRadius: 20,
+            border: '1px solid var(--border-soft)',
+            background: 'var(--surface-soft)',
+            color: 'var(--text-primary)',
+            fontSize: 12,
+            fontWeight: 600,
+            cursor: 'pointer',
+            transition: 'background 0.15s, border-color 0.15s',
+          }}
+          title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+          aria-label="Toggle dark/light theme"
+        >
+          <Icon name={theme === 'light' ? 'moon' : 'sun'} size={14} style={{ color: theme === 'light' ? '#6366f1' : '#f59e0b' }} />
+          <span>{theme === 'light' ? 'Dark' : 'Light'}</span>
+        </button>
 
         {/* State / Environment Indicator */}
         <div className="hide-on-mobile" style={{
