@@ -79,34 +79,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [isCollapsed, setIsCollapsed] = useState(false);
   const sidebarRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const saved = localStorage.getItem('udaan_sidebar_collapsed');
-    if (saved === 'true') {
-      setIsCollapsed(true);
-    }
-  }, []);
-
-  const toggleSidebar = useCallback(() => {
-    setIsCollapsed(prev => {
-      const next = !prev;
-      localStorage.setItem('udaan_sidebar_collapsed', String(next));
-      return next;
-    });
-  }, []);
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {
-        e.preventDefault();
-        toggleSidebar();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [toggleSidebar]);
 
   useEffect(() => {
     if (!loading && !user) {
@@ -170,14 +143,14 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       {/* Sidebar */}
       <aside
         ref={sidebarRef}
-        className={`sidebar ${mobileOpen ? 'sidebar-open' : ''} ${isCollapsed ? 'sidebar-collapsed' : ''}`}
+        className={`sidebar ${mobileOpen ? 'sidebar-open' : ''}`}
         style={{
-          width: isCollapsed ? 72 : 'var(--sidebar-width)',
+          width: 'var(--sidebar-width)',
           background: 'linear-gradient(180deg, #012348 0%, #011a38 100%)',
           color: '#e0f7ff',
           display: 'flex',
           flexDirection: 'column',
-          padding: isCollapsed ? '16px 8px' : '16px 10px',
+          padding: '16px 10px',
           position: 'fixed',
           top: 0,
           left: 0,
@@ -188,62 +161,12 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         role="navigation"
         aria-label="Main navigation"
       >
-        {/* Brand & Collapse Header */}
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: isCollapsed ? 'center' : 'space-between',
-          padding: isCollapsed ? '0 0 16px' : '0 6px 16px',
-          borderBottom: '1px solid rgba(255,255,255,.08)',
-          marginBottom: 12,
-        }}>
-          <Link
-            href="/dashboard"
-            style={{
-              fontWeight: 800,
-              fontSize: 19,
-              color: 'white',
-              textDecoration: 'none',
-              fontFamily: 'var(--font-display)',
-              letterSpacing: '-0.02em',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 8,
-            }}
-            title="UdaanSetu Dashboard"
-          >
-            <span style={{ color: 'var(--green-400, #f3ae39)', fontSize: 20 }}>↗</span>
-            {!isCollapsed && (
-              <div>
-                <div style={{ lineHeight: 1.1 }}>UdaanSetu</div>
-                <div style={{ fontSize: 10, color: '#92eaFF', marginTop: 2, fontWeight: 500, letterSpacing: '.02em' }}>Research to Impact</div>
-              </div>
-            )}
+        {/* Brand */}
+        <div style={{ padding: '0 10px 16px' }}>
+          <Link href="/dashboard" style={{ fontWeight: 800, fontSize: 19, color: 'white', textDecoration: 'none', fontFamily: 'var(--font-display)', letterSpacing: '-0.02em', display: 'flex', alignItems: 'center', gap: 8 }}>
+            <span style={{ color: 'var(--green-400, #f3ae39)' }}>↗</span> UdaanSetu
           </Link>
-
-          {!isCollapsed && (
-            <button
-              onClick={toggleSidebar}
-              id="sidebar-header-toggle"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: 28,
-                height: 28,
-                borderRadius: 6,
-                background: 'rgba(255,255,255,.08)',
-                color: '#92eaFF',
-                cursor: 'pointer',
-                border: '1px solid rgba(255,255,255,.1)',
-                transition: 'background .15s',
-              }}
-              title="Collapse sidebar (Ctrl+B)"
-              aria-label="Collapse sidebar"
-            >
-              <Icon name="chevronLeft" size={16} />
-            </button>
-          )}
+          <div style={{ fontSize: 11, color: '#92eaFF', marginTop: 2, fontWeight: 500, letterSpacing: '.02em' }}>From Research to Impact</div>
         </div>
 
         <nav style={{ display: 'flex', flexDirection: 'column', gap: 14, flex: 1, overflowY: 'auto', paddingRight: 2 }} aria-label="Primary">
@@ -253,11 +176,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
             return (
               <div key={section.title}>
-                {!isCollapsed && (
-                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '.08em', color: '#6fb2d2', padding: '0 10px 4px', textTransform: 'uppercase' }}>
-                    {section.title}
-                  </div>
-                )}
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '.08em', color: '#6fb2d2', padding: '0 10px 4px', textTransform: 'uppercase' }}>
+                  {section.title}
+                </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                   {visibleItems.map(item => {
                     const active = pathname === item.href || (item.href !== '/dashboard' && pathname?.startsWith(item.href + '/'));
@@ -266,13 +187,12 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                         key={item.href}
                         href={item.href}
                         aria-current={active ? 'page' : undefined}
-                        title={isCollapsed ? item.label : undefined}
                         style={{
                           display: 'flex',
                           alignItems: 'center',
-                          justifyContent: isCollapsed ? 'center' : 'space-between',
+                          justifyContent: 'space-between',
                           gap: 10,
-                          padding: isCollapsed ? '10px 0' : '8px 10px',
+                          padding: '8px 10px',
                           borderRadius: 8,
                           fontSize: 13,
                           fontWeight: active ? 600 : 400,
@@ -285,9 +205,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                       >
                         <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
                           <Icon name={item.icon} size={16} strokeWidth={active ? 2.2 : 1.8} />
-                          {!isCollapsed && <span style={{ lineHeight: 1.25 }}>{item.label}</span>}
+                          <span style={{ lineHeight: 1.25 }}>{item.label}</span>
                         </div>
-                        {!isCollapsed && item.badge && (
+                        {item.badge && (
                           <span style={{
                             fontSize: 10,
                             fontWeight: 700,
@@ -309,27 +229,24 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         </nav>
 
         {/* User card */}
-        {!isCollapsed && (
-          <div style={{
-            padding: 14,
-            background: 'rgba(255,255,255,.06)',
-            borderRadius: 12,
-            border: '1px solid rgba(255,255,255,.08)',
-            marginTop: 12,
-          }}>
-            <div style={{ fontWeight: 600, color: '#e0f7ff', fontSize: 13 }}>{user.name}</div>
-            <div style={{ textTransform: 'capitalize', fontSize: 12, color: '#92eaFF', marginTop: 2 }}>{user.role}</div>
-            {user.district && <div style={{ fontSize: 11, color: '#b0f0ff', marginTop: 2 }}>{user.district}</div>}
-          </div>
-        )}
+        <div style={{
+          padding: 14,
+          background: 'rgba(255,255,255,.06)',
+          borderRadius: 12,
+          border: '1px solid rgba(255,255,255,.08)',
+          marginTop: 12,
+        }}>
+          <div style={{ fontWeight: 600, color: '#e0f7ff', fontSize: 13 }}>{user.name}</div>
+          <div style={{ textTransform: 'capitalize', fontSize: 12, color: '#92eaFF', marginTop: 2 }}>{user.role}</div>
+          {user.district && <div style={{ fontSize: 11, color: '#b0f0ff', marginTop: 2 }}>{user.district}</div>}
+        </div>
 
         {/* Sign out button */}
         <button
           onClick={async () => { await logout(); router.push('/'); }}
-          title={isCollapsed ? 'Sign out' : undefined}
           style={{
             marginTop: 8,
-            padding: isCollapsed ? '10px 0' : '10px 14px',
+            padding: '10px 14px',
             borderRadius: 10,
             fontSize: 14,
             color: '#fca5a5',
@@ -338,7 +255,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             minHeight: 44,
             display: 'flex',
             alignItems: 'center',
-            justifyContent: isCollapsed ? 'center' : 'flex-start',
             gap: 11,
             transition: 'background .15s',
           }}
@@ -346,7 +262,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
         >
           <Icon name="logout" size={18} strokeWidth={1.8} />
-          {!isCollapsed && <span>Sign out</span>}
+          Sign out
         </button>
       </aside>
 
@@ -356,18 +272,13 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         className="main-content"
         style={{
           flex: 1,
-          marginLeft: isCollapsed ? 72 : 'var(--sidebar-width)',
+          marginLeft: 'var(--sidebar-width)',
           padding: '24px 32px',
           maxWidth: '100%',
           minHeight: '100vh',
-          transition: 'margin-left 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
         }}
       >
-        <TopNav
-          onOpenMobile={() => setMobileOpen(prev => !prev)}
-          onToggleSidebar={toggleSidebar}
-          isSidebarCollapsed={isCollapsed}
-        />
+        <TopNav onOpenMobile={() => setMobileOpen(prev => !prev)} />
         {children}
       </main>
     </div>

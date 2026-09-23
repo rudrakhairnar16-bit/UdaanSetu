@@ -356,7 +356,6 @@ export default function LandingPage() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     if (!loading && user) {
@@ -490,89 +489,8 @@ export default function LandingPage() {
             <span>→</span>
           </a>
 
-          {/* Landing Page Hamburger Toggle */}
-          <button
-            onClick={() => setMobileMenuOpen(prev => !prev)}
-            id="landing-hamburger-btn"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: 38,
-              height: 38,
-              borderRadius: 8,
-              border: '1px solid var(--border-subtle, #cbd5e1)',
-              background: mobileMenuOpen ? 'var(--saffron-100, #fef3c7)' : '#ffffff',
-              color: '#012348',
-              cursor: 'pointer',
-            }}
-            aria-label="Toggle navigation menu"
-            title="Toggle Menu"
-          >
-            <Icon name={mobileMenuOpen ? 'close' : 'menu'} size={18} strokeWidth={2} />
-          </button>
         </div>
       </header>
-
-      {/* Mobile Drawer Menu */}
-      {mobileMenuOpen && (
-        <div style={{
-          position: 'sticky',
-          top: 68,
-          zIndex: 99,
-          background: 'rgba(255, 255, 255, 0.98)',
-          backdropFilter: 'blur(16px)',
-          borderBottom: '2px solid var(--border-subtle, #cbd5e1)',
-          padding: '16px 24px',
-          boxShadow: '0 12px 24px rgba(0,0,0,0.08)',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 12,
-        }}>
-          <a
-            href="#problem"
-            onClick={() => setMobileMenuOpen(false)}
-            style={{ fontSize: 14, fontWeight: 700, color: '#0284c7', textDecoration: 'none', padding: '6px 0' }}
-          >
-            Problem Statement
-          </a>
-          <a
-            href="#intelligence"
-            onClick={() => setMobileMenuOpen(false)}
-            style={{ fontSize: 14, fontWeight: 600, color: 'var(--text-main, #334155)', textDecoration: 'none', padding: '6px 0' }}
-          >
-            AI Intelligence & Risk Scoring
-          </a>
-          <a
-            href="#journey"
-            onClick={() => setMobileMenuOpen(false)}
-            style={{ fontSize: 14, fontWeight: 600, color: 'var(--text-main, #334155)', textDecoration: 'none', padding: '6px 0' }}
-          >
-            11-Stage Innovation Journey
-          </a>
-          <a
-            href="#workflow"
-            onClick={() => setMobileMenuOpen(false)}
-            style={{ fontSize: 14, fontWeight: 600, color: 'var(--text-main, #334155)', textDecoration: 'none', padding: '6px 0' }}
-          >
-            Multi-Stakeholder Ecosystem
-          </a>
-          <a
-            href="#procurement"
-            onClick={() => setMobileMenuOpen(false)}
-            style={{ fontSize: 14, fontWeight: 600, color: 'var(--text-main, #334155)', textDecoration: 'none', padding: '6px 0' }}
-          >
-            SIH26136 Procurement Highway
-          </a>
-          <a
-            href="#workspace"
-            onClick={() => setMobileMenuOpen(false)}
-            style={{ fontSize: 14, fontWeight: 700, color: '#012348', textDecoration: 'none', padding: '6px 0' }}
-          >
-            → Workspace Login
-          </a>
-        </div>
-      )}
 
       {/* 2. HERO SECTION */}
       <section style={{
