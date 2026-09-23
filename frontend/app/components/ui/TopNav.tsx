@@ -15,25 +15,12 @@ export interface TopNavProps {
 export function TopNav({ onOpenMobile, onToggleSidebar, isSidebarCollapsed }: TopNavProps) {
   const { user } = useAuth();
   const pathname = usePathname();
-  const [theme, setTheme] = React.useState<'light' | 'dark'>('light');
-
   React.useEffect(() => {
-    const saved = localStorage.getItem('udaan_theme') as 'light' | 'dark' | null;
-    if (saved) {
-      setTheme(saved);
-      document.documentElement.setAttribute('data-theme', saved);
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setTheme('dark');
-      document.documentElement.setAttribute('data-theme', 'dark');
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('udaan_theme');
+      document.documentElement.removeAttribute('data-theme');
     }
   }, []);
-
-  const toggleTheme = () => {
-    const next = theme === 'light' ? 'dark' : 'light';
-    setTheme(next);
-    localStorage.setItem('udaan_theme', next);
-    document.documentElement.setAttribute('data-theme', next);
-  };
 
   // Generate breadcrumb titles
   const getBreadcrumb = () => {
@@ -150,30 +137,7 @@ export function TopNav({ onOpenMobile, onToggleSidebar, isSidebarCollapsed }: To
 
       {/* Right control pills */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-        {/* Dark / Light Theme Toggle Switch */}
-        <button
-          onClick={toggleTheme}
-          id="theme-toggle-btn"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 6,
-            padding: '6px 12px',
-            borderRadius: 20,
-            border: '1px solid var(--border-soft)',
-            background: 'var(--surface-soft)',
-            color: 'var(--text-primary)',
-            fontSize: 12,
-            fontWeight: 600,
-            cursor: 'pointer',
-            transition: 'background 0.15s, border-color 0.15s',
-          }}
-          title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-          aria-label="Toggle dark/light theme"
-        >
-          <Icon name={theme === 'light' ? 'moon' : 'sun'} size={14} style={{ color: theme === 'light' ? '#6366f1' : '#f59e0b' }} />
-          <span>{theme === 'light' ? 'Dark' : 'Light'}</span>
-        </button>
+
 
         {/* State / Environment Indicator */}
         <div className="hide-on-mobile" style={{
