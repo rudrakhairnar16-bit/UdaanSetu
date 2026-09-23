@@ -356,6 +356,7 @@ export default function LandingPage() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     if (!loading && user) {
@@ -393,13 +394,13 @@ export default function LandingPage() {
         background: 'rgba(255, 255, 255, 0.94)',
         backdropFilter: 'blur(12px)',
         borderBottom: '1px solid var(--border-subtle, #e2e8f0)',
-        padding: '0 32px',
+        padding: '0 24px',
         height: 68,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <div style={{
             width: 40,
             height: 40,
@@ -418,7 +419,7 @@ export default function LandingPage() {
           <div>
             <div style={{ fontSize: 18, fontWeight: 800, letterSpacing: '-0.02em', color: '#012348', display: 'flex', alignItems: 'center', gap: 8 }}>
               UdaanSetu
-              <span style={{ fontSize: 10, fontWeight: 700, padding: '2px 8px', borderRadius: 12, background: 'var(--saffron-50, #fef3c7)', color: 'var(--saffron-800, #92400e)', border: '1px solid var(--saffron-200, #fde68a)' }}>
+              <span className="hide-on-mobile" style={{ fontSize: 10, fontWeight: 700, padding: '2px 8px', borderRadius: 12, background: 'var(--saffron-50, #fef3c7)', color: 'var(--saffron-800, #92400e)', border: '1px solid var(--saffron-200, #fde68a)' }}>
                 MAHARASHTRA MODEL (SIH26136)
               </span>
             </div>
@@ -450,10 +451,11 @@ export default function LandingPage() {
           </a>
         </nav>
 
-        {/* Action Header Buttons */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+        {/* Action Header Buttons & Mobile Hamburger */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <a
             href="#problem"
+            className="hide-on-mobile"
             style={{
               fontSize: 13,
               fontWeight: 600,
@@ -473,7 +475,7 @@ export default function LandingPage() {
             style={{
               fontSize: 13,
               fontWeight: 600,
-              padding: '8px 18px',
+              padding: '8px 16px',
               borderRadius: 8,
               background: '#012348',
               color: '#ffffff',
@@ -487,8 +489,90 @@ export default function LandingPage() {
             <span>Enter Workspace</span>
             <span>→</span>
           </a>
+
+          {/* Landing Page Hamburger Toggle */}
+          <button
+            onClick={() => setMobileMenuOpen(prev => !prev)}
+            id="landing-hamburger-btn"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: 38,
+              height: 38,
+              borderRadius: 8,
+              border: '1px solid var(--border-subtle, #cbd5e1)',
+              background: mobileMenuOpen ? 'var(--saffron-100, #fef3c7)' : '#ffffff',
+              color: '#012348',
+              cursor: 'pointer',
+            }}
+            aria-label="Toggle navigation menu"
+            title="Toggle Menu"
+          >
+            <Icon name={mobileMenuOpen ? 'close' : 'menu'} size={18} strokeWidth={2} />
+          </button>
         </div>
       </header>
+
+      {/* Mobile Drawer Menu */}
+      {mobileMenuOpen && (
+        <div style={{
+          position: 'sticky',
+          top: 68,
+          zIndex: 99,
+          background: 'rgba(255, 255, 255, 0.98)',
+          backdropFilter: 'blur(16px)',
+          borderBottom: '2px solid var(--border-subtle, #cbd5e1)',
+          padding: '16px 24px',
+          boxShadow: '0 12px 24px rgba(0,0,0,0.08)',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 12,
+        }}>
+          <a
+            href="#problem"
+            onClick={() => setMobileMenuOpen(false)}
+            style={{ fontSize: 14, fontWeight: 700, color: '#0284c7', textDecoration: 'none', padding: '6px 0' }}
+          >
+            Problem Statement
+          </a>
+          <a
+            href="#intelligence"
+            onClick={() => setMobileMenuOpen(false)}
+            style={{ fontSize: 14, fontWeight: 600, color: 'var(--text-main, #334155)', textDecoration: 'none', padding: '6px 0' }}
+          >
+            AI Intelligence & Risk Scoring
+          </a>
+          <a
+            href="#journey"
+            onClick={() => setMobileMenuOpen(false)}
+            style={{ fontSize: 14, fontWeight: 600, color: 'var(--text-main, #334155)', textDecoration: 'none', padding: '6px 0' }}
+          >
+            11-Stage Innovation Journey
+          </a>
+          <a
+            href="#workflow"
+            onClick={() => setMobileMenuOpen(false)}
+            style={{ fontSize: 14, fontWeight: 600, color: 'var(--text-main, #334155)', textDecoration: 'none', padding: '6px 0' }}
+          >
+            Multi-Stakeholder Ecosystem
+          </a>
+          <a
+            href="#procurement"
+            onClick={() => setMobileMenuOpen(false)}
+            style={{ fontSize: 14, fontWeight: 600, color: 'var(--text-main, #334155)', textDecoration: 'none', padding: '6px 0' }}
+          >
+            SIH26136 Procurement Highway
+          </a>
+          <a
+            href="#workspace"
+            onClick={() => setMobileMenuOpen(false)}
+            style={{ fontSize: 14, fontWeight: 700, color: '#012348', textDecoration: 'none', padding: '6px 0' }}
+          >
+            → Workspace Login
+          </a>
+        </div>
+      )}
 
       {/* 2. HERO SECTION */}
       <section style={{

@@ -108,8 +108,9 @@
   --violet-700: #6d28d9;
 }
 
+:root[data-theme="dark"],
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     color-scheme: dark;
     --gray-50: #0f172a;
     --gray-100: #1e293b;
@@ -256,18 +257,49 @@ tr:hover td { background: var(--gray-50); }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
 
+/* Sidebar and navigation toggle transitions */
+.sidebar {
+  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.main-content {
+  transition: margin-left 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.sidebar.sidebar-collapsed {
+  width: 72px !important;
+  padding: 16px 8px !important;
+}
+.sidebar.sidebar-collapsed .sidebar-label,
+.sidebar.sidebar-collapsed .sidebar-section-title,
+.sidebar.sidebar-collapsed .sidebar-badge,
+.sidebar.sidebar-collapsed .sidebar-user-details,
+.sidebar.sidebar-collapsed .sidebar-brand-text {
+  display: none !important;
+}
+.sidebar.sidebar-collapsed .sidebar-nav-item {
+  justify-content: center !important;
+  padding: 10px 0 !important;
+}
+.sidebar.sidebar-collapsed .sidebar-brand {
+  justify-content: center !important;
+  padding: 0 0 16px !important;
+}
+.mobile-header-btn {
+  display: inline-flex !important;
+}
+
 @media (max-width: 1024px) {
   .form-row { grid-template-columns: 1fr; }
   .two-col { grid-template-columns: 1fr !important; }
 }
 
 @media (max-width: 768px) {
-  .hide-mobile { display: none !important; }
+  .hide-mobile, .hide-on-mobile { display: none !important; }
   .stat-card .value { font-size: 24px; }
-  .sidebar { transform: translateX(-100%); }
-  .sidebar.sidebar-open { transform: translateX(0); }
+  .sidebar { transform: translateX(-100%); width: var(--sidebar-width) !important; }
+  .sidebar.sidebar-open { transform: translateX(0) !important; }
   .main-content { margin-left: 0 !important; padding: 20px 18px !important; }
   .mobile-header { display: flex !important; }
+  .mobile-header-btn { display: inline-flex !important; }
 }
 
 @media print {
