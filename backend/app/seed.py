@@ -37,64 +37,69 @@ def seed():
     s = SessionLocal()
     try:
         if s.query(User).count():
+            admin_hash = pwd.hash("Admin@123")
+            for u in s.query(User).all():
+                u.password_hash = admin_hash
+            s.commit()
             return
 
         # ════════════════════════════════════════════════════════════════
         # 1. USERS — keep existing 11 + load 20 mentors from JSON
         # ════════════════════════════════════════════════════════════════
+        common_hash = pwd.hash("Admin@123")
         admin = User(
             name="System Administrator", email="admin@udaansetu.gov.in",
-            password_hash=pwd.hash("Admin@123"), role="admin",
+            password_hash=common_hash, role="admin",
             district="Mumbai", organization="UdaanSetu Platform",
         )
         researcher = User(
             name="Dr. Smita Kulkarni", email="smita.kulkarni@puneuni.ac.in",
-            password_hash=pwd.hash("Research@123"), role="researcher",
+            password_hash=common_hash, role="researcher",
             district="Pune", organization="Savitribai Phule Pune University",
         )
         researcher2 = User(
             name="Prof. Anil Deshmukh", email="anil.deshmukh@vjti.ac.in",
-            password_hash=pwd.hash("Research@123"), role="researcher",
+            password_hash=common_hash, role="researcher",
             district="Mumbai", organization="Veermata Jijabai Technological Institute",
         )
         mentor = User(
             name="Kiran Deshpande", email="kiran.deshpande@tiemumbai.org",
-            password_hash=pwd.hash("Mentor@123"), role="mentor",
+            password_hash=common_hash, role="mentor",
             district="Mumbai", organization="T-Hub Mumbai",
         )
         investor = User(
             name="Ankit Mehta", email="ankit.mehta@blumevc.com",
-            password_hash=pwd.hash("Invest@123"), role="investor",
+            password_hash=common_hash, role="investor",
             district="Mumbai", organization="Blume Ventures",
         )
         incubator_user = User(
             name="Prashant Pitti", email="prashant@ietech.in",
-            password_hash=pwd.hash("Incub@123"), role="incubator",
+            password_hash=common_hash, role="incubator",
             district="Pune", organization="Centre for Innovation, Incubation & Entrepreneurship (IITB-CIIE)",
         )
         govt_officer = User(
             name="Dr. Rajesh Patil", email="rajesh.patil@maharashtra.gov.in",
-            password_hash=pwd.hash("Govt@123"), role="govt_officer",
+            password_hash=common_hash, role="govt_officer",
             district="Mumbai", organization="Dept of Skills, Employment, Entrepreneurship & Innovation, Govt of Maharashtra",
         )
         procurement_officer = User(
             name="Meera Sharma", email="meera.sharma@maharashtra.gov.in",
-            password_hash=pwd.hash("Procure@123"), role="procurement_officer",
+            password_hash=common_hash, role="procurement_officer",
             district="Mumbai", organization="Directorate of Supplies & Disposals, Govt of Maharashtra",
         )
         evaluator = User(
             name="Dr. Vikram Patil", email="vikram.patil@ieee.org",
-            password_hash=pwd.hash("Eval@123"), role="evaluator",
+            password_hash=common_hash, role="evaluator",
             district="Pune", organization="IEEE Senior Member, Pune Chapter",
         )
         validator = User(
             name="Anjali Kulkarni", email="anjali.kulkarni@ncssc.in",
-            password_hash=pwd.hash("Valid@123"), role="validator",
+            password_hash=common_hash, role="validator",
             district="Nagpur", organization="National Centre for Social Security Systems, Nagpur",
         )
         auditor = User(
             name="Suresh Jogani", email="suresh.jogani@cag.gov.in",
-            password_hash=pwd.hash("Audit@123"), role="auditor",
+            password_hash=common_hash, role="auditor",
             district="Mumbai", organization="Comptroller and Auditor General of India, Mumbai Regional Office",
         )
         s.add_all([admin, researcher, researcher2, mentor, investor, incubator_user,
@@ -110,7 +115,7 @@ def seed():
             email = f"{email_slug}@udaansetu.gov.in"
             u = User(
                 name=name, email=email,
-                password_hash=pwd.hash("Mentor@123"), role="mentor",
+                password_hash=common_hash, role="mentor",
                 district=m_data.get("district", "Pune"),
                 organization=m_data.get("organization", m_data.get("institution", "")),
             )
