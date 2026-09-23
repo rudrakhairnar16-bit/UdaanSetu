@@ -22,47 +22,51 @@ async def upload_document(
     s: Session = Depends(db),
     u=Depends(current),
 ):
-    r = s.get(Record, record_id)
-    if not r:
-        raise HTTPException(404, "Record not found")
-    suffix = Path(file.filename or "upload.txt").suffix.lower()
-    if suffix not in ALLOWED_EXTENSIONS:
-        raise HTTPException(400, f"Unsupported file type: {suffix}. Allowed: {', '.join(ALLOWED_EXTENSIONS)}")
-    content = await file.read()
-    if len(content) > settings.max_upload_bytes:
-        raise HTTPException(413, f"File too large. Max size: {settings.max_upload_bytes // (1024 * 1024)} MB")
-    target = Path("uploads")
     try:
-        target.mkdir(exist_ok=True)
-    except Exception:
-        import tempfile
-        target = Path(tempfile.gettempdir()) / "uploads"
-        target.mkdir(exist_ok=True)
-    safe_name = re.sub(r"[^\w.\-]", "_", file.filename or "upload.txt")
-    path = target / f"{int(datetime.now(timezone.utc).timestamp())}_{safe_name}"
-    try:
-        with path.open("wb") as f:
-            f.write(content)
-    except Exception as write_err:
-        pass
-    text = ""
-    try:
-        if suffix in (".txt", ".md", ".csv"):
-            text = content.decode("utf-8", errors="ignore")
-        elif suffix == ".pdf":
-            from pypdf import PdfReader
-            text = " ".join(p.extract_text() or "" for p in PdfReader(path).pages)
-        elif suffix == ".docx":
-            from docx import Document
-            text = " ".join(p.text for p in Document(path).paragraphs)
-    except Exception:
-        text = "Extraction could not be completed."
-    r.meta = {**r.meta, "document": {"name": file.filename, "extracted_preview": text[:2000]}}
-    audit(s, u, "uploaded_document", r)
-    s.commit()
-    return {"filename": file.filename, "size": len(content),
+        r = s.get(Record, record_id)
+        if not r:
+            raise HTTPException(404, "Record not found")
+        suffix = Path(file.filename or "upload.txt").suffix.lower()
+        if suffix not in ALLOWED_EXTENSIONS:
+            raise HTTPException(400, f"Unsupported file type: {suffix}. Allowed: {', '.join(ALLOWED_EXTENSIONS)}")
+        content = await file.read()
+        if len(content) > settings.max_upload_bytes:
+            raise HTTPException(413, f"File too large. Max size: {settings.max_upload_bytes // (1024 * 1024)} MB")
+
+        text = ""
+        try:
+            import io
+            if suffix in (".txt", ".md", ".csv"):
+                text = content.decode("utf-8", errors="ignore")
+            elif suffix == ".pdf":
+                from pypdf import PdfReader
+                text = " ".join(p.extract_text() or "" for p in PdfReader(io.BytesIO(content)).pages)
+            elif suffix == ".docx":
+                from docx import Document
+                text = " ".join(p.text for p in Document(io.BytesIO(content)).paragraphs)
+        except Exception as extract_err:
+            text = f"Extraction error: {str(extract_err)}"
+
+        current_meta = dict(r.meta) if isinstance(r.meta, dict) else {}
+        current_meta["document"] = {"name": file.filename, "extracted_preview": text[:2000]}
+        r.meta = current_meta
+
+        from sqlalchemy.orm.attributes import flag_modified
+        flag_modified(r, "meta")
+
+        audit(s, u, "uploaded_document", r)
+        s.commit()
+        return {
+            "filename": file.filename,
+            "size": len(content),
             "extracted_preview": text[:2000],
-            "note": "Best-effort extraction; validate source content manually."}
+            "note": "Best-effort extraction; validate source content manually."
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        s.rollback()
+        raise HTTPException(500, f"Upload error: {str(e)}")
 
 
 # ── Document ACL ──

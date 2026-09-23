@@ -141,6 +141,112 @@ const JOURNEY_STAGES = [
   },
 ];
 
+const PROBLEM_GAP_STAGES = [
+  { step: '01', title: 'Research / Innovation', tag: 'Lab Discovery', icon: '🔬', desc: 'Academic breakthrough' },
+  { step: '02', title: 'IPR / Funding', tag: 'Patent & Grants', icon: '📜', desc: 'IP protection & funding' },
+  { step: '03', title: 'Startup Formation', tag: 'Incubation', icon: '🚀', desc: 'Enterprise creation' },
+  { step: '04', title: 'Govt Challenge', tag: 'Demand Stated', icon: '🏛️', desc: 'Public problem defined' },
+  { step: '05', title: 'Evaluation', tag: 'Scoring', icon: '🎯', desc: 'Double-blind rubric review' },
+  { step: '06', title: 'Pilot Sandbox', tag: 'Field Trial', icon: '⚙️', desc: 'District live deployment' },
+  { step: '07', title: 'Validation', tag: 'Certification', icon: '✅', desc: 'Third-party KPI audit' },
+  { step: '08', title: 'Procurement', tag: 'GeM Onboarding', icon: '📋', desc: 'Public purchase order' },
+  { step: '09', title: 'Real-World Impact', tag: 'Scale-Up', icon: '📈', desc: 'Societal & economic outcome' },
+];
+
+const CORE_PROBLEM_AREAS = [
+  {
+    title: 'Fragmented Innovation Journey',
+    desc: 'Disjointed handoffs between research labs, incubators, state departments, and funding bodies cause promising innovations to stall in the "valley of death".',
+    icon: '⚡',
+    badge: 'Disconnect',
+    color: '#dc2626',
+  },
+  {
+    title: 'Difficult Startup Discovery',
+    desc: 'Government departments struggle with manual, siloed registries to identify capable, verified deep-tech startups tailored to specific departmental needs.',
+    icon: '🔍',
+    badge: 'Discovery Gap',
+    color: '#ea580c',
+  },
+  {
+    title: 'Limited Innovation-Challenge Link',
+    desc: 'Public problem statements rarely reach relevant academic labs and specialized startups due to the lack of an integrated demand-supply bridge.',
+    icon: '🔗',
+    badge: 'Siloed Needs',
+    color: '#d97706',
+  },
+  {
+    title: 'Manual / Disconnected Evaluation',
+    desc: 'Ad-hoc evaluation workflows, subjective scoring, and lack of double-blind review mechanisms introduce administrative delays and selection bias.',
+    icon: '⚖️',
+    badge: 'Subjectivity',
+    color: '#ca8a04',
+  },
+  {
+    title: 'Pilot & Milestone Tracking Gaps',
+    desc: 'Field sandbox pilots lack real-time IoT/telemetry monitoring, structured progress milestones, and verifiable stage gates.',
+    icon: '⏱️',
+    badge: 'Oversight Gap',
+    color: '#0284c7',
+  },
+  {
+    title: 'Difficulty Validating Outcomes',
+    desc: 'Absence of standardized, certified third-party testing protocols makes it difficult to objectively verify pilot efficacy before procurement.',
+    icon: '📊',
+    badge: 'Validation Gap',
+    color: '#0d9488',
+  },
+  {
+    title: 'Procurement Readiness Challenges',
+    desc: 'Traditional public procurement rules present steep hurdles for early startups, with risk aversion, complex tenders, and opaque GeM pathways.',
+    icon: '🛡️',
+    badge: 'Procurement Hurdle',
+    color: '#4338ca',
+  },
+  {
+    title: 'Limited Visibility to Real-World Impact',
+    desc: 'No unified system tracks the journey from initial lab breakthrough to quantified citizen lives touched, carbon reduced, and public funds saved.',
+    icon: '🌐',
+    badge: 'Impact Blindspot',
+    color: '#7c3aed',
+  },
+];
+
+const EVALUATOR_FAST_TRACK = [
+  {
+    q: '1. What is the Problem?',
+    a: "India's research, innovation, and startup ecosystem is fragmented across multiple stages and stakeholders. Ideas face difficulty moving from research to IPR, funding, startups, government challenges, pilots, validation, and public procurement.",
+    tag: 'Problem Context',
+    color: '#b91c1c',
+    bg: '#fef2f2',
+    border: '#fecaca',
+  },
+  {
+    q: '2. What is UdaanSetu?',
+    a: 'UdaanSetu is a unified national platform prototype connecting research breakthroughs, startups, government challenges, and procurement officers into one traceable, evidence-based innovation-to-impact ecosystem.',
+    tag: 'Platform Identity',
+    color: '#0369a1',
+    bg: '#f0f9ff',
+    border: '#bae6fd',
+  },
+  {
+    q: '3. How Does UdaanSetu Solve It?',
+    a: 'By bridging all fragmented stages into an integrated 11-stage highway: automated discovery, AI risk scoring, double-blind evaluation, sandbox pilots, third-party validation, proof-linked milestone escrow, and GeM onboarding.',
+    tag: 'Solution Architecture',
+    color: '#047857',
+    bg: '#f0fdf4',
+    border: '#bbf7d0',
+  },
+  {
+    q: '4. What Makes It Technically Different?',
+    a: 'Deterministic & vector AI matching, explainable ML risk scoring (Benchmark: 92.0% accuracy, 0.940 ROC-AUC), duplicate IP clustering, tamper-evident audit trails, and strict third-party validator telemetry gates.',
+    tag: 'Technical Edge',
+    color: '#6d28d9',
+    bg: '#f5f3ff',
+    border: '#ddd6fe',
+  },
+];
+
 const AI_CAPABILITIES = [
   {
     title: 'AI Smart Matcher',
@@ -159,7 +265,7 @@ const AI_CAPABILITIES = [
     what: 'Computes multidimensional delivery risk across team experience, funding run-rate, milestone lag, and sector readiness.',
     why: 'Prevents public fund wastage by flagging high-risk initiatives before costly field pilots are approved.',
     action: 'Highlights specific risk drivers with explainable feature weights so founders can mitigate issues proactively.',
-    metric: '0.940 Cross-Validated AUC',
+    metric: 'Benchmark ROC-AUC: 0.940',
     icon: 'shield',
   },
   {
@@ -323,12 +429,15 @@ export default function LandingPage() {
         </div>
 
         {/* Navigation Menu */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: 24 }} className="hide-on-mobile">
-          <a href="#journey" style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-main, #334155)', textDecoration: 'none' }}>
-            Innovation Journey
+        <nav style={{ display: 'flex', alignItems: 'center', gap: 20 }} className="hide-on-mobile">
+          <a href="#problem" style={{ fontSize: 13, fontWeight: 700, color: '#0284c7', textDecoration: 'none' }}>
+            Problem Statement
           </a>
           <a href="#intelligence" style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-main, #334155)', textDecoration: 'none' }}>
             AI Intelligence
+          </a>
+          <a href="#journey" style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-main, #334155)', textDecoration: 'none' }}>
+            Innovation Journey
           </a>
           <a href="#workflow" style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-main, #334155)', textDecoration: 'none' }}>
             Ecosystem
@@ -344,7 +453,7 @@ export default function LandingPage() {
         {/* Action Header Buttons */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <a
-            href="#workspace"
+            href="#problem"
             style={{
               fontSize: 13,
               fontWeight: 600,
@@ -357,7 +466,7 @@ export default function LandingPage() {
               transition: 'all 0.15s ease',
             }}
           >
-            Explore Innovation
+            Problem Context
           </a>
           <a
             href="#workspace"
@@ -440,7 +549,7 @@ export default function LandingPage() {
           {/* Action CTAs */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, alignItems: 'center', marginBottom: 54 }}>
             <a
-              href="#workspace"
+              href="#problem"
               style={{
                 fontSize: 14,
                 fontWeight: 700,
@@ -455,8 +564,8 @@ export default function LandingPage() {
                 gap: 8,
               }}
             >
-              <span>Explore Innovation</span>
-              <span>→</span>
+              <span>Explore Problem & Solution</span>
+              <span>↓</span>
             </a>
 
             <a
@@ -475,7 +584,8 @@ export default function LandingPage() {
                 gap: 8,
               }}
             >
-              <span>Post a Challenge</span>
+              <span>Launch Workspace</span>
+              <span>→</span>
             </a>
 
             <a
@@ -492,7 +602,7 @@ export default function LandingPage() {
                 gap: 6,
               }}
             >
-              <span>Track 11-Stage Journey</span>
+              <span>Track 11-Stage Highway</span>
               <span>↓</span>
             </a>
           </div>
@@ -513,14 +623,14 @@ export default function LandingPage() {
               <div style={{ fontSize: 12, color: '#38bdf8', marginTop: 2 }}>From TRL-1 to Multi-District Scale</div>
             </div>
             <div>
-              <div style={{ fontSize: 11, fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em' }}>AI ML Engine</div>
-              <div style={{ fontSize: 18, fontWeight: 800, color: '#ffffff', marginTop: 4 }}>92.0% Benchmark</div>
-              <div style={{ fontSize: 12, color: '#4ade80', marginTop: 2 }}>0.940 Cross-Validated AUC</div>
+              <div style={{ fontSize: 11, fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em' }}>AI ML Benchmark</div>
+              <div style={{ fontSize: 18, fontWeight: 800, color: '#ffffff', marginTop: 4 }}>92.0% Baseline Accuracy</div>
+              <div style={{ fontSize: 12, color: '#4ade80', marginTop: 2 }}>0.940 Cross-Validated ROC-AUC</div>
             </div>
             <div>
               <div style={{ fontSize: 11, fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Procurement Path</div>
-              <div style={{ fontSize: 18, fontWeight: 800, color: '#ffffff', marginTop: 4 }}>GeM & Milestone Escrow</div>
-              <div style={{ fontSize: 12, color: '#facc15', marginTop: 2 }}>Proof-Linked Workflow Model</div>
+              <div style={{ fontSize: 18, fontWeight: 800, color: '#ffffff', marginTop: 4 }}>GeM-Aligned Prototype</div>
+              <div style={{ fontSize: 12, color: '#facc15', marginTop: 2 }}>Proof-Linked Escrow Model</div>
             </div>
             <div>
               <div style={{ fontSize: 11, fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Governance & RBAC</div>
@@ -531,7 +641,442 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* 3. INNOVATION JOURNEY VISUALIZER */}
+      {/* 3. DEDICATED SIH26136 PROBLEM STATEMENT & GAP ANALYSIS */}
+      <section id="problem" style={{
+        background: '#ffffff',
+        padding: '88px 32px',
+        borderBottom: '1px solid #e2e8f0',
+        position: 'relative',
+      }}>
+        <div style={{ maxWidth: 1240, margin: '0 auto' }}>
+          
+          {/* SIH Official Badge & Problem Title Header */}
+          <div style={{
+            background: 'linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%)',
+            border: '1px solid #bae6fd',
+            borderRadius: 16,
+            padding: '28px 32px',
+            marginBottom: 44,
+            boxShadow: '0 4px 16px rgba(2,132,199,0.06)',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: 24,
+            alignItems: 'center',
+          }}>
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8, flexWrap: 'wrap' }}>
+                <span style={{
+                  fontSize: 11,
+                  fontWeight: 800,
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  padding: '4px 10px',
+                  borderRadius: 6,
+                  background: '#012348',
+                  color: '#ffffff',
+                }}>
+                  SMART INDIA HACKATHON 2026
+                </span>
+                <span style={{
+                  fontSize: 11,
+                  fontWeight: 800,
+                  letterSpacing: '0.04em',
+                  padding: '4px 10px',
+                  borderRadius: 6,
+                  background: '#fef3c7',
+                  color: '#92400e',
+                  border: '1px solid #fde68a',
+                }}>
+                  Problem Statement ID: SIH26136
+                </span>
+              </div>
+              <h2 style={{ fontSize: 26, fontWeight: 900, color: '#012348', letterSpacing: '-0.02em', margin: '4px 0 8px' }}>
+                Startup friendly Public Procurement Mechanism
+              </h2>
+              <div style={{ fontSize: 13, fontWeight: 700, color: '#0369a1' }}>
+                Official National SIH Challenge · Addressed by UdaanSetu
+              </div>
+            </div>
+
+            <div style={{
+              background: '#ffffff',
+              borderRadius: 12,
+              border: '1px solid #cbd5e1',
+              padding: '16px 20px',
+              fontSize: 13,
+              lineHeight: 1.55,
+              color: '#334155',
+            }}>
+              <div style={{ fontWeight: 800, color: '#012348', marginBottom: 4, display: 'flex', alignItems: 'center', gap: 6 }}>
+                <span>🎯</span>
+                <span>Evaluator Briefing:</span>
+              </div>
+              <div>
+                UdaanSetu directly solves SIH26136 by replacing disconnected bureaucratic silos with an evidence-based, AI-orchestrated highway from lab innovation to GeM public procurement.
+              </div>
+            </div>
+          </div>
+
+          {/* Problem Statement Narrative */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
+            gap: 24,
+            marginBottom: 48,
+          }}>
+            <div style={{
+              background: 'var(--surface-canvas, #f8fafc)',
+              borderRadius: 14,
+              border: '1px solid #e2e8f0',
+              padding: 28,
+              boxShadow: '0 2px 6px rgba(0,0,0,0.02)',
+            }}>
+              <div style={{ fontSize: 11, fontWeight: 800, color: '#dc2626', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
+                <span>⚠️</span>
+                <span>The Innovation Dilemma</span>
+              </div>
+              <h3 style={{ fontSize: 18, fontWeight: 800, color: '#012348', marginBottom: 12 }}>
+                Fragmented Innovation & Startup Ecosystem
+              </h3>
+              <p style={{ fontSize: 14, lineHeight: 1.65, color: '#475569', margin: 0 }}>
+                India's research, innovation and startup ecosystem is fragmented across multiple stages and stakeholders. Innovative ideas often face difficulty moving from research and innovation to IPR support, funding, startup formation, government challenges, pilot deployment, validation, procurement and real-world impact.
+              </p>
+            </div>
+
+            <div style={{
+              background: 'var(--surface-canvas, #f8fafc)',
+              borderRadius: 14,
+              border: '1px solid #e2e8f0',
+              padding: 28,
+              boxShadow: '0 2px 6px rgba(0,0,0,0.02)',
+            }}>
+              <div style={{ fontSize: 11, fontWeight: 800, color: '#d97706', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
+                <span>🏛️</span>
+                <span>The Procurement Bottleneck</span>
+              </div>
+              <h3 style={{ fontSize: 18, fontWeight: 800, color: '#012348', marginBottom: 12 }}>
+                Public Sector Discovery & Scale-Up Gap
+              </h3>
+              <p style={{ fontSize: 14, lineHeight: 1.65, color: '#475569', margin: 0 }}>
+                The public procurement side also needs a structured mechanism to discover eligible startups, evaluate solutions, manage pilots, track milestones, validate outcomes and support transparent scale-up without exposing public funds to unverified performance risk.
+              </p>
+            </div>
+          </div>
+
+          {/* VISUAL FLOW OF THE GAP */}
+          <div style={{
+            background: 'linear-gradient(180deg, #012348 0%, #01162d 100%)',
+            borderRadius: 16,
+            padding: '36px 28px',
+            color: '#ffffff',
+            marginBottom: 48,
+            boxShadow: '0 10px 30px rgba(1,35,72,0.2)',
+          }}>
+            <div style={{ textAlign: 'center', marginBottom: 28 }}>
+              <div style={{ fontSize: 11, fontWeight: 800, color: '#38bdf8', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6 }}>
+                THE TRADITIONAL GAP VS. CONNECTED ECOSYSTEM
+              </div>
+              <h3 style={{ fontSize: 24, fontWeight: 800, color: '#ffffff', letterSpacing: '-0.02em', margin: 0 }}>
+                Bridging the 9 Fragmented Stages of Innovation
+              </h3>
+              <p style={{ fontSize: 14, color: '#cbd5e1', maxWidth: 640, margin: '8px auto 0' }}>
+                Historically, ideas fail at the uncoordinated handoffs between stages. UdaanSetu bridges every transition into a single verified sequence.
+              </p>
+            </div>
+
+            {/* Horizontal Stage Grid */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(115px, 1fr))',
+              gap: 8,
+              position: 'relative',
+              alignItems: 'stretch',
+            }}>
+              {PROBLEM_GAP_STAGES.map((st, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    background: 'rgba(255,255,255,0.06)',
+                    border: '1px solid rgba(255,255,255,0.12)',
+                    borderRadius: 10,
+                    padding: '14px 10px',
+                    textAlign: 'center',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                  }}
+                >
+                  <div>
+                    <div style={{ fontSize: 18, marginBottom: 4 }}>{st.icon}</div>
+                    <div style={{ fontSize: 10, fontWeight: 800, color: '#38bdf8', marginBottom: 2 }}>{st.step}</div>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: '#ffffff', lineHeight: 1.25, marginBottom: 6 }}>
+                      {st.title}
+                    </div>
+                  </div>
+                  <div style={{ fontSize: 9, fontWeight: 700, color: '#94a3b8', background: 'rgba(255,255,255,0.08)', padding: '2px 4px', borderRadius: 4 }}>
+                    {st.tag}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* UdaanSetu Connecting Statement */}
+            <div style={{
+              marginTop: 28,
+              background: 'rgba(2,132,199,0.15)',
+              border: '1px solid rgba(56,189,248,0.3)',
+              borderRadius: 12,
+              padding: '16px 20px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 12,
+              textAlign: 'center',
+            }}>
+              <span style={{ fontSize: 20 }}>⚡</span>
+              <div style={{ fontSize: 15, fontWeight: 800, color: '#ffffff', letterSpacing: '-0.01em' }}>
+                "UdaanSetu connects these fragmented stages into one intelligent, traceable innovation-to-impact ecosystem."
+              </div>
+            </div>
+          </div>
+
+          {/* 8 CORE PROBLEM AREAS */}
+          <div style={{ marginBottom: 48 }}>
+            <div style={{ textAlign: 'center', marginBottom: 32 }}>
+              <div style={{ fontSize: 12, fontWeight: 700, color: '#dc2626', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6 }}>
+                Systemic Bottlenecks
+              </div>
+              <h3 style={{ fontSize: 28, fontWeight: 800, color: '#012348', letterSpacing: '-0.02em', margin: 0 }}>
+                The 8 Core Problem Areas Addressed
+              </h3>
+              <p style={{ fontSize: 14, color: '#64748b', maxWidth: 640, margin: '8px auto 0' }}>
+                Understanding the key pain points in startup discovery, evaluation, pilot management, and public procurement.
+              </p>
+            </div>
+
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: 16,
+            }}>
+              {CORE_PROBLEM_AREAS.map((prob, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    background: '#ffffff',
+                    borderRadius: 12,
+                    border: '1px solid #e2e8f0',
+                    padding: 22,
+                    boxShadow: '0 2px 6px rgba(0,0,0,0.02)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                  }}
+                >
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+                      <span style={{ fontSize: 20 }}>{prob.icon}</span>
+                      <span style={{ fontSize: 10, fontWeight: 800, padding: '2px 8px', borderRadius: 6, background: '#fef2f2', color: prob.color, border: '1px solid #fecaca' }}>
+                        {prob.badge}
+                      </span>
+                    </div>
+                    <h4 style={{ fontSize: 15, fontWeight: 800, color: '#012348', marginBottom: 8, lineHeight: 1.3 }}>
+                      {prob.title}
+                    </h4>
+                    <p style={{ fontSize: 13, color: '#475569', lineHeight: 1.5, margin: 0 }}>
+                      {prob.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* UDAANSETU SOLUTION STATEMENT */}
+          <div style={{
+            background: 'linear-gradient(135deg, #0284c7 0%, #012348 100%)',
+            borderRadius: 16,
+            padding: '32px 36px',
+            color: '#ffffff',
+            boxShadow: '0 8px 24px rgba(2,132,199,0.25)',
+            marginBottom: 48,
+            display: 'grid',
+            gridTemplateColumns: '1fr auto',
+            gap: 24,
+            alignItems: 'center',
+          }}>
+            <div>
+              <div style={{ fontSize: 11, fontWeight: 800, color: '#bae6fd', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6 }}>
+                THE UDAANSETU SOLUTION
+              </div>
+              <h3 style={{ fontSize: 22, fontWeight: 900, color: '#ffffff', lineHeight: 1.3, margin: '0 0 8px' }}>
+                "UdaanSetu brings research, innovation, startups, government challenges, AI-assisted evaluation, pilots, validation, milestone workflows and procurement into one connected platform."
+              </h3>
+              <div style={{ fontSize: 13, color: '#e0f2fe' }}>
+                An end-to-end evidence-based governance framework built for the Government of Maharashtra and national scalability.
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+              <a
+                href="#intelligence"
+                style={{
+                  padding: '10px 20px',
+                  borderRadius: 8,
+                  background: '#ffffff',
+                  color: '#012348',
+                  fontSize: 13,
+                  fontWeight: 700,
+                  textDecoration: 'none',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Explore AI Subsystems ↓
+              </a>
+              <a
+                href="#journey"
+                style={{
+                  padding: '10px 20px',
+                  borderRadius: 8,
+                  background: 'rgba(255,255,255,0.15)',
+                  color: '#ffffff',
+                  border: '1px solid rgba(255,255,255,0.3)',
+                  fontSize: 13,
+                  fontWeight: 700,
+                  textDecoration: 'none',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                View 11 Stages ↓
+              </a>
+            </div>
+          </div>
+
+          {/* 4-POINT EVALUATOR FAST TRACK */}
+          <div>
+            <div style={{ textAlign: 'center', marginBottom: 28 }}>
+              <div style={{ fontSize: 11, fontWeight: 800, color: '#0284c7', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6 }}>
+                10-Second Evaluator Summary
+              </div>
+              <h3 style={{ fontSize: 24, fontWeight: 800, color: '#012348', letterSpacing: '-0.02em', margin: 0 }}>
+                Key Evaluator Takeaways
+              </h3>
+            </div>
+
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: 16,
+            }}>
+              {EVALUATOR_FAST_TRACK.map((item, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    background: item.bg,
+                    border: `1px solid ${item.border}`,
+                    borderRadius: 12,
+                    padding: 22,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                  }}
+                >
+                  <div>
+                    <span style={{ fontSize: 10, fontWeight: 800, color: item.color, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                      {item.tag}
+                    </span>
+                    <h4 style={{ fontSize: 16, fontWeight: 800, color: '#012348', margin: '8px 0 10px' }}>
+                      {item.q}
+                    </h4>
+                    <p style={{ fontSize: 13, color: '#334155', lineHeight: 1.55, margin: 0 }}>
+                      {item.a}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 4. AI INTELLIGENCE SECTION */}
+      <section id="intelligence" style={{ background: '#ffffff', padding: '80px 32px', borderBottom: '1px solid #e2e8f0' }}>
+        <div style={{ maxWidth: 1240, margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: 54 }}>
+            <div style={{ fontSize: 12, fontWeight: 700, color: '#0f766e', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 8 }}>
+              Native Machine Learning Subsystems
+            </div>
+            <h2 style={{ fontSize: 32, fontWeight: 800, color: '#012348', letterSpacing: '-0.02em', marginBottom: 12 }}>
+              AI Innovation Intelligence
+            </h2>
+            <p style={{ fontSize: 15, color: '#64748b', maxWidth: 700, margin: '0 auto' }}>
+              Production-tested ML models actively power discovery, risk reduction, duplicate detection, and procurement intelligence across the state.
+            </p>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
+            gap: 24,
+          }}>
+            {AI_CAPABILITIES.map((cap, idx) => (
+              <div
+                key={idx}
+                style={{
+                  borderRadius: 14,
+                  border: '1px solid #e2e8f0',
+                  background: 'var(--surface-canvas, #f8fafc)',
+                  padding: 28,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  transition: 'transform 0.15s ease, box-shadow 0.15s ease',
+                }}
+              >
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 14 }}>
+                    <span style={{ fontSize: 11, fontWeight: 700, padding: '4px 10px', borderRadius: 8, background: '#e0f2fe', color: '#0369a1' }}>
+                      {cap.tag}
+                    </span>
+                    <span style={{ fontSize: 11, fontWeight: 700, color: '#047857', background: '#dcfce7', padding: '4px 8px', borderRadius: 6 }}>
+                      {cap.badge}
+                    </span>
+                  </div>
+
+                  <h3 style={{ fontSize: 20, fontWeight: 800, color: '#012348', marginBottom: 14 }}>
+                    {cap.title}
+                  </h3>
+
+                  <div style={{ marginBottom: 12 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.04em' }}>WHAT IT DOES</div>
+                    <div style={{ fontSize: 13, color: '#334155', lineHeight: 1.5, marginTop: 2 }}>{cap.what}</div>
+                  </div>
+
+                  <div style={{ marginBottom: 12 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.04em' }}>WHY IT MATTERS</div>
+                    <div style={{ fontSize: 13, color: '#334155', lineHeight: 1.5, marginTop: 2 }}>{cap.why}</div>
+                  </div>
+
+                  <div style={{ marginBottom: 16 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: '#0284c7', textTransform: 'uppercase', letterSpacing: '0.04em' }}>ACTION ENABLED</div>
+                    <div style={{ fontSize: 13, color: '#0369a1', lineHeight: 1.5, marginTop: 2, fontWeight: 600 }}>{cap.action}</div>
+                  </div>
+                </div>
+
+                <div style={{ paddingTop: 14, borderTop: '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <span style={{ fontSize: 12, fontWeight: 700, color: '#475569' }}>{cap.metric}</span>
+                  <a href="#workspace" style={{ fontSize: 12, fontWeight: 700, color: '#0284c7', textDecoration: 'none' }}>
+                    Inspect Model →
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. INNOVATION JOURNEY VISUALIZER */}
       <section id="journey" style={{ padding: '80px 32px', maxWidth: 1240, margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 48 }}>
           <div style={{ fontSize: 12, fontWeight: 700, color: '#0284c7', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 8 }}>
@@ -677,82 +1222,6 @@ export default function LandingPage() {
                 View in Workspace →
               </a>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. AI INTELLIGENCE SECTION */}
-      <section id="intelligence" style={{ background: '#ffffff', padding: '80px 32px', borderTop: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0' }}>
-        <div style={{ maxWidth: 1240, margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: 54 }}>
-            <div style={{ fontSize: 12, fontWeight: 700, color: '#0f766e', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 8 }}>
-              Native Machine Learning Subsystems
-            </div>
-            <h2 style={{ fontSize: 32, fontWeight: 800, color: '#012348', letterSpacing: '-0.02em', marginBottom: 12 }}>
-              AI Innovation Intelligence
-            </h2>
-            <p style={{ fontSize: 15, color: '#64748b', maxWidth: 700, margin: '0 auto' }}>
-              Production-tested ML models actively power discovery, risk reduction, duplicate detection, and procurement intelligence across the state.
-            </p>
-          </div>
-
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
-            gap: 24,
-          }}>
-            {AI_CAPABILITIES.map((cap, idx) => (
-              <div
-                key={idx}
-                style={{
-                  borderRadius: 14,
-                  border: '1px solid #e2e8f0',
-                  background: 'var(--surface-canvas, #f8fafc)',
-                  padding: 28,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  transition: 'transform 0.15s ease, box-shadow 0.15s ease',
-                }}
-              >
-                <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 14 }}>
-                    <span style={{ fontSize: 11, fontWeight: 700, padding: '4px 10px', borderRadius: 8, background: '#e0f2fe', color: '#0369a1' }}>
-                      {cap.tag}
-                    </span>
-                    <span style={{ fontSize: 11, fontWeight: 700, color: '#047857', background: '#dcfce7', padding: '4px 8px', borderRadius: 6 }}>
-                      {cap.badge}
-                    </span>
-                  </div>
-
-                  <h3 style={{ fontSize: 20, fontWeight: 800, color: '#012348', marginBottom: 14 }}>
-                    {cap.title}
-                  </h3>
-
-                  <div style={{ marginBottom: 12 }}>
-                    <div style={{ fontSize: 11, fontWeight: 700, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.04em' }}>WHAT IT DOES</div>
-                    <div style={{ fontSize: 13, color: '#334155', lineHeight: 1.5, marginTop: 2 }}>{cap.what}</div>
-                  </div>
-
-                  <div style={{ marginBottom: 12 }}>
-                    <div style={{ fontSize: 11, fontWeight: 700, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.04em' }}>WHY IT MATTERS</div>
-                    <div style={{ fontSize: 13, color: '#334155', lineHeight: 1.5, marginTop: 2 }}>{cap.why}</div>
-                  </div>
-
-                  <div style={{ marginBottom: 16 }}>
-                    <div style={{ fontSize: 11, fontWeight: 700, color: '#0284c7', textTransform: 'uppercase', letterSpacing: '0.04em' }}>ACTION ENABLED</div>
-                    <div style={{ fontSize: 13, color: '#0369a1', lineHeight: 1.5, marginTop: 2, fontWeight: 600 }}>{cap.action}</div>
-                  </div>
-                </div>
-
-                <div style={{ paddingTop: 14, borderTop: '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ fontSize: 12, fontWeight: 700, color: '#475569' }}>{cap.metric}</span>
-                  <a href="#workspace" style={{ fontSize: 12, fontWeight: 700, color: '#0284c7', textDecoration: 'none' }}>
-                    Inspect Model →
-                  </a>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -1164,10 +1633,11 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <div style={{ display: 'flex', gap: 20, fontSize: 12 }}>
-            <a href="#journey" style={{ color: '#94a3b8', textDecoration: 'none' }}>Innovation Journey</a>
+          <div style={{ display: 'flex', gap: 20, fontSize: 12, flexWrap: 'wrap' }}>
+            <a href="#problem" style={{ color: '#38bdf8', textDecoration: 'none', fontWeight: 600 }}>Problem Statement (SIH26136)</a>
             <a href="#intelligence" style={{ color: '#94a3b8', textDecoration: 'none' }}>AI Intelligence</a>
-            <a href="#workflow" style={{ color: '#94a3b8', textDecoration: 'none' }}>Workflow</a>
+            <a href="#journey" style={{ color: '#94a3b8', textDecoration: 'none' }}>Innovation Highway</a>
+            <a href="#workflow" style={{ color: '#94a3b8', textDecoration: 'none' }}>Ecosystem</a>
             <a href="#procurement" style={{ color: '#94a3b8', textDecoration: 'none' }}>Procurement</a>
             <a href="#workspace" style={{ color: '#38bdf8', textDecoration: 'none', fontWeight: 600 }}>Workspace</a>
           </div>

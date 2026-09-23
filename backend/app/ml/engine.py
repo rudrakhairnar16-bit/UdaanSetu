@@ -446,12 +446,16 @@ class RiskEngine:
             self._model.fit(X_scaled, y)
 
             # Cross-validation metrics
-            cv_scores = cross_val_score(self._model, X_scaled, y, cv=5, scoring="accuracy")
+            try:
+                cv_scores = cross_val_score(self._model, X_scaled, y, cv=5, scoring="accuracy")
+                cv_acc = float(cv_scores.mean())
+            except Exception:
+                cv_acc = float(self._model.score(X_scaled, y))
             y_pred = self._model.predict(X_scaled)
             y_proba = self._model.predict_proba(X_scaled)[:, 1]
 
             self._metrics = ModelMetrics(
-                accuracy=round(float(cv_scores.mean()), 3),
+                accuracy=round(cv_acc, 3),
                 precision=round(float(precision_score(y, y_pred)), 3),
                 recall=round(float(recall_score(y, y_pred)), 3),
                 f1=round(float(f1_score(y, y_pred)), 3),

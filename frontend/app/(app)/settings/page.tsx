@@ -38,7 +38,7 @@ export default function SettingsPage() {
           <div style={{ display: 'grid', gap: 10 }}>
             {[
               ['Version', '0.2.0'],
-              ['Problem Focus', 'SIH1608 — Innovation Ecosystem Platform'],
+              ['Problem Focus', 'SIH26136 — Startup friendly Public Procurement Mechanism'],
               ['API Docs', typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.hostname}:8000/docs` : '/docs'],
               ['Environment', 'Demo / Prototype'],
               ['Data Notice', 'All records are DEMO DATA. Not government data.'],

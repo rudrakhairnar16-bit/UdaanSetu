@@ -5,8 +5,8 @@ import { ConfirmProvider } from './components/ConfirmDialog';
 import { ErrorBoundary } from './components/ErrorBoundary';
 
 export const metadata = {
-  title: 'UdaanSetu — Innovation Lifecycle Platform',
-  description: 'Research → Innovation → IPR → Support → Startup → Impact | SIH1608 Prototype',
+  title: 'UdaanSetu — Startup friendly Public Procurement Mechanism',
+  description: 'Research → Innovation → IPR → Support → Startup → Procurement → Impact | SIH26136 Prototype',
   icons: { icon: '/favicon.ico' },
 };
 
